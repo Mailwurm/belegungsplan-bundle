@@ -10,7 +10,7 @@ declare(strict_types = 1);
 * @license LGPL-3.0+
 */
 namespace Mailwurm\BelegungsplanBundle\ContaoManager;
-use Mailwurm\BelegungsplanBundle\BelegungsplanBundle;
+use Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
