@@ -28,7 +28,7 @@ class Plugin implements BundlePluginInterface {
 		return [
 			BundleConfig::create(MailwurmBelegungsplanBundle::class)
 			->setLoadAfter([ContaoCoreBundle::class])
-			->setReplace(['mailwurm_belegungsplan']),
+			->setReplace(['belegungsplan']),
 		];
 	}
 }
