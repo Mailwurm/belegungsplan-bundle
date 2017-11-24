@@ -15,7 +15,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
-		'ctable'                      => array('tl_belegungplan_objekte'),
+		'ctable'                      => array('tl_belegungsplan_objekte'),
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
 		'onload_callback' => array
@@ -60,7 +60,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 			'edit' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['edit'],
-				'href'                => 'table=tl_belegungplan_objekte',
+				'href'                => 'table=tl_belegungsplan_objekte',
 				'icon'                => 'edit.svg'
 			),
 			'editheader' => array
