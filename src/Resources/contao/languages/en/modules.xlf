@@ -4,8 +4,8 @@
 			<trans-unit id="MOD.belegungsplan.0">
 				<source>Booking calendar</source>
 			</trans-unit>
-			<trans-unit id="MOD.faq.1">
-				<source>Manage occupancy plans</source>
+			<trans-unit id="MOD.belegungsplan.1">
+				<source>Create and manage categories, objects and occupancy times</source>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_category">
 				<source>Categories</source>
