@@ -38,18 +38,6 @@
 			<trans-unit id="tl_belegungsplan_calender.endDate.1">
 				<source>Please enter the departure date according to the global date format dd.mm.yyyy</source>
 			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.reserviert.0">
-				<source>Reservation</source>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.reserviert.1">
-				<source>If it is a reservation</source>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.gebucht.0">
-				<source>Booking</source>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.gebucht.1">
-				<source>When it comes to a firm booking</source>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
