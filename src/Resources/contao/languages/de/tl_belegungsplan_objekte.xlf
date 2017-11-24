@@ -9,6 +9,14 @@
 				<source>The objectname is a unique reference to the object which can be called instead of its numeric ID.</source>
 				<target>Der Objektname ist eine eindeutige Referenz, die anstelle der numerischen Objekt-ID aufgerufen werden kann.</target>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.new.0">
+				<source>New object</source>
+				<target>Neues Objekt</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.new.1">
+				<source>Create a new ubject</source>
+				<target>Ein neues Objekt anlegen</target>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.author.0">
 				<source>Author</source>
 				<target>Autor</target>
