@@ -3,11 +3,11 @@
 		<body>
 			<trans-unit id="tl_belegungsplan_category.title.0">
 				<source>Category name</source>
-				<target>Kategoriename</target>
+				<target>Kategorie-Name</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.title.1">
-				<source>Please enter the category title.</source>
-				<target>Bitte geben Sie den Kategorie-Titel ein.</target>
+				<source>Please enter the category name.</source>
+				<target>Bitte geben Sie den Kategorie-Namen ein.</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.deleteConfirm">
 				<source>Deleting category ID %s will also delete all its objects! Continue?</source>
