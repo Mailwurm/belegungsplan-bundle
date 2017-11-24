@@ -11,7 +11,7 @@
 * Load tl_content language file
 */
 System::loadLanguageFile('tl_content');
-
+ 
 /**
  * Table tl_belegungsplan_objekte
  */
@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'mode'                    => 4,
 			'fields'                  => array('sorting'),
 			'panelLayout'             => 'filter;sort,search,limit',
-			'headerFields'            => array('title', 'tstamp'),
+			'headerFields'            => array('tstamp'),
 			'child_record_callback'   => array('tl_belegungsplan_objekte', 'listQuestions')
 		),
 		'global_operations' => array
@@ -65,13 +65,13 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['edit'],
 				'href'                => 'table=tl_belegungsplan_calender',
-				'icon'                => 'edit.svg'
+				'icon'                => 'cssimport.svg'
 			),
 			'editheader' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['editheader'],
 				'href'                => 'act=edit',
-				'icon'                => 'header.svg',
+				'icon'                => 'edit.svg',
 				'button_callback'     => array('tl_belegungsplan_objekte', 'editHeader')
 			),
 			'copy' => array
@@ -331,9 +331,9 @@ class tl_belegungsplan_objekte extends Backend
 		$key = $arrRow['published'] ? 'published' : 'unpublished';
 		$date = Date::parse(Config::get('datimFormat'), $arrRow['tstamp']);
 		return '
-<div class="cte_type ' . $key . '"><strong>' . $arrRow['question'] . '</strong> - ' . $date . '</div>
+<div class="cte_type ' . $key . '">' . $date . '</div>
 <div class="limit_height' . (!Config::get('doNotCollapse') ? ' h40' : '') . '">
-' . StringUtil::insertTagToSrc($arrRow['answer']) . '
+' . StringUtil::insertTagToSrc($arrRow['name']) . '
 </div>' . "\n";
 	}
 	/**
