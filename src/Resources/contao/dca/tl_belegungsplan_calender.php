@@ -138,6 +138,8 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'exclude'                 => true,
 			'search'                  => true,
 			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 8,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
 			'sql'                     => "int(10) unsigned NULL"
