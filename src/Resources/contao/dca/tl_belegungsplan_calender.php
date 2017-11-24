@@ -11,10 +11,10 @@
 * Load tl_content language file
 */
 System::loadLanguageFile('tl_content');
-
+ 
 /**
-* Table tl_belegungsplan_calender
-*/
+ * Table tl_belegungsplan_calender
+ */
 $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 (
 	// Config
@@ -45,14 +45,13 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'mode'                    => 2,
 			'fields'                  => array('startDate DESC'),
 			'flag'                    => 8,
-			'panelLayout'             => 'filter;sort,search,limit',
-			'headerFields'            => array('gast', 'tstamp'),
-			'child_record_callback'   => array('tl_belegungsplan_calender', 'listCalender')
+			'panelLayout'             => 'filter;sort,search,limit'
 		),
 		'label' => array
 		(
 			'fields'                  => array('gast', 'startDate', 'endDate'),
-			'format'                  => '%s'
+			'format'                  => '%s',
+			'label_callback'          => array('tl_belegungsplan_calender', 'listCalender')
 		),
 		'global_operations' => array
 		(
@@ -281,7 +280,7 @@ class tl_belegungsplan_calender extends Backend
 	 */
 	public function listCalender($arrRow)
 	{
-		return '<div class="tl_content_left">' . ($arrRow['reserviert'] == 1 ? Image::getHtml('user.svg') : ($arrRow['gebucht'] == 1 ? Image::getHtml('member.svg') : Image::getHtml('admin.svg'))) . $arrRow['gast'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('timeFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('timeFormat'), $arrRow['endDate']) . ']</span></div>';
+		return '<div class="tl_content_left">' . $arrRow['gast'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('timeFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('timeFormat'), $arrRow['endDate']) . ']</span></div>';
 	}
 	
 	
