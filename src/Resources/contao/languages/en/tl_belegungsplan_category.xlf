@@ -24,16 +24,16 @@
 				<source>Show the details of category ID %s</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.0">
-				<source>Edit category</source>
+				<source>To the objects of this category</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.1">
-				<source>Edit category ID %s</source>
+				<source>To the objects of the category ID %s</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.editheader.0">
 				<source>Edit category</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.editheader.1">
-				<source>Edit the category settings</source>
+				<source>Edit category ID %s</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.copy.0">
 				<source>Duplicate category</source>
