@@ -6,7 +6,7 @@
 				<source>Category name</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.title.1">
-				<source>Please enter the category title.</source>
+				<source>Please enter the category name.</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.deleteConfirm">
 				<source>Deleting category ID %s will also delete all its objects! Continue?</source>
