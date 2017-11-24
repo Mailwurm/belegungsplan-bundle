@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'mode'                    => 4,
 			'fields'                  => array('sorting'),
 			'panelLayout'             => 'filter;sort,search,limit',
-			'headerFields'            => array('tstamp'),
+			'headerFields'            => array('title', 'tstamp'),
 			'child_record_callback'   => array('tl_belegungsplan_objekte', 'listQuestions')
 		),
 		'global_operations' => array
@@ -73,18 +73,6 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 				'href'                => 'act=edit',
 				'icon'                => 'edit.svg',
 				'button_callback'     => array('tl_belegungsplan_objekte', 'editHeader')
-			),
-			'copy' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['copy'],
-				'href'                => 'act=paste&amp;mode=copy',
-				'icon'                => 'copy.svg'
-			),
-			'cut' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['cut'],
-				'href'                => 'act=paste&amp;mode=cut',
-				'icon'                => 'cut.svg'
 			),
 			'delete' => array
 			(
@@ -170,10 +158,9 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['infotext'],
 			'exclude'                 => true,
 			'search'                  => true,
-			'inputType'               => 'textarea',
-			'eval'                    => array('rte'=>'tinyMCE', 'helpwizard'=>true),
-			'explanation'             => 'insertTags',
-			'sql'                     => "text NULL"
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long'),
+			'sql'                     => "varchar(255) COLLATE utf8_bin NOT NULL default ''"
 		),
 		'published' => array
 		(
@@ -334,6 +321,7 @@ class tl_belegungsplan_objekte extends Backend
 <div class="cte_type ' . $key . '">' . $date . '</div>
 <div class="limit_height' . (!Config::get('doNotCollapse') ? ' h40' : '') . '">
 ' . StringUtil::insertTagToSrc($arrRow['name']) . '
+<span style="color:#b3b3b3;padding-left:3px">[' . StringUtil::insertTagToSrc($arrRow['infotext']) . ']</span>
 </div>' . "\n";
 	}
 	/**
