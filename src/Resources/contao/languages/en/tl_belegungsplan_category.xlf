@@ -3,7 +3,7 @@
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_category.php" source-language="en">
 		<body>
 			<trans-unit id="tl_belegungsplan_category.title.0">
-				<source>Title</source>
+				<source>Category name</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.title.1">
 				<source>Please enter the category title.</source>
@@ -24,7 +24,7 @@
 				<source>Show the details of category ID %s</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.0">
-				<source>To the objects of this category</source>
+				<source>Edit category ID %s</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.1">
 				<source>To the objects of the category ID %s</source>
@@ -46,6 +46,15 @@
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.delete.1">
 				<source>Delete category ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.title_legend">
+				<source>Category name</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.tstamp.0">
+				<source>Revision date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.tstamp.1">
+				<source>Date and time of the latest revision</source>
 			</trans-unit>
 		</body>
 	</file>
