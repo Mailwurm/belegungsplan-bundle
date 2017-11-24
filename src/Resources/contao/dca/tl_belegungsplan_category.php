@@ -94,7 +94,10 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 		)
 	),
 	// Palettes
-	'palettes' => array(
+	'palettes' => array
+	(
+		'__selector__'                => array(),
+		'default'                     => '{title_legend},title'
 	),
 	// Subpalettes
 	'subpalettes' => array(
