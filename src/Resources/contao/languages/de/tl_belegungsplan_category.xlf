@@ -2,8 +2,8 @@
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_category.php" source-language="en" target-language="de">
 		<body>
 			<trans-unit id="tl_belegungsplan_category.title.0">
-				<source>Title</source>
-				<target>Titel</target>
+				<source>Category name</source>
+				<target>Kategoriename</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.title.1">
 				<source>Please enter the category title.</source>
@@ -30,8 +30,8 @@
 				<target>Details der Kategorie ID %s anzeigen</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.0">
-				<source>To the objects of this category</source>
-				<target>Zu den Objekten dieser Kategorie</target>
+				<source>Edit category ID %s</source>
+				<target>Kategorie ID %s bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.1">
 				<source>To the objects of the category ID %s</source>
@@ -60,6 +60,18 @@
 			<trans-unit id="tl_belegungsplan_category.delete.1">
 				<source>Delete category ID %s</source>
 				<target>Kategorie ID %s löschen</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.title_legend">
+				<source>Category name</source>
+				<target>Kategoriename</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.tstamp.0">
+				<source>Revision date</source>
+				<target>Änderungsdatum</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.tstamp.1">
+				<source>Date and time of the latest revision</source>
+				<target>Datum und Uhrzeit der letzten Änderung</target>
 			</trans-unit>
 		</body>
 	</file>
