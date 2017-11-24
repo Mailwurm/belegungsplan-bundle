@@ -48,7 +48,7 @@ class BelegungsplanPickerProvider extends AbstractPickerProvider implements DcaP
     */
     public function getDcaTable()
     {
-        return 'tl_belegungplan_objekte';
+        return 'tl_belegungsplan_objekte';
     }
     /**
     * {@inheritdoc}
@@ -76,7 +76,7 @@ class BelegungsplanPickerProvider extends AbstractPickerProvider implements DcaP
         }
         $value = str_replace(['{{belegungsplan_url::', '}}'], '', $config->getValue());
         if (null !== ($belegungsplanId = $this->getBelegungsplanCategoryId($value))) {
-            $params['table'] = 'tl_belegungplan_objekte';
+            $params['table'] = 'tl_belegungsplan_objekte';
             $params['id'] = $belegungsplanId;
         }
         return $params;
