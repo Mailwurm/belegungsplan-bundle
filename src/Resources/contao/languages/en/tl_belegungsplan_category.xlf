@@ -11,6 +11,12 @@
 			<trans-unit id="tl_belegungsplan_category.deleteConfirm">
 				<source>Deleting category ID %s will also delete all its objects! Continue?</source>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.new.0">
+				<source>New category</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.new.1">
+				<source>Create a new category</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.show.0">
 				<source>Category details</source>
 			</trans-unit>
