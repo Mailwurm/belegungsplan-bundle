@@ -49,22 +49,6 @@
 				<source>Please enter the departure date according to the global date format dd.mm.yyyy</source>
 				<target>Bitte geben Sie das Abreisedatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
 			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.reserviert.0">
-				<source>Reservation</source>
-				<target>Reservierung</target>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.reserviert.1">
-				<source>If it is a reservation</source>
-				<target>Wenn es sich um eine Reservierung handelt.</target>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.gebucht.0">
-				<source>Booking</source>
-				<target>Feste Buchung</target>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_calender.gebucht.1">
-				<source>When it comes to a firm booking</source>
-				<target>Wenn es sich um eine feste Buchung handelt.</target>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
