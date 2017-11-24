@@ -8,8 +8,13 @@
  */
 
 /**
- * Table tl_belegungsplan_calender
- */
+* Load tl_content language file
+*/
+System::loadLanguageFile('tl_content');
+
+/**
+* Table tl_belegungsplan_calender
+*/
 $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 (
 	// Config
@@ -44,6 +49,11 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'headerFields'            => array('gast', 'tstamp'),
 			'child_record_callback'   => array('tl_belegungsplan_calender', 'listCalender')
 		),
+		'label' => array
+		(
+			'fields'                  => array('gast', 'startDate', 'endDate'),
+			'format'                  => '%s'
+		),
 		'global_operations' => array
 		(
 			'all' => array
@@ -75,7 +85,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{title_legend},gast,author;{date_legend},startDate,endDate;reserviert'
+		'default'                     => '{title_legend},gast,author;{date_legend},startDate,endDate'
 	),
 	// Subpalettes
 	'subpalettes' => array(
