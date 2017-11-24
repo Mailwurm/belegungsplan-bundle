@@ -30,20 +30,20 @@
 				<target>Details der Kategorie ID %s anzeigen</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.0">
-				<source>Edit category</source>
-				<target>Kategorie bearbeiten</target>
+				<source>To the objects of this category</source>
+				<target>Zu den Objekten dieser Kategorie</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.edit.1">
-				<source>Edit category ID %s</source>
-				<target>Kategorie ID %s bearbeiten</target>
+				<source>To the objects of the category ID %s</source>
+				<target>Zu den Objekten der Kategorie ID %s</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.editheader.0">
 				<source>Edit category</source>
 				<target>Kategorie bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.editheader.1">
-				<source>Edit the category settings</source>
-				<target>Die Kategorie-Einstellungen bearbeiten</target>
+				<source>Edit category ID %s</source>
+				<target>Kategorie ID %s bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.copy.0">
 				<source>Duplicate category</source>
