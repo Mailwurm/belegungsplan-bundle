@@ -5,9 +5,9 @@
 				<source>Booking calendar</source>
 				<target>Belegungspläne</target>
 			</trans-unit>
-			<trans-unit id="MOD.faq.1">
-				<source>Manage occupancy plans</source>
-				<target>Belegungspläne verwalten</target>
+			<trans-unit id="MOD.belegungsplan.1">
+				<source>Create and manage categories, objects and occupancy times</source>
+				<target>Kategorien, Objekte und Belegungszeiten anlegen und verwalten</target>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_category">
 				<source>Categories</source>
