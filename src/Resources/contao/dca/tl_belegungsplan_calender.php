@@ -59,7 +59,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'edit' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['edit'],
-				'href'                => 'table=tl_belegungplan_calender',
+				'href'                => 'table=tl_belegungsplan_calender',
 				'icon'                => 'edit.svg'
 			),
 			'delete' => array
