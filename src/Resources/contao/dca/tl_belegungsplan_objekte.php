@@ -8,6 +8,11 @@
  */
 
 /**
+* Load tl_content language file
+*/
+System::loadLanguageFile('tl_content');
+
+/**
  * Table tl_belegungsplan_objekte
  */
 $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
