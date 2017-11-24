@@ -22,6 +22,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 	(
 		'dataContainer'               => 'Table',
 		'ptable'                      => 'tl_belegungsplan_objekte',
+		'ctable'                      => array('tl_content'),
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
 		'onload_callback' => array
@@ -42,16 +43,16 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 	(
 		'sorting' => array
 		(
-			'mode'                    => 2,
+			'mode'                    => 4,
 			'fields'                  => array('startDate DESC'),
-			'flag'                    => 8,
-			'panelLayout'             => 'filter;sort,search,limit'
+			'headerFields'            => array('name', 'tstamp'),
+			'panelLayout'             => 'filter;sort,search,limit',
+			'child_record_callback'   => array('tl_belegungsplan_calender', 'listCalender')
 		),
 		'label' => array
 		(
 			'fields'                  => array('gast', 'startDate', 'endDate'),
-			'format'                  => '%s',
-			'label_callback'          => array('tl_belegungsplan_calender', 'listCalender')
+			'format'                  => '%s'
 		),
 		'global_operations' => array
 		(
