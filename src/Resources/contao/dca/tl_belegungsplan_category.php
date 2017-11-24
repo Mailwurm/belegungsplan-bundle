@@ -61,13 +61,13 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['edit'],
 				'href'                => 'table=tl_belegungsplan_objekte',
-				'icon'                => 'edit.svg'
+				'icon'                => 'cssimport.svg'
 			),
 			'editheader' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['editheader'],
 				'href'                => 'act=edit',
-				'icon'                => 'header.svg',
+				'icon'                => 'edit.svg',
 				'button_callback'     => array('tl_belegungsplan_category', 'editHeader')
 			),
 			'copy' => array
