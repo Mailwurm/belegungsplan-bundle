@@ -28,7 +28,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'keys' => array
 			(
 				'id' => 'primary',
-				'pid,published' => 'index'
+				'pid' => 'index'
 			)
 		)
 	),
@@ -141,24 +141,6 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
 			'sql'                     => "int(10) unsigned NULL"
-		),
-		'reserviert' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['reserviert'],
-			'exclude'                 => true,
-			'filter'                  => true,
-			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12'),
-			'sql'                     => "char(1) NOT NULL default '0'"
-		),
-		'gebucht' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['gebucht'],
-			'exclude'                 => true,
-			'filter'                  => true,
-			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 m12'),
-			'sql'                     => "char(1) NOT NULL default '0'"
 		)
 	)
 );
