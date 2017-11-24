@@ -58,7 +58,7 @@ class BelegungsplanObjektModel extends \Model {
 	* Table name
 	* @var string
 	*/
-	protected static $strTable = 'tl_belegungplan_objekte';
+	protected static $strTable = 'tl_belegungsplan_objekte';
 	/**
 	* Find a published Belegungsplanobjekt from one or more categories by its ID or name
 	*
