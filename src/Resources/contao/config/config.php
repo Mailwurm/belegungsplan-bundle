@@ -13,7 +13,7 @@ array_insert($GLOBALS['BE_MOD']['content'], 3, array
 (
 	'belegungsplan' => array
 	(
-		'tables' => array('tl_belegungsplan_category', 'tl_belegungplan_objekte', 'tl_belegungsplan_calender')
+		'tables' => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
 	)
 ));
 /**
