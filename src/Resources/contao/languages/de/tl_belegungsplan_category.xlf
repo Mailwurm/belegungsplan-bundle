@@ -13,6 +13,14 @@
 				<source>Deleting category ID %s will also delete all its objects! Continue?</source>
 				<target>Wenn Sie die Kategorie %s löschen, werden auch alle darin enthaltenen Objekte gelöscht! Fortfahren?</target>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.new.0">
+				<source>New category</source>
+				<target>Neue Kategorie</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.new.1">
+				<source>Create a new category</source>
+				<target>Eine neue Kategorie anlegen</target>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.show.0">
 				<source>Category details</source>
 				<target>Kategoriedetails</target>
