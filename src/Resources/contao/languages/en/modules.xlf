@@ -8,10 +8,10 @@
 				<source>Create and manage categories, objects and occupancy times</source>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_category">
-				<source>Categories</source>
+				<source>Occupancy categories</source>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_objekte">
-				<source>Objects</source>
+				<source>Occupancy objects</source>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_calender">
 				<source>Occupancy times</source>
