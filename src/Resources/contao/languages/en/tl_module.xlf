@@ -8,6 +8,48 @@
 			<trans-unit id="tl_module.belegungsplan_categories.1">
 				<source>Please select one or more assignment plan categories.</source>
 			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.0">
+				<source>Which months should be displayed?</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.1">
+				<source>Select the months that should be displayed.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.1">
+				<source>January</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.2">
+				<source>February</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.3">
+				<source>March</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.4">
+				<source>April</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.5">
+				<source>May</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.6">
+				<source>June</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.7">
+				<source>July</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.8">
+				<source>August</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.9">
+				<source>September</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.10">
+				<source>October</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.11">
+				<source>November</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.12">
+				<source>December</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
