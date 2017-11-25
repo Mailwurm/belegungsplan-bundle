@@ -17,6 +17,22 @@
 				<source>Delete reservation ID %s</source>
 				<target>Reservierung ID %s löschen</target>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.new.0">
+				<source>New booking time</source>
+				<target>Neue Buchungszeit</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.new.1">
+				<source>Add a new booking time</source>
+				<target>Eine neue Buchungszeit hinzufügen</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.0">
+				<source>Edit object ID %s</source>
+				<target>Objekt ID %s bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.1">
+				<source>At the booking times of the object ID %s</source>
+				<target>Zu den Buchungszeiten des Objektes ID %s</target>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.gast.0">
 				<source>Name of the guest</source>
 				<target>Name des Gastes</target>
@@ -48,6 +64,22 @@
 			<trans-unit id="tl_belegungsplan_calender.endDate.1">
 				<source>Please enter the departure date according to the global date format dd.mm.yyyy</source>
 				<target>Bitte geben Sie das Abreisedatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.tstamp.0">
+				<source>Revision date</source>
+				<target>Änderungsdatum</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.tstamp.1">
+				<source>Date and time of the latest revision</source>
+				<target>Datum und Uhrzeit der letzten Änderung</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.title_legend">
+				<source>Name and author</source>
+				<target>Name und Author</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.date_legend">
+				<source>Departure dates</source>
+				<target>Reisedaten</target>
 			</trans-unit>
 		</body>
 	</file>
