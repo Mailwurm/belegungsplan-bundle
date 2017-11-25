@@ -14,6 +14,18 @@
 			<trans-unit id="tl_belegungsplan_calender.delete.1">
 				<source>Delete reservation ID %s</source>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.new.0">
+				<source>New booking time</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.new.1">
+				<source>Add a new booking time</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.0">
+				<source>Edit object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.1">
+				<source>At the booking times of the object ID %s</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.gast.0">
 				<source>Name of the guest</source>
 			</trans-unit>
@@ -37,6 +49,18 @@
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.endDate.1">
 				<source>Please enter the departure date according to the global date format dd.mm.yyyy</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.tstamp.0">
+				<source>Revision date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.tstamp.1">
+				<source>Date and time of the latest revision</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.title_legend">
+				<source>Name and author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.date_legend">
+				<source>Departure dates</source>
 			</trans-unit>
 		</body>
 	</file>
