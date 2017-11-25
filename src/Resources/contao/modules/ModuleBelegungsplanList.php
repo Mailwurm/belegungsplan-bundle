@@ -44,10 +44,10 @@ class ModuleBelegungsplanList extends \Module
 			$objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
 			return $objTemplate->parse();
 		}
-		$this->belegungsplan_categories = \StringUtil::deserialize($this->belegungsplan_categories);
+		$this->belegungsplan_category = \StringUtil::deserialize($this->belegungsplan_categories);
 		$this->belegungsplan_month = \StringUtil::deserialize($this->belegungsplan_month);
 		// Return if there are no categories
-		if (!is_array($this->belegungsplan_categories) || empty($this->belegungsplan_categories)) {
+		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) {
 			return '';
 		}
 		// Return if there are no month
@@ -60,16 +60,16 @@ class ModuleBelegungsplanList extends \Module
 	* Generate the module
 	*/
 	protected function compile() {
-		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_categories);
+		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
 		if ($objBelegungsplan === null) {
 			$this->Template->belegungsplan = array();
 			return;
 		}
-		$arrBelegungsplan = array_fill_keys($this->belegungsplan_categories, array());
+		$arrBelegungsplan = array_fill_keys($this->belegungsplan_category, array());
 		// Add 
 		while ($objBelegungsplan->next()) {
 			$arrTemp = $objBelegungsplan->row();
-			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplan->question, true);
+			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplan->name, true);
 			
 			/** @var BelegungsplanCategoryModel $objPid */
 			$objPid = $objBelegungsplan->getRelated('pid');
