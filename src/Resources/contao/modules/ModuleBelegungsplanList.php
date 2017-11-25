@@ -45,8 +45,13 @@ class ModuleBelegungsplanList extends \Module
 			return $objTemplate->parse();
 		}
 		$this->belegungsplan_categories = \StringUtil::deserialize($this->belegungsplan_categories);
+		$this->belegungsplan_month = \StringUtil::deserialize($this->belegungsplan_month);
 		// Return if there are no categories
 		if (!is_array($this->belegungsplan_categories) || empty($this->belegungsplan_categories)) {
+			return '';
+		}
+		// Return if there are no month
+		if (!is_array($this->belegungsplan_month) || empty($this->belegungsplan_month)) {
 			return '';
 		}
 		return parent::generate();
