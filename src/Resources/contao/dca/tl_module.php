@@ -26,10 +26,10 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_month'],
 	'exclude'                 => true,
-	'inputType'               => 'radioTable',
+	'inputType'               => 'checkboxWizard',
 	'options'                 => $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
-	'eval'                    => array('cols'=>4, 'tl_class'=>'w50'),
-	'sql'                     => "varchar(255) NOT NULL default ''"
+	'eval'                    => array('multiple'=>true),
+	'sql'                     => "blob NULL"
 );
 
 $bundles = System::getContainer()->getParameter('kernel.bundles');
