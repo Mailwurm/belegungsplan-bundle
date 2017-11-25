@@ -10,12 +10,12 @@
 				<target>Kategorien, Objekte und Belegungszeiten anlegen und verwalten</target>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_category">
-				<source>Categories</source>
-				<target>Kategorien</target>
+				<source>Occupancy categories</source>
+				<target>Belegungsplan-Kategorien</target>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_objekte">
-				<source>Objects</source>
-				<target>Objekte</target>
+				<source>Occupancy objects</source>
+				<target>Belegungsplan-Objekte</target>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_calender">
 				<source>Occupancy times</source>
