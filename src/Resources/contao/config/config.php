@@ -9,7 +9,7 @@
 /**
 * Add back end modules
 */
-array_insert($GLOBALS['BE_MOD']['content'], 7, array
+array_insert($GLOBALS['BE_MOD']['content'], 3, array
 (
 	'belegungsplan' => array
 	(
@@ -19,7 +19,7 @@ array_insert($GLOBALS['BE_MOD']['content'], 7, array
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 7, array
+array_insert($GLOBALS['FE_MOD'], 1, array
 (
 	'belegungsplan' => array
 	(
