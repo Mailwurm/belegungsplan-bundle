@@ -33,8 +33,10 @@ class ModuleBelegungsplanList extends \Module
 	*
 	* @return string
 	*/
-	public function generate() {
-		if (TL_MODE == 'BE') {
+	public function generate() 
+	{
+		if (TL_MODE == 'BE') 
+		{
 			/** @var BackendTemplate|object $objTemplate */
 			$objTemplate = new \BackendTemplate('be_wildcard');
 			$objTemplate->wildcard = '### BelegTest ###';
@@ -47,11 +49,13 @@ class ModuleBelegungsplanList extends \Module
 		$this->belegungsplan_category = \StringUtil::deserialize($this->belegungsplan_categories);
 		$this->belegungsplan_month = \StringUtil::deserialize($this->belegungsplan_month);
 		// Return if there are no categories
-		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) {
+		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) 
+		{
 			return '';
 		}
 		// Return if there are no month
-		if (!is_array($this->belegungsplan_month) || empty($this->belegungsplan_month)) {
+		if (!is_array($this->belegungsplan_month) || empty($this->belegungsplan_month)) 
+		{
 			return '';
 		}
 		return parent::generate();
@@ -59,15 +63,18 @@ class ModuleBelegungsplanList extends \Module
 	/**
 	* Generate the module
 	*/
-	protected function compile() {
+	protected function compile() 
+	{
 		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
-		if ($objBelegungsplan === null) {
+		if ($objBelegungsplan === null) 
+		{
 			$this->Template->belegungsplan = array();
 			return;
 		}
 		$arrBelegungsplan = array_fill_keys($this->belegungsplan_category, array());
 		// Add 
-		while ($objBelegungsplan->next()) {
+		while ($objBelegungsplan->next()) 
+		{
 			$arrTemp = $objBelegungsplan->row();
 			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplan->name, true);
 			
