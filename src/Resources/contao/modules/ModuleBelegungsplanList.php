@@ -39,7 +39,7 @@ class ModuleBelegungsplanList extends \Module
 		{
 			/** @var BackendTemplate|object $objTemplate */
 			$objTemplate = new \BackendTemplate('be_wildcard');
-			$objTemplate->wildcard = '### BelegTest ###';
+			$objTemplate->wildcard = '###' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['belegungsplanlist'][0]) . '###';
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
 			$objTemplate->link = $this->name;
@@ -66,7 +66,7 @@ class ModuleBelegungsplanList extends \Module
 	protected function compile() 
 	{
 		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
-		var_dump($objBelegungsplan);
+		
 		if ($objBelegungsplan === null) 
 		{
 			$this->Template->belegungsplan = array();
