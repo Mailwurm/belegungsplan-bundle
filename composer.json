@@ -1,12 +1,14 @@
 {
     "name": "mailwurm/belegungsplan-bundle",
     "type": "contao-bundle",
-    "description": "Belegungsplaene erstellen Contao 4",
+    "keywords":["contao","contao-bundle","bundle","belegungsplan","contao 4"],
+    "description": "Contao 4 Belegungspläne erstellen ",
     "license": "LGPL-3.0+",
     "authors": [
         {
             "name": "Jan Karai",
-            "homepage": "http://www.sachsen-it.de"
+            "homepage": "http://www.sachsen-it.de",
+            "role":"Developer"
         }
     ],
     "require": {
