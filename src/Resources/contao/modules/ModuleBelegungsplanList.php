@@ -68,11 +68,37 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$this->Template->foo = 'What do we have now?';
-		// Deine Chance, rufe die Basisroutinen auf, oder lass es bleiben (die packen dann auch was ins Template rein).
-		$this->Template->doSomething = 'Test ...';
-		$this->Template->doSomethingElse = '... weise';
-		// nun packen wir nochmal was von hier aus ins Template.
-		$this->Template->finish = "Easy, isn't it?";
+		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
+		
+		if ($objBelegungsplan === null) 
+		{
+			$this->Template->belegungsplan = array();
+			return;
+		}
+		$arrBelegungsplan = array_fill_keys($this->belegungsplan_category, array());
+		// Add 
+		while ($objBelegungsplan->next()) 
+		{
+			$arrTemp = $objBelegungsplan->row();
+			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplan->name, true);
+			
+			/** @var BelegungsplanCategoryModel $objPid */
+			$objPid = $objBelegungsplan->getRelated('pid');
+			$arrBelegungsplan[$objBelegungsplan->pid]['items'][] = $arrTemp;
+			$arrBelegungsplan[$objBelegungsplan->pid]['title'] = $objPid->title;
+		}
+		$arrBelegungsplan = array_values(array_filter($arrBelegungsplan));
+		$cat_count = 0;
+		$cat_limit = count($arrBelegungsplan);
+		// Add classes
+		foreach ($arrBelegungsplan as $k=>$v) {
+			$count = 0;
+			$limit = count($v['items']);
+			for ($i=0; $i<$limit; $i++) {
+				$arrBelegungsplan[$k]['items'][$i]['class'] = trim(((++$count == 1) ? ' first' : '') . (($count >= $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
+			}
+			$arrBelegungsplan[$k]['class'] = trim(((++$cat_count == 1) ? ' first' : '') . (($cat_count >= $cat_limit) ? ' last' : '') . ((($cat_count % 2) == 0) ? ' odd' : ' even'));
+		}
+		$this->Template->belegungsplan = $arrBelegungsplan;
 	}
 }
