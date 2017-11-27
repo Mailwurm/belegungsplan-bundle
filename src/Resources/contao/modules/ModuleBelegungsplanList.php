@@ -16,7 +16,7 @@ use Patchwork\Utf8;
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class ModuleBelegungsplanList extends \Contao\Module
+class ModuleBelegungsplanList extends \Module
 {
 	/**
 	* Template
