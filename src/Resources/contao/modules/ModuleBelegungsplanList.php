@@ -48,6 +48,9 @@ class ModuleBelegungsplanList extends \Module
 		}
 		$this->belegungsplan_category = \StringUtil::deserialize($this->belegungsplan_categories);
 		$this->belegungsplan_month = \StringUtil::deserialize($this->belegungsplan_month);
+		var_dump($arrTargets);
+		var_dump($this->belegungsplan_category);
+		var_dump($this->belegungsplan_month);
 		// Return if there are no categories
 		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) 
 		{
