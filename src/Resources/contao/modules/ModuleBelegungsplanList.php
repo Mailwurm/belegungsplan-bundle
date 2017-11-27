@@ -7,7 +7,6 @@
 * @license LGPL-3.0+
 */
 namespace Mailwurm\Belegungsplan;
-use Mailwurm\Belegungsplan\BelegungsplanObjektModel;
 use Patchwork\Utf8;
 
 /**
@@ -67,7 +66,7 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
+		$objBelegungsplan = BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
 		
 		if ($objBelegungsplan === null) 
 		{
