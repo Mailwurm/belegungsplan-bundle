@@ -7,8 +7,7 @@
 * @license LGPL-3.0+
 */
 namespace Mailwurm\Belegungsplan;
-use Psr\Log\LogLevel;
-use Contao\CoreBundle\Monolog\ContaoContext;
+use Mailwurm\Belegungsplan\BelegungsplanObjektModel;
 use Patchwork\Utf8;
 
 /**
