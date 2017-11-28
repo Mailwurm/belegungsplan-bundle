@@ -6,11 +6,9 @@
 *
 * @license LGPL-3.0+
 */
-namespace Mailwurm\Belegungsplan;
-use Psr\Log\LogLevel;
-use Contao\CoreBundle\Monolog\ContaoContext;
+namespace Mailwurm;
+use Contao\CoreBundle\Exception\PageNotFoundException;
 use Patchwork\Utf8;
-
 /**
 * Class ModuleBelegungsplan
 *
