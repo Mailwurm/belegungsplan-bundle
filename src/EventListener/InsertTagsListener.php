@@ -97,19 +97,19 @@ class InsertTagsListener {
                 return sprintf(
                     '<a href="%s" title="%s">%s</a>',
                     $url,
-                    StringUtil::specialchars($belegungsplan->question),
+                    StringUtil::specialchars($belegungsplan->name),
                     $belegungsplan->question
                 );
             case 'belegungsplan_open':
                 return sprintf(
                     '<a href="%s" title="%s">',
                     $url,
-                    StringUtil::specialchars($belegungsplan->question)
+                    StringUtil::specialchars($belegungsplan->name)
                 );
             case 'belegungsplan_url':
                 return $url;
             case 'belegungsplan_title':
-                return StringUtil::specialchars($belegungsplan->question);
+                return StringUtil::specialchars($belegungsplan->name);
         }
         return false;
     }
