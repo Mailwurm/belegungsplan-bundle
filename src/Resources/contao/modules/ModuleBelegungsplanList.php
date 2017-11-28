@@ -7,6 +7,8 @@
 * @license LGPL-3.0+
 */
 namespace Mailwurm\Belegungsplan;
+use Psr\Log\LogLevel;
+use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
 
 /**
@@ -66,7 +68,7 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$objBelegungsplan = BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
+		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
 		
 		if ($objBelegungsplan === null) 
 		{
