@@ -68,24 +68,24 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
+		$objBelegungsplanObjektModel = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
 		
-		if ($objBelegungsplan === null) 
+		if ($objBelegungsplanObjektModel === null) 
 		{
 			$this->Template->belegungsplan = array();
 			return;
 		}
 		$arrBelegungsplan = array_fill_keys($this->belegungsplan_category, array());
 		// Add 
-		while ($objBelegungsplan->next()) 
+		while ($objBelegungsplanObjektModel->next()) 
 		{
 			$arrTemp = $objBelegungsplan->row();
 			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplan->name, true);
 			
 			/** @var BelegungsplanCategoryModel $objPid */
-			$objPid = $objBelegungsplan->getRelated('pid');
-			$arrBelegungsplan[$objBelegungsplan->pid]['items'][] = $arrTemp;
-			$arrBelegungsplan[$objBelegungsplan->pid]['title'] = $objPid->title;
+			$objPid = $objBelegungsplanObjektModel->getRelated('pid');
+			$arrBelegungsplan[$objBelegungsplanObjektModel->pid]['items'][] = $arrTemp;
+			$arrBelegungsplan[$objBelegungsplanObjektModel->pid]['title'] = $objPid->title;
 		}
 		$arrBelegungsplan = array_values(array_filter($arrBelegungsplan));
 		$cat_count = 0;
