@@ -11,7 +11,7 @@ namespace Mailwurm\BelegungsplanBundle\EventListener;
 use Contao\Config;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Mailwurm\BelegungsplanCategoryModel;
-use Mailwurm\BelegungsplanObjektModel;
+use Mailwurm\BelegungsplanObjekteModel;
 use Mailwurm\BelegungsplanCalenderModel;
 use Contao\PageModel;
 use Contao\StringUtil;
@@ -57,7 +57,7 @@ class InsertTagsListener {
         }
         $this->framework->initialize();
         /** @var BelegungsplanObjektModel $adapter */
-        $adapter = $this->framework->getAdapter(BelegungsplanObjektModel::class);
+        $adapter = $this->framework->getAdapter(BelegungsplanObjekteModel::class);
         $belegungsplan = $adapter->findByIdOrName($elements[1]);
         if (null === $belegungsplan || false === ($url = $this->generateUrl($belegungsplan))) {
             return '';
@@ -71,7 +71,7 @@ class InsertTagsListener {
     *
     * @return string|false
     */
-    private function generateUrl(BelegungsplanObjektModel $belegungsplan) {
+    private function generateUrl(BelegungsplanObjekteModel $belegungsplan) {
         /** @var PageModel $jumpTo */
         if(!($category = $belegungsplan->getRelated('pid')) instanceof BelegungsplanCategoryModel
             || !(($jumpTo = $category->getRelated('jumpTo')) instanceof PageModel)
@@ -91,7 +91,7 @@ class InsertTagsListener {
     *
     * @return string|false
     */
-    private function generateReplacement(BelegungsplanObjektModel $belegungsplan, $key, $url) {
+    private function generateReplacement(BelegungsplanObjekteModel $belegungsplan, $key, $url) {
         switch ($key) {
             case 'belegungsplan':
                 return sprintf(
