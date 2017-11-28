@@ -7,7 +7,8 @@
 * @license LGPL-3.0+
 */
 namespace Mailwurm\Belegungsplan;
-use Mailwurm\Belegungsplan\BelegungsplanObjekteModel;
+use Contao\Config;
+use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Patchwork\Utf8;
 
 /**
@@ -20,6 +21,10 @@ use Patchwork\Utf8;
 class ModuleBelegungsplanList extends \Module
 {
 	/**
+	* @var ContaoFrameworkInterface
+	*/
+	private $framework;
+	/**
 	* Template
 	* @var string
 	*/
@@ -29,6 +34,14 @@ class ModuleBelegungsplanList extends \Module
 	* @var array
 	*/
 	protected $arrTargets = array();
+	/**
+	* Constructor.
+	*
+	* @param ContaoFrameworkInterface $framework
+	*/
+	public function __construct(ContaoFrameworkInterface $framework) {
+		$this->framework = $framework;
+	}
 	/**
 	* Display a wildcard in the back end
 	*
@@ -67,7 +80,12 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$objBelegungsplanObjekteModel = \BelegungsplanObjekteModel::findPublishedByPids($this->belegungsplan_category);
+		$this->framework->initialize();
+		/** @var BelegungsplanObjekteModel $adapter */
+		$adapter = $this->framework->getAdapter(BelegungsplanObjekteModel::class);
+		$objBelegungsplanObjekteModel = $adapter->findPublishedByPids($this->belegungsplan_category);
+		
+		#$objBelegungsplanObjekteModel = \BelegungsplanObjekteModel::findPublishedByPids($this->belegungsplan_category);
 		
 		if ($objBelegungsplanObjekteModel === null) 
 		{
