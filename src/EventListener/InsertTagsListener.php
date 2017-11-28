@@ -56,7 +56,7 @@ class InsertTagsListener {
             return false;
         }
         $this->framework->initialize();
-        /** @var BelegungsplanObjektModel $adapter */
+        /** @var BelegungsplanObjekteModel $adapter */
         $adapter = $this->framework->getAdapter(BelegungsplanObjekteModel::class);
         $belegungsplan = $adapter->findByIdOrName($elements[1]);
         if (null === $belegungsplan || false === ($url = $this->generateUrl($belegungsplan))) {
@@ -67,7 +67,7 @@ class InsertTagsListener {
     /**
     * Generates the URL for an Belegungsplan.
     *
-    * @param BelegungsplanObjektModel $belegungsplan
+    * @param BelegungsplanObjekteModel $belegungsplan
     *
     * @return string|false
     */
@@ -85,7 +85,7 @@ class InsertTagsListener {
     /**
     * Generates the replacement string.
     *
-    * @param BelegungsplanObjektModel $belegungsplan
+    * @param BelegungsplanObjekteModel $belegungsplan
     * @param string   $key
     * @param string   $url
     *
