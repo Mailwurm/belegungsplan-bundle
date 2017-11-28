@@ -6,7 +6,7 @@
 *
 * @license LGPL-3.0+
 */
-namespace Mailwurm\Belegungsplan\BelegungsplanCategoryModel;
+namespace Mailwurm\Belegungsplan;
 /**
 * Reads and writes Belegungsplan categories
 *
