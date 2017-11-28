@@ -7,6 +7,7 @@
 * @license LGPL-3.0+
 */
 namespace Mailwurm\Belegungsplan;
+use Mailwurm\Belegungsplan\BelegungsplanObjekteModel;
 use Patchwork\Utf8;
 
 /**
