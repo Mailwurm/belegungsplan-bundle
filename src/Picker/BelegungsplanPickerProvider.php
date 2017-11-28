@@ -13,9 +13,9 @@ use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\CoreBundle\Picker\AbstractPickerProvider;
 use Contao\CoreBundle\Picker\DcaPickerProviderInterface;
 use Contao\CoreBundle\Picker\PickerConfig;
-use Mailwurm\Belegungsplan\BelegungsplanCategoryModel;
-use Mailwurm\Belegungsplan\BelegungsplanObjekteModel;
-use Mailwurm\Belegungsplan\BelegungsplanCalenderModel;
+use Mailwurm\BelegungsplanCategoryModel;
+use Mailwurm\BelegungsplanObjekteModel;
+use Mailwurm\BelegungsplanCalenderModel;
 
 /**
 * Provides the belegungsplan picker.
