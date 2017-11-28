@@ -6,9 +6,8 @@
 *
 * @license LGPL-3.0+
 */
-namespace Mailwurm\Belegungsplan;
-use Contao\Config;
-use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
+namespace Mailwurm;
+use Contao\CoreBundle\Exception\PageNotFoundException;
 use Patchwork\Utf8;
 
 /**
@@ -69,24 +68,24 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$objBelegungsplanObjekteModel = \BelegungsplanObjekteModel::findPublishedByPids($this->belegungsplan_category);
+		$objBelegungsplanObjekte = \BelegungsplanObjekteModel::findPublishedByPids($this->belegungsplan_category);
 		
-		if ($objBelegungsplanObjekteModel === null) 
+		if ($objBelegungsplanObjekte === null) 
 		{
 			$this->Template->belegungsplan = array();
 			return;
 		}
 		$arrBelegungsplan = array_fill_keys($this->belegungsplan_category, array());
 		// Add 
-		while ($objBelegungsplanObjekteModel->next()) 
+		while ($objBelegungsplanObjekte->next()) 
 		{
-			$arrTemp = $objBelegungsplanObjekteModel->row();
-			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplanObjekteModel->name, true);
+			$arrTemp = $objBelegungsplanObjekte->row();
+			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplanObjekte->name, true);
 			
 			/** @var BelegungsplanCategoryModel $objPid */
-			$objPid = $objBelegungsplanObjekteModel->getRelated('pid');
-			$arrBelegungsplan[$objBelegungsplanObjekteModel->pid]['items'][] = $arrTemp;
-			$arrBelegungsplan[$objBelegungsplanObjekteModel->pid]['title'] = $objPid->title;
+			$objPid = $objBelegungsplanObjekte->getRelated('pid');
+			$arrBelegungsplan[$objBelegungsplanObjekte->pid]['items'][] = $arrTemp;
+			$arrBelegungsplan[$objBelegungsplanObjekte->pid]['title'] = $objPid->title;
 		}
 		$arrBelegungsplan = array_values(array_filter($arrBelegungsplan));
 		$cat_count = 0;
