@@ -21,10 +21,6 @@ array_insert($GLOBALS['FE_MOD'], 1, array
 	)
 ));
 /**
-* Klasse des referenzierten Models
-*/
-$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegungsplan\BelegungsplanObjektModel';
-/**
 * Style sheet
 */
 if (TL_MODE == 'BE')
