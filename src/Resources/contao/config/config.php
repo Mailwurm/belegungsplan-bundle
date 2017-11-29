@@ -9,7 +9,14 @@
 /**
 * Add back end modules
 */
-$GLOBALS['BE_MOD']['content']['belegungsplan']['tables'] = array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender');
+array_insert($GLOBALS['BE_MOD']['content'], 1, array
+(
+	'belegungsplan' => array
+	(
+		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
+	)
+));
+
 /**
 * Front end modules
 */
