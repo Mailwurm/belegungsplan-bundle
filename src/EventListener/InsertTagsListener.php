@@ -13,6 +13,7 @@ use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Mailwurm\BelegungsplanCategoryModel;
 use Mailwurm\BelegungsplanObjekteModel;
 use Mailwurm\BelegungsplanCalenderModel;
+use Mailwurm\Belegungsplaene;
 use Contao\PageModel;
 use Contao\StringUtil;
 /**
