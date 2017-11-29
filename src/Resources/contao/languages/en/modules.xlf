@@ -1,7 +1,7 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en">
 		<body>
-			<trans-unit id="MOD.belegungsplan.0">
+			<trans-unit id="MOD.belegungsplaene.0">
 				<source>Booking calendar</source>
 			</trans-unit>
 			<trans-unit id="MOD.belegungsplan.1">
@@ -16,13 +16,13 @@
 			<trans-unit id="MOD.tl_belegungsplan_calender">
 				<source>Occupancy times</source>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplan">
+			<trans-unit id="FMD.belegungsplaene">
 				<source>Booking calendar</source>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplanlist.0">
+			<trans-unit id="FMD.belegungsplan.0">
 				<source>Booking calendar list</source>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplanlist.1">
+			<trans-unit id="FMD.belegungsplan.1">
 				<source>Adds a list of occupancy plans to the page</source>
 			</trans-unit>
 		</body>
