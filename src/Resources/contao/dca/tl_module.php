@@ -10,7 +10,7 @@
 /**
 * Add palettes to tl_module
 */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplanlist']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplan']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{template_legend:hide},belegungsplan_ctemplate,customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 /**
 * Add fields to tl_module
 */
@@ -32,6 +32,17 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'sql'                     => "blob NULL"
 );
 
+$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_ctemplate'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_ctemplate'],
+	'default'                 => 'belegungsplan_default',
+	'exclude'                 => true,
+	'inputType'               => 'select',
+	'options_callback'        => array('tl_module_belegungsplan', 'getBelegungsplanTemplates'),
+	'eval'                    => array('tl_class'=>'w50'),
+	'sql'                     => "varchar(64) NOT NULL default ''"
+);
+
 $bundles = System::getContainer()->getParameter('kernel.bundles');
 
 /**
@@ -40,5 +51,23 @@ $bundles = System::getContainer()->getParameter('kernel.bundles');
 * @author Jan Karai <https://www.sachsen-it.de>
 */
 class tl_module_belegungsplan extends Backend {
-
+	
+	/**
+	 * Import the back end user object
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+		$this->import('BackendUser', 'User');
+	}
+	
+	/**
+	* Return all belegungsplan templates as array
+	*
+	* @return array
+	*/
+	public function getBelegungsplanTemplates()
+	{
+		return $this->getTemplateGroup('belegungsplan_');
+	}
 }
