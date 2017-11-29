@@ -68,6 +68,9 @@ class ModuleBelegungsplan extends \Belegungsplan
 	*/
 	protected function compile() 
 	{
+		/** @var FrontendTemplate|object $objTemplate */
+		$objTemplate = new \FrontendTemplate($this->belegungsplan_ctemplate);
+		
 		$objBelegungsplanObjekte = \BelegungsplanObjekteModel::findPublishedByPids($this->belegungsplan_category);
 		
 		if ($objBelegungsplanObjekte === null) 
@@ -82,6 +85,8 @@ class ModuleBelegungsplan extends \Belegungsplan
 			$arrTemp = $objBelegungsplanObjekte->row();
 			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplanObjekte->name, true);
 			
+			$objTemplate->title = \StringUtil::specialchars($objBelegungsplanObjekte->name, true);
+				
 			/** @var BelegungsplanCategoryModel $objPid */
 			$objPid = $objBelegungsplanObjekte->getRelated('pid');
 			$arrBelegungsplan[$objBelegungsplanObjekte->pid]['items'][] = $arrTemp;
@@ -90,6 +95,9 @@ class ModuleBelegungsplan extends \Belegungsplan
 		$arrBelegungsplan = array_values(array_filter($arrBelegungsplan));
 		$cat_count = 0;
 		$cat_limit = count($arrBelegungsplan);
+		
+		$objTemplate->limit = $cat_limit;
+		
 		// Add classes
 		foreach ($arrBelegungsplan as $k=>$v) {
 			$count = 0;
@@ -99,6 +107,6 @@ class ModuleBelegungsplan extends \Belegungsplan
 			}
 			$arrBelegungsplan[$k]['class'] = trim(((++$cat_count == 1) ? ' first' : '') . (($cat_count >= $cat_limit) ? ' last' : '') . ((($cat_count % 2) == 0) ? ' odd' : ' even'));
 		}
-		$this->Template->belegungsplan = $arrBelegungsplan;
+		$this->Template->belegungsplan = $objTemplate->parse();
 	}
 }
