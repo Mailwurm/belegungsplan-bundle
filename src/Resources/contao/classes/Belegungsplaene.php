@@ -13,6 +13,6 @@ namespace Mailwurm;
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class Belegungsplaene extends \Frontend
+class Belegungsplaene extends \Module
 {
 }
