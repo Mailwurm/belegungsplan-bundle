@@ -1,0 +1,8 @@
+<?php foreach($this->belegungsplan as $category): ?>
+    <h2><?= $category['headline'] ?></h2>
+    <ul class="<?= $category['class'] ?>">
+      <?php foreach ($category['items'] as $belegungsplan): ?>
+        <li class="<?= $belegungsplan['class'] ?>"><a href="<?= $belegungsplan['href'] ?>" title="<?= $belegungsplan['title'] ?>"><?= $belegungsplan['question'] ?></a></li>
+      <?php endforeach; ?>
+    </ul>
+  <?php endforeach; ?>
