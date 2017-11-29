@@ -1,11 +1,11 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en" target-language="de">
 		<body>
-			<trans-unit id="MOD.belegungsplan.0">
+			<trans-unit id="MOD.belegungsplaene.0">
 				<source>Booking calendar</source>
 				<target>Belegungspläne</target>
 			</trans-unit>
-			<trans-unit id="MOD.belegungsplan.1">
+			<trans-unit id="MOD.belegungsplaene.1">
 				<source>Create and manage categories, objects and occupancy times</source>
 				<target>Kategorien, Objekte und Belegungszeiten anlegen und verwalten</target>
 			</trans-unit>
@@ -21,15 +21,15 @@
 				<source>Occupancy times</source>
 				<target>Belegungszeiten</target>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplan">
+			<trans-unit id="FMD.belegungsplaene">
 				<source>Booking calendar</source>
 				<target>Belegungspläne</target>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplanlist.0">
+			<trans-unit id="FMD.belegungsplan.0">
 				<source>Booking calendar list</source>
 				<target>Belegungsplan-Liste</target>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplanlist.1">
+			<trans-unit id="FMD.belegungsplan.1">
 				<source>Adds a list of occupancy plans to the page</source>
 				<target>Fügt der Seite eine Liste von Belegungsplänen hinzu</target>
 			</trans-unit>
