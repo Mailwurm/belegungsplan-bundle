@@ -15,7 +15,7 @@ $GLOBALS['BE_MOD']['content']['belegungsplan']['tables'] = array('tl_belegungspl
 */
 array_insert($GLOBALS['FE_MOD'], 1, array
 (
-	'belegungsplan' => array
+	'belegungsplaene' => array
 	(
 		'belegungsplan'   => 'ModuleBelegungsplan'
 	)
