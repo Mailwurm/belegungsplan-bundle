@@ -17,7 +17,7 @@ array_insert($GLOBALS['FE_MOD'], 1, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'ModuleBelegungsplanList'
+		'belegungsplanlist'   => 'ModuleBelegungsplan'
 	)
 ));
 /**
