@@ -37,7 +37,7 @@ if (TL_MODE == 'BE')
 /*
 * Models
 */
-$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = \Mailwurm\BelegungsplanBundle\Models\BelegungsplanObjekteModel::class;
+#$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = \Mailwurm\BelegungsplanBundle\Models\BelegungsplanObjekteModel::class;
 /**
 * Register hooks
 */
