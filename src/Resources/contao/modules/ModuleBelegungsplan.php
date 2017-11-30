@@ -8,6 +8,8 @@
 */
 namespace Mailwurm;
 
+use Psr\Log\LogLevel;
+use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
 
 /**
