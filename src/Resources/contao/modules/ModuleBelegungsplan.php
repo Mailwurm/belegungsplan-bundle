@@ -6,7 +6,7 @@
 *
 * @license LGPL-3.0+
 */
-namespace Mailwurm;
+namespace Mailwurm\BelegungsplanBundle;
 
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
