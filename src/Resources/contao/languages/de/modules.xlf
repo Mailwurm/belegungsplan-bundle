@@ -21,7 +21,7 @@
 				<source>Occupancy times</source>
 				<target>Belegungszeiten</target>
 			</trans-unit>
-			<trans-unit id="FMD.belegungsplaene">
+			<trans-unit id="FMD.belegungsplan">
 				<source>Booking calendar</source>
 				<target>Belegungspläne</target>
 			</trans-unit>
