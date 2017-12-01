@@ -28,7 +28,7 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
 *	)
 *));
 */
-$GLOBALS['FE_MOD']['belegungsplan']['belegungsplanlist'] = 'Mailwurm\\BelegungsplanBundle\\Module\\ModuleBelegungsplanlist';
+$GLOBALS['FE_MOD']['belegungsplan']['belegungsplanlist'] = 'ModuleBelegungsplanlist';
 /**
 * Style sheet
 */
