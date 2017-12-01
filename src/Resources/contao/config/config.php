@@ -19,16 +19,16 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
 
 /**
 * Front end modules
-
-*array_insert($GLOBALS['FE_MOD'], 2, array
-*(
-*	'belegungsplan' => array
-*	(
-*		'belegungsplanlist'   => 'ModuleBelegungsplanlist'
-*	)
-*));
 */
-$GLOBALS['FE_MOD']['belegungsplan']['belegungsplanlist'] = 'ModuleBelegungsplanlist';
+*array_insert($GLOBALS['FE_MOD'], 3, array
+(
+	'belegungsplan' => array
+	(
+		'belegungsplanlist'   => 'Mailwurm\\BelegungsplanBundle\\Modules\\ModuleBelegungsplanlist',
+	)
+));
+
+
 /**
 * Style sheet
 */
