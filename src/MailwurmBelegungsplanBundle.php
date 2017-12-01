@@ -6,7 +6,7 @@
  *
  * @license LGPL-3.0+
  */
-namespace Mailwurm\BelegungsplanBundle;
+namespace Mailwurm;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
