@@ -92,13 +92,22 @@ class ModuleBelegungsplanList extends \Belegungsplan
 			$blnClearInput = true;
 		}
 		
-		
+		$strEvents = '';
 		
 		/** @var FrontendTemplate|object $objTemplate */
 		$objTemplate = new \FrontendTemplate($this->belegungsplan_ctemplate);
 		$objTemplate->year = $intYear;
 		$objTemplate->month = $intMonth;
 		
-		$this->Template->belegungsplan = $objTemplate->parse();
+		$strEvents .= $objTemplate->parse();
+		
+		// Keine Reservierungen gefunden
+		if ($strEvents == '')
+		{
+			$strEvents = "\n" . '<div class="empty">Keine Reservierungen</div>' . "\n";
+		}
+		
+		$this->Template->events = $strEvents;
+		
 	}
 }
