@@ -3,14 +3,3 @@ services:
         Contao\CoreBundle\Framework\FrameworkAwareInterface:
             calls:
                 - ["setFramework", ["@contao.framework"]]
-
-    mailwurm_belegungsplan.picker.belegungsplan_provider:
-        class: Mailwurm\BelegungsplanBundle\Picker\BelegungsplanPickerProvider
-        public: false
-        arguments:
-            - "@knp_menu.factory"
-            - "@router"
-        calls:
-            - [setTokenStorage, ["@security.token_storage"]]
-        tags:
-            - { name: contao.picker_provider, priority: 64 }
