@@ -24,7 +24,7 @@ array_insert($GLOBALS['FE_MOD'], 3, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'Mailwurm\\BelegungsplanBundle\\Modules\\ModuleBelegungsplanlist',
+		'belegungsplanlist'   => 'Mailwurm\\Belegungsplan\ModuleBelegungsplanlist',
 	)
 ));
 
@@ -36,6 +36,7 @@ if (TL_MODE == 'BE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
 }
+$GLOBALS['FE_MOD']['miscellaneous']['belegungsplan'] = 'Mailwurm\BelegungsplanBundle\Module';
 /*
 * Models
 */
