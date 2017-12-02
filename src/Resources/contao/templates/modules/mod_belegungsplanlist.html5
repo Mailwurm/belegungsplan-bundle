@@ -2,6 +2,6 @@
 
 <?php $this->block('content'); ?>
 
-  <?= $this->belegungsplan ?>
+  <?= $this->content ?>
 
 <?php $this->endblock(); ?>
