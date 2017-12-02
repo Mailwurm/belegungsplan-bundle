@@ -20,11 +20,11 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 2, array
+array_insert($GLOBALS['FE_MOD']['miscellaneous'], 1, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'ModuleBelegungsplanList'
+		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplanList'
 	)
 ));
 /**
