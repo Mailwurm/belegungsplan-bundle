@@ -20,13 +20,10 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 1, array
+$GLOBALS['FE_MOD']['belegungsplan'] = array
 (
-	'belegungsplan' => array
-	(
-		'belegungsplanlist'   => 'ModuleBelegungsplanList'
-	)
-));
+	'belegungsplanlist'   => 'ModuleBelegungsplanList'
+);
 /**
 * Style sheet
 */
