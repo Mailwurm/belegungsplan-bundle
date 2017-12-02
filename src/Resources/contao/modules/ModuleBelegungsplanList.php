@@ -108,7 +108,7 @@ class ModuleBelegungsplanList extends \Belegungsplan
 			$strEvents = "\n" . '<div class="empty">Keine Reservierungen</div>' . "\n";
 		}
 		
-		$this->Template->events = $strEvents;
+		$this->Template->content = $strEvents;
 		
 	}
 }
