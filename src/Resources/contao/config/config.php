@@ -20,7 +20,7 @@ array_insert($GLOBALS['BE_MOD']['content'], 1, array
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD']['miscellaneous'], 1, array
+array_insert($GLOBALS['FE_MOD'], 1, array
 (
 	'belegungsplan' => array
 	(
@@ -34,6 +34,7 @@ if (TL_MODE == 'BE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
 }
+
 /**
 * Add permissions
 */
