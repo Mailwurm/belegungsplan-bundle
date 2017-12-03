@@ -1,0 +1,5 @@
+services:
+    mailwurm_belegungsplan.listener.insert_tags:
+        class: Mailwurm\BelegungsplanBundle\EventListener\InsertTagsListener
+        arguments:
+            - "@contao.framework"
