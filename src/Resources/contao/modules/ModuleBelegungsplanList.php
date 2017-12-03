@@ -10,16 +10,15 @@ namespace Mailwurm;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
-use Contao\CoreBundle\Exception\PageNotFoundException;
 
 /**
-* Class ModuleBelegungsplan
+* Class ModuleBelegungsplanList
 *
 * @property array $belegungsplan_categories
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class ModuleBelegungsplanList extends \Belegungsplan
+class ModuleBelegungsplanList extends \Module
 {
 	/**
 	* Template
@@ -31,7 +30,6 @@ class ModuleBelegungsplanList extends \Belegungsplan
 	* @var array
 	*/
 	protected $arrTargets = array();
-	
 	/**
 	* Display a wildcard in the back end
 	*
@@ -43,7 +41,7 @@ class ModuleBelegungsplanList extends \Belegungsplan
 		{
 			/** @var BackendTemplate|object $objTemplate */
 			$objTemplate = new \BackendTemplate('be_wildcard');
-			$objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['belegungsplan'][0]) . ' ###';
+			$objTemplate->wildcard = '### ' . Utf8::strtoupper($GLOBALS['TL_LANG']['FMD']['belegungsplanlist'][0]) . ' ###';
 			$objTemplate->title = $this->headline;
 			$objTemplate->id = $this->id;
 			$objTemplate->link = $this->name;
@@ -70,45 +68,37 @@ class ModuleBelegungsplanList extends \Belegungsplan
 	*/
 	protected function compile() 
 	{
-		/** @var PageModel $objPage */
-		global $objPage;
+		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
 		
-		$blnClearInput = false;
-		
-		$intYear = \Input::get('year');
-		$intMonth = \Input::get('month');
-		
-		//Springe zur aktuellen Periode
-		if (!isset($_GET['year']) && !isset($_GET['month']))
+		if ($objBelegungsplan === null) 
 		{
-			switch ($this->cal_format)
-			{
-				case 'cal_year':
-					$intYear = date('Y');
-					break;
-				case 'cal_month':
-					$intMonth = date('Ym');
-					break;
+			$this->Template->belegungsplan = array();
+			return;
+		}
+		$arrBelegungsplan = array_fill_keys($this->belegungsplan_category, array());
+		// Add 
+		while ($objBelegungsplan->next()) 
+		{
+			$arrTemp = $objBelegungsplan->row();
+			$arrTemp['title'] = \StringUtil::specialchars($objBelegungsplan->name, true);
+			
+			/** @var BelegungsplanCategoryModel $objPid */
+			$objPid = $objBelegungsplan->getRelated('pid');
+			$arrBelegungsplan[$objBelegungsplan->pid]['items'][] = $arrTemp;
+			$arrBelegungsplan[$objBelegungsplan->pid]['title'] = $objPid->title;
+		}
+		$arrBelegungsplan = array_values(array_filter($arrBelegungsplan));
+		$cat_count = 0;
+		$cat_limit = count($arrBelegungsplan);
+		// Add classes
+		foreach ($arrBelegungsplan as $k=>$v) {
+			$count = 0;
+			$limit = count($v['items']);
+			for ($i=0; $i<$limit; $i++) {
+				$arrBelegungsplan[$k]['items'][$i]['class'] = trim(((++$count == 1) ? ' first' : '') . (($count >= $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
 			}
-			$blnClearInput = true;
+			$arrBelegungsplan[$k]['class'] = trim(((++$cat_count == 1) ? ' first' : '') . (($cat_count >= $cat_limit) ? ' last' : '') . ((($cat_count % 2) == 0) ? ' odd' : ' even'));
 		}
-		
-		$strEvents = '';
-		
-		/** @var FrontendTemplate|object $objTemplate */
-		$objTemplate = new \FrontendTemplate($this->belegungsplan_ctemplate);
-		$objTemplate->year = $intYear;
-		$objTemplate->month = $intMonth;
-		
-		$strEvents .= $objTemplate->parse();
-		
-		// Keine Reservierungen gefunden
-		if ($strEvents == '')
-		{
-			$strEvents = "\n" . '<div class="empty">Keine Reservierungen</div>' . "\n";
-		}
-		
-		$this->Template->content = $strEvents;
-		
+		$this->Template->belegungsplan = $arrBelegungsplan;
 	}
 }
