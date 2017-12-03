@@ -13,11 +13,11 @@ $GLOBALS['BE_MOD']['content']['belegungsplan']['tables'] = array('tl_belegungspl
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 1, array
+array_insert($GLOBALS['FE_MOD'], 2, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplanList'
+		'belegungsplanlist'   => 'ModuleBelegungsplanlist'
 	)
 ));
 /**
@@ -30,9 +30,9 @@ if (TL_MODE == 'BE')
 /**
 * Register models
 */
-$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegungsplan\BelegungsplanObjekteModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
+#$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
+#$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegungsplan\BelegungsplanObjekteModel';
+#$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
 /**
 * Register hooks
 */
