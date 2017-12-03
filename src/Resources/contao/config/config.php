@@ -9,21 +9,17 @@
 /**
 * Add back end modules
 */
-array_insert($GLOBALS['BE_MOD']['content'], 1, array
-(
-	'belegungsplan' => array
-	(
-		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
-	)
-));
-
+$GLOBALS['BE_MOD']['content']['belegungsplan']['tables'] = array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender');
 /**
 * Front end modules
 */
-$GLOBALS['FE_MOD']['belegungsplan'] = array
+array_insert($GLOBALS['FE_MOD'], 1, array
 (
-	'belegungsplanlist'   => 'ModuleBelegungsplanList'
-);
+	'belegungsplan' => array
+	(
+		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplanList'
+	)
+));
 /**
 * Style sheet
 */
@@ -31,7 +27,17 @@ if (TL_MODE == 'BE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
 }
-
+/**
+* Register models
+*/
+$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\BelegungsplanBundle\BelegungsplanCalenderModel';
+$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\BelegungsplanBundle\BelegungsplanObjekteModel';
+$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'Mailwurm\BelegungsplanBundle\BelegungsplanCalenderModel';
+/**
+* Register hooks
+*/
+# $GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('ModuleBelegungsplan', 'getSearchablePages');
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('mailwurm_belegungsplan.listener.insert_tags', 'onReplaceInsertTags');
 /**
 * Add permissions
 */
