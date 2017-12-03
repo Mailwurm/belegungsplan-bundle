@@ -6,7 +6,7 @@
 *
 * @license LGPL-3.0+
 */
-namespace Mailwurm\Belegungsplan;
+namespace Mailwurm;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
@@ -18,7 +18,7 @@ use Patchwork\Utf8;
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class ModuleBelegungsplanList extends \Module
+class ModuleBelegungsplanlist extends \Belegungsplan
 {
 	/**
 	* Template
