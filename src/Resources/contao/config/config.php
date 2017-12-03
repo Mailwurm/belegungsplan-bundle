@@ -25,7 +25,7 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'ModuleBelegungsplanlist'
+		'belegungsplanlist'   => 'Mailwurm\\BelegungsplanBundle\\Modules\\ModuleBelegungsplanlist'
 	)
 ));
 /**
