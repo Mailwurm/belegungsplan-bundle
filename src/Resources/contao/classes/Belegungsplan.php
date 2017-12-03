@@ -13,7 +13,7 @@ namespace Mailwurm;
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-abstract class Belegungsplan extends \Module
+abstract class Belegungsplaene extends \Module
 {
 	/**
 	* Aktuelle URL
