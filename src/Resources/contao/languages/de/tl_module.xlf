@@ -17,14 +17,6 @@
 				<source>Select the months that should be displayed.</source>
 				<target>Wählen Sie die Monate aus, welche angezeigt werden sollen.</target>
 			</trans-unit>
-			<trans-unit id="tl_module.belegungsplan_ctemplate.0">
-				<source>Assignment plan template</source>
-				<target>Belegungsplan-Template</target>
-			</trans-unit>
-			<trans-unit id="tl_module.belegungsplan_ctemplate.1">
-				<source>Here you can select the assignment plan template.</source>
-				<target>Hier können Sie das Belegungsplan-Template auswählen.</target>
-			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_month.month.1">
 				<source>January</source>
 				<target>Januar</target>
