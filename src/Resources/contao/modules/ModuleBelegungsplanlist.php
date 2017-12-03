@@ -7,8 +7,8 @@
 * @license LGPL-3.0+
 */
 namespace Mailwurm;
-use Psr\Log\LogLevel;
-use Contao\CoreBundle\Monolog\ContaoContext;
+
+use Contao\CoreBundle\Exception\PageNotFoundException;
 use Patchwork\Utf8;
 
 /**
@@ -18,7 +18,7 @@ use Patchwork\Utf8;
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class ModuleBelegungsplanlist extends \Belegungsplan
+class ModuleBelegungsplanlist extends \Belegungsplaene
 {
 	/**
 	* Template
