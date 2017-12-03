@@ -56,8 +56,8 @@ class InsertTagsListener {
             return false;
         }
         $this->framework->initialize();
-        /** @var BelegungsplanObjektModel $adapter */
-        $adapter = $this->framework->getAdapter(BelegungsplanObjektModel::class);
+        /** @var BelegungsplanObjekteModel $adapter */
+        $adapter = $this->framework->getAdapter(BelegungsplanObjekteModel::class);
         $belegungsplan = $adapter->findByIdOrName($elements[1]);
         if (null === $belegungsplan || false === ($url = $this->generateUrl($belegungsplan))) {
             return '';
@@ -67,11 +67,11 @@ class InsertTagsListener {
     /**
     * Generates the URL for an Belegungsplan.
     *
-    * @param BelegungsplanObjektModel $belegungsplan
+    * @param BelegungsplanObjekteModel $belegungsplan
     *
     * @return string|false
     */
-    private function generateUrl(BelegungsplanObjektModel $belegungsplan) {
+    private function generateUrl(BelegungsplanObjekteModel $belegungsplan) {
         /** @var PageModel $jumpTo */
         if(!($category = $belegungsplan->getRelated('pid')) instanceof BelegungsplanCategoryModel
             || !(($jumpTo = $category->getRelated('jumpTo')) instanceof PageModel)
@@ -85,13 +85,13 @@ class InsertTagsListener {
     /**
     * Generates the replacement string.
     *
-    * @param BelegungsplanObjektModel $belegungsplan
+    * @param BelegungsplanObjekteModel $belegungsplan
     * @param string   $key
     * @param string   $url
     *
     * @return string|false
     */
-    private function generateReplacement(BelegungsplanObjektModel $belegungsplan, $key, $url) {
+    private function generateReplacement(BelegungsplanObjekteModel $belegungsplan, $key, $url) {
         switch ($key) {
             case 'belegungsplan':
                 return sprintf(
