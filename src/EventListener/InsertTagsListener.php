@@ -11,7 +11,7 @@ namespace Mailwurm\BelegungsplanBundle\EventListener;
 use Contao\Config;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Mailwurm\BelegungsplanCategoryModel;
-use Mailwurm\BelegungsplanObjektModel;
+use Mailwurm\BelegungsplanObjekteModel;
 use Mailwurm\BelegungsplanCalenderModel;
 use Contao\PageModel;
 use Contao\StringUtil;
