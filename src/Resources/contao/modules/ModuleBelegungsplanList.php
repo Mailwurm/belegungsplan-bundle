@@ -68,7 +68,7 @@ class ModuleBelegungsplanList extends \Module
 	*/
 	protected function compile() 
 	{
-		$objBelegungsplan = \BelegungsplanObjektModel::findPublishedByPids($this->belegungsplan_category);
+		$objBelegungsplan = \BelegungsplanObjekteModel::findPublishedByPids($this->belegungsplan_category);
 		
 		if ($objBelegungsplan === null) 
 		{

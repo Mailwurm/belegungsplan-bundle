@@ -19,28 +19,28 @@ namespace Mailwurm\Belegungsplan;
 * @property integer $author
 * @property boolean $published
 *
-* @method static BelegungsplanObjektModel|null findById($id, $opt=array())
-* @method static BelegungsplanObjektModel|null findByPk($id, array $opt=array())
-* @method static BelegungsplanObjektModel|null findByIdOrName($val, array $opt=array())
-* @method static BelegungsplanObjektModel|null findOneBy($col, $val, array $opt=array())
-* @method static BelegungsplanObjektModel|null findOneByPid($val, $opt=array())
-* @method static BelegungsplanObjektModel|null findOneBySorting($val, $opt=array())
-* @method static BelegungsplanObjektModel|null findOneByTstamp($val, $opt=array())
-* @method static BelegungsplanObjektModel|null findOneByName($val, $opt=array())
-* @method static BelegungsplanObjektModel|null findOneByInfotext($val, $opt=array())
-* @method static BelegungsplanObjektModel|null findOneByAuthor($val, $opt=array())
-* @method static BelegungsplanObjektModel|null findOneByPublished($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findById($id, $opt=array())
+* @method static BelegungsplanObjekteModel|null findByPk($id, array $opt=array())
+* @method static BelegungsplanObjekteModel|null findByIdOrName($val, array $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneBy($col, $val, array $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneByPid($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneBySorting($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneByTstamp($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneByName($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneByInfotext($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneByAuthor($val, $opt=array())
+* @method static BelegungsplanObjekteModel|null findOneByPublished($val, $opt=array())
 *
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findByPid($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findBySorting($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findByTstamp($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findByName($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findByInfotext($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findByAuthor($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findByPublished($val, $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findMultipleByIds($val, array $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findBy($col, $val, array $opt=array())
-* @method static Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null findAll(array $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findByPid($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findBySorting($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findByTstamp($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findByName($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findByInfotext($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findByAuthor($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findByPublished($val, $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findMultipleByIds($val, array $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findBy($col, $val, array $opt=array())
+* @method static Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null findAll(array $opt=array())
 *
 * @method static integer countById($id, $opt=array())
 * @method static integer countByPid($val, $opt=array())
@@ -53,7 +53,7 @@ namespace Mailwurm\Belegungsplan;
 *
 * @author Jan Karai <http://www.sachsen-it.de>
 */
-class BelegungsplanObjektModel extends \Model {
+class BelegungsplanObjekteModel extends \Model {
 	/**
 	* Table name
 	* @var string
@@ -66,7 +66,7 @@ class BelegungsplanObjektModel extends \Model {
 	* @param array $arrPids    An array of parent IDs
 	* @param array $arrOptions An optional options array
 	*
-	* @return BelegungsplanObjektModel|null The model or null if there is no Belegungsplanobjekt
+	* @return BelegungsplanObjekteModel|null The model or null if there is no Belegungsplanobjekt
 	*/
 	public static function findPublishedByParentAndIdOrName($varId, $arrPids, array $arrOptions=array()) {
 		if(!is_array($arrPids) || empty($arrPids)) {
@@ -86,7 +86,7 @@ class BelegungsplanObjektModel extends \Model {
 	 * @param int   $intPid     The parent ID
 	 * @param array $arrOptions An optional options array
 	 *
-	 * @return Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null A collection of models or null if there are no Belegungsplanobjekte
+	 * @return Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null A collection of models or null if there are no Belegungsplanobjekte
 	 */
 	public static function findPublishedByPid($intPid, array $arrOptions=array()) {
 		$t = static::$strTable;
@@ -105,7 +105,7 @@ class BelegungsplanObjektModel extends \Model {
 	 * @param array $arrPids    An array of Belegungsplan category IDs
 	 * @param array $arrOptions An optional options array
 	 *
-	 * @return Model\Collection|BelegungsplanObjektModel[]|BelegungsplanObjektModel|null A collection of models or null if there are no Belegungsplanobjekte
+	 * @return Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null A collection of models or null if there are no Belegungsplanobjekte
 	 */
 	public static function findPublishedByPids($arrPids, array $arrOptions=array()) {
 		if(!is_array($arrPids) || empty($arrPids)) {

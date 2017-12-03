@@ -14,7 +14,7 @@ use Contao\CoreBundle\Picker\AbstractPickerProvider;
 use Contao\CoreBundle\Picker\DcaPickerProviderInterface;
 use Contao\CoreBundle\Picker\PickerConfig;
 use Mailwurm\BelegungsplanCategoryModel;
-use Mailwurm\BelegungsplanObjektModel;
+use Mailwurm\BelegungsplanObjekteModel;
 use Mailwurm\BelegungsplanCalenderModel;
 
 /**
@@ -90,9 +90,9 @@ class BelegungsplanPickerProvider extends AbstractPickerProvider implements DcaP
     */
     private function getBelegungsplanCategoryId($id)
     {
-        /** @var BelegungsplanObjektModel $belegungplanAdapter */
-        $belegungplanAdapter = $this->framework->getAdapter(BelegungsplanObjektModel::class);
-        if (!($belegungplanModel = $belegungplanAdapter->findById($id)) instanceof BelegungsplanObjektModel) {
+        /** @var BelegungsplanObjekteModel $belegungplanAdapter */
+        $belegungplanAdapter = $this->framework->getAdapter(BelegungsplanObjekteModel::class);
+        if (!($belegungplanModel = $belegungplanAdapter->findById($id)) instanceof BelegungsplanObjekteModel) {
             return null;
         }
         if (!($belegungplanCategory = $belegungplanModel->getRelated('pid')) instanceof BelegungsplanCategoryModel) {

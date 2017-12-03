@@ -31,7 +31,7 @@ if (TL_MODE == 'BE')
 * Register models
 */
 $GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegungsplan\BelegungsplanObjektModel';
+$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegungsplan\BelegungsplanObjekteModel';
 $GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
 /**
 * Register hooks

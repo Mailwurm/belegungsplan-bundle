@@ -12,7 +12,7 @@ use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Mailwurm\BelegungsplanBundle\EventListener\InsertTagsListener;
 use Mailwurm\BelegungsplanCategoryModel;
-use Mailwurm\BelegungsplanObjektModel;
+use Mailwurm\BelegungsplanObjekteModel;
 use Mailwurm\BelegungsplanCalenderModel;
 
 use Contao\FaqCategoryModel;
@@ -102,7 +102,7 @@ class InsertTagsListenerTest extends TestCase {
             ->method('getRelated')
             ->willReturn($page)
         ;
-        $obj = $this->createMock(BelegungsplanObjektModel::class);
+        $obj = $this->createMock(BelegungsplanObjekteModel::class);
         $obj
             ->method('getRelated')
             ->willReturn($noBelegungsplanCategory ? null : $category)
