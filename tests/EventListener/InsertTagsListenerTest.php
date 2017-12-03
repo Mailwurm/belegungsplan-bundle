@@ -15,9 +15,6 @@ use Mailwurm\BelegungsplanCategoryModel;
 use Mailwurm\BelegungsplanObjekteModel;
 use Mailwurm\BelegungsplanCalenderModel;
 
-use Contao\FaqCategoryModel;
-use Contao\FaqModel;
-
 use Contao\PageModel;
 use PHPUnit\Framework\TestCase;
 /**
@@ -80,13 +77,13 @@ class InsertTagsListenerTest extends TestCase {
     /**
     * Returns a ContaoFramework instance.
     *
-    * @param bool $noBelegungsplanModel
+    * @param bool $noBelegungsplanObjekte
     * @param bool $noBelegungsplanCategory
     * @param bool $noBelegungsplanCalender
     *
     * @return ContaoFrameworkInterface
     */
-    private function mockContaoFramework($noBelegungsplanModel = false, $noBelegungsplanCategory = false, $noBelegungsplanCalender = false) {
+    private function mockContaoFramework($noBelegungsplanObjekte = false, $noBelegungsplanCategory = false, $noBelegungsplanCalender = false) {
         $framework = $this->createMock(ContaoFrameworkInterface::class);
         $framework
             ->method('isInitialized')
