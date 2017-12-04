@@ -9,23 +9,21 @@
 /**
 * Add back end modules
 */
-array_insert($GLOBALS['BE_MOD']['content'], 1, array
+array_insert($GLOBALS['BE_MOD']['content'], 99, array
 (
 	'belegungsplan' => array
 	(
-		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender'),
-		'table'       => array('TableWizard', 'importTable'),
-		'list'        => array('ListWizard', 'importList')
+		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
 	)
 ));
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 2, array
+array_insert($GLOBALS['FE_MOD'], 99, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'Mailwurm\\BelegungsplanBundle\\Modules\\ModuleBelegungsplanlist'
+		'belegungsplanlist'   => 'ModuleBelegungsplanlist'
 	)
 ));
 /**
