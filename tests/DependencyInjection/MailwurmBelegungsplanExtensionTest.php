@@ -56,7 +56,7 @@ class MailwurmBelegungsplanExtensionTest extends TestCase {
     public function testRegistersTheEventPickerProvider() {
         $this->assertTrue($this->container->has('mailwurm_belegungsplan.picker.belegungsplan_provider'));
         $definition = $this->container->getDefinition('mailwurm_belegungsplan.picker.belegungsplan_provider');
-        $this->assertSame(BelegungsplanPickerProvider::class, $definition->getClass());
+        $this->assertSame(FaqPickerProvider::class, $definition->getClass());
         $this->assertFalse($definition->isPublic());
         $this->assertSame('knp_menu.factory', (string) $definition->getArgument(0));
         $conditionals = $definition->getInstanceofConditionals();

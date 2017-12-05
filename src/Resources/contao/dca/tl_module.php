@@ -40,5 +40,5 @@ $bundles = System::getContainer()->getParameter('kernel.bundles');
 * @author Jan Karai <https://www.sachsen-it.de>
 */
 class tl_module_belegungsplan extends Backend {
-	
+
 }

@@ -12,8 +12,11 @@ use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Mailwurm\BelegungsplanBundle\EventListener\InsertTagsListener;
 use Mailwurm\BelegungsplanCategoryModel;
-use Mailwurm\BelegungsplanObjekteModel;
+use Mailwurm\BelegungsplanObjektModel;
 use Mailwurm\BelegungsplanCalenderModel;
+
+use Contao\FaqCategoryModel;
+use Contao\FaqModel;
 
 use Contao\PageModel;
 use PHPUnit\Framework\TestCase;
@@ -77,13 +80,13 @@ class InsertTagsListenerTest extends TestCase {
     /**
     * Returns a ContaoFramework instance.
     *
-    * @param bool $noBelegungsplanObjekte
+    * @param bool $noBelegungsplanModel
     * @param bool $noBelegungsplanCategory
     * @param bool $noBelegungsplanCalender
     *
     * @return ContaoFrameworkInterface
     */
-    private function mockContaoFramework($noBelegungsplanObjekte = false, $noBelegungsplanCategory = false, $noBelegungsplanCalender = false) {
+    private function mockContaoFramework($noBelegungsplanModel = false, $noBelegungsplanCategory = false, $noBelegungsplanCalender = false) {
         $framework = $this->createMock(ContaoFrameworkInterface::class);
         $framework
             ->method('isInitialized')
@@ -99,7 +102,7 @@ class InsertTagsListenerTest extends TestCase {
             ->method('getRelated')
             ->willReturn($page)
         ;
-        $obj = $this->createMock(BelegungsplanObjekteModel::class);
+        $obj = $this->createMock(BelegungsplanObjektModel::class);
         $obj
             ->method('getRelated')
             ->willReturn($noBelegungsplanCategory ? null : $category)

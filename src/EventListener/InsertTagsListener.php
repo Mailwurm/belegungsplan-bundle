@@ -11,7 +11,7 @@ namespace Mailwurm\BelegungsplanBundle\EventListener;
 use Contao\Config;
 use Contao\CoreBundle\Framework\ContaoFrameworkInterface;
 use Mailwurm\BelegungsplanCategoryModel;
-use Mailwurm\BelegungsplanObjekteModel;
+use Mailwurm\BelegungsplanObjektModel;
 use Mailwurm\BelegungsplanCalenderModel;
 use Contao\PageModel;
 use Contao\StringUtil;
@@ -56,8 +56,8 @@ class InsertTagsListener {
             return false;
         }
         $this->framework->initialize();
-        /** @var BelegungsplanObjekteModel $adapter */
-        $adapter = $this->framework->getAdapter(BelegungsplanObjekteModel::class);
+        /** @var BelegungsplanObjektModel $adapter */
+        $adapter = $this->framework->getAdapter(BelegungsplanObjektModel::class);
         $belegungsplan = $adapter->findByIdOrName($elements[1]);
         if (null === $belegungsplan || false === ($url = $this->generateUrl($belegungsplan))) {
             return '';
@@ -67,11 +67,11 @@ class InsertTagsListener {
     /**
     * Generates the URL for an Belegungsplan.
     *
-    * @param BelegungsplanObjekteModel $belegungsplan
+    * @param BelegungsplanObjektModel $belegungsplan
     *
     * @return string|false
     */
-    private function generateUrl(BelegungsplanObjekteModel $belegungsplan) {
+    private function generateUrl(BelegungsplanObjektModel $belegungsplan) {
         /** @var PageModel $jumpTo */
         if(!($category = $belegungsplan->getRelated('pid')) instanceof BelegungsplanCategoryModel
             || !(($jumpTo = $category->getRelated('jumpTo')) instanceof PageModel)
@@ -85,13 +85,13 @@ class InsertTagsListener {
     /**
     * Generates the replacement string.
     *
-    * @param BelegungsplanObjekteModel $belegungsplan
+    * @param BelegungsplanObjektModel $belegungsplan
     * @param string   $key
     * @param string   $url
     *
     * @return string|false
     */
-    private function generateReplacement(BelegungsplanObjekteModel $belegungsplan, $key, $url) {
+    private function generateReplacement(BelegungsplanObjektModel $belegungsplan, $key, $url) {
         switch ($key) {
             case 'belegungsplan':
                 return sprintf(

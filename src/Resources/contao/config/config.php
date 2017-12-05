@@ -9,21 +9,15 @@
 /**
 * Add back end modules
 */
-array_insert($GLOBALS['BE_MOD']['content'], 99, array
-(
-	'belegungsplan' => array
-	(
-		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
-	)
-));
+$GLOBALS['BE_MOD']['content']['belegungsplan']['tables'] = array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender');
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 99, array
+array_insert($GLOBALS['FE_MOD'], 1, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplan'
+		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplanList'
 	)
 ));
 /**
@@ -33,12 +27,6 @@ if (TL_MODE == 'BE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
 }
-/**
-* Register models
-*/
-#$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
-#$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegungsplan\BelegungsplanObjekteModel';
-#$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'Mailwurm\Belegungsplan\BelegungsplanCalenderModel';
 /**
 * Register hooks
 */
