@@ -27,8 +27,8 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(MailwurmBelegungsplanBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class])
+            BundleConfig::create('Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle')
+                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
                 ->setReplace(['belegungsplan']),
         ];
     }
