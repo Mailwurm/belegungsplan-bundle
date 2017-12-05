@@ -34,11 +34,11 @@ if (TL_MODE == 'BE')
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
 }
 /**
-* Add Models
+* Add Models $GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegung\BelegungsplanCategoryModel';
 */
-$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegung\BelegungsplanCategoryModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'Mailwurm\Belegung\BelegungsplanObjekteModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'Mailwurm\Belegung\BelegungsplanCalenderModel';
+$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'BelegungsplanCategoryModel';
+$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'BelegungsplanObjekteModel';
+$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'BelegungsplanCalenderModel';
 /**
 * Add permissions
 */
