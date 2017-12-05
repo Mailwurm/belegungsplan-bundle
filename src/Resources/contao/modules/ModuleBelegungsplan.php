@@ -9,6 +9,8 @@
 namespace Mailwurm;
 
 use Contao\CoreBundle\Exception\PageNotFoundException;
+use Psr\Log\LogLevel;
+use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
 
 /**
