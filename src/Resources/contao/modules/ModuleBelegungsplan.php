@@ -10,6 +10,10 @@ namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
+use Contao\Contao;
+use Mailwurm\Belegung\BelegungsplanObjekteModel;
+use Contao\Model;
+use Contao\Model\Collection;
 
 /**
 * Class ModuleBelegungsplan
@@ -68,9 +72,44 @@ class ModuleBelegungsplan extends \Module
 	*/
 	protected function compile() 
 	{
-		$objTemplate->test = 'test';
-		$objTemplate->mehr = 'Testausgabe';
+		/** @var PageModel $objPage */
+		global $objPage;
 		
-		$this->Template->belegung = $objTemplate->parse();
+		/** @var BelegungsplanObjekteModel $objBelegungsplanObjekte */
+		#global $objBelegungsplanObjekte;
+
+		$blnClearInput = false;
+
+		$intYear = \Input::get('year');
+		$intMonth = \Input::get('month');
+		
+		// Aktuelle Periode bei Erstaufruf der Seite
+		if (!isset($_GET['year']) && !isset($_GET['month']))
+		{
+			$intYear = date('Y');
+			$blnClearInput = true;
+		}
+		
+		$this->Template = new \FrontendTemplate($this->strTemplate);
+		$this->Template->year = $intYear;
+		$this->Template->month = $intMonth;
+		
+		$objBelegungsplanObjekte = \BelegungsplanObjekteModel::findAll();
+		$this->Template->belegungsplan_objekte = $objBelegungsplanObjekte;
+		
+		$this->Template->belegungsplan_category = $this->belegungsplan_category;
+		$this->Template->belegungsplan_month = $this->belegungsplan_month;
+		
+		
+		
+		
+		
+		
+		// Clear the $_GET array (see #2445)
+		if ($blnClearInput)
+		{
+			\Input::setGet('year', null);
+			\Input::setGet('month', null);
+		}
 	}
 }
