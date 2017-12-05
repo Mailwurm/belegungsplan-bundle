@@ -6,7 +6,7 @@
 *
 * @license LGPL-3.0+
 */
-namespace Mailwurm\Belegungsplan;
+namespace Mailwurm;
 /**
 * Lesen und Schreiben Belegungsplan Objekte
 *
