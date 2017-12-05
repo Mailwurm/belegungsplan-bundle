@@ -10,7 +10,7 @@
 /**
 * Add palettes to tl_module
 */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplanlist']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplan']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
 /**
 * Add fields to tl_module
 */
