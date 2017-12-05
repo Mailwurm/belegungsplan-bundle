@@ -18,7 +18,7 @@ use Patchwork\Utf8;
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class ModuleBelegungsplanlist extends \Module
+class ModuleBelegungsplanList extends \Module
 {
 	/**
 	* Template
