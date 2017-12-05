@@ -12,13 +12,13 @@ use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
 
 /**
-* Class ModuleBelegungsplanList
+* Class ModuleBelegungsplan
 *
 * @property array $belegungsplan_categories
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
-class ModuleBelegungsplanList extends \Module
+class ModuleBelegungsplan extends \Module
 {
 	/**
 	* Template
