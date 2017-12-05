@@ -28,7 +28,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'exclude'                 => true,
 	'inputType'               => 'select',
 	'options'                 => $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
-	'eval'                    => array('multiple'=>true, 'includeBlankOption'=>true, 'multiple'=>true, 'chosen'=>true),
+	'eval'                    => array('multiple'=>true, 'includeBlankOption'=>true, 'multiple'=>true),
 	'sql'                     => "blob NULL"
 );
 
