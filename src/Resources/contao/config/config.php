@@ -23,7 +23,7 @@ array_insert($GLOBALS['FE_MOD'], 99, array
 (
 	'belegungsplan' => array
 	(
-		'belegungsplanlist'   => 'ModuleBelegungsplanList'
+		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplanList'
 	)
 ));
 /**
