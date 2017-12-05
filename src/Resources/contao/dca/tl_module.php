@@ -26,9 +26,9 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_month'],
 	'exclude'                 => true,
-	'inputType'               => 'checkboxWizard',
+	'inputType'               => 'select',
 	'options'                 => $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
-	'eval'                    => array('multiple'=>true),
+	'eval'                    => array('multiple'=>true, 'includeBlankOption'=>true, 'multiple'=>true, 'chosen'=>true),
 	'sql'                     => "blob NULL"
 );
 

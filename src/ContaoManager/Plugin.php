@@ -8,8 +8,8 @@
  */
 namespace Mailwurm\BelegungsplanBundle\ContaoManager;
 
-#use Contao\CoreBundle\ContaoCoreBundle;
-#use Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle;
+use Contao\CoreBundle\ContaoCoreBundle;
+use Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
@@ -27,9 +27,9 @@ class Plugin implements BundlePluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create('Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle')
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
-                ->setReplace(['belegungsplan']),
+            BundleConfig::create(MailwurmBelegungsplanBundle::class)
+                ->setLoadAfter([ContaoCoreBundle::class])
+                ->setReplace(['belegung']),
         ];
     }
 }

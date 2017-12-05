@@ -9,15 +9,21 @@
 /**
 * Add back end modules
 */
-$GLOBALS['BE_MOD']['content']['belegungsplan']['tables'] = array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender');
+array_insert($GLOBALS['BE_MOD']['content'], 99, array
+(
+	'belegung' => array
+	(
+		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
+	)
+));
 /**
 * Front end modules
 */
-array_insert($GLOBALS['FE_MOD'], 1, array
+array_insert($GLOBALS['FE_MOD'], 99, array
 (
-	'belegungsplan' => array
+	'belegung' => array
 	(
-		'belegungsplanlist'   => 'Mailwurm\Belegungsplan\ModuleBelegungsplanList'
+		'belegungsplan'   => 'ModuleBelegungsplan'
 	)
 ));
 /**
@@ -27,11 +33,6 @@ if (TL_MODE == 'BE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
 }
-/**
-* Register hooks
-*/
-# $GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('ModuleBelegungsplan', 'getSearchablePages');
-$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('mailwurm_belegungsplan.listener.insert_tags', 'onReplaceInsertTags');
 /**
 * Add permissions
 */
