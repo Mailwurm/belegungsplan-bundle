@@ -10,10 +10,7 @@ namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
-use Contao\Contao;
-use Mailwurm\Belegung\BelegungsplanObjekteModel;
-use Contao\Model;
-use Contao\Model\Collection;
+
 
 /**
 * Class ModuleBelegungsplan
@@ -29,11 +26,7 @@ class ModuleBelegungsplan extends \Module
 	* @var string
 	*/
 	protected $strTemplate = 'mod_belegungsplan';
-	/**
-	* Target pages
-	* @var array
-	*/
-	protected $arrTargets = array();
+	
 	/**
 	* Display a wildcard in the back end
 	*
@@ -54,6 +47,8 @@ class ModuleBelegungsplan extends \Module
 		}
 		$this->belegungsplan_category = \StringUtil::deserialize($this->belegungsplan_categories);
 		$this->belegungsplan_month = \StringUtil::deserialize($this->belegungsplan_month);
+		// aktuelle Seiten URL
+		$this->strUrl = preg_replace('/\?.*$/', '', \Environment::get('request'));
 		
 		// Return if there are no categories
 		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) 
@@ -75,8 +70,8 @@ class ModuleBelegungsplan extends \Module
 		/** @var PageModel $objPage */
 		global $objPage;
 		
-		/** @var BelegungsplanObjekteModel $objBelegungsplanObjekte */
-		#global $objBelegungsplanObjekte;
+		$arrCategorieObjekte = array();
+		$arrJahre = array();
 
 		$blnClearInput = false;
 
@@ -90,12 +85,55 @@ class ModuleBelegungsplan extends \Module
 			$blnClearInput = true;
 		}
 		
-		$this->Template = new \FrontendTemplate($this->strTemplate);
-		$this->Template->year = $intYear;
-		$this->Template->month = $intMonth;
 		
-		$objBelegungsplanObjekte = \BelegungsplanObjekteModel::findAll();
-		$this->Template->belegungsplan_objekte = $objBelegungsplanObjekte;
+		// Hole alle aktiven Objekte
+		$objCategoryObjekte = $this->Database->prepare("SELECT 	tbc.id as CategoryID,
+									tbc.title as CategoryTitle,
+									tbo.id as ObjektID,
+									tbo.name as ObjektName,
+									tbo.infotext as ObjektInfoText,
+									tbo.sorting as ObjektSortierung
+								FROM 	tl_belegungsplan_category tbc,
+									tl_belegungsplan_objekte tbo
+								WHERE	tbo.pid = tbc.id
+								AND	tbo.published = 1")
+								->execute();
+		if($objCategoryObjekte->numRows > 0) {
+			while($objCategoryObjekte->next()) {
+				$arrHelper = array();
+				$arrHelper['ObjektID'] = $objCategoryObjekte->ObjektID;
+				$arrHelper['ObjektName'] = $objCategoryObjekte->ObjektName;
+				$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
+				if(array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
+					$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
+				} else {
+					$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryTitle'] = \StringUtil::specialchars($objCategoryObjekte->CategoryTitle);
+					$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
+				}
+				unset($arrHelper);
+			}
+		}
+		// Hole alle Jahre fuer die bereits Buchungen vorhanden sind ab dem aktuellen Jahr
+		$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(startDate)) as Start 
+							FROM tl_belegungsplan_calender 
+							WHERE YEAR(FROM_UNIXTIME(startDate)) >= ? 
+							GROUP BY YEAR(FROM_UNIXTIME(startDate))
+							ORDER BY YEAR(FROM_UNIXTIME(startDate)) ASC")
+							->execute(date("Y"));
+		if($objJahre->numRows > 0) {
+			while($objJahre->next()) {
+				$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $objJahre->Start == $intYear ? '' : $this->strUrl . '?year=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
+			}
+		}
+		
+		$this->Template = new \FrontendTemplate($this->strTemplate);
+		$this->Template->display_year = $intYear;
+		$this->Template->month = $intMonth;
+		$this->Template->number_objekte = $objCategoryObjekte->numRows;
+		$this->Template->objekte = $arrCategorieObjekte;
+		$this->Template->number_year = $objJahre->numRows;
+		$this->Template->selectable_year = $arrJahre;
+		
 		
 		$this->Template->belegungsplan_category = $this->belegungsplan_category;
 		$this->Template->belegungsplan_month = $this->belegungsplan_month;
@@ -104,10 +142,11 @@ class ModuleBelegungsplan extends \Module
 		
 		
 		
-		
+		if(!empty($arrCategorieObjekte)) {
+			unset($arrCategorieObjekte);
+		}
 		// Clear the $_GET array (see #2445)
-		if ($blnClearInput)
-		{
+		if($blnClearInput) {
 			\Input::setGet('year', null);
 			\Input::setGet('month', null);
 		}
