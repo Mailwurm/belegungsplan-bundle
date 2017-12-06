@@ -35,9 +35,8 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 	(
 		'sorting' => array
 		(
-			'mode'                    => 1,
-			'fields'                  => array('title'),
-			'flag'                    => 1,
+			'mode'                    => 4,
+			'fields'                  => array('sorting'),
 			'panelLayout'             => 'search,limit'
 		),
 		'label' => array
@@ -111,6 +110,13 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 		),
 		'tstamp' => array
 		(
+			'sql'                     => "int(10) unsigned NOT NULL default '0'"
+		),
+		'sorting' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['MSC']['sorting'],
+			'sorting'                 => true,
+			'flag'                    => 11,
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
 		'title' => array
