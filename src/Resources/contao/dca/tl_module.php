@@ -10,7 +10,7 @@
 /**
 * Add palettes to tl_module
 */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplan']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{template_legend:hide},customTpl;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplan']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{template_legend:hide},customTpl;{expert_legend:hide},cssID';
 /**
 * Add fields to tl_module
 */
@@ -26,9 +26,9 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_month'],
 	'exclude'                 => true,
-	'inputType'               => 'select',
+	'inputType'               => 'checkboxWizard',
 	'options'                 => $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
-	'eval'                    => array('multiple'=>true, 'includeBlankOption'=>true, 'multiple'=>true),
+	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
 
