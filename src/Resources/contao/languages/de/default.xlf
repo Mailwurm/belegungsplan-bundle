@@ -9,6 +9,18 @@
 				<source>Booking calendar</source>
 				<target>Belegungspläne</target>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.0">
+				<source>No occupancy plans available for the selected period</source>
+				<target>Keine Belegungspläne für den gewählten Zeitraum verfügbar</target>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.1">
+				<source>For their request we could not find any occupancy plans</source>
+				<target>Zu ihrer Anfrage konnten wir keine Belegungspläne finden</target>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.2">
+				<source>Occupancy plans from the past are not displayed</source>
+				<target>Belegungspläne aus der Vergangenheit werden nicht angezeigt</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
