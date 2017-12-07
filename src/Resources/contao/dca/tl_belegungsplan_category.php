@@ -26,7 +26,8 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 		(
 			'keys' => array
 			(
-				'id' => 'primary'
+				'id' => 'primary',
+				'sorting' => 'index'
 			)
 		)
 	),
