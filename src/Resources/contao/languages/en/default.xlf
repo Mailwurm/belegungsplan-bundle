@@ -7,6 +7,15 @@
 			<trans-unit id="MSC.belegungsplanPicker">
 				<source>Booking calendar</source>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.0">
+				<source>No occupancy plans available for the selected period</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.1">
+				<source>For their request we could not find any occupancy plans</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.2">
+				<source>Occupancy plans from the past are not displayed</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
