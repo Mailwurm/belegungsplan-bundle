@@ -320,8 +320,8 @@ class tl_belegungsplan_objekte extends Backend
 		return '
 <div class="cte_type ' . $key . '">' . $date . '</div>
 <div class="limit_height' . (!Config::get('doNotCollapse') ? ' h40' : '') . '">
-' . StringUtil::insertTagToSrc($arrRow['name']) . '
-<span style="color:#b3b3b3;padding-left:3px">[' . StringUtil::insertTagToSrc($arrRow['infotext']) . ']</span>
+' . StringUtil::insertTagToSrc($arrRow['name']) . 
+(!empty($arrRow['infotext']) ? '<span style="color:#b3b3b3;padding-left:3px">[' . StringUtil::insertTagToSrc($arrRow['infotext']) . ']</span>' : '') . '
 </div>' . "\n";
 	}
 	/**
