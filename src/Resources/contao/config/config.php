@@ -27,11 +27,18 @@ array_insert($GLOBALS['FE_MOD'], 99, array
 	)
 ));
 /**
-* Style sheet
+* Style sheet Backend
 */
 if (TL_MODE == 'BE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/style.css|static';
+}
+/**
+* Style sheet Frontend
+*/
+if (TL_MODE == 'FE')
+{
+	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/belegungsplan.css|static';
 }
 /**
 * Add Models $GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegung\BelegungsplanCategoryModel';
