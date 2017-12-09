@@ -259,13 +259,13 @@ class ModuleBelegungsplan extends \Module
 		$this->Template->number_objekte = $i;
 		// Kategorien sortieren wie im Checkboxwizard ausgewaehlt -> Elterntabelle
 		$this->Template->CategorieObjekteCalender = $this->sortNachWizard($arrCategorieObjekte, $this->belegungsplan_category);
-		
-		
+		// Array mit den Monatsdaten
+		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl);
 		
 		
 		#$this->Template->belegungsplan_category = $this->belegungsplan_category;
-		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl);
-		#$this->Template->Start = $intStartAuswahl;
+		
+		$this->Template->Start = $intStartAuswahl;
 		#$this->Template->Ende = $intEndeAuswahl;
 		
 		
@@ -316,10 +316,18 @@ class ModuleBelegungsplan extends \Module
 	protected function dataMonth($arrMonth, $intStartAuswahl)
 	{
 		$arrHelper = array();
+		$intJahr = date('Y', $intStartAuswahl);
 		foreach($arrMonth as $key => $value) {
 			$arrHelper[$value]['Name'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['month'][$value];
+			$arrHelper[$value]['Tage'] = (int)date('t', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
+			$intFirstDayInMonth = (int)date('N', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
+			$i = 7 - $intFirstDayInMonth + 1;
+			while($i <= $arrHelper[$value]['Tage']) {
+				$arrHelper[$value]['Sonntage'][$i] = 1;
+				$i = $i + 7;
+			}
 		}
+		unset($intJahr);
 		return $arrHelper;
-		
 	}
 }
