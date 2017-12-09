@@ -16,6 +16,42 @@
 			<trans-unit id="mailwurm_belegung.info.2">
 				<source>Occupancy plans from the past are not displayed</source>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.1">
+				<source>January</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.2">
+				<source>February</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.3">
+				<source>March</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.4">
+				<source>April</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.5">
+				<source>May</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.6">
+				<source>June</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.7">
+				<source>July</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.8">
+				<source>August</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.9">
+				<source>September</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.10">
+				<source>October</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.11">
+				<source>November</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.month.12">
+				<source>December</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
