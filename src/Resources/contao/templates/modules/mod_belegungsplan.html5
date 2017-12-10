@@ -1,58 +1,48 @@
 <?php $this->extend('block_unsearchable'); ?>
 
 <?php $this->block('content'); ?>
-<?php 
-#echo "<pre>"; 
-#echo $this->showTemplateVars(); 
-#echo "</pre>"; 
-?>
 <?php if($this->info): ?>
 	<?php foreach ($this->info as $info): ?>
 		<p><?= $info ?></p>
 	<?php endforeach; ?>
+<?php else: ?>
+  <?php if($this->number_year > 0): ?>
+    <select onchange="window.location.href=this.value;">
+      <?php foreach ($this->selectable_year as $years => $singleyear): ?>
+        <option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
+      <?php endforeach; ?>
+    </select>
+  <?php endif; ?>
+  <?php foreach($this->Month as $keyMonth => $month): ?>
+  <table>
+    <thead>
+      <tr>
+        <th><?= $month['Name'] ?> <?= $this->display_year ?></th>
+        <?php for($i = 1; $i <= $month['Tage']; $i++): ?>
+          <th<?php if($month['Sonntage'][$i]) echo ' class="sunday"'; ?>><?= $i ?></th>
+        <?php endfor; ?>
+      </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+      <tr class="belegCategory">
+        <th colspan="<?= $month['Tage']+1 ?>"><?= $aCategory['CategoryTitle'] ?></th>
+      </tr>
+      <?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
+      <tr class="belegObjekt">
+        <td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> <span class="ObjektInfoText"><?= $valueObjekt['ObjektInfoText'] ?></span><?php endif; ?></td>
+        <?php for($i = 1; $i <= $month['Tage']; $i++): ?>
+          <?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
+          <td>1</td>
+          <?php else: ?>
+          <td></td>
+          <?php endif; ?>
+        <?php endfor; ?>
+      </tr>
+      <?php endforeach; ?>
+    <?php endforeach; ?>
+    </tbody>
+  </table>
+  <?php endforeach; ?>
 <?php endif; ?>
-
-<?php if($this->number_year > 0): ?>
-	<select onchange="window.location.href=this.value;">
-		<?php foreach ($this->selectable_year as $years => $singleyear): ?>
-			<option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
-		<?php endforeach; ?>
-	</select>
-<?php endif; ?>
-
-<?php foreach($this->Month as $keyMonth => $month): ?>
-<table>
-	<thead>
-		<tr>
-			<th>test</th>
-			<?php for($i = 1; $i <= $month['Tage']; $i++): ?>
-				<th<?php if($month['Sonntage'][$i]) echo ' class="sunday"'; ?>><?= $i ?></th>
-			<?php endfor; ?>
-		</tr>
-	</thead>
-	<tbody>
-	<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
-		<tr class="belegCategory">
-			<td><?= $aCategory['CategoryTitle'] ?></td>
-			<?php for($i = 1; $i <= $month['Tage']; $i++): ?>
-				<td></td>
-			<?php endfor; ?>
-		</tr>
-		<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
-		<tr class="belegObjekt">
-			<td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> <span class="ObjektInfoText"><?= $valueObjekt['ObjektInfoText'] ?></span><?php endif; ?></td>
-			<?php for($i = 1; $i <= $month['Tage']; $i++): ?>
-				<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
-				<td>1</td>
-				<?php else: ?>
-				<td></td>
-				<?php endif; ?>
-			<?php endfor; ?>
-		
-		</tr>
-		<?php endforeach; ?>
-	<?php endforeach; ?>
-	</tbody>
-</table>
-<?php endforeach; ?>
 <?php $this->endblock(); ?>
