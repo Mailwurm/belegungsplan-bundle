@@ -1,3 +1,65 @@
-html,body {
-	background: #CC0000;
+.belegungsplan-table {
+	font-size: 1px;
+}
+.belegungsplan-modal-table {
+	font-size: 12px;
+}
+.table-condensed.belegungsplan-table>tbody>tr>td, 
+.table-condensed.belegungsplan-table>tbody>tr>th, 
+.table-condensed.belegungsplan-table>tfoot>tr>td, 
+.table-condensed.belegungsplan-table>tfoot>tr>th, 
+.table-condensed.belegungsplan-table>thead>tr>td, 
+.table-condensed.belegungsplan-table>thead>tr>th {
+	padding: 1px;
+}
+.table.belegungsplan-table>tbody>tr.success>td, 
+.table.belegungsplan-table>tbody>tr.success>th, 
+.table.belegungsplan-table>tbody>tr>td.success, 
+.table.belegungsplan-table>tbody>tr>th.success, 
+.table.belegungsplan-table>thead>tr.success>td, 
+.table.belegungsplan-table>thead>tr.success>th, 
+.table.belegungsplan-table>thead>tr>td.success, 
+.table.belegungsplan-table>thead>tr>th.success,
+.table.belegungsplan-modal-table>tbody>tr.success>td, 
+.table.belegungsplan-modal-table>tbody>tr.success>th, 
+.table.belegungsplan-modal-table>tbody>tr>td.success, 
+.table.belegungsplan-modal-table>tbody>tr>th.success, 
+.table.belegungsplan-modal-table>thead>tr.success>td, 
+.table.belegungsplan-modal-table>thead>tr.success>th, 
+.table.belegungsplan-modal-table>thead>tr>td.success, 
+.table.belegungsplan-modal-table>thead>tr>th.success {
+	background-color: #4cae4c;
+}
+.table.belegungsplan-table>tbody>tr.danger>td, 
+.table.belegungsplan-table>tbody>tr.danger>th, 
+.table.belegungsplan-table>tbody>tr>td.danger, 
+.table.belegungsplan-table>tbody>tr>th.danger, 
+.table.belegungsplan-table>thead>tr.danger>td, 
+.table.belegungsplan-table>thead>tr.danger>th, 
+.table.belegungsplan-table>thead>tr>td.danger, 
+.table.belegungsplan-table>thead>tr>th.danger,
+.table.belegungsplan-modal-table>tbody>tr.danger>td, 
+.table.belegungsplan-modal-table>tbody>tr.danger>th, 
+.table.belegungsplan-modal-table>tbody>tr>td.danger, 
+.table.belegungsplan-modal-table>tbody>tr>th.danger, 
+.table.belegungsplan-modal-table>thead>tr.danger>td, 
+.table.belegungsplan-modal-table>thead>tr.danger>th, 
+.table.belegungsplan-modal-table>thead>tr>td.danger, 
+.table.belegungsplan-modal-table>thead>tr>th.danger {
+	background-color: #d43f3a;
+}
+.Height-20 {
+	height: 20px;
+}
+.table.belegungsplan-modal-table>tbody>tr>td.success {
+	padding: 0px;
+}
+.table.belegungsplan-modal-table>tbody>tr>td, 
+.table.belegungsplan-modal-table>tbody>tr>th, 
+.table.belegungsplan-modal-table>thead>tr>td, 
+.table.belegungsplan-modal-table>thead>tr>th {
+	padding: 4px;
+}
+.table.belegungsplan-modal-table>thead>tr>th.sunday {
+	background-color: #DDDDDD;
 }
