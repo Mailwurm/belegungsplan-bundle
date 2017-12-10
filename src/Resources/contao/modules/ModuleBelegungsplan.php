@@ -85,7 +85,6 @@ class ModuleBelegungsplan extends \Module
 		$blnClearInput = false;
 		
 		$intYear = \Input::get('belegyear');
-		$intMonth = \Input::get('belegmonth');
 		// interner Zaehler
 		$i = 0;
 		
@@ -98,29 +97,14 @@ class ModuleBelegungsplan extends \Module
 			if(!empty($intYear)) {
 				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= date('Y') ? $intYear = intval($intYear) : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
 			}
-			if(!empty($intMonth)) {
-				is_numeric($intMonth) && strlen($intMonth) === 6 ? (intval(substr($intMonth, 0, 4)) >= date('Y') ? $intMonth = intval($intMonth) : $arrInfo[] = '5. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '2. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
-				// Pruefen ob Monat angezeigt werden darf
-				!in_array(intval(substr($intMonth, 4, 2)), $this->belegungsplan_month) ?  $arrInfo[] = '6. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][0] : '';
-			}
 		}
 		
 		// wenn $arrInfo hier schon belegt, dann nicht erst weiter machen
 		if(empty($arrInfo)) {
-			$intY = 0;
-			$intM = 0;
-			$intAnzahlTage = 0;
 			// Anfang und Ende des Anzeigezeitraumes je nach GET
 			if(!empty($intYear)) {
 				$intStartAuswahl = mktime(0, 0, 0, 1, 1, intval($intYear));
 				$intEndeAuswahl = mktime(23, 59, 59, 12, 31, intval($intYear));
-			}
-			if(!empty($intMonth)) {
-				$intY = intval(substr($intMonth, 0, 4));
-				$intM = intval(substr($intMonth, 4, 2));
-				$intStartAuswahl = mktime(0, 0, 0, $intM, 1, $intY);
-				$intAnzahlTage = intval(date('t', $intStartAuswahl));
-				$intEndeAuswahl = mktime(23, 59, 59, $intM, $intAnzahlTage, $intY);
 			}
 			
 			// Hole alle Calenderdaten zur Auswahl
@@ -225,11 +209,6 @@ class ModuleBelegungsplan extends \Module
 				$arrInfo[] = '3. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][0];
 			}
 			
-			
-			
-			
-			
-			
 			// Hole alle Jahre fuer die bereits Buchungen vorhanden sind ab dem aktuellen Jahr
 			$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(startDate)) as Start 
 								FROM tl_belegungsplan_calender 
@@ -249,8 +228,6 @@ class ModuleBelegungsplan extends \Module
 		$this->Template->info = $arrInfo;
 		// aktuell anzuzeigendes Jahr, wenn \Input::get('year');
 		$this->Template->display_year = $intYear;
-		// aktuell anzuzeigender Monat, wenn \Input::get('month');
-		$this->Template->display_month = $intMonth;
 		// Anzahl der anzuzeigenden Jahre fuer welche Reservierungen vorliegen
 		$this->Template->number_year = $objJahre->numRows;
 		// Jahreszahlen fuer die Auswahlbox
@@ -261,16 +238,8 @@ class ModuleBelegungsplan extends \Module
 		$this->Template->CategorieObjekteCalender = $this->sortNachWizard($arrCategorieObjekte, $this->belegungsplan_category);
 		// Array mit den Monatsdaten
 		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl);
-		
-		
-		#$this->Template->belegungsplan_category = $this->belegungsplan_category;
-		
-		$this->Template->Start = $intStartAuswahl;
+		#$this->Template->Start = $intStartAuswahl;
 		#$this->Template->Ende = $intEndeAuswahl;
-		
-		
-		
-		
 		
 		if(!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
@@ -281,7 +250,6 @@ class ModuleBelegungsplan extends \Module
 		// Clear the $_GET array (see #2445)
 		if($blnClearInput) {
 			\Input::setGet('belegyear', null);
-			\Input::setGet('belegmonth', null);
 		}
 	}
 	
