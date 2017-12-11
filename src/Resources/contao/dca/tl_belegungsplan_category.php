@@ -1,28 +1,36 @@
 <?php
+ /**
+ * Contao Open Source CMS
+ *
+ * Copyright (c) Jan Karai
+ *
+ * @license LGPL-3.0+
+ */
+
 /**
-* Contao Open Source CMS
-*
-* Copyright (c) Jan Karai
-*
-* @license LGPL-3.0+
+* Load tl_content language file
 */
+System::loadLanguageFile('tl_content');
+ 
 /**
-* Table tl_belegungsplan_category
-*/
-$GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
+ * Table tl_belegungsplan_calender
+ */
+$GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 (
 	// Config
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
-		'ctable'                      => array('tl_belegungsplan_objekte'),
+		'ptable'                      => 'tl_belegungsplan_objekte',
+		'ctable'                      => array('tl_content'),
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
 		'sql' => array
 		(
 			'keys' => array
 			(
-				'id' => 'primary'
+				'id' => 'primary',
+				'pid' => 'index'
 			)
 		)
 	),
@@ -31,14 +39,15 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 	(
 		'sorting' => array
 		(
-			'mode'                    => 1,
-			'fields'                  => array('title'),
-			'flag'                    => 1,
-			'panelLayout'             => 'search,limit'
+			'mode'                    => 4,
+			'fields'                  => array('startDate DESC'),
+			'headerFields'            => array('name', 'tstamp'),
+			'panelLayout'             => 'filter;sort,search,limit',
+			'child_record_callback'   => array('tl_belegungsplan_calender', 'listCalender')
 		),
 		'label' => array
 		(
-			'fields'                  => array('title'),
+			'fields'                  => array('gast', 'startDate', 'endDate'),
 			'format'                  => '%s'
 		),
 		'global_operations' => array
@@ -55,37 +64,16 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 		(
 			'edit' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['edit'],
-				'href'                => 'table=tl_belegungsplan_objekte',
-				'icon'                => 'cssimport.svg'
-			),
-			'editheader' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['editheader'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['edit'],
 				'href'                => 'act=edit',
-				'icon'                => 'edit.svg',
-				'button_callback'     => array('tl_belegungsplan_category', 'editHeader')
-			),
-			'copy' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['copy'],
-				'href'                => 'act=copy',
-				'icon'                => 'copy.svg',
-				'button_callback'     => array('tl_belegungsplan_category', 'copyCategory')
+				'icon'                => 'edit.svg'
 			),
 			'delete' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['delete'],
+				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.svg',
-				'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['tl_belegungsplan_category']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"',
-				'button_callback'     => array('tl_belegungsplan_category', 'deleteCategory')
-			),
-			'show' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['show'],
-				'href'                => 'act=show',
-				'icon'                => 'show.svg'
+				'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
 			)
 		)
 	),
@@ -93,7 +81,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{title_legend},title'
+		'default'                     => '{title_legend},gast,author;{date_legend},startDate,endDate'
 	),
 	// Subpalettes
 	'subpalettes' => array(
@@ -105,27 +93,75 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL auto_increment"
 		),
+		'pid' => array
+		(
+			'foreignKey'              => 'tl_belegungsplan_objekte.name',
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
+		),
 		'tstamp' => array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-		'title' => array
+		'gast' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['title'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['gast'],
 			'exclude'                 => true,
 			'search'                  => true,
+			'filter'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'author' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['author'],
+			'default'                 => BackendUser::getInstance()->id,
+			'exclude'                 => true,
+			'search'                  => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'inputType'               => 'select',
+			'foreignKey'              => 'tl_user.name',
+			'eval'                    => array('doNotCopy'=>true, 'chosen'=>true, 'mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
+		),
+		'startDate' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['startDate'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 8,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "int(10) unsigned NULL"
+		),
+		'endDate' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDate'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 8,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'                     => "int(10) unsigned NULL"
 		)
 	)
 );
+
  /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Jan Karai <https://www.sachsen-it.de>
  */
-class tl_belegungsplan_category extends Backend {
+class tl_belegungsplan_calender extends Backend
+{
 	/**
 	* Import the back end user object
 	*/
@@ -133,52 +169,16 @@ class tl_belegungsplan_category extends Backend {
 		parent::__construct();
 		$this->import('BackendUser', 'User');
 	}
+	
 	/**
-	* Return the edit header button
+	* Add the type of input field
 	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
+	* @param array $arrRow
 	*
 	* @return string
 	*/
-	public function editHeader($row, $href, $label, $title, $icon, $attributes)
+	public function listCalender($arrRow)
 	{
-		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
-	}
-	/**
-	* Return the copy category button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
-	public function copyCategory($row, $href, $label, $title, $icon, $attributes)
-	{
-		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
-	}
-	/**
-	* Return the delete category button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
-	public function deleteCategory($row, $href, $label, $title, $icon, $attributes)
-	{
-		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
+		return '<div class="tl_content_left">' . $arrRow['gast'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) . ']</span></div>';
 	}
 }
