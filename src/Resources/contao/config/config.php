@@ -40,14 +40,3 @@ if (TL_MODE == 'FE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/belegungsplan.css|static';
 }
-/**
-* Add Models $GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'Mailwurm\Belegung\BelegungsplanCategoryModel';
-*/
-$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = 'BelegungsplanCategoryModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_objekte'] = 'BelegungsplanObjekteModel';
-$GLOBALS['TL_MODELS']['tl_belegungsplan_calender'] = 'BelegungsplanCalenderModel';
-/**
-* Add permissions
-*/
-$GLOBALS['TL_PERMISSIONS'][] = 'belegungsplans';
-$GLOBALS['TL_PERMISSIONS'][] = 'belegungsplanp';
