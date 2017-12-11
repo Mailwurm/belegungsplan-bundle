@@ -6,7 +6,7 @@
 		<p><?= $info ?></p>
 	<?php endforeach; ?>
 <?php else: ?>
-  <?php if($this->number_year > 0): ?>
+  <?php if($this->number_year > 1): ?>
     <select onchange="window.location.href=this.value;">
       <?php foreach ($this->selectable_year as $years => $singleyear): ?>
         <option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
