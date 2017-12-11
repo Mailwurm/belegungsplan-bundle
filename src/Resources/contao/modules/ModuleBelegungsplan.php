@@ -86,15 +86,13 @@ class ModuleBelegungsplan extends \Module
 		$j = 0;
 		// wenn der letzte anzuzeigende Monat verstrichen ist automatisch das nächste Jahr anzeigen
 		$intMax = (int)max($this->belegungsplan_month);
-		$blnNextYear = $intMax < (int)date('n') ? true : false;
 		
 		$intYear = \Input::get('belegyear');
 		// interner Zaehler
 		$i = 0;
 		
 		// Aktuelle Periode bei Erstaufruf der Seite
-		if (!isset($_GET['belegyear']))
-		{	
+		if (!isset($_GET['belegyear'])) {	
 			$intYear = $intMax < (int)date('n') ? (int)date('Y') + 1 : (int)date('Y');
 			$blnClearInput = true;
 		} else {
@@ -227,7 +225,6 @@ class ModuleBelegungsplan extends \Module
 				while($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
-				$blnNextYear ? array_shift($arrJahre) : '';
 			}
 		}
 		
