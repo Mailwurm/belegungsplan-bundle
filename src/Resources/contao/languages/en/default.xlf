@@ -52,6 +52,48 @@
 			<trans-unit id="mailwurm_belegung.month.12">
 				<source>December</source>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.1">
+				<source>Monday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.2">
+				<source>Tuesday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.3">
+				<source>Wednesday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.4">
+				<source>Thursday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.5">
+				<source>Friday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.6">
+				<source>Saturday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.day.7">
+				<source>Sunday</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.1">
+				<source>Mon</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.2">
+				<source>Tue</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.3">
+				<source>Wed</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.4">
+				<source>Thu</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.5">
+				<source>Fri</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.6">
+				<source>Sat</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.short_cut_day.7">
+				<source>Sun</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
