@@ -83,19 +83,23 @@ class ModuleBelegungsplan extends \Module
 		$this->belegungsplan_month = $arrBelegungsplanMonth;
 		
 		$blnClearInput = false;
+		$j = 0;
+		// wenn der letzte anzuzeigende Monat verstrichen ist automatisch das nächste Jahr anzeigen
+		$intMax = (int)max($this->belegungsplan_month);
+		$blnNextYear = $intMax < (int)date('n') ? true : false;
 		
 		$intYear = \Input::get('belegyear');
 		// interner Zaehler
 		$i = 0;
 		
 		// Aktuelle Periode bei Erstaufruf der Seite
-		if (!isset($_GET['belegyear']) && !isset($_GET['belegmonth']))
-		{
-			$intYear = date('Y');
+		if (!isset($_GET['belegyear']))
+		{	
+			$intYear = $intMax < (int)date('n') ? (int)date('Y') + 1 : (int)date('Y');
 			$blnClearInput = true;
 		} else {
 			if(!empty($intYear)) {
-				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= date('Y') ? $intYear = intval($intYear) : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
+				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= (int)date('Y') ? $intYear = (int)$intYear : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
 			}
 		}
 		
@@ -103,8 +107,8 @@ class ModuleBelegungsplan extends \Module
 		if(empty($arrInfo)) {
 			// Anfang und Ende des Anzeigezeitraumes je nach GET
 			if(!empty($intYear)) {
-				$intStartAuswahl = mktime(0, 0, 0, 1, 1, intval($intYear));
-				$intEndeAuswahl = mktime(23, 59, 59, 12, 31, intval($intYear));
+				$intStartAuswahl = mktime(0, 0, 0, 1, 1, $intYear);
+				$intEndeAuswahl = mktime(23, 59, 59, 12, 31, $intYear);
 			}
 			
 			// Hole alle Calenderdaten zur Auswahl
@@ -211,8 +215,11 @@ class ModuleBelegungsplan extends \Module
 			
 			// Hole alle Jahre fuer die bereits Buchungen vorhanden sind ab dem aktuellen Jahr
 			$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(startDate)) as Start 
-								FROM tl_belegungsplan_calender 
+								FROM tl_belegungsplan_calender tbc,
+									tl_belegungsplan_objekte tbo
 								WHERE YEAR(FROM_UNIXTIME(startDate)) >= ? 
+								AND tbc.pid = tbo.id
+								AND tbo.published = 1
 								GROUP BY YEAR(FROM_UNIXTIME(startDate))
 								ORDER BY YEAR(FROM_UNIXTIME(startDate)) ASC")
 								->execute(date("Y"));
@@ -220,6 +227,7 @@ class ModuleBelegungsplan extends \Module
 				while($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
+				$blnNextYear ? array_shift($arrJahre) : '';
 			}
 		}
 		
@@ -240,6 +248,8 @@ class ModuleBelegungsplan extends \Module
 		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl);
 		#$this->Template->Start = $intStartAuswahl;
 		#$this->Template->Ende = $intEndeAuswahl;
+		#$this->Template->Monate = $arrBelegungsplanMonth;
+		#$this->Template->MaxMonat = $intMax;
 		
 		if(!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
