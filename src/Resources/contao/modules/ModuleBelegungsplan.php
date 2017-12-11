@@ -17,6 +17,7 @@ use Patchwork\Utf8;
 *
 * @property array $belegungsplan_categories
 * @property array $belegungsplan_month
+* @property int $intStartAuswahl
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
