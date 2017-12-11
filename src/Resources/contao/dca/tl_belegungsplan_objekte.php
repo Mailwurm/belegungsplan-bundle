@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'mode'                    => 4,
 			'fields'                  => array('sorting'),
 			'panelLayout'             => 'filter;sort,search,limit',
-			'headerFields'            => array('title', 'tstamp'),
+			'headerFields'            => array('title'),
 			'child_record_callback'   => array('tl_belegungsplan_objekte', 'listQuestions')
 		),
 		'global_operations' => array
