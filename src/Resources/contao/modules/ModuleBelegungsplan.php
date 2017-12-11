@@ -16,6 +16,7 @@ use Patchwork\Utf8;
 * Class ModuleBelegungsplan
 *
 * @property array $belegungsplan_categories
+* @property array $belegungsplan_month
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
@@ -83,7 +84,7 @@ class ModuleBelegungsplan extends \Module
 		$this->belegungsplan_month = $arrBelegungsplanMonth;
 		
 		$blnClearInput = false;
-		$j = 0;
+		
 		// wenn der letzte anzuzeigende Monat verstrichen ist automatisch das nächste Jahr anzeigen
 		$intMax = (int)max($this->belegungsplan_month);
 		
