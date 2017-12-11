@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 		(
 			'mode'                    => 4,
 			'fields'                  => array('startDate DESC'),
-			'headerFields'            => array('name', 'tstamp'),
+			'headerFields'            => array('name'),
 			'panelLayout'             => 'filter;sort,search,limit',
 			'child_record_callback'   => array('tl_belegungsplan_calender', 'listCalender')
 		),
