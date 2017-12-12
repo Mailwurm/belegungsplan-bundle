@@ -1,6 +1,11 @@
 <?php $this->extend('block_unsearchable'); ?>
 
 <?php $this->block('content'); ?>
+<?php 
+echo "<pre>"; 
+echo $this->showTemplateVars(); 
+echo "</pre>"; 
+?>
 <?php if($this->info): ?>
 	<?php foreach ($this->info as $info): ?>
 		<p><?= $info ?></p>
@@ -18,22 +23,22 @@
     <thead>
       <tr>
         <th><?= $month['Name'] ?> <?= $this->display_year ?></th>
-        <?php for($i = 1; $i <= $month['Tage']; $i++): ?>
-          <th<?php if($month['Sonntage'][$i]) echo ' class="sunday"'; ?>><?= $i ?></th>
-        <?php endfor; ?>
+        <?php foreach($month['Days'] as $dayMonth => $day): ?>
+          <th<?php if($day['DayWeekNum'] === 7) echo ' class="sunday"'; ?>><?= $dayMonth . $day['DayCut'] ?></th>
+        <?php endforeach; ?>
       </tr>
     </thead>
     <tbody>
     <?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
       <tr class="belegCategory">
-        <th colspan="<?= $month['Tage']+1 ?>"><?= $aCategory['CategoryTitle'] ?></th>
+        <th colspan="<?= $month['TageMonat']+1 ?>"><?= $aCategory['CategoryTitle'] ?></th>
       </tr>
       <?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
       <tr class="belegObjekt">
         <td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> <span class="ObjektInfoText"><?= $valueObjekt['ObjektInfoText'] ?></span><?php endif; ?></td>
-        <?php for($i = 1; $i <= $month['Tage']; $i++): ?>
+        <?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
           <?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
-          <td>1</td>
+          <td<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0/1'): ?> class="anreise"<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1/0'): ?> class="abreise"<?php endif; ?>>1</td>
           <?php else: ?>
           <td></td>
           <?php endif; ?>
