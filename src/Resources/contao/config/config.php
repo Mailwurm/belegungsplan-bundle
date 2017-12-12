@@ -45,12 +45,12 @@ if (TL_MODE == 'FE')
  */
 $GLOBALS['BE_FFL'] = array
 (
-	'belegungsplanselect' => 'BelegungsplanCategorySelect'
+	'belegungsplancategoryselect' => 'BelegungsplanCategorySelect'
 );
 /**
  * Front end form fields
  */
 $GLOBALS['TL_FFL'] = array
 (
-	'belegungsplanselect' => 'FormBelegungsplanCategorySelect'
+	'belegungsplancategoryselect' => 'FormBelegungsplanCategorySelect'
 );
