@@ -10,8 +10,6 @@ namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
-
-
 /**
 * Class ModuleBelegungsplan
 *
@@ -23,13 +21,7 @@ use Patchwork\Utf8;
 * @author Jan Karai <https://www.sachsen-it.de>
 */
 class ModuleBelegungsplan extends \Module
-{
-	/**
-	* Current date object
-	* @var Date
-	*/
-	protected $Date;
-	
+{	
 	/**
 	* Template
 	* @var string
@@ -80,6 +72,8 @@ class ModuleBelegungsplan extends \Module
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
 		$arrObjekteCalender = array();
+		$intStartAuswahl = 0;
+		$intEndeAuswahl = 0;
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
 		sort($arrBelegungsplanMonth, SORT_NUMERIC);
@@ -155,8 +149,9 @@ class ModuleBelegungsplan extends \Module
 					$arrHelper['EndeMonat'] = (int)$objObjekteCalender->EndeMonat;
 					$arrHelper['EndeJahr'] = (int)$objObjekteCalender->EndeJahr;
 					$intEndeMonat = (int)date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
-					for($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr']; ; ) {
-						$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = 1;
+					for($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ; ) {
+						// erster Tag der Buchung und weitere
+						empty($z) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0/1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1/1';
 						if($d === $e) {
 							if($arrHelper['StartMonat'] === $arrHelper['EndeMonat']) {
 								break;
@@ -166,9 +161,12 @@ class ModuleBelegungsplan extends \Module
 							$e = (int)date('t', mktime(0, 0, 0, $m, $d + 1, $y));
 						}
 						if($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
+							// letzter Tag der Buchung
+							$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1/0';
 							break;
 						}
 						$d++;
+						$z++;
 					}
 					unset($arrHelper);
 				}
@@ -297,12 +295,13 @@ class ModuleBelegungsplan extends \Module
 		$intJahr = date('Y', $intStartAuswahl);
 		foreach($arrMonth as $key => $value) {
 			$arrHelper[$value]['Name'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['month'][$value];
-			$arrHelper[$value]['Tage'] = (int)date('t', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
+			$arrHelper[$value]['TageMonat'] = (int)date('t', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
 			$intFirstDayInMonth = (int)date('N', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
-			$i = 7 - $intFirstDayInMonth + 1;
-			while($i <= $arrHelper[$value]['Tage']) {
-				$arrHelper[$value]['Sonntage'][$i] = 1;
-				$i = $i + 7;
+			for($f = 1, $i = $intFirstDayInMonth; $f <= $arrHelper[$value]['TageMonat']; $f++) {
+				$arrHelper[$value]['Days'][$f]['Day'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['day'][$i];
+				$arrHelper[$value]['Days'][$f]['DayCut'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['short_cut_day'][$i];
+				$arrHelper[$value]['Days'][$f]['DayWeekNum'] = $i;
+				$i === 7 ? $i = 1 : $i++;
 			}
 		}
 		unset($intJahr);
