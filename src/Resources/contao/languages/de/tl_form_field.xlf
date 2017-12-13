@@ -9,6 +9,14 @@
         <source>A one-line or multi-line drop-down menu for selecting occupancy plan categories.</source>
         <target>Ein ein- oder mehrzeiliges Drop-Down-Menü zur Auswahl von Belegungsplan-Kategorien.</target>
       </trans-unit>
+      <trans-unit id="FFL.belegungsplancategorycheck.0">
+        <source>Which occupancy plan categories should be available for selection?</source>
+        <target>Welche Belegungsplan-Kategorien sollen zur Auswahl stehen?</target>
+      </trans-unit>
+      <trans-unit id="FFL.belegungsplancategorycheck.1">
+        <source>Select the available occupancy plan categories here.</source>
+        <target>Wählen sie hier die zur Auswahl stehenden Belegungsplan-Kategorien.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
