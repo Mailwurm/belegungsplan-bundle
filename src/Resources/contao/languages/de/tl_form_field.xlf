@@ -5,7 +5,7 @@
         <source>Occupancy Category-select menu</source>
         <target>Belegungsplan-Kategorie-Select-Menü</target>
       </trans-unit>
-      <trans-unit id="FFL.select.1">
+      <trans-unit id="FFL.belegungsplancategoryselect.1">
         <source>A one-line or multi-line drop-down menu for selecting occupancy plan categories.</source>
         <target>Ein ein- oder mehrzeiliges Drop-Down-Menü zur Auswahl von Belegungsplan-Kategorien.</target>
       </trans-unit>
