@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/en/tl_form_field.php" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="FFL.belegungsplancategoryselect.0">
+        <source>Occupancy Category-select menu</source>
+        <target>Belegungsplan-Kategorie-Select-Menü</target>
+      </trans-unit>
+      <trans-unit id="FFL.select.1">
+        <source>A one-line or multi-line drop-down menu for selecting occupancy plan categories.</source>
+        <target>Ein ein- oder mehrzeiliges Drop-Down-Menü zur Auswahl von Belegungsplan-Kategorien.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
