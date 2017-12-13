@@ -10,7 +10,7 @@
 /**
 * Add palettes to tl_form_field
 */
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['belegungsplancategoryselect'] = '{type_legend},type,name,label;{options_legend},belegungsplancategorycheck;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl';
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['belegungsplancategoryselect'] = '{type_legend},type,name,label;{fconfig_legend},mandatory,multiple;{options_legend},belegungsplancategorycheck;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl';
 
 /**
 * Add fields to tl_form_field
