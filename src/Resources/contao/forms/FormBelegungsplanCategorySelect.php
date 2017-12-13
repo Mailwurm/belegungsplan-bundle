@@ -21,26 +21,26 @@ namespace Mailwurm\Belegung;
  */
 class FormBelegungsplanCategorySelect extends \Widget
 {
-  /**
-  * Template
-  *
-  * @var string
-  */
-  protected $strTemplate = 'form_belegungsplancategoryselect';
+	/**
+	* Template
+	*
+	* @var string
+	*/
+	protected $strTemplate = 'form_belegungsplancategoryselect';
   
-  /**
-  * The CSS class prefix
-  *
-  * @var string
-  */
-  protected $strPrefix = 'widget widget-select';
+	/**
+	* The CSS class prefix
+	*
+	* @var string
+	*/
+  	protected $strPrefix = 'widget widget-select';
 
-  /**
-  * Add specific attributes
-  *
-  * @param string $strKey   The attribute name
-  * @param mixed  $varValue The attribute value
-  */
+	/**
+	* Add specific attributes
+	*
+	* @param string $strKey   The attribute name
+	* @param mixed  $varValue The attribute value
+	*/
 	public function __set($strKey, $varValue)
 	{
 		switch ($strKey)
@@ -55,6 +55,12 @@ class FormBelegungsplanCategorySelect extends \Widget
 					unset($this->arrAttributes['required']);
 				}
 				parent::__set($strKey, $varValue);
+				break;
+			case 'mSize':
+				if ($this->multiple)
+				{
+					$this->arrAttributes['size'] = $varValue;
+				}
 				break;
 			case 'multiple':
 				if ($varValue != '')
@@ -76,9 +82,9 @@ class FormBelegungsplanCategorySelect extends \Widget
 		}
 	}
   
-  /**
-  * Check options if the field is mandatory
-  */
+	/**
+	* Check options if the field is mandatory
+	*/
 	public function validate()
 	{
 		$mandatory = $this->mandatory;
@@ -117,13 +123,13 @@ class FormBelegungsplanCategorySelect extends \Widget
 		}
 	}
   
-  /**
-  * Return a parameter
-  *
-  * @param string $strKey The parameter name
-  *
-  * @return mixed The parameter value
-  */
+	/**
+	* Return a parameter
+	*
+	* @param string $strKey The parameter name
+	*
+	* @return mixed The parameter value
+	*/
 	public function __get($strKey)
 	{
 		if ($strKey == 'options')
@@ -133,13 +139,13 @@ class FormBelegungsplanCategorySelect extends \Widget
 		return parent::__get($strKey);
 	}
   
-  /**
-  * Parse the template file and return it as string
-  *
-  * @param array $arrAttributes An optional attributes array
-  *
-  * @return string The template markup
-  */
+	/**
+	* Parse the template file and return it as string
+	*
+	* @param array $arrAttributes An optional attributes array
+	*
+	* @return string The template markup
+	*/
 	public function parse($arrAttributes=null)
 	{
 		$strClass = 'select';
@@ -167,11 +173,11 @@ class FormBelegungsplanCategorySelect extends \Widget
 		return parent::parse($arrAttributes);
 	}
   
-  /**
-  * Generate the options
-  *
-  * @return array The options array
-  */
+	/**
+	* Generate the options
+	*
+	* @return array The options array
+	*/
 	protected function getOptions()
 	{
 		$arrOptions = array();
@@ -198,11 +204,11 @@ class FormBelegungsplanCategorySelect extends \Widget
 		return $arrOptions;
 	}
   
-  /**
-  * Generate the widget and return it as string
-  *
-  * @return string The widget markup
-  */
+	/**
+	* Generate the widget and return it as string
+	*
+	* @return string The widget markup
+	*/
 	public function generate()
 	{
 		$strOptions = '';
