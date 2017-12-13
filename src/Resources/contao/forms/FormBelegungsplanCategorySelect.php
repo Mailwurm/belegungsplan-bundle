@@ -19,7 +19,7 @@ namespace Mailwurm\Belegung;
  *
  * @author Jan Karai <https://www.sachsen-it.de>
  */
-class FormBelegungsplanCategorySelect extends \Widget
+class FormBelegungsplanCategorySelect extends \FormSelectMenu
 {
 	/**
 	* Template
