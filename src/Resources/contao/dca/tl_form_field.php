@@ -15,11 +15,22 @@ $GLOBALS['TL_DCA']['tl_form_field']['palettes']['belegungsplancategoryselect'] =
 /**
 * Add fields to tl_form_field
 */
-$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
-	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_categories'],
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['belegungsplancategoryselect'] = array(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_form_field']['belegungsplancategoryselect'],
 	'exclude'                 => true,
 	'inputType'               => 'checkboxWizard',
 	'foreignKey'              => 'tl_belegungsplan_category.title',
 	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
+
+$bundles = System::getContainer()->getParameter('kernel.bundles');
+
+/**
+* Provide miscellaneous methods that are used by the data configuration array.
+*
+* @author Jan Karai <https://www.sachsen-it.de>
+*/
+class tl_form_field_belegungsplancategoryselect extends Backend {
+
+}
