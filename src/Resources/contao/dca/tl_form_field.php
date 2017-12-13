@@ -2,7 +2,7 @@
 /**
 * Contao Open Source CMS
 *
-* Copyright (c) Jan Karai
+* Copyright (c) Jan Karai <https://www.sachsen-it.de>
 *
 * @license LGPL-3.0+
 */
@@ -23,14 +23,3 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['belegungsplancategorycheck'] = ar
 	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
-
-$bundles = System::getContainer()->getParameter('kernel.bundles');
-
-/**
-* Provide miscellaneous methods that are used by the data configuration array.
-*
-* @author Jan Karai <https://www.sachsen-it.de>
-*/
-class tl_form_field_belegungsplancategoryselect extends Backend {
-
-}
