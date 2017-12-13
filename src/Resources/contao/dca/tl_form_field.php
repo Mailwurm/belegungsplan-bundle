@@ -23,3 +23,4 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['belegungsplancategorycheck'] = ar
 	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
+$bundles = System::getContainer()->getParameter('kernel.bundles');
