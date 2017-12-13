@@ -45,5 +45,5 @@ if (TL_MODE == 'FE')
  */
 $GLOBALS['TL_FFL'] = array
 (
-	'belegungsplancategoryselect' => 'FormBelegungsplanCategorySelect'
+	'belegungsplancategoryselect' => 'Mailwurm\Belegung\FormBelegungsplanCategorySelect'
 );
