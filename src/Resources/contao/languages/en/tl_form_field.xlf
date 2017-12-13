@@ -4,7 +4,7 @@
       <trans-unit id="FFL.belegungsplancategoryselect.0">
         <source>Occupancy Category-select menu</source>
       </trans-unit>
-      <trans-unit id="FFL.select.1">
+      <trans-unit id="FFL.belegungsplancategoryselect.1">
         <source>A one-line or multi-line drop-down menu for selecting occupancy plan categories.</source>
       </trans-unit>
     </body>
