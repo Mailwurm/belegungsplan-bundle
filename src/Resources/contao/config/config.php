@@ -41,13 +41,6 @@ if (TL_MODE == 'FE')
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/belegungsplan.css|static';
 }
 /**
- * Back end form fields
- */
-$GLOBALS['BE_FFL'] = array
-(
-	'belegungsplancategoryselect' => 'BelegungsplanCategorySelect'
-);
-/**
  * Front end form fields
  */
 $GLOBALS['TL_FFL'] = array
