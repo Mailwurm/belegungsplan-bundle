@@ -35,7 +35,6 @@ namespace Mailwurm\Feiertage;
 * @method static Model\Collection|BelegungsplanFeiertageModel[]|BelegungsplanFeiertageModel|null findBy($col, $val, array $opt=array())
 * @method static Model\Collection|BelegungsplanFeiertageModel[]|BelegungsplanFeiertageModel|null findAll(array $opt=array())
 *
-* @method static integer countByPid($val, $opt=array())
 * @method static integer countByTstamp($val, array $opt=array())
 * @method static integer countByTitle($val, array $opt=array())
 * @method static integer countByStartDate($val, array $opt=array())
