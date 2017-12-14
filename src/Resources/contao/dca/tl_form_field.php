@@ -10,12 +10,12 @@
 /**
 * Add palettes to tl_form_field
 */
-$GLOBALS['TL_DCA']['tl_form_field']['palettes']['belegungsplancategoryselect'] = '{type_legend},type,name,label;{fconfig_legend},mandatory,multiple;{options_legend},belegungsplancategorycheck;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{submit_legend},addSubmit';
+$GLOBALS['TL_DCA']['tl_form_field']['palettes']['belegungsplancategoryselect'] = '{type_legend},type,name,label;{fconfig_legend},mandatory,multiple;{options_legend},options;{expert_legend:hide},class,accesskey,tabindex;{template_legend:hide},customTpl;{submit_legend},addSubmit';
 
 /**
 * Add fields to tl_form_field
 */
-$GLOBALS['TL_DCA']['tl_form_field']['fields']['belegungsplancategorycheck'] = array(
+$GLOBALS['TL_DCA']['tl_form_field']['fields']['options'] = array(
 	'label'                   => &$GLOBALS['TL_LANG']['tl_form_field']['belegungsplancategorycheck'],
 	'exclude'                 => true,
 	'inputType'               => 'checkboxWizard',
