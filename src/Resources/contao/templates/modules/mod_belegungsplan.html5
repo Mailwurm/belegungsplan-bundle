@@ -38,7 +38,7 @@ echo "</pre>";
         <td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> <span class="ObjektInfoText"><?= $valueObjekt['ObjektInfoText'] ?></span><?php endif; ?></td>
         <?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
           <?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
-          <td<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0/1'): ?> class="anreise"<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1/0'): ?> class="abreise"<?php endif; ?>>1</td>
+          <td<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?> class="anreise"<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?> class="abreise"<?php endif; ?>>1</td>
           <?php else: ?>
           <td></td>
           <?php endif; ?>
