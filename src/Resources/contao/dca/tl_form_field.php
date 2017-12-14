@@ -20,7 +20,31 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['belegungsplancategorycheck'] = ar
 	'exclude'                 => true,
 	'inputType'               => 'checkboxWizard',
 	'foreignKey'              => 'tl_belegungsplan_category.title',
+	'save_callback'           => array(array('tl_form_field_belegungsplancategorycheck','setBelegungsplancategorycheck'))
 	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
 $bundles = System::getContainer()->getParameter('kernel.bundles');
+
+/**
+* Provide miscellaneous methods that are used by the data configuration array.
+*
+* @author Jan Karai <https://www.sachsen-it.de>
+*/
+class tl_form_field_belegungsplancategorycheck extends Backend {
+	
+	/**
+	* save_callback: Wird beim Abschicken eines Feldes ausgeführt.
+	* @param $varValue
+	* @param $dc
+	* @return var
+	*/
+	public function setBelegungsplancategorycheck($varValue, DataContainer $dc) {
+	        
+			$sHelper = implode(',', $varValue);
+			
+			
+			die($sHelper);
+	        return $varValue;
+	} 
+}
