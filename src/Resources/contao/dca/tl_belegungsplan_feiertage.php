@@ -96,7 +96,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 		),
 		'title' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['title'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'filter'                  => true,
@@ -106,7 +106,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 		),
 		'author' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['author'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['author'],
 			'default'                 => BackendUser::getInstance()->id,
 			'exclude'                 => true,
 			'search'                  => true,
@@ -121,7 +121,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 		),
 		'startDate' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['startDate'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['startDate'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'filter'                  => true,
@@ -133,14 +133,14 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 		),
 		'endDate' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDate'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['endDate'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'filter'                  => true,
 			'sorting'                 => true,
 			'flag'                    => 8,
 			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
 			'sql'                     => "int(10) unsigned NULL"
 		)
 	)
