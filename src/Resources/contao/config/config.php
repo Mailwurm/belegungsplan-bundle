@@ -14,6 +14,10 @@ array_insert($GLOBALS['BE_MOD']['content'], 99, array
 	'belegung' => array
 	(
 		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
+	),
+	'feiertage' => array
+	(
+		'tables'      => array('tl_belegungsplan_feiertage')
 	)
 ));
 /**
@@ -40,7 +44,3 @@ if (TL_MODE == 'FE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/belegungsplan.css|static';
 }
-/**
- * Front end form fields
- */
-$GLOBALS['TL_FFL']['belegungsplancategoryselect'] = 'Mailwurm\Belegung\FormBelegungsplanCategorySelect';
