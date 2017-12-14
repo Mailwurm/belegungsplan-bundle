@@ -18,7 +18,6 @@ namespace Mailwurm\Feiertage;
 * @property integer $author
 *
 * @method static BelegungsplanFeiertageModel|null findById($id, array $opt=array())
-* @method static BelegungsplanFeiertageModel|null findByPk($id, array $opt=array())
 * @method static BelegungsplanFeiertageModel|null findOneBy($col, $val, array $opt=array())
 * @method static BelegungsplanFeiertageModel|null findOneByTstamp($val, array $opt=array())
 * @method static BelegungsplanFeiertageModel|null findOneByTitle($val, array $opt=array())
