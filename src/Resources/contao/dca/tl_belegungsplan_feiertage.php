@@ -38,9 +38,9 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 		(
 			'mode'                    => 4,
 			'fields'                  => array('startDate DESC'),
-			'headerFields'            => array('name'),
+			'headerFields'            => array('title'),
 			'panelLayout'             => 'filter;sort,search,limit',
-			'child_record_callback'   => array('tl_belegungsplan_feiertage', 'listCalender')
+			'child_record_callback'   => array('tl_belegungsplan_feiertage', 'listFeiertage')
 		),
 		'label' => array
 		(
@@ -167,7 +167,7 @@ class tl_belegungsplan_feiertage extends Backend
 	*
 	* @return string
 	*/
-	public function listCalender($arrRow)
+	public function listFeiertage($arrRow)
 	{
 		return '<div class="tl_content_left">' . $arrRow['title'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . ($arrRow['endDate'] ? $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) : '') . ']</span></div>';
 	}
