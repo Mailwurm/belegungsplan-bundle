@@ -1,0 +1,60 @@
+<?xml version="1.0" ?><xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_feiertage.php" source-language="en">
+		<body>
+			<trans-unit id="tl_belegungsplan_feiertage.delete.0">
+				<source>Delete holiday</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.delete.1">
+				<source>Delete holiday ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.new.0">
+				<source>New holiday</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.new.1">
+				<source>Add a new holiday</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.edit.0">
+				<source>Edit holiday ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.edit.1">
+				<source>Holiday ID %s edit</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.title.0">
+				<source>Name of the holiday</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.title.1">
+				<source>Enter the name of the holiday here.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.author.0">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.author.1">
+				<source>Here you can change the author of the entry.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.startDate.0">
+				<source>Start holiday</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.startDate.1">
+				<source>Please enter the start date according to the global date format dd.mm.yyyy. For a one-day holiday, please leave the end date blank.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.endDate.0">
+				<source>End of holidays</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.endDate.1">
+				<source>Please enter the end date according to the global date format dd.mm.yyyy</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.tstamp.0">
+				<source>Revision date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.tstamp.1">
+				<source>Date and time of the latest revision</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.title_legend">
+				<source>Name and author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.date_legend">
+				<source>Departure dates</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
