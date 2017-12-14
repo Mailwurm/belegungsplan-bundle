@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_form_field']['fields']['belegungsplancategorycheck'] = ar
 	'exclude'                 => true,
 	'inputType'               => 'checkboxWizard',
 	'foreignKey'              => 'tl_belegungsplan_category.title',
-	'save_callback'           => array(array('tl_form_field_belegungsplancategorycheck','setBelegungsplancategorycheck'))
+	'save_callback'           => array(array('tl_form_field_belegungsplancategorycheck','setBelegungsplancategorycheck')),
 	'eval'                    => array('multiple'=>true, 'mandatory'=>true),
 	'sql'                     => "blob NULL"
 );
