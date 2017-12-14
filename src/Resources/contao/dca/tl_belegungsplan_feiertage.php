@@ -21,6 +21,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
+		'ctable'                      => array('tl_content'),
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
 		'sql' => array
@@ -39,7 +40,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 			'mode'                    => 4,
 			'fields'                  => array('startDate DESC'),
 			'headerFields'            => array('title'),
-			'panelLayout'             => 'filter;sort,search,limit',
+			'panelLayout'             => 'search,limit',
 			'child_record_callback'   => array('tl_belegungsplan_feiertage', 'listFeiertage')
 		),
 		'label' => array
