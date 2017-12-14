@@ -21,7 +21,6 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
-		'ctable'                      => array('tl_content'),
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
 		'sql' => array
@@ -37,41 +36,40 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 	(
 		'sorting' => array
 		(
-			'mode'                    => 4,
-			'fields'                  => array('startDate DESC'),
-			'headerFields'            => array('title'),
-			'panelLayout'             => 'search,limit',
-			'child_record_callback'   => array('tl_belegungsplan_feiertage', 'listFeiertage')
+			'mode'		=> 1,
+			'fields'	=> array('startDate DESC'),
+			'flag'		=> 9,
+			'panelLayout'	=> 'search,limit'
 		),
 		'label' => array
 		(
-			'fields'                  => array('title', 'startDate', 'endDate'),
-			'format'                  => '%s'
+			'fields'	=> array('title', 'startDate', 'endDate'),
+			'format'	=> '%s'
 		),
 		'global_operations' => array
 		(
 			'all' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
-				'href'                => 'act=select',
-				'class'               => 'header_edit_all',
-				'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
+				'label'		=> &$GLOBALS['TL_LANG']['MSC']['all'],
+				'href'		=> 'act=select',
+				'class'		=> 'header_edit_all',
+				'attributes'	=> 'onclick="Backend.getScrollOffset()" accesskey="e"'
 			)
 		),
 		'operations' => array
 		(
 			'edit' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['edit'],
-				'href'                => 'act=edit',
-				'icon'                => 'edit.svg'
+				'label'	=> &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['edit'],
+				'href'	=> 'act=edit',
+				'icon'	=> 'edit.svg'
 			),
 			'delete' => array
 			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['delete'],
-				'href'                => 'act=delete',
-				'icon'                => 'delete.svg',
-				'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
+				'label'		=> &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['delete'],
+				'href'		=> 'act=delete',
+				'icon'		=> 'delete.svg',
+				'attributes'	=> 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
 			)
 		)
 	),
