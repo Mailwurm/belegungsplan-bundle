@@ -9,6 +9,18 @@
 				<source>Create and manage categories, objects and occupancy times</source>
 				<target>Kategorien, Objekte und Belegungszeiten anlegen und verwalten</target>
 			</trans-unit>
+			<trans-unit id="MOD.feiertage.0">
+				<source>Holidays</source>
+				<target>Feiertage</target>
+			</trans-unit>
+			<trans-unit id="MOD.feiertage.1">
+				<source>Create and manage holidays</source>
+				<target>Feiertage anlegen und verwalten</target>
+			</trans-unit>
+			<trans-unit id="MOD.tl_belegungsplan_feiertage">
+				<source>Holidays</source>
+				<target>Feiertage</target>
+			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_category">
 				<source>Occupancy categories</source>
 				<target>Belegungsplan-Kategorien</target>
