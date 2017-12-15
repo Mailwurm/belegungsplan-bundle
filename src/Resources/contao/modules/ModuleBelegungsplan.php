@@ -247,7 +247,7 @@ class ModuleBelegungsplan extends \Module
 		$this->Template = new \FrontendTemplate($this->strTemplate);
 		// Info-Array zur Ausgabe von Fehlern, Warnings und Defaults
 		$this->Template->info = $arrInfo;
-		// aktuell anzuzeigendes Jahr, wenn \Input::get('year');
+		// aktuell anzuzeigendes Jahr, wenn \Input::get('belegyear');
 		$this->Template->display_year = $intYear;
 		// Anzahl der anzuzeigenden Jahre fuer welche Reservierungen vorliegen
 		$this->Template->number_year = $objJahre->numRows;
@@ -316,12 +316,20 @@ class ModuleBelegungsplan extends \Module
 		foreach($arrMonth as $key => $value) {
 			$arrHelper[$value]['Name'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['month'][$value];
 			$arrHelper[$value]['TageMonat'] = (int)date('t', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
+			$arrHelper[$value]['ColSpan'] = $arrHelper[$value]['TageMonat'] + 1;
 			$intFirstDayInMonth = (int)date('N', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
 			for($f = 1, $i = $intFirstDayInMonth; $f <= $arrHelper[$value]['TageMonat']; $f++) {
+				$strClass = '';
 				$arrHelper[$value]['Days'][$f]['Day'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayCut'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['short_cut_day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayWeekNum'] = $i;
-				!empty($arrFeiertage[$intJahr][$value][$f]) ? $arrHelper[$value]['Days'][$f]['Holiday'] = $arrFeiertage[$intJahr][$value][$f] : '';
+				$i === 6 ? $strClass .= ' saturday' : '';
+				$i === 7 ? $strClass .= ' sunday' : '';
+				if(!empty($arrFeiertage[$intJahr][$value][$f])) {
+					$strClass .= ' holiday';
+					$arrHelper[$value]['Days'][$f]['Holiday'] = $arrFeiertage[$intJahr][$value][$f];
+				}
+				$arrHelper[$value]['Days'][$f]['Class'] = trim($strClass);
 				$i === 7 ? $i = 1 : $i++;
 			}
 		}
