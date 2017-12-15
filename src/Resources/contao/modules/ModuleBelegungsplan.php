@@ -326,6 +326,7 @@ class ModuleBelegungsplan extends \Module
 			}
 		}
 		unset($intJahr);
+		unset($arrFeiertage);
 		return $arrHelper;
 	}
 }
