@@ -71,9 +71,9 @@ class ModuleBelegungsplan extends \Module
 		$arrInfo = array();
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
+		$arrFeiertage = array();
 		$arrObjekteCalender = array();
-		$intStartAuswahl = 0;
-		$intEndeAuswahl = 0;
+		
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
 		sort($arrBelegungsplanMonth, SORT_NUMERIC);
@@ -102,8 +102,8 @@ class ModuleBelegungsplan extends \Module
 		if(empty($arrInfo)) {
 			// Anfang und Ende des Anzeigezeitraumes je nach GET
 			if(!empty($intYear)) {
-				$intStartAuswahl = mktime(0, 0, 0, 1, 1, $intYear);
-				$intEndeAuswahl = mktime(23, 59, 59, 12, 31, $intYear);
+				$intStartAuswahl = (int)mktime(0, 0, 0, 1, 1, $intYear);
+				$intEndeAuswahl = (int)mktime(23, 59, 59, 12, 31, $intYear);
 			}
 			
 			// Hole alle Calenderdaten zur Auswahl
@@ -227,6 +227,21 @@ class ModuleBelegungsplan extends \Module
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
 			}
+			
+			// Hole alle Feiertage
+			$objFeiertage = $this->Database->prepare("	SELECT 	DAY(FROM_UNIXTIME(startDate)) as Tag,
+																MONTH(FROM_UNIXTIME(startDate)) as Monat,
+																YEAR(FROM_UNIXTIME(startDate)) as Jahr,
+																title
+														FROM 	tl_belegungsplan_feiertage
+														WHERE 	startDate >= ".$intStartAuswahl."
+														AND 	startDate <= ".$intEndeAuswahl)
+														->execute();
+			if($objFeiertage->numRows > 0) {
+				while($objFeiertage->next()) {
+					$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = $objFeiertage->title;
+				}
+			}
 		}
 		
 		$this->Template = new \FrontendTemplate($this->strTemplate);
@@ -243,7 +258,9 @@ class ModuleBelegungsplan extends \Module
 		// Kategorien sortieren wie im Checkboxwizard ausgewaehlt -> Elterntabelle
 		$this->Template->CategorieObjekteCalender = $this->sortNachWizard($arrCategorieObjekte, $this->belegungsplan_category);
 		// Array mit den Monatsdaten
-		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl);
+		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl, $arrFeiertage);
+		// Array mit den Feiertagen
+		#$this->Template->Feiertage = $arrFeiertage;
 		#$this->Template->Start = $intStartAuswahl;
 		#$this->Template->Ende = $intEndeAuswahl;
 		#$this->Template->Monate = $arrBelegungsplanMonth;
@@ -254,6 +271,9 @@ class ModuleBelegungsplan extends \Module
 		}
 		if(!empty($arrInfo)) {
 			unset($arrInfo);
+		}
+		if(!empty($arrFeiertage)) {
+			unset($arrFeiertage);
 		}
 		// Clear the $_GET array (see #2445)
 		if($blnClearInput) {
@@ -289,7 +309,7 @@ class ModuleBelegungsplan extends \Module
 	*
 	* @return array
 	*/
-	protected function dataMonth($arrMonth, $intStartAuswahl)
+	protected function dataMonth($arrMonth, $intStartAuswahl, $arrFeiertage)
 	{
 		$arrHelper = array();
 		$intJahr = date('Y', $intStartAuswahl);
@@ -301,6 +321,7 @@ class ModuleBelegungsplan extends \Module
 				$arrHelper[$value]['Days'][$f]['Day'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayCut'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['short_cut_day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayWeekNum'] = $i;
+				!empty($arrFeiertage[$intJahr][$value][$f]) ? $arrHelper[$value]['Days'][$f]['Holiday'] = $arrFeiertage[$intJahr][$value][$f] : '';
 				$i === 7 ? $i = 1 : $i++;
 			}
 		}
