@@ -32,16 +32,10 @@
 				<source>Here you can change the author of the entry.</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.startDate.0">
-				<source>Start holiday</source>
+				<source>Date holiday</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.startDate.1">
-				<source>Please enter the start date according to the global date format dd.mm.yyyy. For a one-day holiday, please leave the end date blank.</source>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_feiertage.endDate.0">
-				<source>End of holidays</source>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_feiertage.endDate.1">
-				<source>Please enter the end date according to the global date format dd.mm.yyyy</source>
+				<source>Please enter the start date according to the global date format dd.mm.yyyy.</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.tstamp.0">
 				<source>Revision date</source>
@@ -53,7 +47,7 @@
 				<source>Name and author</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.date_legend">
-				<source>Departure dates</source>
+				<source>Date</source>
 			</trans-unit>
 		</body>
 	</file>
