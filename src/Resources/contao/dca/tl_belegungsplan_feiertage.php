@@ -43,7 +43,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 		),
 		'label' => array
 		(
-			'fields'	=> array('title', 'startDate', 'endDate'),
+			'fields'	=> array('title', 'startDate'),
 			'format'	=> '%s'
 		),
 		'global_operations' => array
@@ -77,7 +77,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{title_legend},title,author;{date_legend},startDate,endDate'
+		'default'                     => '{title_legend},title,author;{date_legend},startDate;'
 	),
 	// Subpalettes
 	'subpalettes' => array(
@@ -129,18 +129,6 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
 			'sql'                     => "int(10) unsigned NULL"
-		),
-		'endDate' => array
-		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['endDate'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'filter'                  => true,
-			'sorting'                 => true,
-			'flag'                    => 8,
-			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'date', 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
-			'sql'                     => "int(10) unsigned NULL"
 		)
 	)
 );
@@ -152,22 +140,5 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
  */
 class tl_belegungsplan_feiertage extends Backend
 {
-	 /**
-	 * Import the back end user object
-	 */
-	public function __construct() {
-		parent::__construct();
-		$this->import('BackendUser', 'User');
-	}
-	/**
-	* Add the type of input field
-	*
-	* @param array $arrRow
-	*
-	* @return string
-	*/
-	public function listFeiertage($arrRow)
-	{
-		return '<div class="tl_content_left">' . $arrRow['title'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . ($arrRow['endDate'] ? $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) : '') . ']</span></div>';
-	}
+	 
 }
