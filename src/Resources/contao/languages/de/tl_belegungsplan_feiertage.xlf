@@ -42,20 +42,12 @@
 				<target>Hier können Sie den Autor der Eintragung ändern.</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.startDate.0">
-				<source>Start holiday</source>
-				<target>Start Feiertag</target>
+				<source>Date holiday</source>
+				<target>Datum Feiertag</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.startDate.1">
-				<source>Please enter the start date according to the global date format dd.mm.yyyy. For a one-day holiday, please leave the end date blank.</source>
-				<target>Bitte geben Sie das Startdatum gemäß des globalen Datumsformats dd.mm.yyyy ein. Bei einem eintägigen Feiertag lassen sie bitte das Enddatum leer.</target>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_feiertage.endDate.0">
-				<source>End of holidays</source>
-				<target>Ende Feiertage</target>
-			</trans-unit>
-			<trans-unit id="tl_belegungsplan_feiertage.endDate.1">
-				<source>Please enter the end date according to the global date format dd.mm.yyyy</source>
-				<target>Bitte geben Sie das Enddatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
+				<source>Please enter the start date according to the global date format dd.mm.yyyy.</source>
+				<target>Bitte geben Sie das Startdatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.tstamp.0">
 				<source>Revision date</source>
@@ -70,8 +62,8 @@
 				<target>Name und Author</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.date_legend">
-				<source>Departure dates</source>
-				<target>Date</target>
+				<source>Date</source>
+				<target>Datum</target>
 			</trans-unit>
 		</body>
 	</file>
