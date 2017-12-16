@@ -151,7 +151,12 @@ class ModuleBelegungsplan extends \Module
 					$intEndeMonat = (int)date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
 					for($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ; ) {
 						// erster Tag der Buchung und weitere
-						empty($z) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+						if(empty($z)) {
+							// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
+							isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1';
+						} else {
+							$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+						}
 						if($d === $e) {
 							if($arrHelper['StartMonat'] === $arrHelper['EndeMonat']) {
 								break;
