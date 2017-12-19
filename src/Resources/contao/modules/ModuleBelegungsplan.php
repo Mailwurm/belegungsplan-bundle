@@ -82,7 +82,7 @@ class ModuleBelegungsplan extends \Module
 		$blnClearInput = false;
 		
 		// wenn der letzte anzuzeigende Monat verstrichen ist automatisch das nächste Jahr anzeigen
-		$intMax = (int)max($this->belegungsplan_month);
+		$intMax = (int) max($this->belegungsplan_month);
 		
 		$intYear = \Input::get('belegyear');
 		// interner Zaehler
