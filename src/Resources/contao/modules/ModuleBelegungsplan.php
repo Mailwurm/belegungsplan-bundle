@@ -90,11 +90,11 @@ class ModuleBelegungsplan extends \Module
 		
 		// Aktuelle Periode bei Erstaufruf der Seite
 		if (!isset($_GET['belegyear'])) {	
-			$intYear = $intMax < (int)date('n') ? (int)date('Y') + 1 : (int)date('Y');
+			$intYear = $intMax < (int) date('n') ? (int) date('Y') + 1 : (int) date('Y');
 			$blnClearInput = true;
 		} else {
 			if(!empty($intYear)) {
-				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= (int)date('Y') ? $intYear = (int)$intYear : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
+				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= (int) date('Y') ? $intYear = (int) $intYear : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
 			}
 		}
 		$intMinYear = $intMax < (int)date('n') ? (int)date('Y') + 1 : (int)date('Y');
