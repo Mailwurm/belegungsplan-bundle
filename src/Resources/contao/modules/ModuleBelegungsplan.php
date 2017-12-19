@@ -234,14 +234,14 @@ class ModuleBelegungsplan extends \Module
 			}
 			
 			// Hole alle Jahre fuer die bereits Buchungen vorhanden sind ab dem aktuellen Jahr
-			$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(startDate)) as Start 
+			$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(tbc.startDate)) as Start 
 								FROM tl_belegungsplan_calender tbc,
 									tl_belegungsplan_objekte tbo
-								WHERE YEAR(FROM_UNIXTIME(startDate)) >= ? 
+								WHERE YEAR(FROM_UNIXTIME(tbc.startDate)) >= ? 
 								AND tbc.pid = tbo.id
 								AND tbo.published = 1
-								GROUP BY YEAR(FROM_UNIXTIME(startDate))
-								ORDER BY YEAR(FROM_UNIXTIME(startDate)) ASC")
+								GROUP BY YEAR(FROM_UNIXTIME(tbc.startDate))
+								ORDER BY YEAR(FROM_UNIXTIME(tbc.startDate)) ASC")
 								->execute($intMinYear);
 			if($objJahre->numRows > 0) {
 				while($objJahre->next()) {
