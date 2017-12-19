@@ -97,6 +97,7 @@ class ModuleBelegungsplan extends \Module
 				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= (int)date('Y') ? $intYear = (int)$intYear : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
 			}
 		}
+		$intMinYear = $intMax < (int)date('n') ? (int)date('Y') + 1 : (int)date('Y');
 		
 		// wenn $arrInfo hier schon belegt, dann nicht erst weiter machen
 		if(empty($arrInfo)) {
@@ -241,7 +242,7 @@ class ModuleBelegungsplan extends \Module
 								AND tbo.published = 1
 								GROUP BY YEAR(FROM_UNIXTIME(startDate))
 								ORDER BY YEAR(FROM_UNIXTIME(startDate)) ASC")
-								->execute(date("Y"));
+								->execute($intMinYear);
 			if($objJahre->numRows > 0) {
 				while($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
