@@ -120,6 +120,7 @@ class ModuleBelegungsplan extends \Module
 											WHEN tbc.startDate < ".$intStartAuswahl." THEN YEAR(FROM_UNIXTIME(".$intStartAuswahl."))
 											ELSE YEAR(FROM_UNIXTIME(tbc.startDate))
 										 END) as StartJahr,
+										 YEAR(FROM_UNIXTIME(tbc.startDate)) as BuchungsStartJahr,
 										 (CASE
 											WHEN tbc.endDate > ".$intEndeAuswahl." THEN DAY(FROM_UNIXTIME(".$intEndeAuswahl."))
 											ELSE DAY(FROM_UNIXTIME(tbc.endDate))
@@ -131,7 +132,8 @@ class ModuleBelegungsplan extends \Module
 										 (CASE
 											WHEN tbc.endDate > ".$intEndeAuswahl." THEN YEAR(FROM_UNIXTIME(".$intEndeAuswahl."))
 											ELSE YEAR(FROM_UNIXTIME(tbc.endDate))
-										 END) as EndeJahr
+										 END) as EndeJahr,
+										 YEAR(FROM_UNIXTIME(tbc.endDate)) as BuchungsEndeJahr
 									FROM 	tl_belegungsplan_calender tbc,
 											tl_belegungsplan_objekte tbo
 									WHERE 	tbc.pid = tbo.id
@@ -145,30 +147,43 @@ class ModuleBelegungsplan extends \Module
 					$arrHelper['StartTag'] = (int)$objObjekteCalender->StartTag;
 					$arrHelper['StartMonat'] = (int)$objObjekteCalender->StartMonat;
 					$arrHelper['StartJahr'] = (int)$objObjekteCalender->StartJahr;
+					$arrHelper['BuchungsStartJahr'] = (int)$objObjekteCalender->BuchungsStartJahr;
 					$arrHelper['EndeTag'] = (int)$objObjekteCalender->EndeTag;
 					$arrHelper['EndeMonat'] = (int)$objObjekteCalender->EndeMonat;
 					$arrHelper['EndeJahr'] = (int)$objObjekteCalender->EndeJahr;
+					$arrHelper['BuchungsEndeJahr'] = (int)$objObjekteCalender->BuchungsEndeJahr;
 					$intEndeMonat = (int)date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
 					for($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ; ) {
 						// erster Tag der Buchung und weitere
 						if(empty($z)) {
-							// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
-							isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1';
+							// bei Jahresuebergreifender Buchung
+							if($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
+								// bei Jahresuebergreifender Buchung
+								($y === $arrHelper['BuchungsStartJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+							} else {
+								// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
+								isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1';
+							}
+						} elseif($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
+							if($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
+								// bei Jahresuebergreifender Buchung
+								($y === $arrHelper['BuchungsEndeJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+							} else {
+								// letzter Tag der Buchung
+								isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0';
+							}
+							break;
 						} else {
 							$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
 						}
 						if($d === $e) {
 							if($arrHelper['StartMonat'] === $arrHelper['EndeMonat']) {
+								$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0';
 								break;
 							}
 							$m++;
 							$d = 0;
 							$e = (int)date('t', mktime(0, 0, 0, $m, $d + 1, $y));
-						}
-						if($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
-							// letzter Tag der Buchung
-							$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0';
-							break;
 						}
 						$d++;
 						$z++;
