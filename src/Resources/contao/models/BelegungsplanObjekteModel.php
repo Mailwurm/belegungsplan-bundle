@@ -55,19 +55,19 @@ namespace Mailwurm\Belegung;
 */
 class BelegungsplanObjekteModel extends \Model {
 	/**
-	* Table name
-	* @var string
-	*/
+	 * Table name
+	 * @var string
+	 */
 	protected static $strTable = 'tl_belegungsplan_objekte';
 	/**
-	* Find a published Belegungsplanobjekt from one or more categories by its ID or name
-	*
-	* @param mixed $varId      The numeric ID or name
-	* @param array $arrPids    An array of parent IDs
-	* @param array $arrOptions An optional options array
-	*
-	* @return BelegungsplanObjekteModel|null The model or null if there is no Belegungsplanobjekt
-	*/
+	 * Find a published Belegungsplanobjekt from one or more categories by its ID or name
+	 *
+	 * @param mixed $varId      The numeric ID or name
+	 * @param array $arrPids    An array of parent IDs
+	 * @param array $arrOptions An optional options array
+	 *
+	 * @return BelegungsplanObjekteModel|null The model or null if there is no Belegungsplanobjekt
+	 */
 	public static function findPublishedByParentAndIdOrName($varId, $arrPids, array $arrOptions=array()) {
 		if(!is_array($arrPids) || empty($arrPids)) {
 			return null;
