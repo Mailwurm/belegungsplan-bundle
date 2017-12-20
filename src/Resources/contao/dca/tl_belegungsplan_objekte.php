@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * Contao Open Source CMS
  *
  * Copyright (c) Jan Karai
@@ -8,8 +8,8 @@
  */
 
 /**
-* Load tl_content language file
-*/
+ * Load tl_content language file
+ */
 System::loadLanguageFile('tl_content');
  
 /**
@@ -17,75 +17,61 @@ System::loadLanguageFile('tl_content');
  */
 $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 (
-	// Config
-	'config' => array
-	(
+	'config' => array(
 		'dataContainer'               => 'Table',
 		'ptable'                      => 'tl_belegungsplan_category',
 		'ctable'                      => array('tl_belegungsplan_calender'),
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
-		'sql' => array
-		(
-			'keys' => array
-			(
+		'sql' => array(
+			'keys' => array(
 				'id' => 'primary',
 				'pid,published,sorting' => 'index'
 			)
 		)
 	),
 	// List
-	'list' => array
-	(
-		'sorting' => array
-		(
+	'list' => array(
+		'sorting' => array(
 			'mode'                    => 4,
 			'fields'                  => array('sorting'),
 			'panelLayout'             => 'filter;sort,search,limit',
 			'headerFields'            => array('title'),
 			'child_record_callback'   => array('tl_belegungsplan_objekte', 'listQuestions')
 		),
-		'global_operations' => array
-		(
-			'all' => array
-			(
+		'global_operations' => array(
+			'all' => array(
 				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
 				'href'                => 'act=select',
 				'class'               => 'header_edit_all',
 				'attributes'          => 'onclick="Backend.getScrollOffset()" accesskey="e"'
 			)
 		),
-		'operations' => array
-		(
-			'edit' => array
-			(
+		'operations' => array(
+			'edit' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['edit'],
 				'href'                => 'table=tl_belegungsplan_calender',
 				'icon'                => 'cssimport.svg'
 			),
-			'editheader' => array
-			(
+			'editheader' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['editheader'],
 				'href'                => 'act=edit',
 				'icon'                => 'edit.svg',
 				'button_callback'     => array('tl_belegungsplan_objekte', 'editHeader')
 			),
-			'delete' => array
-			(
+			'delete' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.svg',
 				'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
 			),
-			'toggle' => array
-			(
+			'toggle' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['toggle'],
 				'icon'                => 'visible.svg',
 				'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
 				'button_callback'     => array('tl_belegungsplan_objekte', 'toggleIcon')
 			),
-			'show' => array
-			(
+			'show' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['show'],
 				'href'                => 'act=show',
 				'icon'                => 'show.svg'
@@ -93,40 +79,32 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 		)
 	),
 	// Palettes
-	'palettes' => array
-	(
+	'palettes' => array(
 		'__selector__'                => array(),
 		'default'                     => '{title_legend},name,author,infotext;{publish_legend},published'
 	),
 	// Subpalettes
-	'subpalettes' => array(
-	),
+	'subpalettes' => array(),
 	// Fields
-	'fields' => array
-	(
-		'id' => array
-		(
+	'fields' => array(
+		'id' => array(
 			'sql'                     => "int(10) unsigned NOT NULL auto_increment"
 		),
-		'pid' => array
-		(
+		'pid' => array(
 			'foreignKey'              => 'tl_belegungsplan_category.title',
 			'sql'                     => "int(10) unsigned NOT NULL default '0'",
 			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
 		),
-		'sorting' => array
-		(
+		'sorting' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['MSC']['sorting'],
 			'sorting'                 => true,
 			'flag'                    => 11,
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-		'tstamp' => array
-		(
+		'tstamp' => array(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-		'name' => array
-		(
+		'name' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['name'],
 			'exclude'                 => true,
 			'search'                  => true,
@@ -134,8 +112,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'eval'                    => array('mandatory'=>true, 'unique'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
 		),
-		'author' => array
-		(
+		'author' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['author'],
 			'default'                 => BackendUser::getInstance()->id,
 			'exclude'                 => true,
@@ -149,8 +126,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'sql'                     => "int(10) unsigned NOT NULL default '0'",
 			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
 		),
-		'infotext' => array
-		(
+		'infotext' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['infotext'],
 			'exclude'                 => true,
 			'search'                  => true,
@@ -158,8 +134,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
 			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long'),
 			'sql'                     => "varchar(255) COLLATE utf8_bin NOT NULL default ''"
 		),
-		'published' => array
-		(
+		'published' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['published'],
 			'exclude'                 => true,
 			'filter'                  => true,
