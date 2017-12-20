@@ -186,28 +186,28 @@ class tl_belegungsplan_objekte extends Backend
 		$this->import('BackendUser', 'User');
 	}
 	/**
-	* Return the edit header button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
+	 * Return the edit header button
+	 *
+	 * @param array  $row
+	 * @param string $href
+	 * @param string $label
+	 * @param string $title
+	 * @param string $icon
+	 * @param string $attributes
+	 *
+	 * @return string
+	 */
 	public function editHeader($row, $href, $label, $title, $icon, $attributes)
 	{
 		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
 	}
 	/**
-	* Add the type of input field
-	*
-	* @param array $arrRow
-	*
-	* @return string
-	*/
+	 * Add the type of input field
+	 *
+	 * @param array $arrRow
+	 *
+	 * @return string
+	 */
 	public function listQuestions($arrRow)
 	{
 		$key = $arrRow['published'] ? 'published' : 'unpublished';
@@ -220,17 +220,17 @@ class tl_belegungsplan_objekte extends Backend
 </div>' . "\n";
 	}
 	/**
-	* Return the "toggle visibility" button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
+	 * Return the "toggle visibility" button
+	 *
+	 * @param array  $row
+	 * @param string $href
+	 * @param string $label
+	 * @param string $title
+	 * @param string $icon
+	 * @param string $attributes
+	 *
+	 * @return string
+	 */
 	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
 	{
 		if (strlen(Input::get('tid')))
@@ -259,12 +259,12 @@ class tl_belegungsplan_objekte extends Backend
 		// Set the ID and action
 		Input::setGet('id', $intId);
 		Input::setGet('act', 'toggle');
-		if($dc) {
+		if ($dc) {
 			$dc->id = $intId; // see #8043
 		}
 		
 		// Set the current record
-		if($dc) {
+		if ($dc) {
 			$objRow = $this->Database->prepare("SELECT * FROM tl_belegungsplan_objekte WHERE id=?")
 									 ->limit(1)
 									 ->execute($intId);
@@ -275,13 +275,12 @@ class tl_belegungsplan_objekte extends Backend
 		$objVersions = new Versions('tl_belegungsplan_objekte', $intId);
 		$objVersions->initialize();
 		// Trigger the save_callback
-		if(is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'])) {
-			foreach($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'] as $callback) {
-				if(is_array($callback)) {
+		if (is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'])) {
+			foreach ($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'] as $callback) {
+				if (is_array($callback)) {
 					$this->import($callback[0]);
 					$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
-				}
-				elseif(is_callable($callback)) {
+				} elseif (is_callable($callback)) {
 					$blnVisible = $callback($blnVisible, $dc);
 				}
 			}
@@ -290,18 +289,17 @@ class tl_belegungsplan_objekte extends Backend
 		// Update the database
 		$this->Database->prepare("UPDATE tl_belegungsplan_objekte SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
 					   ->execute($intId);
-		if($dc) {
+		if ($dc) {
 			$dc->activeRecord->tstamp = $time;
 			$dc->activeRecord->published = ($blnVisible ? '1' : '');
 		}
 		// Trigger the onsubmit_callback
-		if(is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback'])) {
+		if (is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback'])) {
 			foreach ($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback'] as $callback) {
-				if(is_array($callback)) {
+				if (is_array($callback)) {
 					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($dc);
-				}
-				elseif(is_callable($callback)) {
+				} elseif (is_callable($callback)) {
 					$callback($dc);
 				}
 			}
