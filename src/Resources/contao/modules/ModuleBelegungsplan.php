@@ -39,10 +39,10 @@ class ModuleBelegungsplan extends \Module
 	protected $strUrl;
 	
 	/**
-	* Display a wildcard in the back end
-	*
-	* @return string
-	*/
+	 * Display a wildcard in the back end
+	 *
+	 * @return string
+	 */
 	public function generate() 
 	{
 		if (TL_MODE == 'BE') 
@@ -74,8 +74,8 @@ class ModuleBelegungsplan extends \Module
 		return parent::generate();
 	}
 	/**
-	* Generate the module
-	*/
+	 * Generate the module
+	 */
 	protected function compile() 
 	{
 		$arrInfo = array();
@@ -313,10 +313,10 @@ class ModuleBelegungsplan extends \Module
 	}
 	
 	/**
-	* Sortiert die Kategorien nach Auswahl im Checkbox-Wizard
-	*
-	* @return array
-	*/
+	 * Sortiert die Kategorien nach Auswahl im Checkbox-Wizard
+	 *
+	 * @return array
+	 */
 	protected function sortNachWizard($arrCategorieObjekte, $arrBelegungsplanCategory)
 	{	
 		// Schluessel und Werte tauschen
@@ -336,10 +336,10 @@ class ModuleBelegungsplan extends \Module
 	}
 	
 	/**
-	* Fuegt den Monaten Daten hinzu
-	*
-	* @return array
-	*/
+	 * Fuegt den Monaten Daten hinzu
+	 *
+	 * @return array
+	 */
 	protected function dataMonth($arrMonth, $intStartAuswahl, $arrFeiertage)
 	{
 		$arrHelper = array();
