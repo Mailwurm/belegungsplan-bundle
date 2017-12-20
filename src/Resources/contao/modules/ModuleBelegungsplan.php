@@ -15,8 +15,6 @@ use Patchwork\Utf8;
 *
 * @property array $belegungsplan_categories
 * @property array $belegungsplan_month
-* @property integer $intStartAuswahl
-* @property integer $intEndeAuswahl
 *
 * @author Jan Karai <https://www.sachsen-it.de>
 */
@@ -37,6 +35,16 @@ class ModuleBelegungsplan extends \Module
 	 * @var string
 	 */
 	protected $strUrl;
+	
+	/**
+	 * @var integer
+	 */
+	protected $intStartAuswahl;
+	
+	/**
+	 * @var integer
+	 */
+	protected $intEndeAuswahl;
 	
 	/**
 	 * Display a wildcard in the back end
@@ -113,35 +121,35 @@ class ModuleBelegungsplan extends \Module
 		if (empty($arrInfo)) {
 			// Anfang und Ende des Anzeigezeitraumes je nach GET
 			if (!empty($intYear)) {
-				$intStartAuswahl = (int) mktime(0, 0, 0, 1, 1, $intYear);
-				$intEndeAuswahl = (int) mktime(23, 59, 59, 12, 31, $intYear);
+				$this->intStartAuswahl = (int) mktime(0, 0, 0, 1, 1, $intYear);
+				$this->intEndeAuswahl = (int) mktime(23, 59, 59, 12, 31, $intYear);
 			}
 			
 			// Hole alle Calenderdaten zur Auswahl
 			$objObjekteCalender = $this->Database->prepare("SELECT tbo.id as ObjektID,
 							(CASE
-								WHEN tbc.startDate < ".$intStartAuswahl." THEN DAY(FROM_UNIXTIME(" . $intStartAuswahl . "))
+								WHEN tbc.startDate < ".$this->intStartAuswahl." THEN DAY(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE DAY(FROM_UNIXTIME(tbc.startDate))
 							 END) as StartTag,
 							 (CASE
-								WHEN tbc.startDate < ".$intStartAuswahl." THEN MONTH(FROM_UNIXTIME(" . $intStartAuswahl . "))
+								WHEN tbc.startDate < ".$this->intStartAuswahl." THEN MONTH(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE MONTH(FROM_UNIXTIME(tbc.startDate))
 							 END) as StartMonat,
 							 (CASE
-								WHEN tbc.startDate < ".$intStartAuswahl." THEN YEAR(FROM_UNIXTIME(" . $intStartAuswahl . "))
+								WHEN tbc.startDate < ".$this->intStartAuswahl." THEN YEAR(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE YEAR(FROM_UNIXTIME(tbc.startDate))
 							 END) as StartJahr,
 							 YEAR(FROM_UNIXTIME(tbc.startDate)) as BuchungsStartJahr,
 							 (CASE
-								WHEN tbc.endDate > ".$intEndeAuswahl." THEN DAY(FROM_UNIXTIME(" . $intEndeAuswahl . "))
+								WHEN tbc.endDate > ".$this->intEndeAuswahl." THEN DAY(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
 								ELSE DAY(FROM_UNIXTIME(tbc.endDate))
 							 END) as EndeTag,
 							 (CASE
-								WHEN tbc.endDate > ".$intEndeAuswahl." THEN MONTH(FROM_UNIXTIME(" . $intEndeAuswahl . "))
+								WHEN tbc.endDate > ".$this->intEndeAuswahl." THEN MONTH(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
 								ELSE MONTH(FROM_UNIXTIME(tbc.endDate))
 							 END) as EndeMonat,
 							 (CASE
-								WHEN tbc.endDate > ".$intEndeAuswahl." THEN YEAR(FROM_UNIXTIME(" . $intEndeAuswahl . "))
+								WHEN tbc.endDate > ".$this->intEndeAuswahl." THEN YEAR(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
 								ELSE YEAR(FROM_UNIXTIME(tbc.endDate))
 							 END) as EndeJahr,
 							 YEAR(FROM_UNIXTIME(tbc.endDate)) as BuchungsEndeJahr
@@ -149,7 +157,7 @@ class ModuleBelegungsplan extends \Module
 							tl_belegungsplan_objekte tbo
 						WHERE 	tbc.pid = tbo.id
 						AND 	tbo.published = 1
-						AND 	((startDate < " . $intStartAuswahl . " AND endDate > " . $intStartAuswahl . ") OR (startDate >= " . $intStartAuswahl . " AND endDate <= " . $intEndeAuswahl . ") OR (startDate < " . $intEndeAuswahl . " AND endDate > " . $intEndeAuswahl . "))")
+						AND 	((startDate < " . $this->intStartAuswahl . " AND endDate > " . $this->intStartAuswahl . ") OR (startDate >= " . $this->intStartAuswahl . " AND endDate <= " . $this->intEndeAuswahl . ") OR (startDate < " . $this->intEndeAuswahl . " AND endDate > " . $this->intEndeAuswahl . "))")
 						->execute();
 			if ($objObjekteCalender->numRows > 0) {
 				while ($objObjekteCalender->next()) {
@@ -265,8 +273,8 @@ class ModuleBelegungsplan extends \Module
 									YEAR(FROM_UNIXTIME(startDate)) as Jahr,
 									title
 							FROM 	tl_belegungsplan_feiertage
-							WHERE 	startDate >= ".$intStartAuswahl."
-							AND 	startDate <= ".$intEndeAuswahl)
+							WHERE 	startDate >= ".$this->intStartAuswahl."
+							AND 	startDate <= ".$this->intEndeAuswahl)
 							->execute();
 			if ($objFeiertage->numRows > 0) {
 				while ($objFeiertage->next()) {
@@ -289,11 +297,11 @@ class ModuleBelegungsplan extends \Module
 		// Kategorien sortieren wie im Checkboxwizard ausgewaehlt -> Elterntabelle
 		$this->Template->CategorieObjekteCalender = $this->sortNachWizard($arrCategorieObjekte, $this->belegungsplan_category);
 		// Array mit den Monatsdaten
-		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $intStartAuswahl, $arrFeiertage);
+		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $this->intStartAuswahl, $arrFeiertage);
 		// Array mit den Feiertagen
 		#$this->Template->Feiertage = $arrFeiertage;
-		#$this->Template->Start = $intStartAuswahl;
-		#$this->Template->Ende = $intEndeAuswahl;
+		#$this->Template->Start = $this->intStartAuswahl;
+		#$this->Template->Ende = $this->intEndeAuswahl;
 		#$this->Template->Monate = $arrBelegungsplanMonth;
 		#$this->Template->MaxMonat = $intMax;
 		
