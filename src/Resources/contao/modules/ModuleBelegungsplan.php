@@ -232,7 +232,7 @@ class ModuleBelegungsplan extends \Module
 						$arrHelper['ObjektName'] = \StringUtil::specialchars($objCategoryObjekte->ObjektName);
 						$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
 						// Calender anfügen wenn vorhanden
-						if(array_key_exists($arrHelper['ObjektID'], $arrObjekteCalender)) {
+						if (array_key_exists($arrHelper['ObjektID'], $arrObjekteCalender)) {
 							$arrHelper['Calender'] = $arrObjekteCalender[$arrHelper['ObjektID']];
 							unset($arrObjekteCalender[$arrHelper['ObjektID']]);
 						}
