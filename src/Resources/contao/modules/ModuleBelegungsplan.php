@@ -23,10 +23,20 @@ use Patchwork\Utf8;
 class ModuleBelegungsplan extends \Module
 {	
 	/**
-	* Template
-	* @var string
-	*/
+	 * Template
+	 * @var string
+	 */
 	protected $strTemplate = 'mod_belegungsplan';
+	
+	/**
+	 * @var array
+	 */
+	protected $belegungsplan_category = array();
+	
+	/**
+	 * @var string
+	 */
+	protected $strUrl;
 	
 	/**
 	* Display a wildcard in the back end
