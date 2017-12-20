@@ -128,28 +128,28 @@ class ModuleBelegungsplan extends \Module
 			// Hole alle Calenderdaten zur Auswahl
 			$objObjekteCalender = $this->Database->prepare("SELECT tbo.id as ObjektID,
 							(CASE
-								WHEN tbc.startDate < ".$this->intStartAuswahl." THEN DAY(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
+								WHEN tbc.startDate < " . $this->intStartAuswahl . " THEN DAY(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE DAY(FROM_UNIXTIME(tbc.startDate))
 							 END) as StartTag,
 							 (CASE
-								WHEN tbc.startDate < ".$this->intStartAuswahl." THEN MONTH(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
+								WHEN tbc.startDate < " . $this->intStartAuswahl . " THEN MONTH(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE MONTH(FROM_UNIXTIME(tbc.startDate))
 							 END) as StartMonat,
 							 (CASE
-								WHEN tbc.startDate < ".$this->intStartAuswahl." THEN YEAR(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
+								WHEN tbc.startDate < " . $this->intStartAuswahl . " THEN YEAR(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE YEAR(FROM_UNIXTIME(tbc.startDate))
 							 END) as StartJahr,
 							 YEAR(FROM_UNIXTIME(tbc.startDate)) as BuchungsStartJahr,
 							 (CASE
-								WHEN tbc.endDate > ".$this->intEndeAuswahl." THEN DAY(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
+								WHEN tbc.endDate > " . $this->intEndeAuswahl . " THEN DAY(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
 								ELSE DAY(FROM_UNIXTIME(tbc.endDate))
 							 END) as EndeTag,
 							 (CASE
-								WHEN tbc.endDate > ".$this->intEndeAuswahl." THEN MONTH(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
+								WHEN tbc.endDate > " . $this->intEndeAuswahl . " THEN MONTH(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
 								ELSE MONTH(FROM_UNIXTIME(tbc.endDate))
 							 END) as EndeMonat,
 							 (CASE
-								WHEN tbc.endDate > ".$this->intEndeAuswahl." THEN YEAR(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
+								WHEN tbc.endDate > " . $this->intEndeAuswahl . " THEN YEAR(FROM_UNIXTIME(" . $this->intEndeAuswahl . "))
 								ELSE YEAR(FROM_UNIXTIME(tbc.endDate))
 							 END) as EndeJahr,
 							 YEAR(FROM_UNIXTIME(tbc.endDate)) as BuchungsEndeJahr
@@ -172,9 +172,9 @@ class ModuleBelegungsplan extends \Module
 					$arrHelper['EndeJahr'] = (int) $objObjekteCalender->EndeJahr;
 					$arrHelper['BuchungsEndeJahr'] = (int) $objObjekteCalender->BuchungsEndeJahr;
 					$intEndeMonat = (int) date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
-					for ($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ; ) {
+					for ($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ;) {
 						// erster Tag der Buchung und weitere
-						if(empty($z)) {
+						if (empty($z)) {
 							// bei Jahresuebergreifender Buchung
 							if ($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
 								// bei Jahresuebergreifender Buchung
@@ -184,7 +184,7 @@ class ModuleBelegungsplan extends \Module
 								isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1';
 							}
 						} elseif ($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
-							if($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
+							if ($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
 								// bei Jahresuebergreifender Buchung
 								($y === $arrHelper['BuchungsEndeJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
 							} else {
@@ -273,8 +273,8 @@ class ModuleBelegungsplan extends \Module
 									YEAR(FROM_UNIXTIME(startDate)) as Jahr,
 									title
 							FROM 	tl_belegungsplan_feiertage
-							WHERE 	startDate >= ".$this->intStartAuswahl."
-							AND 	startDate <= ".$this->intEndeAuswahl)
+							WHERE 	startDate >= " . $this->intStartAuswahl . "
+							AND 	startDate <= " . $this->intEndeAuswahl)
 							->execute();
 			if ($objFeiertage->numRows > 0) {
 				while ($objFeiertage->next()) {
@@ -357,7 +357,7 @@ class ModuleBelegungsplan extends \Module
 			$arrHelper[$value]['TageMonat'] = (int) date('t', mktime(0, 0, 0, (int) $value, 1, (int) $intJahr));
 			$arrHelper[$value]['ColSpan'] = $arrHelper[$value]['TageMonat'] + 1;
 			$intFirstDayInMonth = (int) date('N', mktime(0, 0, 0, (int) $value, 1, (int) $intJahr));
-			for($f = 1, $i = $intFirstDayInMonth; $f <= $arrHelper[$value]['TageMonat']; $f++) {
+			for ($f = 1, $i = $intFirstDayInMonth; $f <= $arrHelper[$value]['TageMonat']; $f++) {
 				$strClass = '';
 				$arrHelper[$value]['Days'][$f]['Day'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayCut'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['short_cut_day'][$i];
