@@ -93,79 +93,79 @@ class ModuleBelegungsplan extends \Module
 			$intYear = $intMax < (int) date('n') ? (int) date('Y') + 1 : (int) date('Y');
 			$blnClearInput = true;
 		} else {
-			if(!empty($intYear)) {
+			if (!empty($intYear)) {
 				is_numeric($intYear) && strlen($intYear) === 4 ? ($intYear >= (int) date('Y') ? $intYear = (int) $intYear : $arrInfo[] = '4. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][2]) : $arrInfo[] = '1. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][1];
 			}
 		}
-		$intMinYear = $intMax < (int)date('n') ? (int)date('Y') + 1 : (int)date('Y');
+		$intMinYear = $intMax < (int) date('n') ? (int) date('Y') + 1 : (int) date('Y');
 		
 		// wenn $arrInfo hier schon belegt, dann nicht erst weiter machen
-		if(empty($arrInfo)) {
+		if (empty($arrInfo)) {
 			// Anfang und Ende des Anzeigezeitraumes je nach GET
-			if(!empty($intYear)) {
-				$intStartAuswahl = (int)mktime(0, 0, 0, 1, 1, $intYear);
-				$intEndeAuswahl = (int)mktime(23, 59, 59, 12, 31, $intYear);
+			if (!empty($intYear)) {
+				$intStartAuswahl = (int) mktime(0, 0, 0, 1, 1, $intYear);
+				$intEndeAuswahl = (int) mktime(23, 59, 59, 12, 31, $intYear);
 			}
 			
 			// Hole alle Calenderdaten zur Auswahl
 			$objObjekteCalender = $this->Database->prepare("SELECT tbo.id as ObjektID,
-										(CASE
-											WHEN tbc.startDate < ".$intStartAuswahl." THEN DAY(FROM_UNIXTIME(".$intStartAuswahl."))
-											ELSE DAY(FROM_UNIXTIME(tbc.startDate))
-										 END) as StartTag,
-										 (CASE
-											WHEN tbc.startDate < ".$intStartAuswahl." THEN MONTH(FROM_UNIXTIME(".$intStartAuswahl."))
-											ELSE MONTH(FROM_UNIXTIME(tbc.startDate))
-										 END) as StartMonat,
-										 (CASE
-											WHEN tbc.startDate < ".$intStartAuswahl." THEN YEAR(FROM_UNIXTIME(".$intStartAuswahl."))
-											ELSE YEAR(FROM_UNIXTIME(tbc.startDate))
-										 END) as StartJahr,
-										 YEAR(FROM_UNIXTIME(tbc.startDate)) as BuchungsStartJahr,
-										 (CASE
-											WHEN tbc.endDate > ".$intEndeAuswahl." THEN DAY(FROM_UNIXTIME(".$intEndeAuswahl."))
-											ELSE DAY(FROM_UNIXTIME(tbc.endDate))
-										 END) as EndeTag,
-										 (CASE
-											WHEN tbc.endDate > ".$intEndeAuswahl." THEN MONTH(FROM_UNIXTIME(".$intEndeAuswahl."))
-											ELSE MONTH(FROM_UNIXTIME(tbc.endDate))
-										 END) as EndeMonat,
-										 (CASE
-											WHEN tbc.endDate > ".$intEndeAuswahl." THEN YEAR(FROM_UNIXTIME(".$intEndeAuswahl."))
-											ELSE YEAR(FROM_UNIXTIME(tbc.endDate))
-										 END) as EndeJahr,
-										 YEAR(FROM_UNIXTIME(tbc.endDate)) as BuchungsEndeJahr
-									FROM 	tl_belegungsplan_calender tbc,
-											tl_belegungsplan_objekte tbo
-									WHERE 	tbc.pid = tbo.id
-									AND 	tbo.published = 1
-									AND 	((startDate < ".$intStartAuswahl." AND endDate > ".$intStartAuswahl.") OR (startDate >= ".$intStartAuswahl." AND endDate <= ".$intEndeAuswahl.") OR (startDate < ".$intEndeAuswahl." AND endDate > ".$intEndeAuswahl."))")
-									->execute();
-			if($objObjekteCalender->numRows > 0) {
-				while($objObjekteCalender->next()) {
+							(CASE
+								WHEN tbc.startDate < ".$intStartAuswahl." THEN DAY(FROM_UNIXTIME(" . $intStartAuswahl . "))
+								ELSE DAY(FROM_UNIXTIME(tbc.startDate))
+							 END) as StartTag,
+							 (CASE
+								WHEN tbc.startDate < ".$intStartAuswahl." THEN MONTH(FROM_UNIXTIME(" . $intStartAuswahl . "))
+								ELSE MONTH(FROM_UNIXTIME(tbc.startDate))
+							 END) as StartMonat,
+							 (CASE
+								WHEN tbc.startDate < ".$intStartAuswahl." THEN YEAR(FROM_UNIXTIME(" . $intStartAuswahl . "))
+								ELSE YEAR(FROM_UNIXTIME(tbc.startDate))
+							 END) as StartJahr,
+							 YEAR(FROM_UNIXTIME(tbc.startDate)) as BuchungsStartJahr,
+							 (CASE
+								WHEN tbc.endDate > ".$intEndeAuswahl." THEN DAY(FROM_UNIXTIME(" . $intEndeAuswahl . "))
+								ELSE DAY(FROM_UNIXTIME(tbc.endDate))
+							 END) as EndeTag,
+							 (CASE
+								WHEN tbc.endDate > ".$intEndeAuswahl." THEN MONTH(FROM_UNIXTIME(" . $intEndeAuswahl . "))
+								ELSE MONTH(FROM_UNIXTIME(tbc.endDate))
+							 END) as EndeMonat,
+							 (CASE
+								WHEN tbc.endDate > ".$intEndeAuswahl." THEN YEAR(FROM_UNIXTIME(" . $intEndeAuswahl . "))
+								ELSE YEAR(FROM_UNIXTIME(tbc.endDate))
+							 END) as EndeJahr,
+							 YEAR(FROM_UNIXTIME(tbc.endDate)) as BuchungsEndeJahr
+						FROM 	tl_belegungsplan_calender tbc,
+							tl_belegungsplan_objekte tbo
+						WHERE 	tbc.pid = tbo.id
+						AND 	tbo.published = 1
+						AND 	((startDate < " . $intStartAuswahl . " AND endDate > " . $intStartAuswahl . ") OR (startDate >= " . $intStartAuswahl . " AND endDate <= " . $intEndeAuswahl . ") OR (startDate < " . $intEndeAuswahl . " AND endDate > " . $intEndeAuswahl . "))")
+						->execute();
+			if ($objObjekteCalender->numRows > 0) {
+				while ($objObjekteCalender->next()) {
 					$arrHelper = array();
 					$arrHelper['ObjektID'] = $objObjekteCalender->ObjektID;
-					$arrHelper['StartTag'] = (int)$objObjekteCalender->StartTag;
-					$arrHelper['StartMonat'] = (int)$objObjekteCalender->StartMonat;
-					$arrHelper['StartJahr'] = (int)$objObjekteCalender->StartJahr;
-					$arrHelper['BuchungsStartJahr'] = (int)$objObjekteCalender->BuchungsStartJahr;
-					$arrHelper['EndeTag'] = (int)$objObjekteCalender->EndeTag;
-					$arrHelper['EndeMonat'] = (int)$objObjekteCalender->EndeMonat;
-					$arrHelper['EndeJahr'] = (int)$objObjekteCalender->EndeJahr;
-					$arrHelper['BuchungsEndeJahr'] = (int)$objObjekteCalender->BuchungsEndeJahr;
-					$intEndeMonat = (int)date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
-					for($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ; ) {
+					$arrHelper['StartTag'] = (int) $objObjekteCalender->StartTag;
+					$arrHelper['StartMonat'] = (int) $objObjekteCalender->StartMonat;
+					$arrHelper['StartJahr'] = (int) $objObjekteCalender->StartJahr;
+					$arrHelper['BuchungsStartJahr'] = (int) $objObjekteCalender->BuchungsStartJahr;
+					$arrHelper['EndeTag'] = (int) $objObjekteCalender->EndeTag;
+					$arrHelper['EndeMonat'] = (int) $objObjekteCalender->EndeMonat;
+					$arrHelper['EndeJahr'] = (int) $objObjekteCalender->EndeJahr;
+					$arrHelper['BuchungsEndeJahr'] = (int) $objObjekteCalender->BuchungsEndeJahr;
+					$intEndeMonat = (int) date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
+					for ($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ; ) {
 						// erster Tag der Buchung und weitere
 						if(empty($z)) {
 							// bei Jahresuebergreifender Buchung
-							if($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
+							if ($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
 								// bei Jahresuebergreifender Buchung
 								($y === $arrHelper['BuchungsStartJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
 							} else {
 								// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
 								isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1';
 							}
-						} elseif($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
+						} elseif ($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
 							if($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
 								// bei Jahresuebergreifender Buchung
 								($y === $arrHelper['BuchungsEndeJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
@@ -177,14 +177,14 @@ class ModuleBelegungsplan extends \Module
 						} else {
 							$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
 						}
-						if($d === $e) {
-							if($arrHelper['StartMonat'] === $arrHelper['EndeMonat']) {
+						if ($d === $e) {
+							if ($arrHelper['StartMonat'] === $arrHelper['EndeMonat']) {
 								$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0';
 								break;
 							}
 							$m++;
 							$d = 0;
-							$e = (int)date('t', mktime(0, 0, 0, $m, $d + 1, $y));
+							$e = (int) date('t', mktime(0, 0, 0, $m, $d + 1, $y));
 						}
 						$d++;
 						$z++;
@@ -205,20 +205,20 @@ class ModuleBelegungsplan extends \Module
 									WHERE	tbo.pid = tbc.id
 									AND	tbo.published = 1")
 									->execute();
-			if($objCategoryObjekte->numRows > 0) {
-				while($objCategoryObjekte->next()) {
+			if ($objCategoryObjekte->numRows > 0) {
+				while ($objCategoryObjekte->next()) {
 					// Nicht anzuzeigende Kategorien aussortieren
-					if(in_array($objCategoryObjekte->CategoryID, $this->belegungsplan_category)) {
+					if (in_array($objCategoryObjekte->CategoryID, $this->belegungsplan_category)) {
 						$arrHelper = array();
-						$arrHelper['ObjektID'] = (int)$objCategoryObjekte->ObjektID;
-						$arrHelper['ObjektName'] = $objCategoryObjekte->ObjektName;
+						$arrHelper['ObjektID'] = (int) $objCategoryObjekte->ObjektID;
+						$arrHelper['ObjektName'] = \StringUtil::specialchars($objCategoryObjekte->ObjektName);
 						$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
 						// Calender anfügen wenn vorhanden
 						if(array_key_exists($arrHelper['ObjektID'], $arrObjekteCalender)) {
 							$arrHelper['Calender'] = $arrObjekteCalender[$arrHelper['ObjektID']];
 							unset($arrObjekteCalender[$arrHelper['ObjektID']]);
 						}
-						if(array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
+						if (array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
 							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
 							$i++;
 						} else {
@@ -243,23 +243,23 @@ class ModuleBelegungsplan extends \Module
 								GROUP BY YEAR(FROM_UNIXTIME(tbc.startDate))
 								ORDER BY YEAR(FROM_UNIXTIME(tbc.startDate)) ASC")
 								->execute($intMinYear);
-			if($objJahre->numRows > 0) {
-				while($objJahre->next()) {
+			if ($objJahre->numRows > 0) {
+				while ($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
 			}
 			
 			// Hole alle Feiertage
-			$objFeiertage = $this->Database->prepare("	SELECT 	DAY(FROM_UNIXTIME(startDate)) as Tag,
-																MONTH(FROM_UNIXTIME(startDate)) as Monat,
-																YEAR(FROM_UNIXTIME(startDate)) as Jahr,
-																title
-														FROM 	tl_belegungsplan_feiertage
-														WHERE 	startDate >= ".$intStartAuswahl."
-														AND 	startDate <= ".$intEndeAuswahl)
-														->execute();
-			if($objFeiertage->numRows > 0) {
-				while($objFeiertage->next()) {
+			$objFeiertage = $this->Database->prepare("SELECT DAY(FROM_UNIXTIME(startDate)) as Tag,
+									MONTH(FROM_UNIXTIME(startDate)) as Monat,
+									YEAR(FROM_UNIXTIME(startDate)) as Jahr,
+									title
+							FROM 	tl_belegungsplan_feiertage
+							WHERE 	startDate >= ".$intStartAuswahl."
+							AND 	startDate <= ".$intEndeAuswahl)
+							->execute();
+			if ($objFeiertage->numRows > 0) {
+				while ($objFeiertage->next()) {
 					$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = $objFeiertage->title;
 				}
 			}
@@ -287,17 +287,17 @@ class ModuleBelegungsplan extends \Module
 		#$this->Template->Monate = $arrBelegungsplanMonth;
 		#$this->Template->MaxMonat = $intMax;
 		
-		if(!empty($arrCategorieObjekte)) {
+		if (!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
 		}
-		if(!empty($arrInfo)) {
+		if (!empty($arrInfo)) {
 			unset($arrInfo);
 		}
-		if(!empty($arrFeiertage)) {
+		if (!empty($arrFeiertage)) {
 			unset($arrFeiertage);
 		}
 		// Clear the $_GET array (see #2445)
-		if($blnClearInput) {
+		if ($blnClearInput) {
 			\Input::setGet('belegyear', null);
 		}
 	}
@@ -312,8 +312,8 @@ class ModuleBelegungsplan extends \Module
 		// Schluessel und Werte tauschen
 		$arrHelper = array_flip($arrBelegungsplanCategory);
 		
-		foreach($arrHelper as $key => $value) {
-			if(array_key_exists($key, $arrCategorieObjekte)) {
+		foreach ($arrHelper as $key => $value) {
+			if (array_key_exists($key, $arrCategorieObjekte)) {
 				$arrHelper[$key] = $arrCategorieObjekte[$key];
 				// Objekte in der Kategorie gleich mit nach DB sortieren
 				ksort($arrHelper[$key]['Objekte']);
@@ -334,11 +334,11 @@ class ModuleBelegungsplan extends \Module
 	{
 		$arrHelper = array();
 		$intJahr = date('Y', $intStartAuswahl);
-		foreach($arrMonth as $key => $value) {
+		foreach ($arrMonth as $key => $value) {
 			$arrHelper[$value]['Name'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['month'][$value];
-			$arrHelper[$value]['TageMonat'] = (int)date('t', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
+			$arrHelper[$value]['TageMonat'] = (int) date('t', mktime(0, 0, 0, (int) $value, 1, (int) $intJahr));
 			$arrHelper[$value]['ColSpan'] = $arrHelper[$value]['TageMonat'] + 1;
-			$intFirstDayInMonth = (int)date('N', mktime(0, 0, 0, (int)$value, 1, (int)$intJahr));
+			$intFirstDayInMonth = (int) date('N', mktime(0, 0, 0, (int) $value, 1, (int) $intJahr));
 			for($f = 1, $i = $intFirstDayInMonth; $f <= $arrHelper[$value]['TageMonat']; $f++) {
 				$strClass = '';
 				$arrHelper[$value]['Days'][$f]['Day'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['day'][$i];
@@ -346,7 +346,7 @@ class ModuleBelegungsplan extends \Module
 				$arrHelper[$value]['Days'][$f]['DayWeekNum'] = $i;
 				$i === 6 ? $strClass .= ' saturday' : '';
 				$i === 7 ? $strClass .= ' sunday' : '';
-				if(!empty($arrFeiertage[$intJahr][$value][$f])) {
+				if (!empty($arrFeiertage[$intJahr][$value][$f])) {
 					$strClass .= ' holiday';
 					$arrHelper[$value]['Days'][$f]['Holiday'] = $arrFeiertage[$intJahr][$value][$f];
 				}
