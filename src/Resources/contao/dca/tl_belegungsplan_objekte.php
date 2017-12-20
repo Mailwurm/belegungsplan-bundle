@@ -15,8 +15,7 @@ System::loadLanguageFile('tl_content');
 /**
  * Table tl_belegungsplan_objekte
  */
-$GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array
-(
+$GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 	'config' => array(
 		'dataContainer'               => 'Table',
 		'ptable'                      => 'tl_belegungsplan_category',
@@ -174,7 +173,7 @@ class tl_belegungsplan_objekte extends Backend
 	 */
 	public function editHeader($row, $href, $label, $title, $icon, $attributes)
 	{
-		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
+		return '<a href="' . $this->addToUrl($href . '&amp;id=' . $row['id']) . '" title="' . StringUtil::specialchars($title) . '"' . $attributes . '>' . Image::getHtml($icon, $label) . '</a> ';
 	}
 	/**
 	 * Add the type of input field
@@ -214,12 +213,12 @@ class tl_belegungsplan_objekte extends Backend
 			$this->redirect($this->getReferer());
 		}
 		
-		$href .= '&amp;tid='.$row['id'].'&amp;state='.($row['published'] ? '' : 1);
+		$href .= '&amp;tid=' . $row['id'] . '&amp;state=' . ($row['published'] ? '' : 1);
 		if (!$row['published'])
 		{
 			$icon = 'invisible.svg';
 		}
-		return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
+		return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($title) . '"' . $attributes . '>' . Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"') . '</a> ';
 	}
 	/**
 	 * Disable/enable a user group
@@ -230,7 +229,7 @@ class tl_belegungsplan_objekte extends Backend
 	 *
 	 * @throws Contao\CoreBundle\Exception\AccessDeniedException
 	 */
-	public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null) {
+	public function toggleVisibility($intId, $blnVisible, DataContainer $dc = null) {
 		// Set the ID and action
 		Input::setGet('id', $intId);
 		Input::setGet('act', 'toggle');
@@ -243,7 +242,7 @@ class tl_belegungsplan_objekte extends Backend
 			$objRow = $this->Database->prepare("SELECT * FROM tl_belegungsplan_objekte WHERE id=?")
 									 ->limit(1)
 									 ->execute($intId);
-			if($objRow->numRows) {
+			if ($objRow->numRows) {
 				$dc->activeRecord = $objRow;
 			}
 		}
