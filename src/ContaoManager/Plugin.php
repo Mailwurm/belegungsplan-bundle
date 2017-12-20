@@ -21,15 +21,15 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 */
 class Plugin implements BundlePluginInterface
 {
-    /**
-    * {@inheritdoc}
-    */
-    public function getBundles(ParserInterface $parser)
-    {
-        return [
-            BundleConfig::create('Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle')
-                ->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
-                ->setReplace(['belegung']),
-        ];
-    }
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getBundles(ParserInterface $parser)
+	{
+		return [
+			BundleConfig::create('Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle')
+				->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
+				->setReplace(['belegung']),
+		];
+	}
 }
