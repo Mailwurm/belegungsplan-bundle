@@ -44,3 +44,4 @@ if (TL_MODE == 'FE')
 {
 	$GLOBALS['TL_CSS'][] = 'bundles/mailwurmbelegungsplan/belegungsplan.css|static';
 }
+$GLOBALS['TL_MODELS']['tl_belegungsplan_category'] = \Mailwurm\BelegungsplanBundle\Model\BelegungsplanCategoryModel::class;
