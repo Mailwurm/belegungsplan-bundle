@@ -125,8 +125,50 @@ class ModuleBelegungsplan extends \Module
 				$this->intEndeAuswahl = (int) mktime(23, 59, 59, 12, 31, $intYear);
 			}
 			
+			// Hole alle aktiven Objekte inklusive dazugehoeriger Kategorie
+			$objCategoryObjekte = $this->Database->prepare("SELECT 	tbc.id as CategoryID,
+										tbc.title as CategoryTitle,
+										tbo.id as ObjektID,
+										tbo.name as ObjektName,
+										tbo.infotext as ObjektInfoText,
+										tbo.sorting as ObjektSortierung
+									FROM 	tl_belegungsplan_category tbc,
+										tl_belegungsplan_objekte tbo
+									WHERE	tbo.pid = tbc.id
+									AND	tbo.published = 1")
+									->execute();
+			if ($objCategoryObjekte->numRows > 0) {
+				while ($objCategoryObjekte->next()) {
+					// Nicht anzuzeigende Kategorien aussortieren
+					if (in_array($objCategoryObjekte->CategoryID, $this->belegungsplan_category)) {
+						$arrHelper = array();
+						$arrHelper['ObjektID'] = (int) $objCategoryObjekte->ObjektID;
+						$arrHelper['ObjektName'] = \StringUtil::specialchars($objCategoryObjekte->ObjektName);
+						$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
+						// Calender anfügen wenn vorhanden
+						// if (array_key_exists($arrHelper['ObjektID'], $arrObjekteCalender)) {
+							// $arrHelper['Calender'] = $arrObjekteCalender[$arrHelper['ObjektID']];
+							// unset($arrObjekteCalender[$arrHelper['ObjektID']]);
+						// }
+						if (array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
+							$i++;
+						} else {
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryTitle'] = \StringUtil::specialchars($objCategoryObjekte->CategoryTitle);
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
+							$i++;
+						}
+						unset($arrHelper);
+					}
+				}
+			} else {
+				$arrInfo[] = '3. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][0];
+			}
+			
 			// Hole alle Calenderdaten zur Auswahl
 			$objObjekteCalender = $this->Database->prepare("SELECT tbo.id as ObjektID,
+							tbo.sorting as ObjektSortierung,
+							tbcat.id as CategoryID,
 							(CASE
 								WHEN tbc.startDate < " . $this->intStartAuswahl . " THEN DAY(FROM_UNIXTIME(" . $this->intStartAuswahl . "))
 								ELSE DAY(FROM_UNIXTIME(tbc.startDate))
@@ -154,50 +196,58 @@ class ModuleBelegungsplan extends \Module
 							 END) as EndeJahr,
 							 YEAR(FROM_UNIXTIME(tbc.endDate)) as BuchungsEndeJahr
 						FROM 	tl_belegungsplan_calender tbc,
-							tl_belegungsplan_objekte tbo
+							tl_belegungsplan_objekte tbo,
+							tl_belegungsplan_category tbcat
 						WHERE 	tbc.pid = tbo.id
+						AND		tbo.pid = tbcat.id
 						AND 	tbo.published = 1
 						AND 	((startDate < " . $this->intStartAuswahl . " AND endDate > " . $this->intStartAuswahl . ") OR (startDate >= " . $this->intStartAuswahl . " AND endDate <= " . $this->intEndeAuswahl . ") OR (startDate < " . $this->intEndeAuswahl . " AND endDate > " . $this->intEndeAuswahl . "))")
 						->execute();
 			if ($objObjekteCalender->numRows > 0) {
 				while ($objObjekteCalender->next()) {
-					$arrHelper = array();
-					$arrHelper['ObjektID'] = $objObjekteCalender->ObjektID;
-					$arrHelper['StartTag'] = (int) $objObjekteCalender->StartTag;
-					$arrHelper['StartMonat'] = (int) $objObjekteCalender->StartMonat;
-					$arrHelper['StartJahr'] = (int) $objObjekteCalender->StartJahr;
-					$arrHelper['BuchungsStartJahr'] = (int) $objObjekteCalender->BuchungsStartJahr;
-					$arrHelper['EndeTag'] = (int) $objObjekteCalender->EndeTag;
-					$arrHelper['EndeMonat'] = (int) $objObjekteCalender->EndeMonat;
-					$arrHelper['EndeJahr'] = (int) $objObjekteCalender->EndeJahr;
-					$arrHelper['BuchungsEndeJahr'] = (int) $objObjekteCalender->BuchungsEndeJahr;
-					$intEndeMonat = (int) date('t', mktime(0, 0, 0, $arrHelper['StartMonat'], $arrHelper['StartTag'], $arrHelper['StartJahr']));
-					for ($d = $arrHelper['StartTag'], $m = $arrHelper['StartMonat'], $e = $intEndeMonat, $y = $arrHelper['StartJahr'], $z = 0; ;) {
+					$intEndeMonat = (int) date('t', mktime(0, 0, 0, (int) $objObjekteCalender->StartMonat, (int) $objObjekteCalender->StartTag, (int) $objObjekteCalender->StartJahr));
+					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
 						// erster Tag der Buchung und weitere
 						if (empty($z)) {
 							// bei Jahresuebergreifender Buchung
-							if ($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
+							if ((int) $objObjekteCalender->BuchungsStartJahr != (int) $objObjekteCalender->BuchungsEndeJahr) {
 								// bei Jahresuebergreifender Buchung
-								($y === $arrHelper['BuchungsStartJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+								if (($y === (int) $objObjekteCalender->BuchungsStartJahr)) {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '0#1';
+								} else {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
+								}
 							} else {
 								// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
-								isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '0#1';
+								if (isset($arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d])) {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
+								} else {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '0#1';
+								}
 							}
-						} elseif ($y === $arrHelper['EndeJahr'] && $m === $arrHelper['EndeMonat'] && $d === $arrHelper['EndeTag']) {
-							if ($arrHelper['BuchungsStartJahr'] != $arrHelper['BuchungsEndeJahr']) {
+						} elseif ($y === (int) $objObjekteCalender->EndeJahr && $m === (int) $objObjekteCalender->EndeMonat && $d === (int) $objObjekteCalender->EndeTag) {
+							if ((int) $objObjekteCalender->BuchungsStartJahr != (int) $objObjekteCalender->BuchungsEndeJahr) {
 								// bei Jahresuebergreifender Buchung
-								($y === $arrHelper['BuchungsEndeJahr']) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+								if (($y === (int) $objObjekteCalender->BuchungsEndeJahr)) {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#0';
+								} else {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
+								}
 							} else {
 								// letzter Tag der Buchung
-								isset($arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d]) ? $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1' : $arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0';
+								if (isset($arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d])) {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
+								} else {
+									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#0';
+								}
 							}
 							break;
 						} else {
-							$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#1';
+							$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
 						}
 						if ($d === $e) {
-							if ($arrHelper['StartMonat'] === $arrHelper['EndeMonat']) {
-								$arrObjekteCalender[$objObjekteCalender->ObjektID][$m][$d] = '1#0';
+							if ((int) $objObjekteCalender->StartMonat === (int) $objObjekteCalender->EndeMonat) {
+								$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#0';
 								break;
 							}
 							$m++;
@@ -207,48 +257,7 @@ class ModuleBelegungsplan extends \Module
 						$d++;
 						$z++;
 					}
-					unset($arrHelper);
 				}
-			}
-			
-			// Hole alle aktiven Objekte inklusive dazugehoeriger Kategorie
-			$objCategoryObjekte = $this->Database->prepare("SELECT 	tbc.id as CategoryID,
-										tbc.title as CategoryTitle,
-										tbo.id as ObjektID,
-										tbo.name as ObjektName,
-										tbo.infotext as ObjektInfoText,
-										tbo.sorting as ObjektSortierung
-									FROM 	tl_belegungsplan_category tbc,
-										tl_belegungsplan_objekte tbo
-									WHERE	tbo.pid = tbc.id
-									AND	tbo.published = 1")
-									->execute();
-			if ($objCategoryObjekte->numRows > 0) {
-				while ($objCategoryObjekte->next()) {
-					// Nicht anzuzeigende Kategorien aussortieren
-					if (in_array($objCategoryObjekte->CategoryID, $this->belegungsplan_category)) {
-						$arrHelper = array();
-						$arrHelper['ObjektID'] = (int) $objCategoryObjekte->ObjektID;
-						$arrHelper['ObjektName'] = \StringUtil::specialchars($objCategoryObjekte->ObjektName);
-						$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
-						// Calender anfügen wenn vorhanden
-						if (array_key_exists($arrHelper['ObjektID'], $arrObjekteCalender)) {
-							$arrHelper['Calender'] = $arrObjekteCalender[$arrHelper['ObjektID']];
-							unset($arrObjekteCalender[$arrHelper['ObjektID']]);
-						}
-						if (array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
-							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
-							$i++;
-						} else {
-							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryTitle'] = \StringUtil::specialchars($objCategoryObjekte->CategoryTitle);
-							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
-							$i++;
-						}
-						unset($arrHelper);
-					}
-				}
-			} else {
-				$arrInfo[] = '3. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][0];
 			}
 			
 			// Hole alle Jahre fuer die bereits Buchungen vorhanden sind ab dem aktuellen Jahr
