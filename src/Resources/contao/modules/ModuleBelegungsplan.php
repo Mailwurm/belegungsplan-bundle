@@ -199,7 +199,7 @@ class ModuleBelegungsplan extends \Module
 							tl_belegungsplan_objekte tbo,
 							tl_belegungsplan_category tbcat
 						WHERE 	tbc.pid = tbo.id
-						AND		tbo.pid = tbcat.id
+						AND	tbo.pid = tbcat.id
 						AND 	tbo.published = 1
 						AND 	((startDate < " . $this->intStartAuswahl . " AND endDate > " . $this->intStartAuswahl . ") OR (startDate >= " . $this->intStartAuswahl . " AND endDate <= " . $this->intEndeAuswahl . ") OR (startDate < " . $this->intEndeAuswahl . " AND endDate > " . $this->intEndeAuswahl . "))")
 						->execute();
@@ -209,38 +209,9 @@ class ModuleBelegungsplan extends \Module
 					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
 						// erster Tag der Buchung und weitere
 						if (empty($z)) {
-							// bei Jahresuebergreifender Buchung
-							if ((int) $objObjekteCalender->BuchungsStartJahr != (int) $objObjekteCalender->BuchungsEndeJahr) {
-								// bei Jahresuebergreifender Buchung
-								if (($y === (int) $objObjekteCalender->BuchungsStartJahr)) {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '0#1';
-								} else {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
-								}
-							} else {
-								// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
-								if (isset($arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d])) {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
-								} else {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '0#1';
-								}
-							}
+							$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = $this->includeCalender($objObjekteCalender->BuchungsStartJahr, $objObjekteCalender->BuchungsEndeJahr, $y, $arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d], 0);
 						} elseif ($y === (int) $objObjekteCalender->EndeJahr && $m === (int) $objObjekteCalender->EndeMonat && $d === (int) $objObjekteCalender->EndeTag) {
-							if ((int) $objObjekteCalender->BuchungsStartJahr != (int) $objObjekteCalender->BuchungsEndeJahr) {
-								// bei Jahresuebergreifender Buchung
-								if (($y === (int) $objObjekteCalender->BuchungsEndeJahr)) {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#0';
-								} else {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
-								}
-							} else {
-								// letzter Tag der Buchung
-								if (isset($arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d])) {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
-								} else {
-									$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#0';
-								}
-							}
+							$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = $this->includeCalender($objObjekteCalender->BuchungsStartJahr, $objObjekteCalender->BuchungsEndeJahr, $y, $arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d], 1);
 							break;
 						} else {
 							$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
@@ -384,5 +355,33 @@ class ModuleBelegungsplan extends \Module
 		unset($intJahr);
 		unset($arrFeiertage);
 		return $arrHelper;
+	}
+	
+	/**
+	 * Ausgabe fuer Kalender
+	 *
+	 * @return string
+	 */
+	protected function includeCalender($intBuchungsStartJahr, $intBuchungsEndeJahr, $intY, $arrCategoriesObjekte, $z)
+	{
+		$strReturn = '';
+		$intBuchungJahr = empty($z) ? (int) $intBuchungsStartJahr : (int) $intBuchungsEndeJahr;
+		// bei Jahresuebergreifender Buchung
+		if ((int) $intBuchungsStartJahr != (int) $intBuchungsEndeJahr) {
+			// bei Jahresuebergreifender Buchung
+			if ($intY === $intBuchungJahr) {
+				$strReturn = empty($z) ? '0#1' : '1#0';
+			} else {
+				$strReturn = '1#1';
+			}
+		} else {
+			// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
+			if (isset($arrCategoriesObjekte)) {
+				$strReturn = '1#1';
+			} else {
+				$strReturn = empty($z) ? '0#1' : '1#0';
+			}
+		}
+		return $strReturn;
 	}
 }
