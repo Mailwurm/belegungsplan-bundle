@@ -5,8 +5,8 @@ tools:
     sensiolabs_security_checker: true
 
 filter:
-    paths: ["tests/*"]
-    excluded_paths: ["tests/*"]
+    excluded_paths:
+        - tests/*
 
 checks:
     php:
