@@ -90,7 +90,6 @@ class ModuleBelegungsplan extends \Module
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
 		$arrFeiertage = array();
-		$arrObjekteCalender = array();
 		
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
@@ -145,11 +144,6 @@ class ModuleBelegungsplan extends \Module
 						$arrHelper['ObjektID'] = (int) $objCategoryObjekte->ObjektID;
 						$arrHelper['ObjektName'] = \StringUtil::specialchars($objCategoryObjekte->ObjektName);
 						$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
-						// Calender anfügen wenn vorhanden
-						// if (array_key_exists($arrHelper['ObjektID'], $arrObjekteCalender)) {
-							// $arrHelper['Calender'] = $arrObjekteCalender[$arrHelper['ObjektID']];
-							// unset($arrObjekteCalender[$arrHelper['ObjektID']]);
-						// }
 						if (array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
 							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
 							$i++;
