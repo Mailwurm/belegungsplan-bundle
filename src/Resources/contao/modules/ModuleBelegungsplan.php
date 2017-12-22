@@ -47,6 +47,11 @@ class ModuleBelegungsplan extends \Module
 	protected $intEndeAuswahl;
 	
 	/**
+	 * @var integer
+	 */
+	protected $intAnzahlJahre;
+	
+	/**
 	 * Display a wildcard in the back end
 	 *
 	 * @return string
@@ -235,7 +240,8 @@ class ModuleBelegungsplan extends \Module
 								GROUP BY YEAR(FROM_UNIXTIME(tbc.startDate))
 								ORDER BY YEAR(FROM_UNIXTIME(tbc.startDate)) ASC")
 								->execute($intMinYear);
-			if ($objJahre->numRows > 0) {
+			$this->intAnzahlJahre = $objJahre->numRows;
+			if ($this->intAnzahlJahre > 0) {
 				while ($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
@@ -263,7 +269,7 @@ class ModuleBelegungsplan extends \Module
 		// aktuell anzuzeigendes Jahr, wenn \Input::get('belegyear');
 		$this->Template->display_year = $intYear;
 		// Anzahl der anzuzeigenden Jahre fuer welche Reservierungen vorliegen
-		$this->Template->number_year = $objJahre->numRows;
+		$this->Template->number_year = $this->intAnzahlJahre;
 		// Jahreszahlen fuer die Auswahlbox
 		$this->Template->selectable_year = $arrJahre;
 		// Anzahl anzuzeigender Objekte
