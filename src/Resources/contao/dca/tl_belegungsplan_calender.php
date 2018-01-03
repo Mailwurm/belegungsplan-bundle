@@ -20,11 +20,11 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 	// Config
 	'config' => array
 	(
-		'dataContainer'               => 'Table',
-		'ptable'                      => 'tl_belegungsplan_objekte',
-		'ctable'                      => array('tl_content'),
-		'switchToEdit'                => true,
-		'enableVersioning'            => true,
+		'dataContainer'			=> 'Table',
+		'ptable'				=> 'tl_belegungsplan_objekte',
+		'ctable'				=> array('tl_content'),
+		'switchToEdit'			=> true,
+		'enableVersioning'		=> true,
 		'sql' => array
 		(
 			'keys' => array
@@ -130,27 +130,28 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 		),
 		'startDate' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['startDate'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'filter'                  => true,
-			'sorting'                 => true,
-			'flag'                    => 8,
-			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
-			'sql'                     => "int(10) unsigned NULL"
+			'label'			=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['startDate'],
+			'exclude'		=> true,
+			'search'		=> true,
+			'filter'		=> true,
+			'sorting'		=> true,
+			'flag'			=> 8,
+			'inputType'		=> 'text',
+			'eval'			=> array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'sql'			=> "int(10) unsigned NULL"
 		),
 		'endDate' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDate'],
-			'exclude'                 => true,
-			'search'                  => true,
-			'filter'                  => true,
-			'sorting'                 => true,
-			'flag'                    => 8,
-			'inputType'               => 'text',
-			'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
-			'sql'                     => "int(10) unsigned NULL"
+			'label'			=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDate'],
+			'exclude'		=> true,
+			'search'		=> true,
+			'filter'		=> true,
+			'sorting'		=> true,
+			'flag'			=> 8,
+			'inputType'		=> 'text',
+			'eval'			=> array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'save_callback'		=> array(array('tl_belegungsplan_calender','loadEndDate')),
+			'sql'			=> "int(10) unsigned NULL"
 		)
 	)
 );
@@ -170,14 +171,37 @@ class tl_belegungsplan_calender extends Backend
 		$this->import('BackendUser', 'User');
 	}
 	/**
-	* Add the type of input field
-	*
-	* @param array $arrRow
-	*
-	* @return string
-	*/
+	 * Add the type of input field
+	 *
+	 * @param array $arrRow
+	 *
+	 * @return string
+	 */
 	public function listCalender($arrRow)
 	{
 		return '<div class="tl_content_left">' . $arrRow['gast'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) . ']</span></div>';
+	}
+	/**
+	 * Prueft ob Enddatum kleiner Startdatum
+	 *
+	 * @param string $varValue
+	 * @param DataContainer $dc
+	 * @return string
+	 */
+	public function loadEndDate($varValue, DataContainer $dc)
+	{
+		try
+		{
+			if ($this->Input->post('endDate') < $this->Input->post('startDate'))
+			{
+				throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateError']); 
+			} else {
+				return $varValue;
+			}
+		}
+		catch (\OutOfBoundsException $e)
+		{
+		}
+		
 	}
 }
