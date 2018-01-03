@@ -50,6 +50,9 @@
 			<trans-unit id="tl_belegungsplan_calender.endDate.1">
 				<source>Please enter the departure date according to the global date format dd.mm.yyyy</source>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.endDateError">
+				<source>The departure day is before the arrival day.</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.tstamp.0">
 				<source>Revision date</source>
 			</trans-unit>
