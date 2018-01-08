@@ -7,5 +7,5 @@
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/Mailwurm/belegungsplan-bundle/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 
-## Doku
-`<addr>`
+## Dokumentation
+1. [Installation](docs/installation.md)
