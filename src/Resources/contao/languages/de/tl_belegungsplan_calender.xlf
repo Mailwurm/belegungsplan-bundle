@@ -69,6 +69,10 @@
 				<source>The departure day is before the arrival day.</source>
 				<target>Der Abreisetag liegt vor dem Anreisetag.</target>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.endDateListError">
+				<source>The departure day is before the arrival day. This appointment is not displayed in the output.</source>
+				<target>Der Abreisetag liegt vor dem Anreisetag. Dieser Termin wird nicht in der Ausgabe angezeigt.</target>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.tstamp.0">
 				<source>Revision date</source>
 				<target>Änderungsdatum</target>
@@ -84,6 +88,14 @@
 			<trans-unit id="tl_belegungsplan_calender.date_legend">
 				<source>Departure dates</source>
 				<target>Reisedaten</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.ueberschneidung.0">
+				<source>Schedule conflict</source>
+				<target>Terminüberschneidung</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.ueberschneidung.1">
+				<source>There is an overlap for this date.</source>
+				<target>Für diesen Termin liegt eine Überschneidung vor.</target>
 			</trans-unit>
 		</body>
 	</file>
