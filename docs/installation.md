@@ -1,8 +1,9 @@
-# Installation – Contao 4 Belegungsplan bundle
+## # Contao 4 Belegungsplan Bundle
 
 1. **Installation**
 2. [**Backend**](backend.md)
 
+## Installation
 
 ## Mindestanforderungen:
 
