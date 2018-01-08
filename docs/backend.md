@@ -19,3 +19,5 @@ Nach Klick auf "Belegungspläne" und einer frischen Installation, sehen Sie folg
 ![Leere Kategorien](images/belegungsplan-bundle-2.png)
 
 Legen sie zuerst ein paar Kategorien an.
+
+![Neue Kategorien erstellen](images/belegungsplan-bundle-3.png)
