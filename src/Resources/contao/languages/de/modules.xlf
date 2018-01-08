@@ -1,6 +1,10 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en" target-language="de">
 		<body>
+			<trans-unit id="MOD.beleg">
+				<source>Assignment</source>
+				<target>Belegung</target>
+			</trans-unit>
 			<trans-unit id="MOD.belegung.0">
 				<source>Booking calendar</source>
 				<target>Belegungspläne</target>
