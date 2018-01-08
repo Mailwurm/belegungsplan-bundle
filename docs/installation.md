@@ -5,13 +5,13 @@
 
 ## Installation
 
-## Mindestanforderungen:
+#### Mindestanforderungen:
 
 - PHP 7.1 (PHP < 7.1 ungetestet)
 - [Contao](https://github.com/contao/managed-edition) 4.4 (Version < 4.4 ungetestet)
 
 
-## Installation mit Composer
+#### Installation mit Composer
 
 Führen Sie den folgenden Befehl in Ihrem Contao 4-Projektordner aus:
 
