@@ -95,6 +95,7 @@ class ModuleBelegungsplan extends \Module
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
 		$arrFeiertage = array();
+		$arrObjekteCalender = array();
 		
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
@@ -198,10 +199,12 @@ class ModuleBelegungsplan extends \Module
 							tl_belegungsplan_objekte tbo,
 							tl_belegungsplan_category tbcat
 						WHERE 	tbc.pid = tbo.id
-						AND	tbo.pid = tbcat.id
+						AND		tbo.pid = tbcat.id
 						AND 	tbo.published = 1
-						AND 	((startDate < " . $this->intStartAuswahl . " AND endDate > " . $this->intStartAuswahl . ") OR (startDate >= " . $this->intStartAuswahl . " AND endDate <= " . $this->intEndeAuswahl . ") OR (startDate < " . $this->intEndeAuswahl . " AND endDate > " . $this->intEndeAuswahl . "))")
-						->execute();
+						AND		tbc.startDate < tbc.endDate
+						AND 	((tbc.startDate < ? AND tbc.endDate > ?) OR (tbc.startDate >= ? AND tbc.endDate <= ?) OR (tbc.startDate < ? AND tbc.endDate > ?))")
+						->execute($this->intStartAuswahl, $this->intStartAuswahl, $this->intStartAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl);
+						
 			if ($objObjekteCalender->numRows > 0) {
 				while ($objObjekteCalender->next()) {
 					$intEndeMonat = (int) date('t', mktime(0, 0, 0, (int) $objObjekteCalender->StartMonat, (int) $objObjekteCalender->StartTag, (int) $objObjekteCalender->StartJahr));
