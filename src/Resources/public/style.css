@@ -1,1 +1,4 @@
 /* Contao Open Source CMS, (c) Jan Karai, LGPL-3.0+ */
+#tl_navigation .group-beleg {
+	background:url("belegungsplan.svg") 3px 2px no-repeat;
+}
