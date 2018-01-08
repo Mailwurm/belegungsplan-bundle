@@ -1,6 +1,9 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/modules.php" source-language="en">
 		<body>
+			<trans-unit id="MOD.beleg">
+				<source>Assignment</source>
+			</trans-unit>
 			<trans-unit id="MOD.belegung.0">
 				<source>Booking calendar</source>
 			</trans-unit>
@@ -9,15 +12,12 @@
 			</trans-unit>
 			<trans-unit id="MOD.feiertage.0">
 				<source>Holidays</source>
-				<target>Feiertage</target>
 			</trans-unit>
 			<trans-unit id="MOD.feiertage.1">
 				<source>Create and manage holidays</source>
-				<target>Feiertage anlegen und verwalten</target>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_feiertage">
 				<source>Holidays</source>
-				<target>Feiertage</target>
 			</trans-unit>
 			<trans-unit id="MOD.tl_belegungsplan_category">
 				<source>Occupancy categories</source>
