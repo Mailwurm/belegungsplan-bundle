@@ -13,6 +13,6 @@
 
 Führen Sie den folgenden Befehl in Ihrem Contao 4-Projektordner aus:
 
-  $ composer require mailwurm/belegungsplan-bundle
+$ composer require mailwurm/belegungsplan-bundle
   
 Führen Sie dann das Contao-Installationstool aus, um die Datenbank zu aktualisieren.
