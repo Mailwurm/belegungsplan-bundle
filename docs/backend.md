@@ -32,3 +32,7 @@ Mit Klick auf "Neues Objekt" gelangen Sie zur Eingabemaske für die Objekte.
 In dem Textfeld "Infotext" kann eine kurze Beschreibung eingegeben werden, welche dann im Frontend hinter dem jeweiligen Objekt erscheint.
 
 ![Eingabemaske für die Objekte](images/belegungsplan-bundle-6.png)
+
+Erstellte Objekte können ausgeblendet und in der Reihenfolge verschoben werden.
+
+![Erstellte Objekte](images/belegungsplan-bundle-7.png)
