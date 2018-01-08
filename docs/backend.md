@@ -25,3 +25,7 @@ Legen sie zuerst eine oder mehrere Kategorien an.
 ![Neue erstellte Kategorien](images/belegungsplan-bundle-4.png)
 
 Mit Klick auf das grüne Plus hinter jeder Kategorie, gelangen Sie zur Eingabe der Objekte (Zimmer, Häuser etc.)
+
+![Leere Objektliste](images/belegungsplan-bundle-5.png)
+
+Mit Klick auf "Neues Objekt" gelangen Sie zur Eingabemaske für die Objekte.
