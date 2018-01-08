@@ -8,5 +8,5 @@
 
 
 ## Dokumentation
-1. [**Installation**](installation.md)
-2. [**Backend**](backend.md)
+1. [**Installation**](docs/installation.md)
+2. [**Backend**](docs/backend.md)
