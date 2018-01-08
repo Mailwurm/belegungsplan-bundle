@@ -36,3 +36,5 @@ In dem Textfeld "Infotext" kann eine kurze Beschreibung eingegeben werden, welch
 Erstellte Objekte können ausgeblendet und in der Reihenfolge verschoben werden.
 
 ![Erstellte Objekte](images/belegungsplan-bundle-7.png)
+
+Weiteres in kürze ...
