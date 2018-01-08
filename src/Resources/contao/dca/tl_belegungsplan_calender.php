@@ -25,6 +25,8 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 		'ctable'				=> array('tl_content'),
 		'switchToEdit'			=> true,
 		'enableVersioning'		=> true,
+		'onsubmit_callback'		=> array(array('tl_belegungsplan_calender','loadUeberschneidung')),
+		'ondelete_callback'		=> array(array('tl_belegungsplan_calender', 'calenderOndeleteCallback')),
 		'sql' => array
 		(
 			'keys' => array
@@ -150,8 +152,15 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'flag'			=> 8,
 			'inputType'		=> 'text',
 			'eval'			=> array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
-			'save_callback'		=> array(array('tl_belegungsplan_calender','loadEndDate')),
+			'save_callback'	=> array(array('tl_belegungsplan_calender','loadEndDate')),
 			'sql'			=> "int(10) unsigned NULL"
+		),
+		'ueberschneidung' => array
+		(
+			'label'			=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['ueberschneidung'],
+			'exclude'		=> true,
+			'inputType'		=> 'text',
+			'sql'			=> "text NULL"
 		)
 	)
 );
@@ -179,7 +188,11 @@ class tl_belegungsplan_calender extends Backend
 	 */
 	public function listCalender($arrRow)
 	{
-		return '<div class="tl_content_left">' . $arrRow['gast'] . ' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) . ']</span></div>';
+		return '<div class="tl_content_left">' . $arrRow['gast'] . 
+		' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) . ']</span>' . 
+		($arrRow['endDate'] < $arrRow['startDate'] ? ' ' . Image::getHtml('error.svg', $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateListError'], 'title="' . $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateListError'] . '"') : '') . 
+		($arrRow['ueberschneidung'] ? ' ' . Image::getHtml('error_404.svg', $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['ueberschneidung'][0], 'title="' . $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['ueberschneidung'][0] . '"') : '') . 
+		'</div>';
 	}
 	/**
 	 * Prueft ob Enddatum kleiner Startdatum
@@ -190,10 +203,12 @@ class tl_belegungsplan_calender extends Backend
 	 */
 	public function loadEndDate($varValue, DataContainer $dc)
 	{
+		$dateOne = new DateTime($this->Input->post('startDate'));
+		$dateTwo = new DateTime($this->Input->post('endDate'));
 		try
 		{
-			if ($this->Input->post('endDate') < $this->Input->post('startDate'))
-			{
+			if ($dateTwo->getTimestamp() < $dateOne->getTimestamp())
+			{	
 				throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateError']); 
 			} else {
 				return $varValue;
@@ -202,6 +217,99 @@ class tl_belegungsplan_calender extends Backend
 		catch (\OutOfBoundsException $e)
 		{
 		}
-		
+	}
+	/**
+	 * Prueft auf Terminueberschneidungen
+	 *
+	 * @param DataContainer $dc
+	 */
+	public function loadUeberschneidung(DataContainer $dc)
+	{
+		$intId = (int) $dc->activeRecord->id;
+		$intPid = (int) $dc->activeRecord->pid;
+		$intStart = (int) $dc->activeRecord->startDate;
+		$intEnde = (int) $dc->activeRecord->endDate;
+		// Hole alle Calenderdaten zur Auswahl
+		$objCal = $this->Database->prepare("SELECT id, ueberschneidung
+											FROM tl_belegungsplan_calender
+											WHERE id <> ?
+											AND pid = ?
+											AND ((startDate < ? AND endDate > ?) OR (startDate >= ? AND endDate <= ?) OR (startDate < ? AND endDate > ?))")
+						->execute($intId, $intPid, $intStart, $intStart, $intStart, $intEnde, $intEnde, $intEnde);
+		if ($objCal->numRows > 0) {
+			$strHelper = '';
+			while ($objCal->next()) {
+				$strHelper .= ',' . $objCal->id;
+				if (empty($objCal->ueberschneidung)) {
+					$this->updateDatabase($intId, $objCal->id);
+				} else {
+					$arrHelper = explode(',', $objCal->ueberschneidung);
+					if (!in_array($intId, $arrHelper)) {
+						$this->updateDatabase($objCal->ueberschneidung . ',' . $intId, $objCal->id);
+					}
+					unset($arrHelper);
+				}
+			}
+			// Update am aktuellen Termin
+			$this->updateDatabase(substr($strHelper, 1), $intId);
+			unset($strHelper);
+		} else {
+			$this->updateCalenders($intId, $intPid);
+		}		
+	}
+	/**
+	 * ondelete_callback: Wird ausgefuehrt bevor ein Datensatz aus der Datenbank entfernt wird.
+	 *
+	 * @param DataContainer $dc
+	 */
+	public function calenderOndeleteCallback(DataContainer $dc)
+	{
+		$intId = (int) $dc->activeRecord->id;
+		$intPid = (int) $dc->activeRecord->pid;
+		$this->updateCalenders($intId, $intPid);
+	}
+	/**
+	 * Update Datenbank
+	 *
+	 * @param integer $intId
+	 * @param integer $intPid
+	 */
+	 public function updateCalenders($intId, $intPid)
+	{
+		$objCalDelete = $this->Database->prepare("SELECT id, ueberschneidung
+											FROM tl_belegungsplan_calender
+											WHERE id <> ?
+											AND pid = ?
+											AND ueberschneidung <> ''")
+						->execute($intId, $intPid);
+		if ($objCalDelete->numRows > 0) {
+			$arrDelete = array($intId);
+			$strHelper = '';
+			while ($objCalDelete->next()) {
+				$strHelper .= ',' . $objCalDelete->id;
+				$arrHelper = explode(',', $objCalDelete->ueberschneidung);
+				$arrReturn = array_diff($arrHelper, $arrDelete);
+				$strInsert = '';
+				if (!empty($arrReturn)) {
+					$strInsert = implode(',', $arrReturn);
+				} 
+				$this->updateDatabase($strInsert, $objCalDelete->id);
+				unset($arrHelper, $arrReturn);
+			}
+			// Update am aktuellen Termin
+			$this->updateDatabase('', $intId);
+			unset($arrHelper, $arrReturn);
+		}
+	}
+	/**
+	 * Update Datenbank
+	 *
+	 * @param string $strInput
+	 * @param integer $intInput
+	 */
+	public function updateDatabase($strInput, $intInput)
+	{
+		$this->Database->prepare("UPDATE tl_belegungsplan_calender SET ueberschneidung = ? WHERE id = ?")
+						->execute($strInput, $intInput);
 	}
 }
