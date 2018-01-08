@@ -9,17 +9,22 @@
 /**
 * Add back end modules
 */
-array_insert($GLOBALS['BE_MOD']['content'], 99, array
-(
-	'belegung' => array
+$arrBeleg1 = array(
+	'beleg' => array
 	(
-		'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
-	),
-	'feiertage' => array
-	(
-		'tables'      => array('tl_belegungsplan_feiertage')
+		'belegung' => array
+		(
+			'tables'      => array('tl_belegungsplan_category', 'tl_belegungsplan_objekte', 'tl_belegungsplan_calender')
+		),
+		'feiertage' => array
+		(
+			'tables'      => array('tl_belegungsplan_feiertage')
+		)
 	)
-));
+);
+$arrBeleg2 = $GLOBALS['BE_MOD'];
+$GLOBALS['BE_MOD'] = array_merge($arrBeleg1, $arrBeleg2);
+
 /**
 * Front end modules
 */
