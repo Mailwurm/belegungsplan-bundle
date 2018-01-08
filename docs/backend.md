@@ -29,3 +29,6 @@ Mit Klick auf das grüne Plus hinter jeder Kategorie, gelangen Sie zur Eingabe d
 ![Leere Objektliste](images/belegungsplan-bundle-5.png)
 
 Mit Klick auf "Neues Objekt" gelangen Sie zur Eingabemaske für die Objekte.
+In dem Textfeld "Infotext" kann eine kurze Beschreibung eingegeben werden, welche dann im Frontend hinter dem jeweiligen Objekt erscheint.
+
+![Eingabemaske für die Objekte](images/belegungsplan-bundle-6.png)
