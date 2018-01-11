@@ -41,3 +41,7 @@ Durch Klick auf das grüne Kreuz gelangt man zu den Belegungszeiten.
 Wurde noch kein Datensatz (Belegungszeit) eingetragen, dann erscheint folgende Ausgabe.
 
 ![Leere Belegungszeittabelle](images/belegungsplan-bundle-8.png)
+
+Geben Sie im folgenden Dialog alle Daten ein.
+
+![Dialog Belegungszeit](images/belegungsplan-bundle-9.png)
