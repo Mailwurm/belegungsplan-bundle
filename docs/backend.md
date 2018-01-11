@@ -38,3 +38,6 @@ Erstellte Objekte können ausgeblendet und in der Reihenfolge verschoben werden.
 ![Erstellte Objekte](images/belegungsplan-bundle-7.png)
 
 Durch Klick auf das grüne Kreuz gelangt man zu den Belegungszeiten.
+Wurde noch kein Datensatz (Belegungszeit) eingetragen, dann erscheint folgende Ausgabe.
+
+![Leere Belegungszeittabelle](images/belegungsplan-bundle-8.png)
