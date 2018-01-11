@@ -5,3 +5,7 @@
 3. **Einbindung Frontend**
 
 ## Einbindung Frontend
+
+Erstellen Sie in ihrer Contao-Installation ein neues Modul vom Modultyp "Belegungsplan-Liste"
+
+![Neues Modul](images/belegungsplan-bundle-11.png)
