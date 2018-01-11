@@ -3,6 +3,7 @@
 1. [**Installation**](installation.md)
 2. **Backend**
 3. [**Einbindung Frontend**](einbindung-frontend.md)
+4. [**Frontend**](frontend.md)
 
 ## Backend
 
