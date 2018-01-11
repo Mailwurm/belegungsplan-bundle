@@ -11,3 +11,4 @@ Wenn alles korrekt funktioniert, erhalten Sie im Frontend die Ausgabe ihrer Date
 
 Sie können nun das Template "mod_belegungsplan" nach ihren Wünschen konfigurieren
 
+![Ausgabe Frontend](images/belegungsplan-bundle-13.jpg)
