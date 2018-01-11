@@ -48,7 +48,7 @@
 				<source>Edit object</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.edit.1">
-				<source>Edit object ID %s</source>
+				<source>At the occupancy times</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.editheader.0">
 				<source>Edit object</source>
