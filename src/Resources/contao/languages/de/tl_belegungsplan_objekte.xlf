@@ -62,8 +62,8 @@
 				<target>Objekt bearbeiten</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.edit.1">
-				<source>Edit object ID %s</source>
-				<target>Objekt ID %s bearbeiten</target>
+				<source>At the occupancy times</source>
+				<target>Zu den Belegungszeiten</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.editheader.0">
 				<source>Edit object</source>
