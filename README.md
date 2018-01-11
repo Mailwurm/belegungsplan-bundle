@@ -10,5 +10,5 @@
 ## Dokumentation
 1. [**Installation**](docs/installation.md)
 2. [**Backend**](docs/backend.md)
+3. [**Einbindung Frontend**](docs/einbindung-frontend.md)
 
-Weiteres in kürze ...
