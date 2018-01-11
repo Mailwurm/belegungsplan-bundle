@@ -19,5 +19,6 @@ Speichern Sie ihre Einstellungen und wechseln sie in die Artikelansicht in welch
 
 Fügen Sie ein "Neues Inhaltselement" vom Typ "Modul" ein und wählen Sie in "Include-Einstellungen" das eben erstellte Modul ein.
 
+![Neues Modul integrieren](images/belegungsplan-bundle-12.png)
 
 Speichern Sie ihre Einstellungen.
