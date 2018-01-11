@@ -1,4 +1,4 @@
-## Contao 4 Belegungsplan Bundle
+# Contao 4 Belegungsplan Bundle
 
 1. **Installation**
 2. [**Backend**](backend.md)
