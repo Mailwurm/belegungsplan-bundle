@@ -45,3 +45,7 @@ Wurde noch kein Datensatz (Belegungszeit) eingetragen, dann erscheint folgende A
 Geben Sie im folgenden Dialog alle Daten ein.
 
 ![Dialog Belegungszeit](images/belegungsplan-bundle-9.png)
+
+Belegungszeiten werden nach Datum sortiert angezeigt. Jeder Datensatz kann bearbeitet und gelöscht werden.
+
+![Dialog Belegungszeit](images/belegungsplan-bundle-10.png)
