@@ -37,4 +37,4 @@ Erstellte Objekte können ausgeblendet und in der Reihenfolge verschoben werden.
 
 ![Erstellte Objekte](images/belegungsplan-bundle-7.png)
 
-Weiteres in kürze ...
+Durch Klick auf das grüne Kreuz gelangt man zu den Belegungszeiten.
