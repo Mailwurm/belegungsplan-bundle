@@ -9,3 +9,8 @@
 Erstellen Sie in ihrer Contao-Installation ein neues Modul vom Modultyp "Belegungsplan-Liste"
 
 ![Neues Modul](images/belegungsplan-bundle-11.png)
+
+Hier können Sie nun auswählen welche Kategorien angezeigt werden sollen. Leere Kategorien werden generell nicht angezeigt, gleich welche Einstellung Sie hier vornehmen.
+Ebenso können Sie hier die Reihenfolge der Kategorien festlegen durch anfassen und verschieben. So wie Sie die Reihenfolge hier festlegen werden die Kategorien auch im Frontend angezeigt.
+
+Die Auswahl der anzuzeigenden Monate ist dann von Vorteil, wenn Sie z.Bsp. nur saisonale Angebote zur Verfügung stellen. Haben Sie ein ganzjähriges Angebot, dann wählen Sie alle Monate aus.
