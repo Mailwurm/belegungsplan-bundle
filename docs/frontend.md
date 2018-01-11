@@ -18,3 +18,6 @@ Sie können nun das Template "mod_belegungsplan" nach ihren Wünschen konfigurie
 ![Ausgabe Frontend mit Bootstrap](images/belegungsplan-bundle-14.png)
 
 Eine [**Online-Demo**](http://www.waldeck-ruegen.de/belegungsplan.html) unter Verwendung von Bootstrap-Framework finden Sie [**hier**](http://www.waldeck-ruegen.de/belegungsplan.html).
+
+
+Das [**Bootstrap-Template**](https://github.com/Mailwurm/mod_belegungsplan_bootstrap) inclusive CSS finden Sie [**hier**](https://github.com/Mailwurm/mod_belegungsplan_bootstrap).
