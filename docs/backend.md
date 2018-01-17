@@ -9,7 +9,7 @@
 
 Nach der Installation und der aktualisierung der Datenbank im Installtool finden Sie im Menü links einen weiteren Eintrag.
 
-![Neuer Menüeintrag](images/belegungsplan-bundle-1.png)
+![Neuer Menüeintrag](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-1.png)
 
 Dieses Belegungsplan-Bundle funktioniert nach folgendem Prinzip:
 1. Kategorien
@@ -18,36 +18,36 @@ Dieses Belegungsplan-Bundle funktioniert nach folgendem Prinzip:
 
 Nach Klick auf "Belegungspläne" und einer frischen Installation, sehen Sie folgendes Fenster.
 
-![Leere Kategorien](images/belegungsplan-bundle-2.png)
+![Leere Kategorien](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-2.png)
 
 Legen sie zuerst eine oder mehrere Kategorien an.
 
-![Neue Kategorien erstellen](images/belegungsplan-bundle-3.png)
+![Neue Kategorien erstellen](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-3.png)
 
-![Neue erstellte Kategorien](images/belegungsplan-bundle-4.png)
+![Neue erstellte Kategorien](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-4.png)
 
 Mit Klick auf das grüne Plus hinter jeder Kategorie, gelangen Sie zur Eingabe der Objekte (Zimmer, Häuser etc.)
 
-![Leere Objektliste](images/belegungsplan-bundle-5.png)
+![Leere Objektliste](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-5.png)
 
 Mit Klick auf "Neues Objekt" gelangen Sie zur Eingabemaske für die Objekte.
 In dem Textfeld "Infotext" kann eine kurze Beschreibung eingegeben werden, welche dann im Frontend hinter dem jeweiligen Objekt erscheint.
 
-![Eingabemaske für die Objekte](images/belegungsplan-bundle-6.png)
+![Eingabemaske für die Objekte](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-6.png)
 
 Erstellte Objekte können ausgeblendet und in der Reihenfolge verschoben werden.
 
-![Erstellte Objekte](images/belegungsplan-bundle-7.png)
+![Erstellte Objekte](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-7.png)
 
 Durch Klick auf das grüne Kreuz gelangt man zu den Belegungszeiten.
 Wurde noch kein Datensatz (Belegungszeit) eingetragen, dann erscheint folgende Ausgabe.
 
-![Leere Belegungszeittabelle](images/belegungsplan-bundle-8.png)
+![Leere Belegungszeittabelle](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-8.png)
 
 Geben Sie im folgenden Dialog alle Daten ein.
 
-![Dialog Belegungszeit](images/belegungsplan-bundle-9.png)
+![Dialog Belegungszeit](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-9.png)
 
 Belegungszeiten werden nach Datum sortiert angezeigt. Jeder Datensatz kann bearbeitet und gelöscht werden.
 
-![Dialog Belegungszeit](images/belegungsplan-bundle-10.png)
+![Dialog Belegungszeit](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-10.png)
