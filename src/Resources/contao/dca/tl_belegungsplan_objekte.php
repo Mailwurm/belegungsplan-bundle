@@ -109,7 +109,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'search'                  => true,
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'unique'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
-			'sql'                     => "varchar(128) COLLATE utf8_bin NOT NULL default ''"
+			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
 		'author' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['author'],
@@ -131,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'search'                  => true,
 			'inputType'               => 'text',
 			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long'),
-			'sql'                     => "varchar(255) COLLATE utf8_bin NOT NULL default ''"
+			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'published' => array(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['published'],
