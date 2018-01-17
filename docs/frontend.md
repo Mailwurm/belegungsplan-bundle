@@ -11,11 +11,11 @@ Wenn alles korrekt funktioniert, erhalten Sie im Frontend die Ausgabe ihrer Date
 
 Sie können nun das Template "mod_belegungsplan" nach ihren Wünschen konfigurieren
 
-![Ausgabe Frontend](images/belegungsplan-bundle-13.jpg)
+![Ausgabe Frontend](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-13.jpg)
 
 ## Frontend mit Bootstrap
 
-![Ausgabe Frontend mit Bootstrap](images/belegungsplan-bundle-14.png)
+![Ausgabe Frontend mit Bootstrap](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-14.png)
 
 Eine [**Online-Demo**](http://www.waldeck-ruegen.de/belegungsplan.html) unter Verwendung von Bootstrap-Framework finden Sie [**hier**](http://www.waldeck-ruegen.de/belegungsplan.html).
 
