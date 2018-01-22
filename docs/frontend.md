@@ -23,4 +23,7 @@ Eine [**Online-Demo**](http://www.waldeck-ruegen.de/belegungsplan.html) unter Ve
 Das [**Bootstrap-Template**](https://github.com/Mailwurm/mod_belegungsplan_bootstrap) inclusive CSS finden Sie [**hier**](https://github.com/Mailwurm/mod_belegungsplan_bootstrap).
 
 ## Frontend mit jQuery
+
+![Ausgabe Frontend mit jQuery](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-15.png)
+
 Das [**jQuery-Template**](https://github.com/Mailwurm/mod_belegungsplan_jquery) inclusive CSS finden Sie [**hier**](https://github.com/Mailwurm/mod_belegungsplan_jquery).
