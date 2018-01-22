@@ -95,7 +95,6 @@ class ModuleBelegungsplan extends \Module
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
 		$arrFeiertage = array();
-		$arrObjekteCalender = array();
 		
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
@@ -210,7 +209,7 @@ class ModuleBelegungsplan extends \Module
 					$intEndeMonat = (int) date('t', mktime(0, 0, 0, (int) $objObjekteCalender->StartMonat, (int) $objObjekteCalender->StartTag, (int) $objObjekteCalender->StartJahr));
 					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
 						// erster Tag der Buchung und weitere
-						if (empty($z)) {
+						if ($z === 0) {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
 								$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = $this->includeCalender($objObjekteCalender->BuchungsStartJahr, $objObjekteCalender->BuchungsEndeJahr, $y, $arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d], 0);
