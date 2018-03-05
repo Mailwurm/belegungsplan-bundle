@@ -94,6 +94,12 @@
 			<trans-unit id="mailwurm_belegung.short_cut_day.7">
 				<source>Sun</source>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.legende.frei">
+				<source>Free</source>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.legende.belegt">
+				<source>Occupied</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
