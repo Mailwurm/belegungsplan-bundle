@@ -292,12 +292,9 @@ class ModuleBelegungsplan extends \Module
 		$this->Template->CategorieObjekteCalender = $this->sortNachWizard($arrCategorieObjekte, $this->belegungsplan_category);
 		// Array mit den Monatsdaten
 		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $this->intStartAuswahl, $arrFeiertage);
-		// Array mit den Feiertagen
-		#$this->Template->Feiertage = $arrFeiertage;
-		#$this->Template->Start = $this->intStartAuswahl;
-		#$this->Template->Ende = $this->intEndeAuswahl;
-		#$this->Template->Monate = $arrBelegungsplanMonth;
-		#$this->Template->MaxMonat = $intMax;
+		// Text fuer Legende
+		$this->Template->Frei = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['frei'];
+		$this->Template->Belegt = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['belegt'];
 		
 		if (!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
