@@ -125,6 +125,14 @@
 				<source>Sun</source>
 				<target>So</target>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.legende.frei">
+				<source>Free</source>
+				<target>Frei</target>
+			</trans-unit>
+			<trans-unit id="mailwurm_belegung.legende.belegt">
+				<source>Occupied</source>
+				<target>Belegt</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
