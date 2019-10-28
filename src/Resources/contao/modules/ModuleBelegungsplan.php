@@ -19,46 +19,46 @@ use Patchwork\Utf8;
 * @author Jan Karai <https://www.sachsen-it.de>
 */
 class ModuleBelegungsplan extends \Module
-{	
+{
 	/**
 	 * Template
 	 * @var string
 	 */
 	protected $strTemplate = 'mod_belegungsplan';
-	
+
 	/**
 	 * @var array
 	 */
 	protected $belegungsplan_category = array();
-	
+
 	/**
 	 * @var string
 	 */
 	protected $strUrl;
-	
+
 	/**
 	 * @var integer
 	 */
 	protected $intStartAuswahl;
-	
+
 	/**
 	 * @var integer
 	 */
 	protected $intEndeAuswahl;
-	
+
 	/**
 	 * @var integer
 	 */
 	protected $intAnzahlJahre;
-	
+
 	/**
 	 * Display a wildcard in the back end
 	 *
 	 * @return string
 	 */
-	public function generate() 
+	public function generate()
 	{
-		if (TL_MODE == 'BE') 
+		if (TL_MODE == 'BE')
 		{
 			/** @var BackendTemplate|object $objTemplate */
 			$objTemplate = new \BackendTemplate('be_wildcard');
@@ -73,14 +73,14 @@ class ModuleBelegungsplan extends \Module
 		$this->belegungsplan_month = \StringUtil::deserialize($this->belegungsplan_month);
 		// aktuelle Seiten URL
 		$this->strUrl = preg_replace('/\?.*$/', '', \Environment::get('request'));
-		
+
 		// Return if there are no categories
-		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) 
+		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category))
 		{
 			return '';
 		}
 		// Return if there are no month
-		if (!is_array($this->belegungsplan_month) || empty($this->belegungsplan_month)) 
+		if (!is_array($this->belegungsplan_month) || empty($this->belegungsplan_month))
 		{
 			return '';
 		}
@@ -89,29 +89,29 @@ class ModuleBelegungsplan extends \Module
 	/**
 	 * Generate the module
 	 */
-	protected function compile() 
+	protected function compile()
 	{
 		$arrInfo = array();
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
 		$arrFeiertage = array();
-		
+
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
 		sort($arrBelegungsplanMonth, SORT_NUMERIC);
 		$this->belegungsplan_month = $arrBelegungsplanMonth;
-		
+
 		$blnClearInput = false;
-		
+
 		// wenn der letzte anzuzeigende Monat verstrichen ist automatisch das nächste Jahr anzeigen
 		$intMax = (int) max($this->belegungsplan_month);
-		
+
 		$intYear = \Input::get('belegyear');
 		// interner Zaehler
 		$i = 0;
-		
+
 		// Aktuelle Periode bei Erstaufruf der Seite
-		if (!isset($_GET['belegyear'])) {	
+		if (!isset($_GET['belegyear'])) {
 			$intYear = $intMax < (int) date('n') ? (int) date('Y') + 1 : (int) date('Y');
 			$blnClearInput = true;
 		} else {
@@ -120,7 +120,7 @@ class ModuleBelegungsplan extends \Module
 			}
 		}
 		$intMinYear = $intMax < (int) date('n') ? (int) date('Y') + 1 : (int) date('Y');
-		
+
 		// wenn $arrInfo hier schon belegt, dann nicht erst weiter machen
 		if (empty($arrInfo)) {
 			// Anfang und Ende des Anzeigezeitraumes je nach GET
@@ -128,7 +128,7 @@ class ModuleBelegungsplan extends \Module
 				$this->intStartAuswahl = (int) mktime(0, 0, 0, 1, 1, $intYear);
 				$this->intEndeAuswahl = (int) mktime(23, 59, 59, 12, 31, $intYear);
 			}
-			
+
 			// Hole alle aktiven Objekte inklusive dazugehoeriger Kategorie
 			$objCategoryObjekte = $this->Database->prepare("SELECT 	tbc.id as CategoryID,
 										tbc.title as CategoryTitle,
@@ -163,7 +163,7 @@ class ModuleBelegungsplan extends \Module
 			} else {
 				$arrInfo[] = '3. ' . $GLOBALS['TL_LANG']['mailwurm_belegung']['info'][0];
 			}
-			
+
 			// Hole alle Calenderdaten zur Auswahl
 			$objObjekteCalender = $this->Database->prepare("SELECT tbo.id as ObjektID,
 							tbo.sorting as ObjektSortierung,
@@ -203,7 +203,7 @@ class ModuleBelegungsplan extends \Module
 						AND		tbc.startDate < tbc.endDate
 						AND 	((tbc.startDate < ? AND tbc.endDate > ?) OR (tbc.startDate >= ? AND tbc.endDate <= ?) OR (tbc.startDate < ? AND tbc.endDate > ?))")
 						->execute($this->intStartAuswahl, $this->intStartAuswahl, $this->intStartAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl);
-						
+
 			if ($objObjekteCalender->numRows > 0) {
 				while ($objObjekteCalender->next()) {
 					$intEndeMonat = (int) date('t', mktime(0, 0, 0, (int) $objObjekteCalender->StartMonat, (int) $objObjekteCalender->StartTag, (int) $objObjekteCalender->StartJahr));
@@ -243,12 +243,12 @@ class ModuleBelegungsplan extends \Module
 					}
 				}
 			}
-			
+
 			// Hole alle Jahre fuer die bereits Buchungen vorhanden sind ab dem aktuellen Jahr
-			$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(tbc.startDate)) as Start 
+			$objJahre = $this->Database->prepare("	SELECT YEAR(FROM_UNIXTIME(tbc.startDate)) as Start
 								FROM tl_belegungsplan_calender tbc,
 									tl_belegungsplan_objekte tbo
-								WHERE YEAR(FROM_UNIXTIME(tbc.startDate)) >= ? 
+								WHERE YEAR(FROM_UNIXTIME(tbc.startDate)) >= ?
 								AND tbc.pid = tbo.id
 								AND tbo.published = 1
 								GROUP BY YEAR(FROM_UNIXTIME(tbc.startDate))
@@ -256,11 +256,15 @@ class ModuleBelegungsplan extends \Module
 								->execute($intMinYear);
 			$this->intAnzahlJahre = $objJahre->numRows;
 			if ($this->intAnzahlJahre > 0) {
+				// mindestens das aktuelle Jahr anzeigen (bugfix)
+				$arrJahre[] = array('single_year' => (int) date('Y'),
+											'year_href' => $this->strUrl . '?belegyear=' . date('Y'),
+											'active' => 0);
 				while ($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
 			}
-			
+
 			// Hole alle Feiertage
 			$objFeiertage = $this->Database->prepare("SELECT DAY(FROM_UNIXTIME(startDate)) as Tag,
 									MONTH(FROM_UNIXTIME(startDate)) as Monat,
@@ -276,7 +280,7 @@ class ModuleBelegungsplan extends \Module
 				}
 			}
 		}
-		
+
 		$this->Template = new \FrontendTemplate($this->strTemplate);
 		// Info-Array zur Ausgabe von Fehlern, Warnings und Defaults
 		$this->Template->info = $arrInfo;
@@ -295,7 +299,7 @@ class ModuleBelegungsplan extends \Module
 		// Text fuer Legende
 		$this->Template->Frei = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['frei'];
 		$this->Template->Belegt = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['belegt'];
-		
+
 		if (!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
 		}
@@ -310,17 +314,17 @@ class ModuleBelegungsplan extends \Module
 			\Input::setGet('belegyear', null);
 		}
 	}
-	
+
 	/**
 	 * Sortiert die Kategorien nach Auswahl im Checkbox-Wizard
 	 *
 	 * @return array
 	 */
 	protected function sortNachWizard($arrCategorieObjekte, $arrBelegungsplanCategory)
-	{	
+	{
 		// Schluessel und Werte tauschen
 		$arrHelper = array_flip($arrBelegungsplanCategory);
-		
+
 		foreach ($arrHelper as $key => $value) {
 			if (array_key_exists($key, $arrCategorieObjekte)) {
 				$arrHelper[$key] = $arrCategorieObjekte[$key];
@@ -333,7 +337,7 @@ class ModuleBelegungsplan extends \Module
 		// leere Einträge entfernen
 		return $arrHelper;
 	}
-	
+
 	/**
 	 * Fuegt den Monaten Daten hinzu
 	 *
@@ -367,7 +371,7 @@ class ModuleBelegungsplan extends \Module
 		unset($arrFeiertage);
 		return $arrHelper;
 	}
-	
+
 	/**
 	 * Ausgabe fuer Kalender
 	 *
