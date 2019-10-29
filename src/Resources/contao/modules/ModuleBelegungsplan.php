@@ -200,33 +200,53 @@ class ModuleBelegungsplan extends \Module
 						WHERE 	tbc.pid = tbo.id
 						AND		tbo.pid = tbcat.id
 						AND 	tbo.published = 1
-						AND		tbc.startDate < tbc.endDate
-						AND 	((tbc.startDate < ? AND tbc.endDate > ?) OR (tbc.startDate >= ? AND tbc.endDate <= ?) OR (tbc.startDate < ? AND tbc.endDate > ?))")
-						->execute($this->intStartAuswahl, $this->intStartAuswahl, $this->intStartAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl);
+						-- es <= weil es auch nur ein tag sein kann
+						AND		tbc.startDate <= tbc.endDate
+						-- raussuchen in dem aktuellen jahr
+						AND 	((tbc.startDate < ? AND tbc.endDate > ?)
+
+									OR (tbc.startDate >= ? AND tbc.endDate <= ?)
+									OR (tbc.startDate < ? AND tbc.endDate > ?)) ")
+						->execute($this->intStartAuswahl, $this->intStartAuswahl,
+											$this->intStartAuswahl, $this->intEndeAuswahl,
+											$this->intEndeAuswahl, $this->intEndeAuswahl);
 
 			if ($objObjekteCalender->numRows > 0) {
 				while ($objObjekteCalender->next()) {
 					$intEndeMonat = (int) date('t', mktime(0, 0, 0, (int) $objObjekteCalender->StartMonat, (int) $objObjekteCalender->StartTag, (int) $objObjekteCalender->StartJahr));
+
 					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
+
 						// erster Tag der Buchung und weitere
 						if ($z === 0) {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
 								$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = $this->includeCalender($objObjekteCalender->BuchungsStartJahr, $objObjekteCalender->BuchungsEndeJahr, $y, $arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d], 0);
 							}
+						// wenn starttag und endtag der gleiche sind
+						} elseif ( (int) $objObjekteCalender->StartTag === (int) $objObjekteCalender->EndeTag &&
+												(int) $objObjekteCalender->StartMonat === (int) $objObjekteCalender->EndeMonat &&
+												(int) $objObjekteCalender->StartJahr == (int) $objObjekteCalender->EndeJahr) {
+							break;
+						// wenn aktueller Tag der letzte im Jahr ist
 						} elseif ($y === (int) $objObjekteCalender->EndeJahr && $m === (int) $objObjekteCalender->EndeMonat && $d === (int) $objObjekteCalender->EndeTag) {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
 								$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = $this->includeCalender($objObjekteCalender->BuchungsStartJahr, $objObjekteCalender->BuchungsEndeJahr, $y, $arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d], 1);
 							}
+
 							break;
+
+						// tag zwischen anfang und ende der buchung
 						} else {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
 								$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
 							}
 						}
+
 						if ($d === $e) {
+							// wenn aktueller tag letzter Tag im Monat ist
 							if ((int) $objObjekteCalender->StartMonat === (int) $objObjekteCalender->EndeMonat) {
 								// nur anzuzeigende Monate auswaehlen
 								if (in_array($m, $this->belegungsplan_month)) {
@@ -234,13 +254,20 @@ class ModuleBelegungsplan extends \Module
 								}
 								break;
 							}
+							// buchung über sylvester
+							if($m === 12) {
+								// ende hier weil neues jahr in neuem blatt angezeigt wird
+								break;
+							}
+
 							$m++;
 							$d = 0;
+							// neues ende des monats bzw max tage die der neue monat hat
 							$e = (int) date('t', mktime(0, 0, 0, $m, $d + 1, $y));
 						}
 						$d++;
 						$z++;
-					}
+					} // ende for
 				}
 			}
 
@@ -256,12 +283,14 @@ class ModuleBelegungsplan extends \Module
 								->execute($intMinYear);
 			$this->intAnzahlJahre = $objJahre->numRows;
 			if ($this->intAnzahlJahre > 0) {
-				// mindestens das aktuelle Jahr anzeigen (bugfix)
-				$arrJahre[] = array('single_year' => (int) date('Y'),
-											'year_href' => $this->strUrl . '?belegyear=' . date('Y'),
-											'active' => 0);
 				while ($objJahre->next()) {
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
+				}
+				// mindestens das aktuelle Jahr anzeigen (bugfix)
+				if($arrJahre[0]['single_year'] != (int) date('Y') ){
+					array_unshift($arrJahre,array('single_year' => (int) date('Y'),
+												'year_href' => $this->strUrl . '?belegyear=' . date('Y'),
+												'active' => 0));
 				}
 			}
 
