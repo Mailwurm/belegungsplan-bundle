@@ -11,7 +11,7 @@
  * Load tl_content language file
  */
 System::loadLanguageFile('tl_content');
- 
+
 /**
  * Table tl_belegungsplan_objekte
  */
@@ -130,7 +130,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long'),
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long clear'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'published' => array(
@@ -189,7 +189,7 @@ class tl_belegungsplan_objekte extends Backend
 		return '
 <div class="cte_type ' . $key . '">' . $date . '</div>
 <div class="limit_height' . (!Config::get('doNotCollapse') ? ' h40' : '') . '">
-' . StringUtil::insertTagToSrc($arrRow['name']) . 
+' . StringUtil::insertTagToSrc($arrRow['name']) .
 (!empty($arrRow['infotext']) ? '<span style="color:#b3b3b3;padding-left:3px">[' . StringUtil::insertTagToSrc($arrRow['infotext']) . ']</span>' : '') . '
 </div>' . "\n";
 	}
@@ -212,7 +212,7 @@ class tl_belegungsplan_objekte extends Backend
 			$this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
 			$this->redirect($this->getReferer());
 		}
-		
+
 		$href .= '&amp;tid=' . $row['id'] . '&amp;state=' . ($row['published'] ? '' : 1);
 		if (!$row['published'])
 		{
@@ -236,7 +236,7 @@ class tl_belegungsplan_objekte extends Backend
 		if ($dc) {
 			$dc->id = $intId; // see #8043
 		}
-		
+
 		// Set the current record
 		if ($dc) {
 			$objRow = $this->Database->prepare("SELECT * FROM tl_belegungsplan_objekte WHERE id=?")
