@@ -1,5 +1,5 @@
 {
-    "name": "pdir/belegungsplan-bundle",
+    "name": "mailwurm/belegungsplan-bundle",
     "type": "contao-bundle",
     "keywords":["contao","contao-bundle","bundle","belegungsplan","contao 4"],
     "description": "Contao 4 Belegungspläne erstellen ",
