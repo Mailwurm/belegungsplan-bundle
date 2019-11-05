@@ -130,7 +130,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long'),
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long clr'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'published' => array(
