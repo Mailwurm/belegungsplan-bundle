@@ -201,18 +201,36 @@ class ModuleBelegungsplan extends \Module
 						AND		tbo.pid = tbcat.id
 						AND 	tbo.published = 1
 						AND		tbc.startDate < tbc.endDate
-						AND 	((tbc.startDate < ? AND tbc.endDate > ?) OR (tbc.startDate >= ? AND tbc.endDate <= ?) OR (tbc.startDate < ? AND tbc.endDate > ?))")
+						AND 	((tbc.startDate < ? AND tbc.endDate >= ?) OR (tbc.startDate >= ? AND tbc.endDate <= ?) OR (tbc.startDate < ? AND tbc.endDate > ?))")
 						->execute($this->intStartAuswahl, $this->intStartAuswahl, $this->intStartAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl, $this->intEndeAuswahl);
 						
 			if ($objObjekteCalender->numRows > 0) {
 				while ($objObjekteCalender->next()) {
+					// Ermittlung Anzahl der Tage des angegebenen Monats (28 - 31)
 					$intEndeMonat = (int) date('t', mktime(0, 0, 0, (int) $objObjekteCalender->StartMonat, (int) $objObjekteCalender->StartTag, (int) $objObjekteCalender->StartJahr));
+					// d = 1, m = 1, e = 31, y = 2021, z = 0
 					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
 						// erster Tag der Buchung und weitere
 						if ($z === 0) {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
+								// Sonderfall letzter Buchungstag faellt auf Neujahr
+								if ((int) $objObjekteCalender->BuchungsStartJahr < (int) $objObjekteCalender->BuchungsEndeJahr && (int) $objObjekteCalender->EndeTag === 1 && (int) $objObjekteCalender->EndeMonat === 1 && (int) $objObjekteCalender->StartTag === 1 && (int) $objObjekteCalender->StartMonat === 1)
+								{
+									if ($arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d])
+									{
+										$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#1';
+									} else {
+										$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = '1#0';
+									}
+									break;
+								}
 								$arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d] = $this->includeCalender($objObjekteCalender->BuchungsStartJahr, $objObjekteCalender->BuchungsEndeJahr, $y, $arrCategorieObjekte[$objObjekteCalender->CategoryID]['Objekte'][$objObjekteCalender->ObjektSortierung]['Calender'][$m][$d], 0);
+							}
+							// Sonderfall Sylvester
+							if ($d === 31 && $m === 12)
+							{
+								break;
 							}
 						} elseif ($y === (int) $objObjekteCalender->EndeJahr && $m === (int) $objObjekteCalender->EndeMonat && $d === (int) $objObjekteCalender->EndeTag) {
 							// nur anzuzeigende Monate auswaehlen
@@ -370,6 +388,12 @@ class ModuleBelegungsplan extends \Module
 	
 	/**
 	 * Ausgabe fuer Kalender
+	 *
+	 * @param integer $intBuchungsStartJahr
+	 * @param integer $intBuchungsEndeJahr
+	 * @param integer $intY
+	 * @param array $arrCategoriesObjekte
+	 * @param integer $z
 	 *
 	 * @return string
 	 */
