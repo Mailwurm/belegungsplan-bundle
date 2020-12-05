@@ -11,11 +11,11 @@ Wenn alles korrekt funktioniert, erhalten Sie im Frontend die Ausgabe ihrer Date
 
 Sie können nun das Template "mod_belegungsplan" nach ihren Wünschen konfigurieren
 
-![Ausgabe Frontend](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-13.jpg)
+![Ausgabe Frontend](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/img/belegungsplan-bundle-13.jpg)
 
 ## Frontend mit Bootstrap
 
-![Ausgabe Frontend mit Bootstrap](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-14.png)
+![Ausgabe Frontend mit Bootstrap](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/img/belegungsplan-bundle-14.png)
 
 Eine [**Online-Demo**](http://www.waldeck-ruegen.de/belegungsplan.html) unter Verwendung von Bootstrap-Framework finden Sie [**hier**](http://www.waldeck-ruegen.de/belegungsplan.html).
 
@@ -24,6 +24,6 @@ Das [**Bootstrap-Template**](https://github.com/Mailwurm/mod_belegungsplan_boots
 
 ## Frontend mit jQuery
 
-![Ausgabe Frontend mit jQuery](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-15.png)
+![Ausgabe Frontend mit jQuery](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/img/belegungsplan-bundle-15.png)
 
 Das [**jQuery-Template**](https://github.com/Mailwurm/mod_belegungsplan_jquery) inclusive CSS finden Sie [**hier**](https://github.com/Mailwurm/mod_belegungsplan_jquery).
