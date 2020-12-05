@@ -9,7 +9,7 @@
 
 Erstellen Sie in ihrer Contao-Installation ein neues Modul vom Modultyp "Belegungsplan-Liste"
 
-![Neues Modul](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-11.png)
+![Neues Modul](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/img/belegungsplan-bundle-11.png)
 
 Hier können Sie nun auswählen welche Kategorien angezeigt werden sollen. Leere Kategorien werden generell nicht angezeigt, gleich welche Einstellung Sie hier vornehmen.
 Ebenso können Sie hier die Reihenfolge der Kategorien festlegen durch anfassen und verschieben. So wie Sie die Reihenfolge hier festlegen werden die Kategorien auch im Frontend angezeigt.
@@ -20,6 +20,6 @@ Speichern Sie ihre Einstellungen und wechseln sie in die Artikelansicht in welch
 
 Fügen Sie ein "Neues Inhaltselement" vom Typ "Modul" ein und wählen Sie in "Include-Einstellungen" das eben erstellte Modul ein.
 
-![Neues Modul integrieren](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-12.png)
+![Neues Modul integrieren](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/img/belegungsplan-bundle-12.png)
 
 Speichern Sie ihre Einstellungen.
