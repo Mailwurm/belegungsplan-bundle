@@ -261,6 +261,7 @@ class tl_belegungsplan_calender extends Backend
 		}
 		if ($dc->Input->post('dauer') === 'oneday')
 		{
+			$arrSet = array();
 			$getStartDatum = new DateTime($dc->Input->post('startDate'));
 			$sNextDay = $getStartDatum->add(new DateInterval('P1D'));
 			$arrSet['startDate'] = (int) $getStartDatum->getTimestamp();
