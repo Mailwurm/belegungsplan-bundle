@@ -82,8 +82,10 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'__selector__'                => array(),
-		'default'                     => '{title_legend},gast,author;{date_legend},startDate,endDate'
+		'__selector__'				=> array('dauer'),
+		'default'					=> '{title_legend},gast,author;{day_legend},dauer',
+		'oneday'					=> '{title_legend},gast,author;{day_legend},dauer;{date_legend},startDate',
+		'moreday'					=> '{title_legend},gast,author;{day_legend},dauer;{date_legend},startDate,endDate'
 	),
 	// Subpalettes
 	'subpalettes' => array(
@@ -140,6 +142,10 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'flag'			=> 8,
 			'inputType'		=> 'text',
 			'eval'			=> array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
+			'save_callback'	=> array
+			(
+				array('tl_belegungsplan_calender','setEndDate')
+			),
 			'sql'			=> "int(10) unsigned NULL"
 		),
 		'endDate' => array
@@ -152,7 +158,10 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'flag'			=> 8,
 			'inputType'		=> 'text',
 			'eval'			=> array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
-			'save_callback'	=> array(array('tl_belegungsplan_calender','loadEndDate')),
+			'save_callback'	=> array
+			(
+				array('tl_belegungsplan_calender','loadEndDate')
+			),
 			'sql'			=> "int(10) unsigned NULL"
 		),
 		'ueberschneidung' => array
@@ -161,6 +170,17 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'exclude'		=> true,
 			'inputType'		=> 'text',
 			'sql'			=> "text NOT NULL default ''"
+		),
+		'dauer' => array
+		(
+			'label'			=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['dauer'],
+			'inputType'		=> 'radio',
+			'options'		=> array('oneday', 'moreday'),
+			'default'		=> 'moreday',
+			'reference'		=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender'],
+			'explanation'	=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender'],
+			'eval'			=> array('mandatory'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50', 'style'=>'margin:10px'),
+			'sql'			=> "varchar(8) NOT NULL default ''"
 		)
 	)
 );
@@ -189,7 +209,7 @@ class tl_belegungsplan_calender extends Backend
 	public function listCalender($arrRow)
 	{
 		return '<div class="tl_content_left">' . $arrRow['gast'] . 
-		' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) . $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) . ']</span>' . 
+		' <span style="color:#999;padding-left:3px">[' . Date::parse(Config::get('dateFormat'), $arrRow['startDate']) .($arrRow['dauer'] == 'moreday' ? $GLOBALS['TL_LANG']['MSC']['cal_timeSeparator'] . Date::parse(Config::get('dateFormat'), $arrRow['endDate']) : '') . ']</span>' . 
 		($arrRow['endDate'] < $arrRow['startDate'] ? ' ' . Image::getHtml('error.svg', $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateListError'], 'title="' . $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateListError'] . '"') : '') . 
 		($arrRow['ueberschneidung'] ? ' ' . Image::getHtml('error_404.svg', $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['ueberschneidung'][0], 'title="' . $GLOBALS['TL_LANG']['tl_belegungsplan_calender']['ueberschneidung'][0] . '"') : '') . 
 		'</div>';
@@ -197,19 +217,25 @@ class tl_belegungsplan_calender extends Backend
 	/**
 	 * Prueft ob Enddatum kleiner Startdatum
 	 *
-	 * @param string $varValue
+	 * @param mixed $varValue
 	 * @param DataContainer $dc
-	 * @return string
+	 * @return mixed
 	 */
 	public function loadEndDate($varValue, DataContainer $dc)
 	{
 		$dateOne = new DateTime($this->Input->post('startDate'));
 		$dateTwo = new DateTime($this->Input->post('endDate'));
+		
 		try
 		{
-			if ($dateTwo->getTimestamp() < $dateOne->getTimestamp())
+			if ($dateTwo->getTimestamp() <= $dateOne->getTimestamp())
 			{	
-				throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateError']); 
+				if ($dateTwo->getTimestamp() < $dateOne->getTimestamp())
+				{
+					throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateError']); 
+				} else {
+					throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['sameDateError']); 
+				}
 			} else {
 				return $varValue;
 			}
@@ -219,10 +245,36 @@ class tl_belegungsplan_calender extends Backend
 		}
 	}
 	/**
-	 * Prueft auf Terminueberschneidungen
-	 *
-	 * @param DataContainer $dc
-	 */
+	* Setzt das Enddatum bei eintaegigem Besuch
+	*
+	* @param mixed $varValue
+	* @param DataContainer $dc
+	*
+	* @return mixed
+	*/
+	public function setEndDate($varValue, DataContainer $dc)
+	{
+		// Return if there is no active record (override all)
+		if (!$dc->activeRecord)
+		{
+			return;
+		}
+		if ($dc->Input->post('dauer') === 'oneday')
+		{
+			$getStartDatum = new DateTime($dc->Input->post('startDate'));
+			$sNextDay = $getStartDatum->add(new DateInterval('P1D'));
+			$arrSet['startDate'] = (int) $getStartDatum->getTimestamp();
+			$arrSet['endDate'] = (int) $sNextDay->getTimestamp();
+			
+			$this->Database->prepare("UPDATE tl_belegungsplan_calender %s WHERE id=?")->set($arrSet)->execute($dc->id);
+		}
+		return $varValue;
+	}
+	/**
+	* Prueft auf Terminueberschneidungen
+	*
+	* @param DataContainer $dc
+	*/
 	public function loadUeberschneidung(DataContainer $dc)
 	{
 		$intId = (int) $dc->activeRecord->id;
