@@ -211,7 +211,7 @@ class ModuleBelegungsplan extends \Module
 					// d = 1, m = 1, e = 31, y = 2021, z = 0
 					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
 						// erster Tag der Buchung und weitere
-						if ($z === 0) {
+						if ((int) $z === 0) {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
 								// Sonderfall letzter Buchungstag faellt auf Neujahr
