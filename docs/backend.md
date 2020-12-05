@@ -9,7 +9,7 @@
 
 Nach der Installation und der aktualisierung der Datenbank im Installtool finden Sie im Menü links einen weiteren Eintrag.
 
-![Neuer Menüeintrag](https://belegungsplan.sachsen-it.de/belegungsplan-bundle-1.png)
+![Neuer Menüeintrag](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/img/belegungsplan-bundle-1.png)
 
 Dieses Belegungsplan-Bundle funktioniert nach folgendem Prinzip:
 1. Kategorien
