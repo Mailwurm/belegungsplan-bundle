@@ -53,6 +53,9 @@
 			<trans-unit id="tl_belegungsplan_calender.endDateError">
 				<source>The departure day is before the arrival day.</source>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.sameDateError">
+				<source>For a one-day appointment, please choose the appropriate setting under "Length of stay".</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.endDateListError">
 				<source>The departure day is before the arrival day. This appointment is not displayed in the output.</source>
 			</trans-unit>
@@ -73,6 +76,21 @@
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.ueberschneidung.1">
 				<source>There is an overlap for this date.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.day_legend">
+				<source>Length of stay</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.dauer.0">
+				<source>How long does the guest or visitor stay?</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.dauer.1">
+				<source>Enter here how long the guest or visitor stays.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.oneday">
+				<source>A day</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.moreday">
+				<source>Longer than a day</source>
 			</trans-unit>
 		</body>
 	</file>
