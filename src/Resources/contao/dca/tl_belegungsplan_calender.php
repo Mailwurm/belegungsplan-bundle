@@ -169,7 +169,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 			'label'			=> &$GLOBALS['TL_LANG']['tl_belegungsplan_calender']['ueberschneidung'],
 			'exclude'		=> true,
 			'inputType'		=> 'text',
-			'sql'			=> "text NOT NULL default ''"
+			'sql'			=> "text NULL"
 		),
 		'dauer' => array
 		(
