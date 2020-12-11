@@ -1,23 +1,25 @@
 <?php
 /**
-* Contao Open Source CMS
-*
-* Copyright (c) Jan Karai
-*
-* @license LGPL-3.0+
-*/
+ * Contao Open Source CMS
+ *
+ * Copyright (c) Jan Karai
+ *
+ * @license LGPL-3.0+
+ */
 namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Patchwork\Utf8;
+use Contao\CoreBundle\Routing\ScopeMatcher;
+use Symfony\Component\HttpFoundation\RequestStack;
 /**
-* Class ModuleBelegungsplan
-*
-* @property array $belegungsplan_categories
-* @property array $belegungsplan_month
-*
-* @author Jan Karai <https://www.sachsen-it.de>
-*/
+ * Class ModuleBelegungsplan
+ *
+ * @property array $belegungsplan_categories
+ * @property array $belegungsplan_month
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
+ */
 class ModuleBelegungsplan extends \Module
 {	
 	/**
@@ -58,7 +60,8 @@ class ModuleBelegungsplan extends \Module
 	 */
 	public function generate() 
 	{
-		if (TL_MODE == 'BE') 
+		$request = \System::getContainer()->get('request_stack')->getCurrentRequest();
+		if ($request && \System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request)) 
 		{
 			/** @var BackendTemplate|object $objTemplate */
 			$objTemplate = new \BackendTemplate('be_wildcard');
