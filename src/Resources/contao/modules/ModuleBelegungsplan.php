@@ -75,12 +75,12 @@ class ModuleBelegungsplan extends \Module
 		$this->strUrl = preg_replace('/\?.*$/', '', \Environment::get('request'));
 		
 		// Return if there are no categories
-		if (!is_array($this->belegungsplan_category) || empty($this->belegungsplan_category)) 
+		if (empty($this->belegungsplan_category)) 
 		{
 			return '';
 		}
 		// Return if there are no month
-		if (!is_array($this->belegungsplan_month) || empty($this->belegungsplan_month)) 
+		if (empty($this->belegungsplan_month)) 
 		{
 			return '';
 		}
