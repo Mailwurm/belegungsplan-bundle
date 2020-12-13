@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * Contao Open Source CMS
  *
  * Copyright (c) Jan Karai
@@ -8,8 +8,8 @@
  */
 
 /**
-* Load tl_content language file
-*/
+ * Load tl_content language file
+ */
 System::loadLanguageFile('tl_content');
  
 /**
@@ -186,15 +186,15 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_calender'] = array
 );
 
  /**
- * Provide miscellaneous methods that are used by the data configuration array.
- *
- * @author Jan Karai <https://www.sachsen-it.de>
- */
+  * Provide miscellaneous methods that are used by the data configuration array.
+  *
+  * @author Jan Karai <https://www.sachsen-it.de>
+  */
 class tl_belegungsplan_calender extends Backend
 {
 	 /**
-	 * Import the back end user object
-	 */
+	  * Import the back end user object
+	  */
 	public function __construct() {
 		parent::__construct();
 		$this->import('BackendUser', 'User');
@@ -245,13 +245,13 @@ class tl_belegungsplan_calender extends Backend
 		}
 	}
 	/**
-	* Setzt das Enddatum bei eintaegigem Besuch
-	*
-	* @param mixed $varValue
-	* @param DataContainer $dc
-	*
-	* @return mixed
-	*/
+	 * Setzt das Enddatum bei eintaegigem Besuch
+	 *
+	 * @param mixed $varValue
+	 * @param DataContainer $dc
+	 *
+	 * @return mixed
+	 */
 	public function setEndDate($varValue, DataContainer $dc)
 	{
 		// Return if there is no active record (override all)
@@ -272,10 +272,10 @@ class tl_belegungsplan_calender extends Backend
 		return $varValue;
 	}
 	/**
-	* Prueft auf Terminueberschneidungen
-	*
-	* @param DataContainer $dc
-	*/
+	 * Prueft auf Terminueberschneidungen
+	 *
+	 * @param DataContainer $dc
+	 */
 	public function loadUeberschneidung(DataContainer $dc)
 	{
 		$intId = (int) $dc->activeRecord->id;
