@@ -2,6 +2,12 @@
 <xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en">
 		<body>
+			<trans-unit id="tl_module.color_legend_frei">
+				<source>Color selection free days</source>
+			</trans-unit>
+			<trans-unit id="tl_module.color_legend_belegt">
+				<source>Color selection occupied days</source>
+			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_categories.0">
 				<source>Assignment plan categories</source>
 			</trans-unit>
@@ -49,6 +55,30 @@
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_month.month.12">
 				<source>December</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_frei.0">
+				<source>What color should the days off be?</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_frei.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 4CAE4C.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_frei.0">
+				<source>Set the transparency (opacity) here</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_frei.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_belegt.0">
+				<source>What color should the occupied days be?</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_belegt.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is D43F3A.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_belegt.0">
+				<source>Set the transparency (opacity) here</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_belegt.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
 			</trans-unit>
 		</body>
 	</file>
