@@ -1,6 +1,14 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
 		<body>
+			<trans-unit id="tl_module.color_legend_frei">
+				<source>Color selection free days</source>
+				<target>Farbauswahl freie Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.color_legend_belegt">
+				<source>Color selection occupied days</source>
+				<target>Farbauswahl belegte Tage</target>
+			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_categories.0">
 				<source>Assignment plan categories</source>
 				<target>Belegungsplan-Kategorien</target>
@@ -64,6 +72,38 @@
 			<trans-unit id="tl_module.belegungsplan_month.month.12">
 				<source>December</source>
 				<target>Dezember</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_frei.0">
+				<source>What color should the days off be?</source>
+				<target>Welche Farbe sollen die freien Tage haben?</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_frei.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 4CAE4C.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 4CAE4C.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_frei.0">
+				<source>Set the transparency (opacity) here</source>
+				<target>Legen sie hier die Transparenz (opacity) fest</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_frei.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
+				<target>Die opacity CSS Eigenschaft gibt die Transparenz eines Elements an. 1.0 entspricht dabei der vollen Deckkraft.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_belegt.0">
+				<source>What color should the occupied days be?</source>
+				<target>Welche Farbe sollen die belegten Tage haben?</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_belegt.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is D43F3A.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist D43F3A.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_belegt.0">
+				<source>Set the transparency (opacity) here</source>
+				<target>Legen sie hier die Transparenz (opacity) fest</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity_belegt.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
+				<target>Die opacity CSS Eigenschaft gibt die Transparenz eines Elements an. 1.0 entspricht dabei der vollen Deckkraft.</target>
 			</trans-unit>
 		</body>
 	</file>
