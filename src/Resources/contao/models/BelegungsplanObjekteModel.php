@@ -69,7 +69,7 @@ class BelegungsplanObjekteModel extends \Model {
 	 * @return BelegungsplanObjekteModel|null The model or null if there is no Belegungsplanobjekt
 	 */
 	public static function findPublishedByParentAndIdOrName($varId, $arrPids, array $arrOptions=array()) {
-		if(!is_array($arrPids) || empty($arrPids)) {
+		if(empty($arrPids)) {
 			return null;
 		}
 		$t = static::$strTable;
@@ -86,7 +86,7 @@ class BelegungsplanObjekteModel extends \Model {
 	 * @param int   $intPid     The parent ID
 	 * @param array $arrOptions An optional options array
 	 *
-	 * @return Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null A collection of models or null if there are no Belegungsplanobjekte
+	 * @return \Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null A collection of models or null if there are no Belegungsplanobjekte
 	 */
 	public static function findPublishedByPid($intPid, array $arrOptions=array()) {
 		$t = static::$strTable;
@@ -105,10 +105,10 @@ class BelegungsplanObjekteModel extends \Model {
 	 * @param array $arrPids    An array of Belegungsplan category IDs
 	 * @param array $arrOptions An optional options array
 	 *
-	 * @return Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null A collection of models or null if there are no Belegungsplanobjekte
+	 * @return \Model\Collection|BelegungsplanObjekteModel[]|BelegungsplanObjekteModel|null A collection of models or null if there are no Belegungsplanobjekte
 	 */
 	public static function findPublishedByPids($arrPids, array $arrOptions=array()) {
-		if(!is_array($arrPids) || empty($arrPids)) {
+		if(empty($arrPids)) {
 			return null;
 		}
 		$t = static::$strTable;
