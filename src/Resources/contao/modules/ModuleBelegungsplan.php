@@ -1,11 +1,11 @@
 <?php
 /**
- * Contao Open Source CMS
- *
- * Copyright (c) Jan Karai
- *
- * @license LGPL-3.0+
- */
+* Contao Open Source CMS
+*
+* Copyright (c) Jan Karai
+*
+* @license LGPL-3.0+
+*/
 namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
@@ -13,13 +13,13 @@ use Patchwork\Utf8;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Symfony\Component\HttpFoundation\RequestStack;
 /**
- * Class ModuleBelegungsplan
- *
- * @property array $belegungsplan_categories
- * @property array $belegungsplan_month
- *
- * @author Jan Karai <https://www.sachsen-it.de>
- */
+* Class ModuleBelegungsplan
+*
+* @property array $belegungsplan_categories
+* @property array $belegungsplan_month
+*
+* @author Jan Karai <https://www.sachsen-it.de>
+*/
 class ModuleBelegungsplan extends \Module
 {	
 	/**
@@ -77,12 +77,12 @@ class ModuleBelegungsplan extends \Module
 		// aktuelle Seiten URL
 		$this->strUrl = preg_replace('/\?.*$/', '', \Environment::get('request'));
 		
-		// Return if there are no categories
+		// Rueckgabe, wenn keine Kategorien vorhanden sind
 		if (empty($this->belegungsplan_category)) 
 		{
 			return '';
 		}
-		// Return if there are no month
+		// Rueckgabe, wenn es keinen Monat gibt
 		if (empty($this->belegungsplan_month)) 
 		{
 			return '';
@@ -214,7 +214,7 @@ class ModuleBelegungsplan extends \Module
 					// d = 1, m = 1, e = 31, y = 2021, z = 0
 					for ($d = (int) $objObjekteCalender->StartTag, $m = (int) $objObjekteCalender->StartMonat, $e = $intEndeMonat, $y = (int) $objObjekteCalender->StartJahr, $z = 0; ;) {
 						// erster Tag der Buchung und weitere
-						if ((int) $z === 0) {
+						if ($z === 0) {
 							// nur anzuzeigende Monate auswaehlen
 							if (in_array($m, $this->belegungsplan_month)) {
 								// Sonderfall letzter Buchungstag faellt auf Neujahr
