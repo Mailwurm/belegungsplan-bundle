@@ -1,19 +1,18 @@
 <?php
 /**
-* Contao Open Source CMS
-*
-* Copyright (c) Jan Karai
-*
-* @license LGPL-3.0+
-*/
-
+ * Contao Open Source CMS
+ *
+ * Copyright (c) Jan Karai
+ *
+ * @license LGPL-3.0+
+ */
 /**
-* Add palettes to tl_module
-*/
-$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplan']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{color_legend_frei},belegungsplan_color_frei,belegungsplan_opacity_frei;{color_legend_belegt},belegungsplan_color_belegt,belegungsplan_opacity_belegt;{template_legend:hide},customTpl;{expert_legend:hide},cssID';
+ * Add palettes to tl_module
+ */
+$GLOBALS['TL_DCA']['tl_module']['palettes']['belegungsplan']   = '{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;{color_legend_frei},belegungsplan_color_frei,belegungsplan_opacity_frei;{color_legend_belegt},belegungsplan_color_belegt,belegungsplan_opacity_belegt;{template_legend},belegungsplan_template;{expert_legend:hide},cssID';
 /**
-* Add fields to tl_module
-*/
+ * Add fields to tl_module
+ */
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_categories'],
 	'exclude'				=> true,
@@ -69,6 +68,19 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_opacity_belegt'] = arra
 	'eval'					=> array('tl_class'=>'w50 m12'),
 	'sql'					=> "varchar(3) NOT NULL default ''"
 );
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_template'] = array(
+	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_template'],
+	'exclude'				=> true,
+	'inputType'				=> 'select',
+	'options_callback'		=> static function ()
+	{
+		return \Controller::getTemplateGroup('mod_belegungsplan_');
+	},
+	'eval'					=> array('mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+	'sql'					=> "varchar(64) NOT NULL default ''"
+);
+
 $bundles = System::getContainer()->getParameter('kernel.bundles');
 
 /**
