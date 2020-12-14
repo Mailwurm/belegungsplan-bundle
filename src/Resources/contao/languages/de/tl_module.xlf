@@ -105,6 +105,14 @@
 				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
 				<target>Die opacity CSS Eigenschaft gibt die Transparenz eines Elements an. 1.0 entspricht dabei der vollen Deckkraft.</target>
 			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_template.0">
+				<source>Occupancy plan template</source>
+				<target>Belegungsplan-Template</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_template.1">
+				<source>Here you can select the occupancy plan template.</source>
+				<target>Hier können Sie das Belegungsplan-Template auswählen.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
