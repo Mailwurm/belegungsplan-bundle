@@ -80,6 +80,12 @@
 			<trans-unit id="tl_module.belegungsplan_opacity_belegt.1">
 				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
 			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_template.0">
+				<source>Occupancy plan template</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_template.1">
+				<source>Here you can select the occupancy plan template.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
