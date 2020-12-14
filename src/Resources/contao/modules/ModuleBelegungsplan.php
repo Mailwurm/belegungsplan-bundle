@@ -297,8 +297,12 @@ class ModuleBelegungsplan extends \Module
 				}
 			}
 		}
-		
-		$this->Template = new \FrontendTemplate($this->strTemplate);
+		// Templatewaehler
+		if (($this->belegungsplan_template != $this->strTemplate) && ($this->belegungsplan_template != '')) 
+		{
+			$this->strTemplate = $this->belegungsplan_template;
+			$this->Template = new \FrontendTemplate($this->strTemplate);
+		}
 		// Info-Array zur Ausgabe von Fehlern, Warnings und Defaults
 		$this->Template->info = $arrInfo;
 		// aktuell anzuzeigendes Jahr, wenn \Input::get('belegyear');
