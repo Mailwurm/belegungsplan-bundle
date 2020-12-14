@@ -1,0 +1,115 @@
+<?php $this->extend('block_unsearchable'); ?>
+<?php $this->block('content'); ?>
+<!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_bootstrap.html5 [begin] -->
+<div class="container-fluid">
+<?php if($this->info): ?>
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<?php foreach ($this->info as $info): ?>
+				<div class="alert alert-info" role="alert"><p><?= $info ?></p></div>
+			<?php endforeach; ?>
+		</div>
+	</div>
+<?php else: ?>
+	<?php if($this->number_year > 1): ?>
+	<div class="row">
+		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+			<select onchange="window.location.href=this.value;" class="form-control">
+				<?php foreach ($this->selectable_year as $years => $singleyear): ?>
+					<option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
+				<?php endforeach; ?>
+			</select>
+			<div class="Height-20"> </div>
+		</div>
+	</div>
+	<?php endif; ?>
+	<div class="row">
+	<?php foreach($this->Month as $keyMonth => $month): ?>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-24 thumbnail">
+			<p class="text-center"><?= $month['Name'] ?> <?= $this->display_year ?></p>
+			<table class="table table-condensed belegungsplan-table" data-toggle="modal" data-target="#Belegungsplan<?= $this->display_year ?><?php if(strlen($keyMonth) === 1) echo '0'; ?><?= $keyMonth ?>">
+				<thead>
+					<tr>
+						<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
+						<?php foreach($month['Days'] as $dayMonth => $day): ?>
+							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+						<?php endforeach; ?>
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+					<tr class="belegCategory">
+						<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
+					</tr>
+					<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
+					<tr class="belegObjekt">
+						<td><?= $valueObjekt['ObjektName'] ?></td>
+						<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
+							<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
+							<td class="<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>danger<?php endif; ?>"></td>
+							<?php else: ?>
+							<td class="success"></td>
+							<?php endif; ?>
+						<?php endfor; ?>
+					</tr>
+					<?php endforeach; ?>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+			<div id="Belegungsplan<?= $this->display_year ?><?php if(strlen($keyMonth) == 1) echo '0'; ?><?= $keyMonth ?>" class="modal modal-wide fade" role="dialog" aria-labelledby="BelegungsplanModalLabel">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="BelegungsplanModalLabel"><?= $month['Name'] ?> <?= $this->display_year ?></h4>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="container-fluid">
+									<div class="table-responsive">
+										<table class="table table-bordered belegungsplan-modal-table">
+											<thead>
+												<tr>
+													<td><button class="btn btn-sm btn-success">Frei</button>&nbsp;<button class="btn btn-sm btn-danger">Belegt</button></td>
+													<?php foreach($month['Days'] as $dayMonth => $day): ?>
+														<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+													<?php endforeach; ?>
+												</tr>
+											</thead>
+											<tbody>
+											<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+												<tr class="belegCategory">
+													<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
+												</tr>
+												<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
+												<tr class="belegObjekt">
+													<td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?></td>
+													<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
+														<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
+														<td class="<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>danger<?php endif; ?>"></td>
+														<?php else: ?>
+														<td class="success"></td>
+														<?php endif; ?>
+													<?php endfor; ?>
+												</tr>
+												<?php endforeach; ?>
+											<?php endforeach; ?>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>
+</div>
+<!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_bootstrap.html5 [end] -->
+<?php $this->endblock(); ?>
