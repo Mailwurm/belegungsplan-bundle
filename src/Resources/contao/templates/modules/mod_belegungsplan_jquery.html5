@@ -1,0 +1,154 @@
+<?php $this->extend('block_unsearchable'); ?>
+<?php $this->block('content'); ?>
+<!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_jquery.html5 [begin] -->
+<?php if($this->info): ?>
+	<div>
+		<?php foreach ($this->info as $info): ?>
+		<p><?= $info ?></p>
+		<?php endforeach; ?>
+	</div>
+<?php else: ?>
+	<?php if($this->number_year > 1): ?>
+	<div>
+		<select onchange="window.location.href=this.value;" class="form-control">
+		<?php foreach ($this->selectable_year as $years => $singleyear): ?>
+			<option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
+		<?php endforeach; ?>
+		</select>
+	</div>
+	<?php endif; ?>
+	<div>
+	<script type="text/javascript">
+		<?php foreach($this->Month as $keyMonth => $month): ?>
+		var Month<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {Jahr:<?= $this->display_year ?>, Name:"<?= $month['Name'] ?>", TageMonat:<?= $month['TageMonat'] ?>, ColSpan:<?= $month['ColSpan'] ?>};
+		var Days<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php  foreach($month['Days'] as $dayMonth => $day): ?><?= $dayMonth ?>:{DayDate:"<?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) ?>", DayLong:"<?= $day['Day'] ?>", DayCut:"<?= $day['DayCut'] ?>", DayWeekNum:<?= $day['DayWeekNum'] ?><?php if($day['Holiday']): ?>, Holiday:"<?= $day['Holiday'] ?>"<?php endif; ?><?php if($day['Class']): ?>, Class:"<?= $day['Class'] ?>"<?php endif; ?>}<?php if((int) $dayMonth < (int) $month['TageMonat'] ): ?>, <?php endif; ?><?php endforeach; ?>};
+		var CategorieObjekteCalender<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php $count = count($this->CategorieObjekteCalender); ?><?php $a = 0; ?><?php foreach($this->CategorieObjekteCalender as $categoryMonth => $aCategory): ?><?php $i = 0; ?><?= $categoryMonth ?>:{CategoryTitle:"<?= $aCategory['CategoryTitle'] ?>", Objekte:{<?php $z = 0; ?><?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?><?= $keyObjekt ?>:{ObjektName:"<?= $valueObjekt['ObjektName'] ?>"<?php if($valueObjekt['ObjektInfoText']): ?>, ObjektInfoText:"<?= $valueObjekt['ObjektInfoText'] ?>"<?php endif; ?>, Calender:{<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?><?= $i; ?>:"<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?><?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>an<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>ab<?php else: ?>d<?php endif; ?><?php else: ?>s<?php endif; ?>"<?php if ($i < $month['TageMonat']): ?>, <?php endif; ?><?php endfor; ?>}}<?php $z++; ?><?php if ($z < count($aCategory['Objekte'])): ?>, <?php endif; ?><?php endforeach; ?>}}<?php $a++; ?><?php if ($a < $count ): ?>, <?php endif; ?><?php endforeach; ?>};
+		<?php endforeach; ?>
+		function displayBelegung(Month, Days, CategorieObjekteCalender) {
+			var str = '';
+			$("#dialog").dialog({
+				title: Month.Name + ' ' + Month.Jahr,
+				autoOpen: false,
+				modal: true,
+				width: 'auto',
+				maxWidth: 1000,
+				height: 'auto',
+				fluid: true, //new option
+				resizable: false,
+				show: {
+					effect: "blind",
+					duration: 500
+				},
+				hide: {
+					effect: "blind",
+					duration: 500
+				},
+				buttons: {
+					Schließen: function() {
+						$(this).dialog("close");
+					}
+				}
+			});
+			if(Days) {
+				str += '<thead>';
+				str += '	<tr>';
+				str += '		<th><span class="frei"><?= $this->Frei ?></span>&nbsp;<span class="belegt"><?= $this->Belegt ?></span></th>';
+				$.each(Days, function(key, value) {
+					var clas = value.Class ? ' class="' + value.Class + '"' : '';
+					var title = value.Holiday ? ' title="' + value.Holiday + '"' : '';
+					str += ('<th' + clas + title + '>' + value.DayDate + '<br>' + value.DayCut + '</th>' );
+				});
+				str += '	</tr>';
+				str += '</thead>';
+			}
+			if(CategorieObjekteCalender) {
+				str += '<tbody>';
+				$.each(CategorieObjekteCalender, function(keyCategory, valueCategory) {
+					str += '	<tr class="belegCategory">';
+					str += '	<th colspan="' + Month.ColSpan + '">' + valueCategory.CategoryTitle + '</th>';
+					str += '	</tr>';
+					if(valueCategory.Objekte) {
+						$.each(valueCategory.Objekte, function(keyObjekte, valueObjekte) {
+							var info = valueObjekte.ObjektInfoText ? ' (' + valueObjekte.ObjektInfoText + ')' : '';
+							str += '	<tr class="belegObjekt">';
+							str += '		<td>' + valueObjekte.ObjektName + info + '</td>';
+							$.each(valueObjekte.Calender, function(keyCalender, valueCalender) {
+								var cliss = valueCalender == 's' ? 'frei' : (valueCalender == 'd' ? 'belegt' : (valueCalender == 'an' ? 'anreise' : (valueCalender == 'ab' ? 'abreise' : '')));
+								str += '		<td class="' + cliss + '"></td>';
+							});
+							str += '	</tr>';
+						});
+					}
+				});
+				str += '</tbody>';
+			}
+			$("#dialog" ).html('<table class="belegungsplan-table-dialog">' + str + '</table>').dialog("open");
+		};
+		
+		// on window resize run function
+		$(window).resize(function () {
+			fluidDialog();
+		});
+		
+		function fluidDialog() {
+			var $visible = $(".ui-dialog:visible");
+			// each open dialog
+			$visible.each(function () {
+				var $this = $(this);
+				var dialog = $this.find(".ui-dialog-content").data("ui-dialog");
+				// if fluid option == true
+				if (dialog.options.fluid) {
+					var wWidth = $(window).width();
+					// check window width against dialog width
+					if (wWidth < (parseInt(dialog.options.maxWidth) + 50))  {
+						// keep dialog from filling entire screen
+						$this.css("max-width", "90%");
+					} else {
+						// fix maxWidth bug
+						$this.css("max-width", dialog.options.maxWidth + "px");
+					}
+					//reposition dialog
+					dialog.option("position", dialog.options.position);
+				}
+			});
+		}
+	</script>
+	<div id="dialog" title=""></div>
+	<?php foreach($this->Month as $keyMonth => $month): ?>
+		<div>
+			<p><?= $month['Name'] ?> <?= $this->display_year ?></p>
+			<table class="mod-belegungsplan-jquery" onclick="displayBelegung(Month<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>, Days<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>, CategorieObjekteCalender<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>)">
+				<thead>
+					<tr>
+						<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
+						<?php foreach($month['Days'] as $dayMonth => $day): ?>
+							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+						<?php endforeach; ?>
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+					<tr class="belegCategory">
+						<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
+					</tr>
+					<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
+					<tr class="belegObjekt">
+						<td><?= $valueObjekt['ObjektName'] ?></td>
+						<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
+							<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
+							<td class="<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>belegt<?php endif; ?>"></td>
+							<?php else: ?>
+							<td class="frei"></td>
+							<?php endif; ?>
+						<?php endfor; ?>
+					</tr>
+					<?php endforeach; ?>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+	<?php endforeach; ?>
+	</div>
+<?php endif; ?>
+<!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_jquery.html5 [end] -->
+<?php $this->endblock(); ?>
