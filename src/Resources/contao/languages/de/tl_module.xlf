@@ -113,6 +113,10 @@
 				<source>Here you can select the occupancy plan template.</source>
 				<target>Hier können Sie das Belegungsplan-Template auswählen.</target>
 			</trans-unit>
+			<trans-unit id="tl_module.setHexToRgb">
+				<source>Not a valid hexadecimal value</source>
+				<target>Kein gültiger Hexadezimaler Wert</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
