@@ -18,6 +18,108 @@
 	</div>
 	<?php endif; ?>
 	<div>
+	<style>
+		table.mod-belegungsplan-jquery {
+			width:15%;
+			margin:0;
+			border:1px solid #DDD;
+			border-collapse:collapse;
+			font-size:1px;
+		}
+		table.mod-belegungsplan-jquery>tbody>tr {
+			border-top:1px solid #DDD;
+		}
+		table.belegungsplan-table-dialog {
+			border:1px solid #DDD;
+			border-collapse:collapse;
+			font-size:12px;
+		}
+		.belegungsplan-table-dialog > thead {
+			display:table-header-group;
+			vertical-align:middle;
+			border-color: inherit;
+		}
+		.belegungsplan-table-dialog tr {
+			display:table-row;
+			vertical-align: inherit;
+			border-color: inherit;
+		}
+		table.mod-belegungsplan-jquery>tbody>tr.belegCategory>th,
+		table.belegungsplan-table-dialog>tbody>tr.belegCategory>th {
+			text-align:left;
+			background-color:#CCC;
+		}
+		.belegungsplan-table-dialog>thead>tr>th,
+		.belegungsplan-table-dialog>tbody>tr>th,
+		.belegungsplan-table-dialog>thead>tr>td,
+		.belegungsplan-table-dialog>tbody>tr>td {
+			padding:4px;
+			border-top:1px solid #DDD;
+			border-right:1px solid #DDD;
+		}
+		.belegungsplan-table-dialog>thead>tr>th {
+			text-align:center;
+		}
+		.mod-belegungsplan-jquery>thead>tr>th.holiday,
+		.belegungsplan-table-dialog>thead>tr>th.holiday {
+			background-color:#5BC0DE;
+			border-color:#46B8DA;
+			cursor: pointer;
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.frei,
+		.belegungsplan-table-dialog>tbody>tr>td.frei,
+		span.frei{
+			background-color:#<?= $this->ColorFrei ?>;
+			opacity:<?= $this->OpacityFrei ?>;
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.belegt,
+		.belegungsplan-table-dialog>tbody>tr>td.belegt,
+		span.belegt{
+			background-color:#<?= $this->ColorBelegt ?>;
+			border-right:0px;
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.anreise,
+		.belegungsplan-table-dialog>tbody>tr>td.anreise {
+			background-color:#<?= $this->ColorFrei ?>;
+			opacity:<?= $this->OpacityFrei ?>;
+			border-right:none;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#<?= $this->ColorFrei ?>+0,<?= $this->ColorFrei ?>+50,<?= $this->ColorBelegt ?>+50,<?= $this->ColorBelegt ?>+100 */
+			background: #<?= $this->ColorFrei ?>;
+			/* Old browsers */
+			background: -moz-linear-gradient(-45deg, #<?= $this->ColorFrei ?> 0%, #<?= $this->ColorFrei ?> 50%, #<?= $this->ColorBelegt ?> 50%, #<?= $this->ColorBelegt ?> 100%);
+			/* FF3.6-15 */
+			background: -webkit-linear-gradient(-45deg, #<?= $this->ColorFrei ?> 0%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorBelegt ?> 100%);
+			/* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(135deg, #<?= $this->ColorFrei ?> 0%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorBelegt ?> 100%);
+			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?= $this->ColorFrei ?>', endColorstr='#<?= $this->ColorBelegt ?>',GradientType=1 );
+			/* IE6-9 fallback on horizontal gradient */;
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.abreise,
+		.belegungsplan-table-dialog>tbody>tr>td.abreise {
+			background-color:#<?= $this->ColorFrei ?>;
+			opacity:<?= $this->OpacityBelegt ?>;
+			border-left:none;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#<?= $this->ColorBelegt ?>+0,<?= $this->ColorBelegt ?>+50,<?= $this->ColorFrei ?>+50,<?= $this->ColorFrei ?>+100 */
+			background: #<?= $this->ColorBelegt ?>;
+			/* Old browsers */
+			background: -moz-linear-gradient(-45deg, #<?= $this->ColorBelegt ?> 0%, #<?= $this->ColorBelegt ?> 50%, #<?= $this->ColorFrei ?> 50%, #<?= $this->ColorFrei ?> 100%);
+			/* FF3.6-15 */
+			background: -webkit-linear-gradient(-45deg, #<?= $this->ColorBelegt ?> 0%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorFrei ?> 100%);
+			/* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(135deg, #<?= $this->ColorBelegt ?> 0%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorFrei ?> 100%);
+			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?= $this->ColorBelegt ?>', endColorstr='#<?= $this->ColorFrei ?>',GradientType=1 );
+			/* IE6-9 fallback on horizontal gradient */;
+		}
+		span.frei,
+		span.belegt {
+			margin-right:3px;
+			margin-left:3px;
+			padding:5px;
+			color:#FFF;
+		}
+	</style>
 	<script type="text/javascript">
 		<?php foreach($this->Month as $keyMonth => $month): ?>
 		var Month<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {Jahr:<?= $this->display_year ?>, Name:"<?= $month['Name'] ?>", TageMonat:<?= $month['TageMonat'] ?>, ColSpan:<?= $month['ColSpan'] ?>};
