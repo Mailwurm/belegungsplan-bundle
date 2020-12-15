@@ -320,6 +320,12 @@ class ModuleBelegungsplan extends \Module
 		// Text fuer Legende
 		$this->Template->Frei = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['frei'];
 		$this->Template->Belegt = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['belegt'];
+		// Farben fuer Legende
+		$this->Template->ColorFrei = strtoupper($this->belegungsplan_color_frei);
+		$this->Template->ColorBelegt = strtoupper($this->belegungsplan_color_belegt);
+		// Opacitywerte
+		$this->Template->OpacityFrei = $this->belegungsplan_opacity_frei;
+		$this->Template->OpacityBelegt = $this->belegungsplan_opacity_belegt;
 		
 		if (!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
