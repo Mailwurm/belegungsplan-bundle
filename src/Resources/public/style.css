@@ -2,3 +2,37 @@
 #tl_navigation .group-beleg {
 	background:url("belegungsplan.svg") 3px 2px no-repeat;
 }
+.w15 {
+	width:15%;
+	float:left;
+	min-height:80px;
+}
+.w25 {
+	width:calc(25% - 10px);
+	float:left;
+	min-height:80px;
+}
+.w33 {
+	width:calc(33% - 10px);
+	float:left;
+	min-height:80px;
+}
+.tl_formbody_edit.nogrid .w25,
+.tl_formbody_edit.nogrid .w33 {
+	float:none;
+}
+.p-10 {
+	padding:10px;
+}
+.m-3-0 {
+	margin:3px 0;
+}
+/* Handheld */
+@media (max-width:767px) {
+	.w15,
+	.w25,
+	.w33 {
+		float:none;
+		width:calc(100%);
+	}
+}
