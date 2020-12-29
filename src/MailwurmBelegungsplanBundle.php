@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2017 Jan Karai
  *
- * @license LGPL-3.0+
+ * @license LGPL-3.0-or-later
  */
 namespace Mailwurm\BelegungsplanBundle;
 
