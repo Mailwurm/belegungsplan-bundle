@@ -19,7 +19,7 @@
 			<tr>
 				<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
 				<?php foreach($month['Days'] as $dayMonth => $day): ?>
-					<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+					<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
 				<?php endforeach; ?>
 			</tr>
 		</thead>
