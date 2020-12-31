@@ -1,6 +1,10 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_feiertage.php" source-language="en" target-language="de">
 		<body>
+			<trans-unit id="tl_belegungsplan_feiertage.color_legend">
+				<source>Output settings</source>
+				<target>Ausgabe Einstellungen</target>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.delete.0">
 				<source>Delete holiday</source>
 				<target>Feiertag löschen</target>
@@ -64,6 +68,50 @@
 			<trans-unit id="tl_belegungsplan_feiertage.date_legend">
 				<source>Date</source>
 				<target>Datum</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.setHexToRgb">
+				<source>Not a valid hexadecimal value</source>
+				<target>Kein gültiger Hexadezimaler Wert</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.reset">
+				<source>Reset</source>
+				<target>Zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.ausgabe.0">
+				<source>Highlight the holiday visually?</source>
+				<target>Feiertag optisch hervorheben?</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.ausgabe.1">
+				<source>When activated, you have the option of making further settings</source>
+				<target>Bei aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.hintergrund.0">
+				<source>Background color</source>
+				<target>Hintergrundfarbe</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.hintergrund.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 5BC0DE.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 5BC0DE.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.opacity.0">
+				<source>Transparency (opacity)</source>
+				<target>Transparenz (opacity)</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.opacity.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
+				<target>Die opacity CSS Eigenschaft gibt die Transparenz eines Elements an. 1.0 entspricht dabei der vollen Deckkraft.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.bereitsVorhanden">
+				<source>A public holiday already exists for this date.</source>
+				<target>Für dieses Datum existiert bereits ein Feiertag.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.textcolor.0">
+				<source>Holiday text color</source>
+				<target>Textfarbe des Feiertages</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.textcolor.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 333333.</target>
 			</trans-unit>
 		</body>
 	</file>
