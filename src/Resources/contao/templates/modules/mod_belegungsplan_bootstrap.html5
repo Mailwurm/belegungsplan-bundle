@@ -2,6 +2,109 @@
 <?php $this->block('content'); ?>
 <!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_bootstrap.html5 [begin] -->
 <div class="container-fluid">
+<style>
+<?php if($this->AnzeigeKategorie): ?>
+	tr.belegCategory {
+		background-color:<?= $this->RgbaKategorie ?>;
+		color:<?= $this->RgbaKategorietext ?>;
+	}
+<?php endif; ?>
+	.modal.modal-wide .modal-dialog {
+		width:90%;
+	}
+	.modal-wide .modal-body {
+		overflow-y: auto;
+	}
+<?php if($this->AnzeigeWochenende): ?>
+	.table.belegungsplan-modal-table>thead>tr>th.saturday,
+	.table.belegungsplan-table>thead>tr>th.saturday,
+	.table.belegungsplan-modal-table>thead>tr>th.sunday,
+	.table.belegungsplan-table>thead>tr>th.sunday {
+		background-color:<?= $this->RgbaBgWochenende ?>;
+		color:<?= $this->RgbaWochenendetext ?>;
+	}
+<?php endif; ?>
+	table.belegungsplan-modal-table>thead>tr>th {
+		text-align:center;
+	}
+	table.belegungsplan-modal-table,
+	table.belegungsplan-table{
+		color:<?= $this->RgbaText ?>;
+	}
+	table.belegungsplan-table {
+		cursor: pointer;
+	}
+	div.mod_belegungsplan .thumbnail {
+		margin-right:20px;
+	}
+	.table.belegungsplan-modal-table>tbody>tr>td.danger,
+	.table.belegungsplan-table>tbody>tr>td.danger {
+		border-right:none;
+		border-left:none;
+	}
+	.table.belegungsplan-table>tbody>tr>td.anreise,
+	.table.belegungsplan-modal-table>tbody>tr>td.anreise {
+		border-right:none;
+		background: <?= $this->RgbaFrei ?>;
+		background: -moz-linear-gradient(-45deg, <?= $this->RgbaFrei ?> 0%, <?= $this->RgbaFrei ?> 50%, <?= $this->RgbaBelegt ?> 50%, <?= $this->RgbaBelegt ?> 100%);
+		background: -webkit-linear-gradient(-45deg, <?= $this->RgbaFrei ?> 0%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaBelegt ?> 100%);
+		background: linear-gradient(135deg, <?= $this->RgbaFrei ?> 0%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaBelegt ?> 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?= $this->RgbaFrei ?>', endColorstr='<?= $this->RgbaBelegt ?>',GradientType=1 );
+	}
+	.table.belegungsplan-table>tbody>tr>td.abreise,
+	.table.belegungsplan-modal-table>tbody>tr>td.abreise {
+		border-left:none;
+		background: <?= $this->RgbaBelegt ?>;
+		background: -moz-linear-gradient(-45deg, <?= $this->RgbaBelegt ?> 0%, <?= $this->RgbaBelegt ?> 50%, <?= $this->RgbaFrei ?> 50%, <?= $this->RgbaFrei ?> 100%);
+		background: -webkit-linear-gradient(-45deg, <?= $this->RgbaBelegt ?> 0%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaFrei ?> 100%);
+		background: linear-gradient(135deg, <?= $this->RgbaBelegt ?> 0%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaFrei ?> 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?= $this->RgbaBelegt ?>', endColorstr='<?= $this->RgbaFrei ?>',GradientType=1 );
+	}
+	.table.belegungsplan-table {
+		font-size: 1px;
+	}
+	.belegungsplan-modal-table {
+		font-size: 12px;
+	}
+	.belegungsplan-modal-table,.belegungsplan-table {
+		border:1px solid <?= $this->RgbaRahmen ?>;
+	}
+	.table>tbody>tr>td.success {
+		background-color:<?= $this->RgbaFrei ?>;
+	}
+<?php if($this->AnzeigeLegende): ?>
+	.blp-success,.blp-success:hover,.blp-success:focus,.blp-success:active {
+		color:<?= $this->RgbaTextLegendeFrei ?>;
+		background-color:<?= $this->RgbaFrei ?>;
+		border-color:<?= $this->RgbaFrei ?>;
+	}
+	.blp-danger,.blp-danger:hover,.blp-danger:focus,.blp-danger:active {
+		color:<?= $this->RgbaTextLegendeBelegt ?>;
+		background-color:<?= $this->RgbaBelegt ?>;
+		border-color:<?= $this->RgbaBelegt ?>;
+	}
+<?php endif; ?>
+	.table>tbody>tr>td.danger {
+		background-color:<?= $this->RgbaBelegt ?>;
+	}
+	.belegungsplan-table>thead>tr>td,.belegungsplan-table>thead>tr>th,.belegungsplan-table>tbody>tr>td,.belegungsplan-table>tbody>tr>th {
+		padding: 1px;
+		border: 1px solid <?= $this->RgbaRahmen ?>;
+	}
+	.Blp-Height-20 {
+		height: 20px;
+	}
+	.table.belegungsplan-modal-table>tbody>tr>td.success {
+		padding: 0px;
+	}
+	.table.belegungsplan-modal-table>tbody>tr>td,.table.belegungsplan-modal-table>tbody>tr>th,.table.belegungsplan-modal-table>thead>tr>td,.table.belegungsplan-modal-table>thead>tr>th {
+		padding: 4px;
+	}
+	.table-bordered>thead>tr>th,.table-bordered>tbody>tr>th,.table-bordered>thead>tr>td,.table-bordered>tbody>tr>td {
+		border: 1px solid <?= $this->RgbaRahmen ?>;
+	}
+}
+</style>
 <?php if($this->info): ?>
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -19,7 +122,7 @@
 					<option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
 				<?php endforeach; ?>
 			</select>
-			<div class="Height-20"> </div>
+			<div class="Blp-Height-20"> </div>
 		</div>
 	</div>
 	<?php endif; ?>
@@ -32,15 +135,17 @@
 					<tr>
 						<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
 						<?php foreach($month['Days'] as $dayMonth => $day): ?>
-							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
 				<tbody>
 				<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+				<?php if($this->AnzeigeKategorie): ?>
 					<tr class="belegCategory">
 						<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
 					</tr>
+				<?php endif; ?>
 					<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
 					<tr class="belegObjekt">
 						<td><?= $valueObjekt['ObjektName'] ?></td>
@@ -70,17 +175,19 @@
 										<table class="table table-bordered belegungsplan-modal-table">
 											<thead>
 												<tr>
-													<td><button class="btn btn-sm btn-success">Frei</button>&nbsp;<button class="btn btn-sm btn-danger">Belegt</button></td>
+													<th><?php if($this->AnzeigeLegende): ?><button class="btn btn-sm blp-success"><?= $this->Frei ?></button>&nbsp;<button class="btn btn-sm blp-danger"><?= $this->Belegt ?></button><?php endif; ?></th>
 													<?php foreach($month['Days'] as $dayMonth => $day): ?>
-														<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+														<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
 													<?php endforeach; ?>
 												</tr>
 											</thead>
 											<tbody>
 											<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+											<?php if($this->AnzeigeKategorie): ?>
 												<tr class="belegCategory">
 													<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
 												</tr>
+											<?php endif; ?>
 												<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
 												<tr class="belegObjekt">
 													<td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?></td>
