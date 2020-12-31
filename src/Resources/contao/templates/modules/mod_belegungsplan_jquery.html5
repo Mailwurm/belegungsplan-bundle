@@ -22,17 +22,19 @@
 		table.mod-belegungsplan-jquery {
 			width:15%;
 			margin:0;
-			border:1px solid #DDD;
+			border:1px solid <?= $this->RgbaRahmen ?>;
 			border-collapse:collapse;
 			font-size:1px;
+			color:<?= $this->RgbaText ?>;
 		}
 		table.mod-belegungsplan-jquery>tbody>tr {
-			border-top:1px solid #DDD;
+			border-top:1px solid <?= $this->RgbaRahmen ?>;
 		}
 		table.belegungsplan-table-dialog {
-			border:1px solid #DDD;
+			border:1px solid <?= $this->RgbaRahmen ?>;
 			border-collapse:collapse;
 			font-size:12px;
+			color:<?= $this->RgbaText ?>;
 		}
 		.belegungsplan-table-dialog > thead {
 			display:table-header-group;
@@ -44,86 +46,87 @@
 			vertical-align: inherit;
 			border-color: inherit;
 		}
+<?php if($this->AnzeigeKategorie): ?>
 		table.mod-belegungsplan-jquery>tbody>tr.belegCategory>th,
 		table.belegungsplan-table-dialog>tbody>tr.belegCategory>th {
 			text-align:left;
-			background-color:#CCC;
+			background-color:<?= $this->RgbaKategorie ?>;
+			color:<?= $this->RgbaKategorietext ?>;
 		}
+<?php endif; ?>
+<?php if($this->AnzeigeWochenende): ?>
+		table.belegungsplan-table-dialog>thead>tr>th.saturday,
+		table.belegungsplan-table-dialog>thead>tr>th.sunday,
+		table.mod-belegungsplan-jquery>thead>tr>th.saturday,
+		table.mod-belegungsplan-jquery>thead>tr>th.sunday {
+			background-color:<?= $this->RgbaBgWochenende ?>;
+			color:<?= $this->RgbaWochenendetext ?>;
+		}
+<?php endif; ?>
 		.belegungsplan-table-dialog>thead>tr>th,
 		.belegungsplan-table-dialog>tbody>tr>th,
 		.belegungsplan-table-dialog>thead>tr>td,
 		.belegungsplan-table-dialog>tbody>tr>td {
 			padding:4px;
-			border-top:1px solid #DDD;
-			border-right:1px solid #DDD;
+			border-top:1px solid <?= $this->RgbaRahmen ?>;
+			border-right:1px solid <?= $this->RgbaRahmen ?>;
 		}
 		.belegungsplan-table-dialog>thead>tr>th {
 			text-align:center;
 		}
-		.mod-belegungsplan-jquery>thead>tr>th.holiday,
-		.belegungsplan-table-dialog>thead>tr>th.holiday {
-			background-color:#5BC0DE;
-			border-color:#46B8DA;
-			cursor: pointer;
-		}
-		.mod-belegungsplan-jquery>tbody>tr>td.frei,
-		.belegungsplan-table-dialog>tbody>tr>td.frei,
-		span.frei{
-			background-color:#<?= $this->ColorFrei ?>;
-			opacity:<?= $this->OpacityFrei ?>;
-		}
-		.mod-belegungsplan-jquery>tbody>tr>td.belegt,
-		.belegungsplan-table-dialog>tbody>tr>td.belegt,
-		span.belegt{
-			background-color:#<?= $this->ColorBelegt ?>;
-			border-right:0px;
-		}
-		.mod-belegungsplan-jquery>tbody>tr>td.anreise,
-		.belegungsplan-table-dialog>tbody>tr>td.anreise {
-			background-color:#<?= $this->ColorFrei ?>;
-			opacity:<?= $this->OpacityFrei ?>;
-			border-right:none;
-			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#<?= $this->ColorFrei ?>+0,<?= $this->ColorFrei ?>+50,<?= $this->ColorBelegt ?>+50,<?= $this->ColorBelegt ?>+100 */
-			background: #<?= $this->ColorFrei ?>;
-			/* Old browsers */
-			background: -moz-linear-gradient(-45deg, #<?= $this->ColorFrei ?> 0%, #<?= $this->ColorFrei ?> 50%, #<?= $this->ColorBelegt ?> 50%, #<?= $this->ColorBelegt ?> 100%);
-			/* FF3.6-15 */
-			background: -webkit-linear-gradient(-45deg, #<?= $this->ColorFrei ?> 0%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorBelegt ?> 100%);
-			/* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(135deg, #<?= $this->ColorFrei ?> 0%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorBelegt ?> 100%);
-			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?= $this->ColorFrei ?>', endColorstr='#<?= $this->ColorBelegt ?>',GradientType=1 );
-			/* IE6-9 fallback on horizontal gradient */;
-		}
-		.mod-belegungsplan-jquery>tbody>tr>td.abreise,
-		.belegungsplan-table-dialog>tbody>tr>td.abreise {
-			background-color:#<?= $this->ColorFrei ?>;
-			opacity:<?= $this->OpacityBelegt ?>;
-			border-left:none;
-			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#<?= $this->ColorBelegt ?>+0,<?= $this->ColorBelegt ?>+50,<?= $this->ColorFrei ?>+50,<?= $this->ColorFrei ?>+100 */
-			background: #<?= $this->ColorBelegt ?>;
-			/* Old browsers */
-			background: -moz-linear-gradient(-45deg, #<?= $this->ColorBelegt ?> 0%, #<?= $this->ColorBelegt ?> 50%, #<?= $this->ColorFrei ?> 50%, #<?= $this->ColorFrei ?> 100%);
-			/* FF3.6-15 */
-			background: -webkit-linear-gradient(-45deg, #<?= $this->ColorBelegt ?> 0%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorFrei ?> 100%);
-			/* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(135deg, #<?= $this->ColorBelegt ?> 0%,#<?= $this->ColorBelegt ?> 50%,#<?= $this->ColorFrei ?> 50%,#<?= $this->ColorFrei ?> 100%);
-			/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#<?= $this->ColorBelegt ?>', endColorstr='#<?= $this->ColorFrei ?>',GradientType=1 );
-			/* IE6-9 fallback on horizontal gradient */;
-		}
+<?php if($this->AnzeigeLegende): ?>
 		span.frei,
 		span.belegt {
 			margin-right:3px;
 			margin-left:3px;
 			padding:5px;
-			color:#FFF;
+		}
+		span.frei {
+			color:<?= $this->RgbaTextLegendeFrei ?>;
+		}
+		span.belegt {
+			color:<?= $this->RgbaTextLegendeBelegt ?>;
+		}
+		.legende {
+			color:<?= $this->RgbaLegende ?>;
+		}
+<?php endif; ?>
+		.mod-belegungsplan-jquery>tbody>tr>td.frei,
+		.belegungsplan-table-dialog>tbody>tr>td.frei,
+		span.frei{
+			background-color:<?= $this->RgbaFrei ?>;
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.belegt,
+		.belegungsplan-table-dialog>tbody>tr>td.belegt,
+		span.belegt{
+			background-color:<?= $this->RgbaBelegt ?>;
+			border-right:0px;
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.anreise,
+		.belegungsplan-table-dialog>tbody>tr>td.anreise {
+			background-color:<?= $this->RgbaFrei ?>;
+			border-right:none;
+			background: <?= $this->RgbaFrei ?>;
+			background: -moz-linear-gradient(-45deg, <?= $this->RgbaFrei ?> 0%, <?= $this->RgbaFrei ?> 50%, <?= $this->RgbaBelegt ?> 50%, #<?= $this->RgbaBelegt ?> 100%);
+			background: -webkit-linear-gradient(-45deg, <?= $this->RgbaFrei ?> 0%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaBelegt ?> 100%);
+			background: linear-gradient(135deg, <?= $this->RgbaFrei ?> 0%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaBelegt ?> 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?= $this->RgbaFrei ?>', endColorstr='<?= $this->RgbaBelegt ?>',GradientType=1 );
+		}
+		.mod-belegungsplan-jquery>tbody>tr>td.abreise,
+		.belegungsplan-table-dialog>tbody>tr>td.abreise {
+			background-color:<?= $this->RgbaFrei ?>;
+			border-left:none;
+			background: <?= $this->RgbaBelegt ?>;
+			background: -moz-linear-gradient(-45deg, <?= $this->RgbaBelegt ?> 0%, <?= $this->RgbaBelegt ?> 50%, <?= $this->RgbaFrei ?> 50%, <?= $this->RgbaFrei ?> 100%);
+			background: -webkit-linear-gradient(-45deg, <?= $this->RgbaBelegt ?> 0%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaFrei ?> 100%);
+			background: linear-gradient(135deg, <?= $this->RgbaBelegt ?> 0%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaFrei ?> 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?= $this->RgbaBelegt ?>', endColorstr='<?= $this->RgbaFrei ?>',GradientType=1 );
 		}
 	</style>
 	<script type="text/javascript">
 		<?php foreach($this->Month as $keyMonth => $month): ?>
 		var Month<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {Jahr:<?= $this->display_year ?>, Name:"<?= $month['Name'] ?>", TageMonat:<?= $month['TageMonat'] ?>, ColSpan:<?= $month['ColSpan'] ?>};
-		var Days<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php  foreach($month['Days'] as $dayMonth => $day): ?><?= $dayMonth ?>:{DayDate:"<?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) ?>", DayLong:"<?= $day['Day'] ?>", DayCut:"<?= $day['DayCut'] ?>", DayWeekNum:<?= $day['DayWeekNum'] ?><?php if($day['Holiday']): ?>, Holiday:"<?= $day['Holiday'] ?>"<?php endif; ?><?php if($day['Class']): ?>, Class:"<?= $day['Class'] ?>"<?php endif; ?>}<?php if((int) $dayMonth < (int) $month['TageMonat'] ): ?>, <?php endif; ?><?php endforeach; ?>};
+		var Days<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php  foreach($month['Days'] as $dayMonth => $day): ?><?= $dayMonth ?>:{DayDate:"<?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) ?>", DayLong:"<?= $day['Day'] ?>", DayCut:"<?= $day['DayCut'] ?>", DayWeekNum:<?= $day['DayWeekNum'] ?><?php if($day['Title']): ?>, Title:"<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?>, Style:"<?= $day['Style'] ?>"<?php endif; ?><?php if($day['Class']): ?>, Class:"<?= $day['Class'] ?>"<?php endif; ?>}<?php if((int) $dayMonth < (int) $month['TageMonat'] ): ?>, <?php endif; ?><?php endforeach; ?>};
 		var CategorieObjekteCalender<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php $count = count($this->CategorieObjekteCalender); ?><?php $a = 0; ?><?php foreach($this->CategorieObjekteCalender as $categoryMonth => $aCategory): ?><?php $i = 0; ?><?= $categoryMonth ?>:{CategoryTitle:"<?= $aCategory['CategoryTitle'] ?>", Objekte:{<?php $z = 0; ?><?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?><?= $keyObjekt ?>:{ObjektName:"<?= $valueObjekt['ObjektName'] ?>"<?php if($valueObjekt['ObjektInfoText']): ?>, ObjektInfoText:"<?= $valueObjekt['ObjektInfoText'] ?>"<?php endif; ?>, Calender:{<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?><?= $i; ?>:"<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?><?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>an<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>ab<?php else: ?>d<?php endif; ?><?php else: ?>s<?php endif; ?>"<?php if ($i < $month['TageMonat']): ?>, <?php endif; ?><?php endfor; ?>}}<?php $z++; ?><?php if ($z < count($aCategory['Objekte'])): ?>, <?php endif; ?><?php endforeach; ?>}}<?php $a++; ?><?php if ($a < $count ): ?>, <?php endif; ?><?php endforeach; ?>};
 		<?php endforeach; ?>
 		function displayBelegung(Month, Days, CategorieObjekteCalender) {
@@ -154,11 +157,12 @@
 			if(Days) {
 				str += '<thead>';
 				str += '	<tr>';
-				str += '		<th><span class="frei"><?= $this->Frei ?></span>&nbsp;<span class="belegt"><?= $this->Belegt ?></span></th>';
+				str += '		<th><?php if($this->AnzeigeLegende): ?><span class="frei legende"><?= $this->Frei ?></span>&nbsp;<span class="belegt legende"><?= $this->Belegt ?></span><?php endif; ?></th>';
 				$.each(Days, function(key, value) {
 					var clas = value.Class ? ' class="' + value.Class + '"' : '';
-					var title = value.Holiday ? ' title="' + value.Holiday + '"' : '';
-					str += ('<th' + clas + title + '>' + value.DayDate + '<br>' + value.DayCut + '</th>' );
+					var title = value.Title ? ' title="' + value.Title + '"' : '';
+					var style = value.Style ?  value.Style : '';
+					str += ('<th' + clas + title + style + '>' + value.DayDate + '<br>' + value.DayCut + '</th>' );
 				});
 				str += '	</tr>';
 				str += '</thead>';
@@ -166,9 +170,11 @@
 			if(CategorieObjekteCalender) {
 				str += '<tbody>';
 				$.each(CategorieObjekteCalender, function(keyCategory, valueCategory) {
+<?php if($this->AnzeigeKategorie): ?>
 					str += '	<tr class="belegCategory">';
 					str += '	<th colspan="' + Month.ColSpan + '">' + valueCategory.CategoryTitle + '</th>';
 					str += '	</tr>';
+<?php endif; ?>
 					if(valueCategory.Objekte) {
 						$.each(valueCategory.Objekte, function(keyObjekte, valueObjekte) {
 							var info = valueObjekte.ObjektInfoText ? ' (' + valueObjekte.ObjektInfoText + ')' : '';
@@ -224,15 +230,17 @@
 					<tr>
 						<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
 						<?php foreach($month['Days'] as $dayMonth => $day): ?>
-							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Holiday']): ?> title="<?= $day['Holiday'] ?>"<?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
 				<tbody>
 				<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+<?php if($this->AnzeigeKategorie): ?>
 					<tr class="belegCategory">
 						<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
 					</tr>
+<?php endif; ?>
 					<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
 					<tr class="belegObjekt">
 						<td><?= $valueObjekt['ObjektName'] ?></td>
