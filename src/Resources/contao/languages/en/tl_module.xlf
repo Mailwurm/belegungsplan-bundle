@@ -2,6 +2,21 @@
 <xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en">
 		<body>
+			<trans-unit id="tl_module.text_legend">
+				<source>Text settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.rahmen_legend">
+				<source>Frame settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.kategorie_legend">
+				<source>Category settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.legende_legend">
+				<source>Legend settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.wochenende_legend">
+				<source>Weekend settings</source>
+			</trans-unit>
 			<trans-unit id="tl_module.color_legend_frei">
 				<source>Color selection free days</source>
 			</trans-unit>
@@ -57,27 +72,87 @@
 				<source>December</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_frei.0">
-				<source>What color should the days off be?</source>
+				<source>Color of the days off</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_frei.1">
 				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 4CAE4C.</source>
 			</trans-unit>
-			<trans-unit id="tl_module.belegungsplan_opacity_frei.0">
-				<source>Set the transparency (opacity) here</source>
-			</trans-unit>
-			<trans-unit id="tl_module.belegungsplan_opacity_frei.1">
-				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
-			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_belegt.0">
-				<source>What color should the occupied days be?</source>
+				<source>Color of the occupied days</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_belegt.1">
 				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is D43F3A.</source>
 			</trans-unit>
-			<trans-unit id="tl_module.belegungsplan_opacity_belegt.0">
-				<source>Set the transparency (opacity) here</source>
+			<trans-unit id="tl_module.belegungsplan_color_text.0">
+				<source>Text color</source>
 			</trans-unit>
-			<trans-unit id="tl_module.belegungsplan_opacity_belegt.1">
+			<trans-unit id="tl_module.belegungsplan_color_text.1">
+				<source>The colors for the category text and legend text can be found below. Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_rahmen.0">
+				<source>Color of the table frame</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_rahmen.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is DDDDDD.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_kategorie.0">
+				<source>Show main categories? &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_kategorie&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Show main categories?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_kategorie.1">
+				<source>When activated, you have the option of making further settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorie.0">
+				<source>Category line background color</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorie.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is CCCCCC.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorietext.0">
+				<source>Text color of the category line</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorietext.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 000000.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_legende.0">
+				<source>Show legend (explanation)? &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_legende&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Show legend (explanation)?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_legende.1">
+				<source>When activated, you have the option of making further settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_frei.0">
+				<source>Text color legend free days</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_frei.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is FFFFFF.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_belegt.0">
+				<source>Text color legend occupied days</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_belegt.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is FFFFFF.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_wochenende.0">
+				<source>Visually highlight weekends? &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_wochenende&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Visually highlight weekends?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_wochenende.1">
+				<source>When activated, you have the option of making further settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_bgcolor_wochenende.0">
+				<source>Weekends background color</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_bgcolor_wochenende.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is CCCCCC.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_wochenendetext.0">
+				<source>Weekends text color</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_wochenendetext.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity.0">
+				<source>Transparency (opacity)</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity.1">
 				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_template.0">
@@ -88,6 +163,9 @@
 			</trans-unit>
 			<trans-unit id="tl_module.setHexToRgb">
 				<source>Not a valid hexadecimal value</source>
+			</trans-unit>
+			<trans-unit id="tl_module.reset">
+				<source>Reset</source>
 			</trans-unit>
 		</body>
 	</file>
