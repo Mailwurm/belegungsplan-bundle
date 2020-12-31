@@ -1,6 +1,9 @@
 <?xml version="1.0" ?><xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_feiertage.php" source-language="en">
 		<body>
+			<trans-unit id="tl_belegungsplan_feiertage.color_legend">
+				<source>Output settings</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.delete.0">
 				<source>Delete holiday</source>
 			</trans-unit>
@@ -48,6 +51,39 @@
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.date_legend">
 				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.setHexToRgb">
+				<source>Not a valid hexadecimal value</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.reset">
+				<source>Reset</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.ausgabe.0">
+				<source>Highlight the holiday visually?</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.ausgabe.1">
+				<source>When activated, you have the option of making further settings</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.hintergrund.0">
+				<source>Background color</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.hintergrund.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 5BC0DE.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.opacity.0">
+				<source>Transparency (opacity)</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.opacity.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.bereitsVorhanden">
+				<source>A public holiday already exists for this date.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.textcolor.0">
+				<source>Holiday text color</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.textcolor.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
 			</trans-unit>
 		</body>
 	</file>
