@@ -4,7 +4,7 @@
 *
 * Copyright (c) Jan Karai
 *
-* @license LGPL-3.0+
+* @license LGPL-3.0-or-later
 */
 namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
@@ -97,7 +97,6 @@ class ModuleBelegungsplan extends \Module
 		$arrInfo = array();
 		$arrCategorieObjekte = array();
 		$arrJahre = array();
-		$arrFeiertage = array();
 		
 		// Monate sortieren
 		$arrBelegungsplanMonth = $this->belegungsplan_month;
@@ -281,21 +280,6 @@ class ModuleBelegungsplan extends \Module
 					$arrJahre[] = array('single_year' => $objJahre->Start, 'year_href' => $this->strUrl . '?belegyear=' . $objJahre->Start, 'active' => $objJahre->Start == $intYear ? 1 : 0);
 				}
 			}
-			
-			// Hole alle Feiertage
-			$objFeiertage = $this->Database->prepare("SELECT DAY(FROM_UNIXTIME(startDate)) as Tag,
-									MONTH(FROM_UNIXTIME(startDate)) as Monat,
-									YEAR(FROM_UNIXTIME(startDate)) as Jahr,
-									title
-							FROM 	tl_belegungsplan_feiertage
-							WHERE 	startDate >= " . $this->intStartAuswahl . "
-							AND 	startDate <= " . $this->intEndeAuswahl)
-							->execute();
-			if ($objFeiertage->numRows > 0) {
-				while ($objFeiertage->next()) {
-					$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = $objFeiertage->title;
-				}
-			}
 		}
 		// Templatewaehler
 		if (($this->belegungsplan_template != $this->strTemplate) && ($this->belegungsplan_template != '')) 
@@ -316,16 +300,35 @@ class ModuleBelegungsplan extends \Module
 		// Kategorien sortieren wie im Checkboxwizard ausgewaehlt -> Elterntabelle
 		$this->Template->CategorieObjekteCalender = $this->sortNachWizard($arrCategorieObjekte, $this->belegungsplan_category);
 		// Array mit den Monatsdaten
-		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $this->intStartAuswahl, $arrFeiertage);
+		$this->Template->Month = $this->dataMonth($arrBelegungsplanMonth, $this->intStartAuswahl, $this->getFeiertage($this->intStartAuswahl,$this->intEndeAuswahl));
 		// Text fuer Legende
 		$this->Template->Frei = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['frei'];
 		$this->Template->Belegt = $GLOBALS['TL_LANG']['mailwurm_belegung']['legende']['belegt'];
 		// Farben fuer Legende
-		$this->Template->ColorFrei = strtoupper($this->belegungsplan_color_frei);
-		$this->Template->ColorBelegt = strtoupper($this->belegungsplan_color_belegt);
+		// RGBA
+		$this->Template->RgbaFrei = 'rgba('.$this->belegungsplan_color_frei.','.$this->belegungsplan_opacity_frei.')';
+		$this->Template->RgbaBelegt = 'rgba('.$this->belegungsplan_color_belegt.','.$this->belegungsplan_opacity_belegt.')';
+		$this->Template->RgbaText = 'rgba('.$this->belegungsplan_color_text.','.$this->belegungsplan_opacity_text.')';
+		$this->Template->RgbaRahmen = 'rgba('.$this->belegungsplan_color_rahmen.','.$this->belegungsplan_opacity_rahmen.')';
+		$this->Template->AnzeigeKategorie = $this->belegungsplan_anzeige_kategorie;
+		$this->Template->RgbaKategorie = 'rgba('.$this->belegungsplan_color_kategorie.','.$this->belegungsplan_opacity_kategorie.')';
+		$this->Template->RgbaKategorietext = 'rgba('.$this->belegungsplan_color_kategorietext.','.$this->belegungsplan_opacity_kategorietext.')';
+		$this->Template->AnzeigeLegende = $this->belegungsplan_anzeige_legende;
+		$this->Template->RgbaTextLegendeFrei = 'rgba('.$this->belegungsplan_color_legende_frei.','.$this->belegungsplan_opacity_legende.')';
+		$this->Template->RgbaTextLegendeBelegt = 'rgba('.$this->belegungsplan_color_legende_belegt.','.$this->belegungsplan_opacity_legende.')';
+		$this->Template->AnzeigeWochenende = $this->belegungsplan_anzeige_wochenende;
+		$this->Template->RgbaBgWochenende = 'rgba('.$this->belegungsplan_bgcolor_wochenende.','.$this->belegungsplan_opacity_bg_wochenende.')';
+		$this->Template->RgbaWochenendetext = 'rgba('.$this->belegungsplan_color_wochenendetext.','.$this->belegungsplan_opacity_wochenendetext.')';
 		// Opacitywerte
 		$this->Template->OpacityFrei = $this->belegungsplan_opacity_frei;
 		$this->Template->OpacityBelegt = $this->belegungsplan_opacity_belegt;
+		$this->Template->OpacityText = $this->belegungsplan_opacity_text;
+		$this->Template->OpacityRahmen = $this->belegungsplan_opacity_rahmen;
+		$this->Template->OpacityKategorie = $this->belegungsplan_opacity_kategorie;
+		$this->Template->OpacityKategorietext = $this->belegungsplan_opacity_kategorietext;
+		$this->Template->OpacityLegende = $this->belegungsplan_opacity_legende;
+		$this->Template->OpacityBgWochenende = $this->belegungsplan_opacity_bg_wochenende;
+		$this->Template->OpacityWochenendetext = $this->belegungsplan_opacity_wochenendetext;
 		
 		if (!empty($arrCategorieObjekte)) {
 			unset($arrCategorieObjekte);
@@ -344,6 +347,9 @@ class ModuleBelegungsplan extends \Module
 	
 	/**
 	 * Sortiert die Kategorien nach Auswahl im Checkbox-Wizard
+	 *
+	 * @param array $arrCategorieObjekte
+	 * @param array $arrBelegungsplanCategory
 	 *
 	 * @return array
 	 */
@@ -368,6 +374,10 @@ class ModuleBelegungsplan extends \Module
 	/**
 	 * Fuegt den Monaten Daten hinzu
 	 *
+	 * @param array $arrMonth
+	 * @param integer $intStartAuswahl
+	 * @param array $arrFeiertage
+	 *
 	 * @return array
 	 */
 	protected function dataMonth($arrMonth, $intStartAuswahl, $arrFeiertage)
@@ -384,11 +394,15 @@ class ModuleBelegungsplan extends \Module
 				$arrHelper[$value]['Days'][$f]['Day'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayCut'] = $GLOBALS['TL_LANG']['mailwurm_belegung']['short_cut_day'][$i];
 				$arrHelper[$value]['Days'][$f]['DayWeekNum'] = $i;
-				$i === 6 ? $strClass .= ' saturday' : '';
-				$i === 7 ? $strClass .= ' sunday' : '';
-				if (!empty($arrFeiertage[$intJahr][$value][$f])) {
-					$strClass .= ' holiday';
-					$arrHelper[$value]['Days'][$f]['Holiday'] = $arrFeiertage[$intJahr][$value][$f];
+				if ($arrFeiertage[$intJahr][$value][$f])
+				{
+					$strClass .= 'holiday';
+					$arrHelper[$value]['Days'][$f]['Title'] = $arrFeiertage[$intJahr][$value][$f]['Title'];
+					$arrHelper[$value]['Days'][$f]['Style'] = $arrFeiertage[$intJahr][$value][$f]['Style'];
+				}
+				if (empty($strClass))
+				{
+					$strClass .= $i === 6 ? 'saturday' : ($i === 7 ? 'sunday' : '');
 				}
 				$arrHelper[$value]['Days'][$f]['Class'] = trim($strClass);
 				$i === 7 ? $i = 1 : $i++;
@@ -417,19 +431,54 @@ class ModuleBelegungsplan extends \Module
 		// bei Jahresuebergreifender Buchung
 		if ((int) $intBuchungsStartJahr != (int) $intBuchungsEndeJahr) {
 			// bei Jahresuebergreifender Buchung
-			if ($intY === $intBuchungJahr) {
+			if ($intY === $intBuchungJahr)
+			{
 				$strReturn = empty($z) ? '0#1' : '1#0';
 			} else {
 				$strReturn = '1#1';
 			}
 		} else {
 			// wenn letzter Tag einer Buchung gleich dem ersten Tag einer neuer Buchung
-			if (isset($arrCategoriesObjekte)) {
+			if (isset($arrCategoriesObjekte))
+			{
 				$strReturn = '1#1';
 			} else {
 				$strReturn = empty($z) ? '0#1' : '1#0';
 			}
 		}
 		return $strReturn;
+	}
+	/**
+	 * Holt alle Feiertage
+	 *
+	 * @param integer $intStartAuswahl
+	 * @param integer $intEndeAuswahl
+	 *
+	 * @return array
+	 */
+	protected function getFeiertage($intStartAuswahl, $intEndeAuswahl)
+	{
+		$arrFeiertage = array();
+		$objFeiertage = $this->Database->prepare("SELECT DAY(FROM_UNIXTIME(startDate)) as Tag,
+									MONTH(FROM_UNIXTIME(startDate)) as Monat,
+									YEAR(FROM_UNIXTIME(startDate)) as Jahr,
+									title, ausgabe, hintergrund, opacity, textcolor, textopacity
+							FROM 	tl_belegungsplan_feiertage
+							WHERE 	startDate >= " . $intStartAuswahl . "
+							AND 	startDate <= " . $intEndeAuswahl . "
+							AND		ausgabe = 1")
+							->execute();
+		if ($objFeiertage->numRows > 0)
+		{
+			while ($objFeiertage->next())
+			{
+				$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = array
+				(
+					'Title' => $objFeiertage->title,
+					'Style' => " style='background-color:rgba(".$objFeiertage->hintergrund.",".$objFeiertage->opacity.");color:rgba(".$objFeiertage->textcolor.",".$objFeiertage->textopacity.");cursor:pointer;'"
+				);
+			}
+		}
+		return $arrFeiertage;
 	}
 }
