@@ -498,7 +498,7 @@ class tl_module_belegungsplan extends Backend {
 				{
 					if ($dc->activeRecord->{$arrSet[$i]} != $arrSet[$i+1])
 					{
-						$arrHelp[$arrSet[$i]] = strlen($arrSet[$i+1]) == 6 ? $this->setHexToRgb($arrSet[$i+1], $dc) : $arrSet[$i+1];
+						$arrHelp[$arrSet[$i]] = $arrSet[$i+1];
 						$boolHelper = false;
 					}
 				}
@@ -526,15 +526,15 @@ class tl_module_belegungsplan extends Backend {
 	 {
 		$arrSet = array
 		(
-			'belegungsplan_reset_frei'				=> array('belegungsplan_color_frei', '4CAE4C', 'belegungsplan_opacity_frei', '1.0'),
-			'belegungsplan_reset_belegt'			=> array('belegungsplan_color_belegt', 'D43F3A', 'belegungsplan_opacity_belegt', '1.0'),
-			'belegungsplan_reset_text'				=> array('belegungsplan_color_text', '333333', 'belegungsplan_opacity_text', '1.0'),
-			'belegungsplan_reset_rahmen'			=> array('belegungsplan_color_rahmen', 'DDDDDD', 'belegungsplan_opacity_rahmen', '1.0'),
-			'belegungsplan_reset_kategorie'			=> array('belegungsplan_color_kategorie', 'CCCCCC', 'belegungsplan_opacity_kategorie', '1.0'),
-			'belegungsplan_reset_kategorietext'		=> array('belegungsplan_color_kategorietext', '000000', 'belegungsplan_opacity_kategorietext', '1.0'),
-			'belegungsplan_reset_legende'			=> array('belegungsplan_color_legende_frei', 'FFFFFF', 'belegungsplan_color_legende_belegt', 'FFFFFF', 'belegungsplan_opacity_legende', '1.0'),
-			'belegungsplan_reset_bg_wochenende'		=> array('belegungsplan_bgcolor_wochenende', 'CCCCCC', 'belegungsplan_opacity_bg_wochenende', '1.0'),
-			'belegungsplan_reset_wochenendetext'	=> array('belegungsplan_color_wochenendetext', '333333', 'belegungsplan_opacity_wochenendetext', '1.0')
+			'belegungsplan_reset_frei'				=> array('belegungsplan_color_frei', '76,174,76', 'belegungsplan_opacity_frei', '1.0'),
+			'belegungsplan_reset_belegt'			=> array('belegungsplan_color_belegt', '212,63,58', 'belegungsplan_opacity_belegt', '1.0'),
+			'belegungsplan_reset_text'				=> array('belegungsplan_color_text', '51,51,51', 'belegungsplan_opacity_text', '1.0'),
+			'belegungsplan_reset_rahmen'			=> array('belegungsplan_color_rahmen', '221,221,221', 'belegungsplan_opacity_rahmen', '1.0'),
+			'belegungsplan_reset_kategorie'			=> array('belegungsplan_color_kategorie', '204,204,204', 'belegungsplan_opacity_kategorie', '1.0'),
+			'belegungsplan_reset_kategorietext'		=> array('belegungsplan_color_kategorietext', '0,0,0', 'belegungsplan_opacity_kategorietext', '1.0'),
+			'belegungsplan_reset_legende'			=> array('belegungsplan_color_legende_frei', '255,255,255', 'belegungsplan_color_legende_belegt', '255,255,255', 'belegungsplan_opacity_legende', '1.0'),
+			'belegungsplan_reset_bg_wochenende'		=> array('belegungsplan_bgcolor_wochenende', '204,204,204', 'belegungsplan_opacity_bg_wochenende', '1.0'),
+			'belegungsplan_reset_wochenendetext'	=> array('belegungsplan_color_wochenendetext', '51,51,51', 'belegungsplan_opacity_wochenendetext', '1.0')
 		);
 		return $arrSet[$strInputName];
 	 }
