@@ -66,13 +66,6 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 				'icon'                => 'edit.svg',
 				'button_callback'     => array('tl_belegungsplan_category', 'editHeader')
 			),
-			'copy' => array
-			(
-				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['copy'],
-				'href'                => 'act=copy',
-				'icon'                => 'copy.svg',
-				'button_callback'     => array('tl_belegungsplan_category', 'copyCategory')
-			),
 			'delete' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['delete'],
@@ -146,22 +139,6 @@ class tl_belegungsplan_category extends Backend {
 	* @return string
 	*/
 	public function editHeader($row, $href, $label, $title, $icon, $attributes)
-	{
-		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
-	}
-	/**
-	* Return the copy category button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
-	public function copyCategory($row, $href, $label, $title, $icon, $attributes)
 	{
 		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
 	}
