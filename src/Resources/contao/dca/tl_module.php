@@ -32,7 +32,7 @@ $GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_anzeige_wochenende
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_categories'],
 	'exclude'				=> true,
-	'inputType'				=> 'checkboxWizard',
+	'inputType'				=> 'checkBoxWithDragAndDropWizard',
 	'foreignKey'			=> 'tl_belegungsplan_category.title',
 	'eval'					=> array('multiple'=>true, 'mandatory'=>true),
 	'sql'					=> "blob NULL"
@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_month'],
 	'exclude'				=> true,
-	'inputType'				=> 'checkboxWizard',
+	'inputType'				=> 'checkBoxWithoutDragAndDropWizard',
 	'options'				=> $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
 	'eval'					=> array('multiple'=>true, 'mandatory'=>true),
 	'sql'					=> "blob NULL"
