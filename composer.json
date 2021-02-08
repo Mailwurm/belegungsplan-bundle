@@ -53,7 +53,7 @@
         "preferred-install": "dist"
     },
     "support": {
-        "docs": "https://docs.contao.org",
+        "docs": "https://belegungsplan-bundle.de",
         "forum": "https://community.contao.org",
         "issues": "https://github.com/Mailwurm/belegungsplan-bundle/issues",
         "source": "https://github.com/Mailwurm/belegungsplan-bundle"
