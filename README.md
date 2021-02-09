@@ -14,7 +14,7 @@ Unterstützung bei [**Update von v2.4 auf v3.0**](https://github.com/Mailwurm/be
 Eine ausführliche Dokumentation zu den Komponenten finden sie auf der [**Projektwebseite - Komponenten**](https://belegungsplan-bundle.de/komponenten.html).
 
 ## Versions-Newsletter
-Keine neue Version verpassen mit dem [**Versions - Newsletter**](https://belegungsplan-bundle.de/versions-newsletter.html) auf der [**Projektwebseite**](https://belegungsplan-bundle.de {:target="_blank"}).
+Keine neue Version verpassen mit dem [**Versions - Newsletter**](https://belegungsplan-bundle.de/versions-newsletter.html) auf der [**Projektwebseite**](https://belegungsplan-bundle.de).
 
 ## Der neueste Changelog
 
