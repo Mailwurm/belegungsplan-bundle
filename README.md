@@ -16,7 +16,7 @@ Keine neue Version verpassen mit dem [**Versions - Newsletter**](https://belegun
 
 ## Der neueste Changelog
 
-### v3.0.0-beta (09.02.2021)
+### v3.0.0 Stable (09.02.2021)
 - Wochenenden optisch hervorheben hinzugefügt (Hintergrundfarbe der Wochenenden, Textfarbe der Wochenenden, Transparenz, Zurücksetzen-Button)
 - Legende Einstellungen hinzugefügt (Legende anzeigen, Textfarbe Legende freie Tage, Textfarbe Legende belegte Tage, Transparenz, Zurücksetzen-Button)
 - Kategorie Einstellungen hinzugefügt (Hauptkategorien anzeigen, Hintergrundfarbe der Kategoriezeile, Textfarbe der Kategoriezeile, Transparenz, Zurücksetzen-Button)
