@@ -6,15 +6,15 @@
 
 
 ## Installation
-Hinweise und Anweisungen zur Installation finden sie auf der [**Projektwebseite - Installation**](https://belegungsplan-bundle.de/installation.html).
+Hinweise und Anweisungen zur Installation finden sie auf der [**Projektwebseite - Installation**](https://belegungsplan-bundle.de/installation.html){:target="_blank"}.
 
 Unterstützung bei [**Update von v2.4 auf v3.0**](https://github.com/Mailwurm/belegungsplan-bundle/blob/master/docs/Update-v2-to-v3.md)
 
 ## Dokumentation
-Eine ausführliche Dokumentation zu den Komponenten finden sie auf der [**Projektwebseite - Komponenten**](https://belegungsplan-bundle.de/komponenten.html).
+Eine ausführliche Dokumentation zu den Komponenten finden sie auf der [**Projektwebseite - Komponenten**](https://belegungsplan-bundle.de/komponenten.html){:target="_blank"}.
 
 ## Versions-Newsletter
-Keine neue Version verpassen mit dem [**Versions - Newsletter**](https://belegungsplan-bundle.de/versions-newsletter.html) auf der [**Projektwebseite**](https://belegungsplan-bundle.de).
+Keine neue Version verpassen mit dem [**Versions - Newsletter**](https://belegungsplan-bundle.de/versions-newsletter.html){:target="_blank"} auf der [**Projektwebseite**](https://belegungsplan-bundle.de){:target="_blank"}.
 
 ## Der neueste Changelog
 
