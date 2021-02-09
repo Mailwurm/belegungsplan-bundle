@@ -1,4 +1,20 @@
-# Contao Belegungsplan bundle change log
+# Contao Belegungsplan-Bundle Changelog
+
+### v3.0.0 Stable (09.02.2021)
+- Wochenenden optisch hervorheben hinzugefügt (Hintergrundfarbe der Wochenenden, Textfarbe der Wochenenden, Transparenz, Zurücksetzen-Button)
+- Legende Einstellungen hinzugefügt (Legende anzeigen, Textfarbe Legende freie Tage, Textfarbe Legende belegte Tage, Transparenz, Zurücksetzen-Button)
+- Kategorie Einstellungen hinzugefügt (Hauptkategorien anzeigen, Hintergrundfarbe der Kategoriezeile, Textfarbe der Kategoriezeile, Transparenz, Zurücksetzen-Button)
+- Rahmen Einstellungen hinzugefügt (Farbe der Tabellenrahmen, Transparenz, Zurücksetzen-Button)
+- Text Einstellungen hinzugefügt (Textfarbe, Transparenz, Zurücksetzen-Button)
+- Farbauswahl belegte Tage hinzugefügt (Farbe der belegten Tage, Transparenz, Zurücksetzen-Button)
+- Farbauswahl freie Tage hinzugefügt (Farbe der freien Tage, Transparenz, Zurücksetzen-Button)
+- Hilfe-Assistenten hinzugefügt
+- eigene Widget erstellt
+- Feiertage optisch hervorheben hinzugefügt (Hintergrundfarbe, Textfarbe des Feiertages)
+- Templates integriert
+- Kategorie kopieren wurde entfernt
+- Datenbank erweitert
+- Sprachenfiles angepasst
 
 ### v2.4.7 Stable (04.12.2020)
 - Eintägige Buchungen jetzt möglich
