@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/packagist/v/mailwurm/belegungsplan-bundle.svg?style=flat-square)](https://packagist.org/packages/mailwurm/belegungsplan-bundle)
 [![](https://img.shields.io/packagist/dt/mailwurm/belegungsplan-bundle.svg?style=flat-square)](https://packagist.org/packages/mailwurm/belegungsplan-bundle)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/Mailwurm/belegungsplan-bundle/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![License](https://poser.pugx.org/mailwurm/belegungsplan-bundle/license)](//packagist.org/packages/mailwurm/belegungsplan-bundle)
 
 
 ## Installation
