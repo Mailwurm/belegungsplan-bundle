@@ -465,18 +465,27 @@ class ModuleBelegungsplan extends \Module
 									title, ausgabe, hintergrund, opacity, textcolor, textopacity
 							FROM 	tl_belegungsplan_feiertage
 							WHERE 	startDate >= " . $intStartAuswahl . "
-							AND 	startDate <= " . $intEndeAuswahl . "
-							AND		ausgabe = 1")
+							AND 	startDate <= " . $intEndeAuswahl)
 							->execute();
 		if ($objFeiertage->numRows > 0)
 		{
 			while ($objFeiertage->next())
 			{
-				$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = array
-				(
-					'Title' => $objFeiertage->title,
-					'Style' => " style='background-color:rgba(".$objFeiertage->hintergrund.",".$objFeiertage->opacity.");color:rgba(".$objFeiertage->textcolor.",".$objFeiertage->textopacity.");cursor:pointer;'"
-				);
+				$arrHelper = array();
+				if ($objFeiertage->ausgabe)
+				{
+					$arrHelper = array
+					(
+						'Title' => $objFeiertage->title,
+						'Style' => " style='background-color:rgba(".$objFeiertage->hintergrund.",".$objFeiertage->opacity.");color:rgba(".$objFeiertage->textcolor.",".$objFeiertage->textopacity.");cursor:pointer;'"
+					);
+				} else {
+					$arrHelper = array
+					(
+						'Title' => $objFeiertage->title
+					);
+				}
+				$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = $arrHelper;
 			}
 		}
 		return $arrFeiertage;
