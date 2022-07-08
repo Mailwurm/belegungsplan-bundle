@@ -1,5 +1,8 @@
 # Contao Belegungsplan-Bundle Changelog
 
+### v3.0.1 Stable (08.07.2022)
+- Installation unter PHP 8.0 und höher jetzt möglich
+
 ### v3.0.0 Stable (09.02.2021)
 - Wochenenden optisch hervorheben hinzugefügt (Hintergrundfarbe der Wochenenden, Textfarbe der Wochenenden, Transparenz, Zurücksetzen-Button)
 - Legende Einstellungen hinzugefügt (Legende anzeigen, Textfarbe Legende freie Tage, Textfarbe Legende belegte Tage, Transparenz, Zurücksetzen-Button)
