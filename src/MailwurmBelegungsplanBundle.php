@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
 * Configures the Mailwurm Belegungsplan bundle.
 *
-* @author Jan Karai <http://www.sachsen-it.de>
+* @author Jan Karai <https://www.sachsen-it.de>
 */
 class MailwurmBelegungsplanBundle extends Bundle {
 
