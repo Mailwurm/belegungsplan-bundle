@@ -10,10 +10,10 @@ namespace Mailwurm\BelegungsplanBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
-* Configures the Mailwurm Belegungsplan bundle.
-*
-* @author Jan Karai <https://www.sachsen-it.de>
-*/
+ * Configures the Mailwurm Belegungsplan bundle.
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
+ */
 class MailwurmBelegungsplanBundle extends Bundle {
 
 }

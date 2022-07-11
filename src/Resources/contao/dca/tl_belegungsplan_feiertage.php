@@ -1,15 +1,17 @@
 <?php
- /**
+/**
  * Contao Open Source CMS
  *
  * Copyright (c) Jan Karai
  *
  * @license LGPL-3.0-or-later
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
  */
 
 /**
-* Load tl_content language file
-*/
+ * Load tl_content language file
+ */
 System::loadLanguageFile('tl_content');
  
 /**
@@ -215,7 +217,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 	)
 );
 
- /**
+/**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
  * @author Jan Karai <https://www.sachsen-it.de>

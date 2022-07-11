@@ -5,7 +5,10 @@
  * Copyright (c) Jan Karai
  *
  * @license LGPL-3.0-or-later
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
  */
+ 
 /**
  * Add palettes to tl_module
  */
@@ -410,8 +413,6 @@ $bundles = System::getContainer()->getParameter('kernel.bundles');
 
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
- *
- * @author Jan Karai <https://www.sachsen-it.de>
  */
 class tl_module_belegungsplan extends Backend {
 	/**

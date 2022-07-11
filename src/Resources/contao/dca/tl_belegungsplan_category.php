@@ -1,14 +1,22 @@
 <?php
 /**
-* Contao Open Source CMS
-*
-* Copyright (c) Jan Karai
-*
-* @license LGPL-3.0-or-later
-*/
+ * Contao Open Source CMS
+ *
+ * Copyright (c) Jan Karai
+ *
+ * @license LGPL-3.0-or-later
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
+ */
+ 
+ /**
+ * Load tl_content language file
+ */
+System::loadLanguageFile('tl_content');
+ 
 /**
-* Table tl_belegungsplan_category
-*/
+ * Table tl_belegungsplan_category
+ */
 $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 (
 	// Config
@@ -120,40 +128,40 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
  */
 class tl_belegungsplan_category extends Backend {
 	/**
-	* Import the back end user object
-	*/
+	 * Import the back end user object
+	 */
 	public function __construct() {
 		parent::__construct();
 		$this->import('BackendUser', 'User');
 	}
 	/**
-	* Return the edit header button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
+	 * Return the edit header button
+	 *
+	 * @param array  $row
+	 * @param string $href
+	 * @param string $label
+	 * @param string $title
+	 * @param string $icon
+	 * @param string $attributes
+	 *
+	 * @return string
+	 */
 	public function editHeader($row, $href, $label, $title, $icon, $attributes)
 	{
 		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
 	}
 	/**
-	* Return the delete category button
-	*
-	* @param array  $row
-	* @param string $href
-	* @param string $label
-	* @param string $title
-	* @param string $icon
-	* @param string $attributes
-	*
-	* @return string
-	*/
+	 * Return the delete category button
+	 *
+	 * @param array  $row
+	 * @param string $href
+	 * @param string $label
+	 * @param string $title
+	 * @param string $icon
+	 * @param string $attributes
+	 *
+	 * @return string
+	 */
 	public function deleteCategory($row, $href, $label, $title, $icon, $attributes)
 	{
 		return '<a href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label).'</a> ';
