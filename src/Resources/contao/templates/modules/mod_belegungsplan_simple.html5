@@ -26,7 +26,7 @@
 		<tbody>
 		<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
 			<tr class="belegCategory">
-				<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
+				<th colspan="<?= $month['ColSpan'] ?>"><?php if($aCategory['CategoryTitleLink']): ?><a href="<?= $aCategory['CategoryTitleLink'] ?>"<?php if($aCategory['CategoryLinkCSS']): ?><?php if($aCategory['CategoryLinkCSS'][0]): ?> id="<?= $aCategory['CategoryLinkCSS'][0] ?>"<?php endif; ?><?php if($aCategory['CategoryLinkCSS'][1]): ?> class="<?= $aCategory['CategoryLinkCSS'][1] ?>"<?php endif; ?><?php endif; ?><?php if($aCategory['CategoryLinkTitle']): ?> title="<?= $aCategory['CategoryLinkTitle'] ?>"<?php endif; ?><?php if($aCategory['CategoryTarget']): ?> target="_blank"<?php endif; ?>><?= $aCategory['CategoryTitle'] ?></a><?php else: ?><?= $aCategory['CategoryTitle'] ?><?php endif; ?></th>
 			</tr>
 			<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
 				<tr class="belegObjekt">
