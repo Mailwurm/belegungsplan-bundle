@@ -1,11 +1,13 @@
 <?php
 /**
-* Contao Open Source CMS
-*
-* Copyright (c) Jan Karai
-*
-* @license LGPL-3.0-or-later
-*/
+ * Contao Open Source CMS
+ *
+ * Copyright (c) Jan Karai
+ *
+ * @license LGPL-3.0-or-later
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
+ */
 namespace Mailwurm\Belegung;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
@@ -13,13 +15,11 @@ use Patchwork\Utf8;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Symfony\Component\HttpFoundation\RequestStack;
 /**
-* Class ModuleBelegungsplan
-*
-* @property array $belegungsplan_categories
-* @property array $belegungsplan_month
-*
-* @author Jan Karai <https://www.sachsen-it.de>
-*/
+ * Class ModuleBelegungsplan
+ *
+ * @property array $belegungsplan_categories
+ * @property array $belegungsplan_month
+ */
 class ModuleBelegungsplan extends \Module
 {	
 	/**
@@ -134,6 +134,10 @@ class ModuleBelegungsplan extends \Module
 			// Hole alle aktiven Objekte inklusive dazugehoeriger Kategorie
 			$objCategoryObjekte = $this->Database->prepare("SELECT 	tbc.id as CategoryID,
 										tbc.title as CategoryTitle,
+										tbc.titlelink as CategoryTitleLink,
+										tbc.target as CategoryTarget,
+										tbc.linkTitle as CategoryLinkTitle,
+										tbc.cssID as CategoryLinkCSS,
 										tbo.id as ObjektID,
 										tbo.name as ObjektName,
 										tbo.infotext as ObjektInfoText,
@@ -156,6 +160,10 @@ class ModuleBelegungsplan extends \Module
 							$i++;
 						} else {
 							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryTitle'] = \StringUtil::specialchars($objCategoryObjekte->CategoryTitle);
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryTitleLink'] = \StringUtil::specialchars($objCategoryObjekte->CategoryTitleLink);
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryTarget'] = \StringUtil::specialchars($objCategoryObjekte->CategoryTarget);
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryLinkTitle'] = \StringUtil::specialchars($objCategoryObjekte->CategoryLinkTitle);
+							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['CategoryLinkCSS'] = \StringUtil::deserialize($objCategoryObjekte->CategoryLinkCSS);
 							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
 							$i++;
 						}
