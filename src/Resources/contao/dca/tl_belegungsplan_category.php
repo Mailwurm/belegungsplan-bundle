@@ -9,7 +9,7 @@
  * @author Jan Karai <https://www.sachsen-it.de>
  */
  
- /**
+/**
  * Load tl_content language file
  */
 System::loadLanguageFile('tl_content');
@@ -94,7 +94,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{title_legend},title'
+		'default'                     => '{title_legend},title;{hyperlink_legend:hide},titlelink,target,linkTitle,cssID'
 	),
 	// Subpalettes
 	'subpalettes' => array(
@@ -118,13 +118,45 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'titlelink' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['titlelink'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>false, 'rgxp'=>'url', 'maxlength'=>255, 'decodeEntities'=>true, 'dcaPicker'=>true, 'addWizardClass'=>false, 'tl_class'=>'w50'),
+			'sql'                     => "text NULL"
+		),
+		'target' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['target'],
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 m12'),
+			'sql'                     => "char(1) COLLATE ascii_bin NOT NULL default ''"
+		),
+		'linkTitle' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['linkTitle'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'cssID' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['cssID'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50 clr'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
 		)
 	)
 );
- /**
- * Provide miscellaneous methods that are used by the data configuration array.
- *
- * @author Jan Karai <https://www.sachsen-it.de>
+/**
+ * Provide miscellaneous methods that are used by the data configuration array
  */
 class tl_belegungsplan_category extends Backend {
 	/**
