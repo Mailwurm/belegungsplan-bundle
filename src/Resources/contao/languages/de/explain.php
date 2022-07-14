@@ -5,6 +5,8 @@
  * Copyright (c) Jan Karai
  *
  * @license LGPL-3.0-or-later
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
  */
 $GLOBALS['TL_LANG']['XPL'] = array(
 	'belegungsplan_color_frei'				=> '<div class="p-10">Variable im Template: <code class="language-php">&lt;?= $this-&gt;RgbaFrei ?&gt;</code></div>
