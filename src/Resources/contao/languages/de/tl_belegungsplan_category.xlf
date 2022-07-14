@@ -9,6 +9,38 @@
 				<source>Please enter the category name.</source>
 				<target>Bitte geben Sie den Kategorie-Namen ein.</target>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.titlelink.0">
+				<source>Link address</source>
+				<target>Link-Adresse</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.titlelink.1">
+				<source>Enter a web address (https://...), an email address (mailto:...) or a phone number (tel:...). Contao automatically encrypts email addresses so that they cannot be read by spambots.</source>
+				<target>Geben Sie eine Web-Adresse (https://...), eine E-Mail-Adressse (mailto:...) oder eine Telefonnummer (tel:...) ein. Contao verschlüsselt E-Mail-Adressen automatisch, sodass sie nicht von Spambots ausgelesen werden können.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.target.0">
+				<source>Open in new window</source>
+				<target>In neuem Fenster öffnen</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.target.1">
+				<source>Open the link in a new browser window.</source>
+				<target>Den Link in einem neuen Browserfenster öffnen.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.linkTitle.0">
+				<source>Link title</source>
+				<target>Link-Titel</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.linkTitle.1">
+				<source>The link title is included as a title attribute in the HTML markup.</source>
+				<target>Der Link-Titel wird als title-Attribut im HTML-Markup eingefügt.</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.cssID.0">
+				<source>CSS-ID/Class</source>
+				<target>CSS-ID/Klasse</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.cssID.1">
+				<source>Here you can enter an ID and any number of classes.</source>
+				<target>Hier können Sie eine ID und beliebig viele Klassen eingeben.</target>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.deleteConfirm">
 				<source>Deleting category ID %s will also delete all its objects! Continue?</source>
 				<target>Wenn Sie die Kategorie %s löschen, werden auch alle darin enthaltenen Objekte gelöscht! Fortfahren?</target>
@@ -72,6 +104,10 @@
 			<trans-unit id="tl_belegungsplan_category.tstamp.1">
 				<source>Date and time of the latest revision</source>
 				<target>Datum und Uhrzeit der letzten Änderung</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.hyperlink_legend">
+				<source>Hyperlink Settings</source>
+				<target>Hyperlink-Einstellungen</target>
 			</trans-unit>
 		</body>
 	</file>
