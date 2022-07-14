@@ -8,6 +8,30 @@
 			<trans-unit id="tl_belegungsplan_category.title.1">
 				<source>Please enter the category name.</source>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.titlelink.0">
+				<source>Link address</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.titlelink.1">
+				<source>Enter a web address (https://...), an email address (mailto:...) or a phone number (tel:...). Contao automatically encrypts email addresses so that they cannot be read by spambots.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.target.0">
+				<source>Open in new window</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.target.1">
+				<source>Open the link in a new browser window.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.linkTitle.0">
+				<source>Link title</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.linkTitle.1">
+				<source>The link title is included as a title attribute in the HTML markup.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.cssID.0">
+				<source>CSS-ID/Class</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.cssID.1">
+				<source>Here you can enter an ID and any number of classes.</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.deleteConfirm">
 				<source>Deleting category ID %s will also delete all its objects! Continue?</source>
 			</trans-unit>
