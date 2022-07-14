@@ -5,6 +5,8 @@
  * Copyright (c) Jan Karai
  *
  * @license LGPL-3.0-or-later
+ *
+ * @author Jan Karai <https://www.sachsen-it.de>
  */
 namespace Mailwurm\BelegungsplanBundle\ContaoManager;
 
@@ -13,10 +15,7 @@ use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 
 /**
- * Plugin for the Contao Manager.
- *
- * @author Jan Karai <https://www.sachsen-it.de>
- *
+ * Plugin for the Contao Manager
  */
 class Plugin implements BundlePluginInterface
 {
