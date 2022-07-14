@@ -7,7 +7,6 @@
  * @license LGPL-3.0-or-later
  *
  * @author Jan Karai <https://www.sachsen-it.de>
- *
  */
  
 /**
