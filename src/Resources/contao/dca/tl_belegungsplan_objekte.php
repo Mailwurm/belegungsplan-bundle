@@ -149,7 +149,6 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  *
- * @author Jan Karai <https://www.sachsen-it.de>
  */
 class tl_belegungsplan_objekte extends Backend
 {
