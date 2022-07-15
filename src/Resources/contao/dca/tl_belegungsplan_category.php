@@ -94,7 +94,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(),
-		'default'                     => '{title_legend},title;{hyperlink_legend:hide},titlelink,target,linkTitle,cssID'
+		'default'                     => '{title_legend},title,author;{hyperlink_legend:hide},titlelink,target,linkTitle,cssID'
 	),
 	// Subpalettes
 	'subpalettes' => array(
@@ -118,6 +118,20 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 			'inputType'               => 'text',
 			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'author' => array(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_category']['author'],
+			'default'                 => BackendUser::getInstance()->id,
+			'exclude'                 => true,
+			'search'                  => true,
+			'filter'                  => true,
+			'sorting'                 => true,
+			'flag'                    => 11,
+			'inputType'               => 'select',
+			'foreignKey'              => 'tl_user.name',
+			'eval'                    => array('doNotCopy'=>true, 'chosen'=>true, 'mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "int(10) unsigned NOT NULL default '0'",
+			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
 		),
 		'titlelink' => array
 		(
