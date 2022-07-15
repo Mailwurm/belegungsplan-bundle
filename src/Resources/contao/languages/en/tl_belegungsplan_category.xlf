@@ -8,6 +8,12 @@
 			<trans-unit id="tl_belegungsplan_category.title.1">
 				<source>Please enter the category name.</source>
 			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.author.0">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.author.1">
+				<source>Here you can specify the creator of the category.</source>
+			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.titlelink.0">
 				<source>Link address</source>
 			</trans-unit>
