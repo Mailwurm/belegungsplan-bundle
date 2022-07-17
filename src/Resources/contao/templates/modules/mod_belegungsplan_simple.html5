@@ -30,7 +30,7 @@
 			</tr>
 			<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
 				<tr class="belegObjekt">
-					<td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> <span class="ObjektInfoText"><?= $valueObjekt['ObjektInfoText'] ?></span><?php endif; ?></td>
+					<td><?php if($valueObjekt['ObjektTitleLink']): ?><a href="<?= $valueObjekt['ObjektTitleLink'] ?>"<?php if($valueObjekt['ObjektLinkCSS']): ?><?php if($valueObjekt['ObjektLinkCSS'][0]): ?> id="<?= $valueObjekt['ObjektLinkCSS'][0] ?>"<?php endif; ?><?php if($valueObjekt['ObjektLinkCSS'][1]): ?> class="<?= $valueObjekt['ObjektLinkCSS'][1] ?>"<?php endif; ?><?php endif; ?><?php if($valueObjekt['ObjektLinkTitle']): ?> title="<?= $valueObjekt['ObjektLinkTitle'] ?>"<?php endif; ?><?php if($valueObjekt['ObjektTarget']): ?> target="_blank"<?php endif; ?>><?= $valueObjekt['ObjektName'] ?></a><?php else: ?><?= $valueObjekt['ObjektName'] ?><?php endif; ?><?php if($valueObjekt['ObjektInfoText'] && $valueObjekt['ObjektShowInfotext']): ?> <span class="ObjektInfoText"><?= $valueObjekt['ObjektInfoText'] ?></span><?php endif; ?></td>
 					<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
 						<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
 							<td<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?> class="anreise"<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?> class="abreise"<?php endif; ?>>1</td>
