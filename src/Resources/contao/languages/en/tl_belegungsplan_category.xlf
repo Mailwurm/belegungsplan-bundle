@@ -12,7 +12,7 @@
 				<source>Author</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.author.1">
-				<source>Here you can specify the creator of the category.</source>
+				<source>The creator of the category (optional)</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.titlelink.0">
 				<source>Link address</source>
@@ -85,6 +85,9 @@
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.tstamp.1">
 				<source>Date and time of the latest revision</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_category.hyperlink_legend">
+				<source>Hyperlink Settings (optional)</source>
 			</trans-unit>
 		</body>
 	</file>
