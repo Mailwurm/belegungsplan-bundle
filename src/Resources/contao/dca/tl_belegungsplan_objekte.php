@@ -82,7 +82,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 	// Palettes
 	'palettes' => array(
 		'__selector__'                => array(),
-		'default'                     => '{title_legend},name,author,infotext;{publish_legend},published'
+		'default'                     => '{title_legend},name,author,infotext,showInfotext;{hyperlink_legend:hide},titlelink,target,linkTitle,cssID;{publish_legend},published'
 	),
 	// Subpalettes
 	'subpalettes' => array(),
@@ -110,7 +110,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'unique'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
 			'sql'                     => "varchar(128) NOT NULL default ''"
 		),
 		'author' => array(
@@ -123,7 +123,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'flag'                    => 11,
 			'inputType'               => 'select',
 			'foreignKey'              => 'tl_user.name',
-			'eval'                    => array('doNotCopy'=>true, 'chosen'=>true, 'mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+			'eval'                    => array('doNotCopy'=>true, 'chosen'=>true, 'mandatory'=>false, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
 			'sql'                     => "int(10) unsigned NOT NULL default '0'",
 			'relation'                => array('type'=>'belongsTo', 'load'=>'eager')
 		),
@@ -132,7 +132,54 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('maxlength'=>255, 'tl_class'=>'long clr'),
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50 clr'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'showInfotext' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['showInfotext'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 m12'),
+			'sql'                     => "char(1) COLLATE ascii_bin NOT NULL default '1'"
+		),
+		'titlelink' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['titlelink'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>false, 'rgxp'=>'url', 'maxlength'=>255, 'decodeEntities'=>true, 'dcaPicker'=>true, 'addWizardClass'=>false, 'tl_class'=>'w50'),
+			'sql'                     => "text NULL"
+		),
+		'target' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['target'],
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('tl_class'=>'w50 m12'),
+			'sql'                     => "char(1) COLLATE ascii_bin NOT NULL default ''"
+		),
+		'linkTitle' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['linkTitle'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'cssID' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_belegungsplan_objekte']['cssID'],
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('multiple'=>true, 'size'=>2, 'tl_class'=>'w50 clr'),
+			'save_callback'	=> array
+			(
+				array('tl_belegungsplan_objekte','setEmptyCssID')
+			),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 		'published' => array(
@@ -142,7 +189,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_objekte'] = array(
 			'flag'                    => 2,
 			'inputType'               => 'checkbox',
 			'eval'                    => array('doNotCopy'=>true),
-			'sql'                     => "char(1) NOT NULL default ''"
+			'sql'                     => "char(1) COLLATE ascii_bin NOT NULL default ''"
 		)
 	)
 );
@@ -280,5 +327,27 @@ class tl_belegungsplan_objekte extends Backend
 			}
 		}
 		$objVersions->create();
+	}
+	/**
+	 * Leert das Feld cssID in der Datenbank, wenn keine Angaben enthalten sind
+	 *
+	 * @param mixed $varValue
+	 * @param DataContainer $dc
+	 *
+	 * @return mixed
+	 */
+	public function setEmptyCssID($varValue, DataContainer $dc)
+	{
+		// Return if there is no active record (override all)
+		if (!$dc->activeRecord)
+		{
+			return;
+		}
+		$arrSet = \StringUtil::deserialize($dc->Input->post('cssID'));
+		if (empty($arrSet[0]) && empty($arrSet[1]))
+		{
+			$varValue = '';
+		}
+		return $varValue;
 	}
 }
