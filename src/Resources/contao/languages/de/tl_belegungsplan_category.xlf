@@ -14,8 +14,8 @@
 				<target>Autor</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.author.1">
-				<source>Here you can specify the creator of the category.</source>
-				<target>Hier können Sie den Ersteller der Kategorie angeben.</target>
+				<source>The creator of the category</source>
+				<target>Der Ersteller der Kategorie (optional)</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.titlelink.0">
 				<source>Link address</source>
@@ -114,8 +114,8 @@
 				<target>Datum und Uhrzeit der letzten Änderung</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_category.hyperlink_legend">
-				<source>Hyperlink Settings</source>
-				<target>Hyperlink-Einstellungen</target>
+				<source>Hyperlink Settings (optional)</source>
+				<target>Hyperlink-Einstellungen (optional)</target>
 			</trans-unit>
 		</body>
 	</file>
