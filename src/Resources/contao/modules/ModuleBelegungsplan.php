@@ -141,6 +141,11 @@ class ModuleBelegungsplan extends \Module
 										tbo.id as ObjektID,
 										tbo.name as ObjektName,
 										tbo.infotext as ObjektInfoText,
+										tbo.titlelink as ObjektTitleLink,
+										tbo.target as ObjektTarget,
+										tbo.linkTitle as ObjektLinkTitle,
+										tbo.cssID as ObjektLinkCSS,
+										tbo.showInfotext as ObjektShowInfotext,
 										tbo.sorting as ObjektSortierung
 									FROM 	tl_belegungsplan_category tbc,
 										tl_belegungsplan_objekte tbo
@@ -154,7 +159,12 @@ class ModuleBelegungsplan extends \Module
 						$arrHelper = array();
 						$arrHelper['ObjektID'] = (int) $objCategoryObjekte->ObjektID;
 						$arrHelper['ObjektName'] = \StringUtil::specialchars($objCategoryObjekte->ObjektName);
-						$arrHelper['ObjektInfoText'] = $objCategoryObjekte->ObjektInfoText;
+						$arrHelper['ObjektInfoText'] = \StringUtil::specialchars($objCategoryObjekte->ObjektInfoText);
+						$arrHelper['ObjektTitleLink'] = \StringUtil::specialchars($objCategoryObjekte->ObjektTitleLink);
+						$arrHelper['ObjektTarget'] = \StringUtil::specialchars($objCategoryObjekte->ObjektTarget);
+						$arrHelper['ObjektLinkTitle'] = \StringUtil::specialchars($objCategoryObjekte->ObjektLinkTitle);
+						$arrHelper['ObjektLinkCSS'] = \StringUtil::deserialize($objCategoryObjekte->ObjektLinkCSS);
+						$arrHelper['ObjektShowInfotext'] = \StringUtil::specialchars($objCategoryObjekte->ObjektShowInfotext);
 						if (array_key_exists($objCategoryObjekte->CategoryID, $arrCategorieObjekte)) {
 							$arrCategorieObjekte[$objCategoryObjekte->CategoryID]['Objekte'][$objCategoryObjekte->ObjektSortierung] = $arrHelper;
 							$i++;
