@@ -18,13 +18,43 @@
 				<source>Author</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.author.1">
-				<source>Here you can change the author of the Object.</source>
+				<source>The creator of the object (optional)</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.infotext.0">
 				<source>Info text</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.infotext.1">
 				<source>A short description of the object for example Newly renovated.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.showInfotext.0">
+				<source>Show info text</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.showInfotext.1">
+				<source>Display the info text on the web page.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.titlelink.0">
+				<source>Link address</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.titlelink.1">
+				<source>Enter a web address (https://...), an email address (mailto:...) or a phone number (tel:...). Contao automatically encrypts email addresses so that they cannot be read by spambots.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.target.0">
+				<source>Open in new window</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.target.1">
+				<source>Open the link in a new browser window.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.linkTitle.0">
+				<source>Link title</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.linkTitle.1">
+				<source>The link title is included as a title attribute in the HTML markup.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.cssID.0">
+				<source>CSS-ID/Class</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.cssID.1">
+				<source>Here you can enter an ID and any number of classes.</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.published.0">
 				<source>Publish the object</source>
@@ -91,6 +121,9 @@
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.pastenew.1">
 				<source>Add new after object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.hyperlink_legend">
+				<source>Hyperlink Settings (optional)</source>
 			</trans-unit>
 		</body>
 	</file>
