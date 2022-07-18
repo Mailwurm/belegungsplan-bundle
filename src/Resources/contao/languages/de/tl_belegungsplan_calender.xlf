@@ -46,24 +46,24 @@
 				<target>Author</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.author.1">
-				<source>Here you can change the author of the reservation.</source>
-				<target>Hier können Sie den Autor der Reservierung ändern.</target>
+				<source>The creator of the reservation (optional)</source>
+				<target>Der Ersteller der Reservierung (optional)</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.startDate.0">
 				<source>Arrival</source>
 				<target>Anreisetag</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.startDate.1">
-				<source>Please enter the arrival date according to the global date format dd.mm.yyyy</source>
-				<target>Bitte geben Sie das Anreisedatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
+				<source>The arrival date</source>
+				<target>Das Anreisedatum</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.endDate.0">
 				<source>Departure</source>
 				<target>Abreisetag</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.endDate.1">
-				<source>Please enter the departure date according to the global date format dd.mm.yyyy</source>
-				<target>Bitte geben Sie das Abreisedatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
+				<source>The departure date</source>
+				<target>Das Abreisedatum</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_calender.endDateError">
 				<source>The departure day is before the arrival day.</source>
