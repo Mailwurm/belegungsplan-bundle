@@ -417,6 +417,7 @@ class ModuleBelegungsplan extends \Module
 					$strClass .= 'holiday';
 					$arrHelper[$value]['Days'][$f]['Title'] = $arrFeiertage[$intJahr][$value][$f]['Title'];
 					$arrHelper[$value]['Days'][$f]['Style'] = $arrFeiertage[$intJahr][$value][$f]['Style'];
+					$arrHelper[$value]['Days'][$f]['ShowTitleText'] = $arrFeiertage[$intJahr][$value][$f]['ShowTitleText'];
 				}
 				if (empty($strClass))
 				{
@@ -480,7 +481,7 @@ class ModuleBelegungsplan extends \Module
 		$objFeiertage = $this->Database->prepare("SELECT DAY(FROM_UNIXTIME(startDate)) as Tag,
 									MONTH(FROM_UNIXTIME(startDate)) as Monat,
 									YEAR(FROM_UNIXTIME(startDate)) as Jahr,
-									title, ausgabe, hintergrund, opacity, textcolor, textopacity
+									title, ausgabe, hintergrund, opacity, textcolor, textopacity, showTitleText
 							FROM 	tl_belegungsplan_feiertage
 							WHERE 	startDate >= " . $intStartAuswahl . "
 							AND 	startDate <= " . $intEndeAuswahl)
@@ -495,12 +496,14 @@ class ModuleBelegungsplan extends \Module
 					$arrHelper = array
 					(
 						'Title' => $objFeiertage->title,
-						'Style' => " style='background-color:rgba(".$objFeiertage->hintergrund.",".$objFeiertage->opacity.");color:rgba(".$objFeiertage->textcolor.",".$objFeiertage->textopacity.");cursor:pointer;'"
+						'Style' => " style='background-color:rgba(".$objFeiertage->hintergrund.",".$objFeiertage->opacity.");color:rgba(".$objFeiertage->textcolor.",".$objFeiertage->textopacity.");cursor:pointer;'",
+						'ShowTitleText' => $objFeiertage->showTitleText
 					);
 				} else {
 					$arrHelper = array
 					(
-						'Title' => $objFeiertage->title
+						'Title' => $objFeiertage->title,
+						'ShowTitleText' => $objFeiertage->showTitleText
 					);
 				}
 				$arrFeiertage[$objFeiertage->Jahr][$objFeiertage->Monat][$objFeiertage->Tag] = $arrHelper;
