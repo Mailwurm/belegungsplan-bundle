@@ -190,7 +190,7 @@
 											<?php endif; ?>
 												<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
 												<tr class="belegObjekt">
-													<td><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?></td>
+													<td><?php if($valueObjekt['ObjektTitleLink']): ?><a href="<?= $valueObjekt['ObjektTitleLink'] ?>"<?php if($valueObjekt['ObjektLinkCSS']): ?><?php if($valueObjekt['ObjektLinkCSS'][0]): ?> id="<?= $valueObjekt['ObjektLinkCSS'][0] ?>"<?php endif; ?><?php if($valueObjekt['ObjektLinkCSS'][1]): ?> class="<?= $valueObjekt['ObjektLinkCSS'][1] ?>"<?php endif; ?><?php endif; ?><?php if($valueObjekt['ObjektLinkTitle']): ?> title="<?= $valueObjekt['ObjektLinkTitle'] ?>"<?php endif; ?><?php if($valueObjekt['ObjektTarget']): ?> target="_blank"<?php endif; ?>><?= $valueObjekt['ObjektName'] ?></a><?php if($valueObjekt['ObjektInfoText'] && $valueObjekt['ObjektShowInfotext']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?><?php else: ?><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText'] && $valueObjekt['ObjektShowInfotext']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?><?php endif; ?></td>
 													<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
 														<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
 														<td class="<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>danger<?php endif; ?>"></td>
