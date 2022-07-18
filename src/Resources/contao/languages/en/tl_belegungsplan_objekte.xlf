@@ -21,7 +21,7 @@
 				<source>The creator of the object (optional)</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.infotext.0">
-				<source>Info text</source>
+				<source>Info text (optional)</source>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.infotext.1">
 				<source>A short description of the object for example Newly renovated.</source>
