@@ -80,7 +80,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 	'palettes' => array
 	(
 		'__selector__'			=> array('ausgabe'),
-		'default'				=> '{title_legend},title,author;{date_legend},startDate;{color_legend},ausgabe'
+		'default'				=> '{title_legend},title,showTitleText,author;{date_legend},startDate;{color_legend},ausgabe'
 	),
 	// Subpalettes
 	'subpalettes' => array
@@ -105,8 +105,16 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 			'search'			=> true,
 			'filter'			=> true,
 			'inputType'			=> 'text',
-			'eval'				=> array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'long'),
+			'eval'				=> array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
 			'sql'				=> "varchar(255) NOT NULL default ''"
+		),
+		'showTitleText' => array
+		(
+			'label'				=> &$GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['showTitleText'],
+			'exclude'			=> true,
+			'inputType'			=> 'checkbox',
+			'eval'				=> array('tl_class'=>'w50 m12'),
+			'sql'				=> "char(1) COLLATE ascii_bin NOT NULL default '1'"
 		),
 		'author' => array
 		(
@@ -119,7 +127,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 			'flag'				=> 11,
 			'inputType'			=> 'select',
 			'foreignKey'		=> 'tl_user.name',
-			'eval'				=> array('doNotCopy'=>true, 'chosen'=>true, 'mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+			'eval'				=> array('doNotCopy'=>true, 'chosen'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50 clr'),
 			'sql'				=> "int(10) unsigned NOT NULL default '0'",
 			'relation'			=> array('type'=>'belongsTo', 'load'=>'eager')
 		),
