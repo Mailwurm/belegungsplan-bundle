@@ -135,7 +135,7 @@
 					<tr>
 						<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
 						<?php foreach($month['Days'] as $dayMonth => $day): ?>
-							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title'] && $day['ShowTitleText']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
 						<?php endforeach; ?>
 					</tr>
 				</thead>
@@ -177,7 +177,7 @@
 												<tr>
 													<th><?php if($this->AnzeigeLegende): ?><button class="btn btn-sm blp-success"><?= $this->Frei ?></button>&nbsp;<button class="btn btn-sm blp-danger"><?= $this->Belegt ?></button><?php endif; ?></th>
 													<?php foreach($month['Days'] as $dayMonth => $day): ?>
-														<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+														<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title'] && $day['ShowTitleText']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
 													<?php endforeach; ?>
 												</tr>
 											</thead>
