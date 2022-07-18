@@ -26,8 +26,8 @@
 				<target>Der Ersteller des Objektes (optional)</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.infotext.0">
-				<source>Info text</source>
-				<target>Infotext</target>
+				<source>Info text (optional)</source>
+				<target>Infotext (optional)</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_objekte.infotext.1">
 				<source>A short description of the object for example Newly renovated.</source>
