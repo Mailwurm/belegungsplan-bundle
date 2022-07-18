@@ -42,16 +42,24 @@
 				<target>Author</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.author.1">
-				<source>Here you can change the author of the entry.</source>
-				<target>Hier können Sie den Autor der Eintragung ändern.</target>
+				<source>The creator of the holiday (optional)</source>
+				<target>Der Ersteller des Feiertages (optional)</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.showTitleText.0">
+				<source>Name as title</source>
+				<target>Name als title</target>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_feiertage.showTitleText.1">
+				<source>The title attribute is included in the HTML markup and is displayed on mouseover</source>
+				<target>Das title-Attribut wird im HTML-Markup eingefügt und beim Überfahren mit der Maus angezeigt</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.startDate.0">
 				<source>Date holiday</source>
 				<target>Datum Feiertag</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.startDate.1">
-				<source>Please enter the start date according to the global date format dd.mm.yyyy.</source>
-				<target>Bitte geben Sie das Startdatum gemäß des globalen Datumsformats dd.mm.yyyy ein.</target>
+				<source>The date of the holiday</source>
+				<target>Das Datum des Feiertages</target>
 			</trans-unit>
 			<trans-unit id="tl_belegungsplan_feiertage.tstamp.0">
 				<source>Revision date</source>
