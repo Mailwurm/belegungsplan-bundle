@@ -1,0 +1,125 @@
+<?php $this->extend('block_unsearchable'); ?>
+<?php $this->block('content'); ?>
+<!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_table.html5 [begin] -->
+<style>
+<?php if($this->AnzeigeKategorie): ?>
+	tr.belegCategory {
+		background-color:<?= $this->RgbaKategorie ?>;
+		color:<?= $this->RgbaKategorietext ?>;
+	}
+<?php endif; ?>
+<?php if($this->AnzeigeWochenende): ?>
+	.belegungsplan-table>thead>tr>th.saturday,
+	.belegungsplan-table>thead>tr>th.sunday {
+		background-color:<?= $this->RgbaBgWochenende ?>;
+		color:<?= $this->RgbaWochenendetext ?>;
+	}
+<?php endif; ?>
+	.belegungsplan-table {
+		color:<?= $this->RgbaText ?>;
+		margin: 20px 0 20px 0;
+	}
+	th.headJahr {
+		text-align: center;
+	}
+	.belegungsplan-table>tbody>tr>td.danger {
+		border-right:none;
+		border-left:none;
+	}
+	.belegungsplan-table>tbody>tr>td.anreise {
+		border-right:none;
+		background: <?= $this->RgbaFrei ?>;
+		background: -moz-linear-gradient(-45deg, <?= $this->RgbaFrei ?> 0%, <?= $this->RgbaFrei ?> 50%, <?= $this->RgbaBelegt ?> 50%, <?= $this->RgbaBelegt ?> 100%);
+		background: -webkit-linear-gradient(-45deg, <?= $this->RgbaFrei ?> 0%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaBelegt ?> 100%);
+		background: linear-gradient(135deg, <?= $this->RgbaFrei ?> 0%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaBelegt ?> 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?= $this->RgbaFrei ?>', endColorstr='<?= $this->RgbaBelegt ?>',GradientType=1 );
+	}
+	.belegungsplan-table>tbody>tr>td.abreise {
+		border-left:none;
+		background: <?= $this->RgbaBelegt ?>;
+		background: -moz-linear-gradient(-45deg, <?= $this->RgbaBelegt ?> 0%, <?= $this->RgbaBelegt ?> 50%, <?= $this->RgbaFrei ?> 50%, <?= $this->RgbaFrei ?> 100%);
+		background: -webkit-linear-gradient(-45deg, <?= $this->RgbaBelegt ?> 0%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaFrei ?> 100%);
+		background: linear-gradient(135deg, <?= $this->RgbaBelegt ?> 0%,<?= $this->RgbaBelegt ?> 50%,<?= $this->RgbaFrei ?> 50%,<?= $this->RgbaFrei ?> 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='<?= $this->RgbaBelegt ?>', endColorstr='<?= $this->RgbaFrei ?>',GradientType=1 );
+	}
+	.belegungsplan-table {
+		border:1px solid <?= $this->RgbaRahmen ?>;
+	}
+	table>tbody>tr>td.success {
+		background-color:<?= $this->RgbaFrei ?>;
+	}
+<?php if($this->AnzeigeLegende): ?>
+	.blp-success,.blp-success:hover,.blp-success:focus,.blp-success:active {
+		color:<?= $this->RgbaTextLegendeFrei ?>;
+		background-color:<?= $this->RgbaFrei ?>;
+		border-color:<?= $this->RgbaFrei ?>;
+	}
+	.blp-danger,.blp-danger:hover,.blp-danger:focus,.blp-danger:active {
+		color:<?= $this->RgbaTextLegendeBelegt ?>;
+		background-color:<?= $this->RgbaBelegt ?>;
+		border-color:<?= $this->RgbaBelegt ?>;
+	}
+<?php endif; ?>
+	table>tbody>tr>td.danger {
+		background-color:<?= $this->RgbaBelegt ?>;
+	}
+	.belegungsplan-table>thead>tr>td,.belegungsplan-table>thead>tr>th,.belegungsplan-table>tbody>tr>td,.belegungsplan-table>tbody>tr>th {
+		padding: 1px;
+		border: 1px solid <?= $this->RgbaRahmen ?>;
+	}
+	.table-bordered>thead>tr>th,.table-bordered>tbody>tr>th,.table-bordered>thead>tr>td,.table-bordered>tbody>tr>td {
+		border: 1px solid <?= $this->RgbaRahmen ?>;
+	}
+}
+</style>
+<?php if($this->info): ?>
+	<?php foreach ($this->info as $info): ?>
+		<p><?= $info ?></p>
+	<?php endforeach; ?>
+<?php else: ?>
+	<?php if($this->number_year > 1): ?>
+	<select onchange="window.location.href=this.value;" class="form-control">
+		<?php foreach ($this->selectable_year as $years => $singleyear): ?>
+			<option <?php if($singleyear['active']) echo 'class="active" '; ?>value="<?= $singleyear['year_href'] ?>"<?php if($singleyear['active']) echo ' selected'; ?>><?= $singleyear['single_year'] ?></option>
+		<?php endforeach; ?>
+	</select>
+	<?php endif; ?>
+	<?php foreach($this->Month as $keyMonth => $month): ?>
+		<table class="belegungsplan-table">
+			<thead>
+				<tr>
+					<th colspan="<?= $month['ColSpan'] ?>" class="headJahr"><?= $month['Name'] ?> <?= $this->display_year ?></th>
+				</tr>
+				<tr>
+					<th><?php if($this->AnzeigeLegende): ?><button class="blp-success"><?= $this->Frei ?></button>&nbsp;<button class="blp-danger"><?= $this->Belegt ?></button><?php endif; ?></th>
+					<?php foreach($month['Days'] as $dayMonth => $day): ?>
+						<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title'] && $day['ShowTitleText']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+					<?php endforeach; ?>
+				</tr>
+			</thead>
+			<tbody>
+			<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+			<?php if($this->AnzeigeKategorie): ?>
+				<tr class="belegCategory">
+					<th colspan="<?= $month['ColSpan'] ?>"><?php if($aCategory['CategoryTitleLink']): ?><a href="<?= $aCategory['CategoryTitleLink'] ?>"<?php if($aCategory['CategoryLinkCSS']): ?><?php if($aCategory['CategoryLinkCSS'][0]): ?> id="<?= $aCategory['CategoryLinkCSS'][0] ?>"<?php endif; ?><?php if($aCategory['CategoryLinkCSS'][1]): ?> class="<?= $aCategory['CategoryLinkCSS'][1] ?>"<?php endif; ?><?php endif; ?><?php if($aCategory['CategoryLinkTitle']): ?> title="<?= $aCategory['CategoryLinkTitle'] ?>"<?php endif; ?><?php if($aCategory['CategoryTarget']): ?> target="_blank"<?php endif; ?>><?= $aCategory['CategoryTitle'] ?></a><?php else: ?><?= $aCategory['CategoryTitle'] ?><?php endif; ?></th>
+				</tr>
+			<?php endif; ?>
+				<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
+				<tr class="belegObjekt">
+					<td><?php if($valueObjekt['ObjektTitleLink']): ?><a href="<?= $valueObjekt['ObjektTitleLink'] ?>"<?php if($valueObjekt['ObjektLinkCSS']): ?><?php if($valueObjekt['ObjektLinkCSS'][0]): ?> id="<?= $valueObjekt['ObjektLinkCSS'][0] ?>"<?php endif; ?><?php if($valueObjekt['ObjektLinkCSS'][1]): ?> class="<?= $valueObjekt['ObjektLinkCSS'][1] ?>"<?php endif; ?><?php endif; ?><?php if($valueObjekt['ObjektLinkTitle']): ?> title="<?= $valueObjekt['ObjektLinkTitle'] ?>"<?php endif; ?><?php if($valueObjekt['ObjektTarget']): ?> target="_blank"<?php endif; ?>><?= $valueObjekt['ObjektName'] ?></a><?php if($valueObjekt['ObjektInfoText'] && $valueObjekt['ObjektShowInfotext']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?><?php else: ?><?= $valueObjekt['ObjektName'] ?><?php if($valueObjekt['ObjektInfoText'] && $valueObjekt['ObjektShowInfotext']): ?> (<?= $valueObjekt['ObjektInfoText'] ?>)<?php endif; ?><?php endif; ?></td>
+					<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
+						<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
+						<td class="<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>danger<?php endif; ?>"></td>
+						<?php else: ?>
+						<td class="success"></td>
+						<?php endif; ?>
+					<?php endfor; ?>
+				</tr>
+				<?php endforeach; ?>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
+	<?php endforeach; ?>
+<?php endif; ?>
+<!-- mailwurm/belegungsplan-bundle/mod_belegungsplan_table.html5 [end] -->
+<?php $this->endblock(); ?>
