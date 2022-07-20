@@ -58,6 +58,12 @@
         "issues": "https://github.com/Mailwurm/belegungsplan-bundle/issues",
         "source": "https://github.com/Mailwurm/belegungsplan-bundle"
     },
+    "funding": [
+        {
+            "type": "other",
+            "url": "https://github.com/sponsors/Mailwurm"
+        }
+    ],
     "extra": {
         "contao-manager-plugin": "Mailwurm\\BelegungsplanBundle\\ContaoManager\\Plugin"
     }
