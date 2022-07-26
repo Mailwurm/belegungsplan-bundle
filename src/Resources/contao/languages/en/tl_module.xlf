@@ -71,6 +71,34 @@
 			<trans-unit id="tl_module.belegungsplan_month.month.12">
 				<source>December</source>
 			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_showAusgabe.0">
+				<source>Type of display</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_showAusgabe.1">
+				<source>Depending on the activation, you have the option of making additional settings</source>
+			</trans-unit>
+			<trans-unit id="tl_module.standard.0">
+				<source>Default by occupancy times</source>
+			</trans-unit>
+			<trans-unit id="tl_module.automatic.0">
+				<source>Output by number of months</source>
+			</trans-unit>
+			<trans-unit id="tl_module.individuell.0">
+				<source>Output according to individual period</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzahlMonate.0">
+				<source>Number of months to display</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzahlMonate.1">
+				<source>Enter an integer (minimum 1 and maximum 100)</source>
+			</trans-unit>
+			
+			<trans-unit id="tl_module.belegungsplan_individuellMonateStart.0">
+				<source>Start period - month / year</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_individuellMonateEnde.0">
+				<source>End period - month / year</source>
+			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_frei.0">
 				<source>Color of the days off</source>
 			</trans-unit>
@@ -166,6 +194,12 @@
 			</trans-unit>
 			<trans-unit id="tl_module.reset">
 				<source>Reset</source>
+			</trans-unit>
+			<trans-unit id="tl_module.jahr">
+				<source>Year</source>
+			</trans-unit>
+			<trans-unit id="tl_module.sameDateError">
+				<source>End date is before start date</source>
 			</trans-unit>
 		</body>
 	</file>
