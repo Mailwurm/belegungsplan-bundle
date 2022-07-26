@@ -93,6 +93,46 @@
 				<source>December</source>
 				<target>Dezember</target>
 			</trans-unit>
+			<trans-unit id="tl_module.anzeige_legend">
+				<source>Display settings</source>
+				<target>Anzeige Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_showAusgabe.0">
+				<source>Type of display</source>
+				<target>Art der Anzeige</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_showAusgabe.1">
+				<source>Depending on the activation, you have the option of making additional settings</source>
+				<target>Je nach Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.standard.0">
+				<source>Default by occupancy times</source>
+				<target>Standard nach Belegzeiten</target>
+			</trans-unit>
+			<trans-unit id="tl_module.automatic.0">
+				<source>Output by number of months</source>
+				<target>Ausgabe nach Anzahl von Monaten</target>
+			</trans-unit>
+			<trans-unit id="tl_module.individuell.0">
+				<source>Output according to individual period</source>
+				<target>Ausgabe nach individuellem Zeitraum</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzahlMonate.0">
+				<source>Number of months to display</source>
+				<target>Anzahl der anzuzeigenden Monate</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzahlMonate.1">
+				<source>Enter an integer (minimum 1 and maximum 100)</source>
+				<target>Geben Sie eine ganze Zahl ein (mindestens 1 und maximal 100)</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_individuellMonateStart.0">
+				<source>Start period - month / year</source>
+				<target>Start Zeitraum - Monat / Jahr</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_individuellMonateEnde.0">
+				<source>End period - month / year</source>
+				<target>Ende Zeitraum - Monat / Jahr</target>
+			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_frei.0">
 				<source>Color of the days off</source>
 				<target>Farbe der freien Tage</target>
@@ -131,7 +171,7 @@
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_anzeige_kategorie.1">
 				<source>When activated, you have the option of making further settings</source>
-				<target>Bei aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+				<target>Bei Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_kategorie.0">
 				<source>Category line background color</source>
@@ -155,7 +195,7 @@
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_anzeige_legende.1">
 				<source>When activated, you have the option of making further settings</source>
-				<target>Bei aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+				<target>Bei Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_legende_frei.0">
 				<source>Text color legend free days</source>
@@ -179,7 +219,7 @@
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_anzeige_wochenende.1">
 				<source>When activated, you have the option of making further settings</source>
-				<target>Bei aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+				<target>Bei Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_bgcolor_wochenende.0">
 				<source>Weekends background color (Saturday, Sunday)</source>
@@ -220,6 +260,14 @@
 			<trans-unit id="tl_module.reset">
 				<source>Reset</source>
 				<target>Zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.jahr">
+				<source>Year</source>
+				<target>Jahr</target>
+			</trans-unit>
+			<trans-unit id="tl_module.sameDateError">
+				<source>End date is before start date</source>
+				<target>End-Datum liegt vor dem Start-Datum</target>
 			</trans-unit>
 		</body>
 	</file>
