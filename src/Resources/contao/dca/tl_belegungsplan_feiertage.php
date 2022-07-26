@@ -162,7 +162,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 			'exclude'			=> true,
 			'inputType'			=> 'text',
 			'default'			=> '91,192,222',
-			'explanation'		=> 'hintergrund',
+			'explanation'		=> 'feiertage_hintergrund',
 			'load_callback'		=> array
 			(
 				array('tl_belegungsplan_feiertage','setRgbToHex')
@@ -195,7 +195,7 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_feiertage'] = array
 			'exclude'			=> true,
 			'inputType'			=> 'text',
 			'default'			=> '51,51,51',
-			'explanation'		=> 'textcolor',
+			'explanation'		=> 'feiertage_textcolor',
 			'load_callback'		=> array
 			(
 				array('tl_belegungsplan_feiertage','setRgbToHex')
