@@ -21,6 +21,10 @@
 				<source>Occupancy plans from the past are not displayed</source>
 				<target>Belegungspläne aus der Vergangenheit werden nicht angezeigt</target>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.3">
+				<source>Internal error when outputting the assignment plan</source>
+				<target>Interner Fehler bei der Ausgabe des Belegungsplanes</target>
+			</trans-unit>
 			<trans-unit id="mailwurm_belegung.month.1">
 				<source>January</source>
 				<target>Januar</target>
