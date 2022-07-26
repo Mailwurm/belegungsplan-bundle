@@ -57,3 +57,4 @@ if (TL_MODE == 'FE')
  */
 $GLOBALS['BE_FFL']['checkBoxWithoutDragAndDropWizard'] = 'Mailwurm\Belegung\CheckBoxWithoutDragAndDropWizard';
 $GLOBALS['BE_FFL']['checkBoxWithDragAndDropWizard'] = 'Mailwurm\Belegung\CheckBoxWithDragAndDropWizard';
+$GLOBALS['BE_FFL']['MonthYearWizard'] = 'Mailwurm\Belegung\MonthYearWizard';
