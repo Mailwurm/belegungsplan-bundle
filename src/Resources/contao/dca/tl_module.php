@@ -16,7 +16,9 @@
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'belegungsplan_anzeige_kategorie';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'belegungsplan_anzeige_legende';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'belegungsplan_anzeige_wochenende';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['default'] = '	{title_legend},name,headline,type;{config_legend},belegungsplan_categories,belegungsplan_month;
+$GLOBALS['TL_DCA']['tl_module']['palettes']['__selector__'][] = 'belegungsplan_showAusgabe';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['default'] = '	{title_legend},name,headline,type;{config_legend},belegungsplan_categories;
+															{anzeige_legend},belegungsplan_showAusgabe;
 															{color_legend_frei:hide},belegungsplan_color_frei,belegungsplan_opacity_frei,belegungsplan_reset_frei;
 															{color_legend_belegt:hide},belegungsplan_color_belegt,belegungsplan_opacity_belegt,belegungsplan_reset_belegt;
 															{text_legend:hide},belegungsplan_color_text,belegungsplan_opacity_text,belegungsplan_reset_text;
@@ -26,6 +28,9 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['default'] = '	{title_legend},name,h
 															{wochenende_legend:hide},belegungsplan_anzeige_wochenende;
 															{template_legend},belegungsplan_template;
 															{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_showAusgabe_standard'] = 'belegungsplan_month';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_showAusgabe_automatic'] = 'belegungsplan_anzahlMonate';
+$GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_showAusgabe_individuell'] = 'belegungsplan_individuellMonateStart,belegungsplan_individuellMonateEnde';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_anzeige_kategorie'] = 'belegungsplan_color_kategorie,belegungsplan_opacity_kategorie,belegungsplan_reset_kategorie,belegungsplan_color_kategorietext,belegungsplan_opacity_kategorietext,belegungsplan_reset_kategorietext';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_anzeige_legende'] = 'belegungsplan_color_legende_frei,belegungsplan_color_legende_belegt,belegungsplan_opacity_legende,belegungsplan_reset_legende';
 $GLOBALS['TL_DCA']['tl_module']['subpalettes']['belegungsplan_anzeige_wochenende'] = 'belegungsplan_bgcolor_wochenende,belegungsplan_opacity_bg_wochenende,belegungsplan_reset_bg_wochenende,belegungsplan_color_wochenendetext,belegungsplan_opacity_wochenendetext,belegungsplan_reset_wochenendetext';
@@ -40,14 +45,50 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_categories'] = array(
 	'eval'					=> array('multiple'=>true, 'mandatory'=>true),
 	'sql'					=> "blob NULL"
 );
-
+$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_showAusgabe'] = array(
+	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_showAusgabe'],
+	'inputType'				=> 'radio',
+	'options'				=> array('standard', 'automatic', 'individuell'),
+	'default'				=> 'standard',
+	'reference'				=> &$GLOBALS['TL_LANG']['tl_module'],
+	'explanation'			=> 'belegungsplan_showAusgabe',
+	'eval'					=> array('mandatory'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50', 'style'=>'margin:10px', 'helpwizard'=>true),
+	'sql'					=> "varchar(11) NOT NULL default 'standard'"
+);
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_month'] = array(
 	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_month'],
 	'exclude'				=> true,
 	'inputType'				=> 'checkBoxWithoutDragAndDropWizard',
 	'options'				=> $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
-	'eval'					=> array('multiple'=>true, 'mandatory'=>true),
+	'eval'					=> array('multiple'=>true, 'mandatory'=>true, 'tl_class'=>'m12'),
 	'sql'					=> "blob NULL"
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_anzahlMonate'] = array(
+	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_anzahlMonate'],
+	'exclude'				=> true,
+	'inputType'				=> 'text',
+	'eval'					=> array('size'=>1, 'rgxp'=>'natural', 'mandatory'=>true, 'maxval'=>100, 'minval'=>1, 'tl_class'=>'w50 m12'),
+	'sql'					=> "smallint(5) unsigned NOT NULL default 1"
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_individuellMonateStart'] = array(
+	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_individuellMonateStart'],
+	'exclude'				=> true,
+	'inputType'				=> 'MonthYearWizard',
+	'options'				=> $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
+	'eval'					=> array('rgxp'=>'natural', 'mandatory'=>true, 'maxlength'=>4, 'tl_class'=>'w25 m12', 'style'=>'width:120px;margin-left:15px', 'placeholder'=>$GLOBALS['TL_LANG']['tl_module']['jahr']),
+	'sql'					=> "varchar(255) NOT NULL default ''"
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_individuellMonateEnde'] = array(
+	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_individuellMonateEnde'],
+	'exclude'				=> true,
+	'inputType'				=> 'MonthYearWizard',
+	'options'				=> $GLOBALS['TL_LANG']['tl_module']['belegungsplan_month']['month'],
+	'eval'					=> array('rgxp'=>'natural', 'mandatory'=>true, 'maxlength'=>4, 'tl_class'=>'w25 m12', 'style'=>'width:120px;margin-left:15px', 'placeholder'=>$GLOBALS['TL_LANG']['tl_module']['jahr']),
+	'save_callback'	=> array
+	(
+		array('tl_module_belegungsplan','verifyEndDate')
+	),
+	'sql'					=> "varchar(255) NOT NULL default ''"
 );
 // --------------------------------------------------------------------------------------------
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_frei'] = array(
@@ -523,8 +564,8 @@ class tl_module_belegungsplan extends Backend {
 	 *
 	 * @return array
 	 */
-	 public function getReturnInfo($strInputName)
-	 {
+	public function getReturnInfo($strInputName)
+	{
 		$arrSet = array
 		(
 			'belegungsplan_reset_frei'				=> array('belegungsplan_color_frei', '76,174,76', 'belegungsplan_opacity_frei', '1.0'),
@@ -538,6 +579,32 @@ class tl_module_belegungsplan extends Backend {
 			'belegungsplan_reset_wochenendetext'	=> array('belegungsplan_color_wochenendetext', '51,51,51', 'belegungsplan_opacity_wochenendetext', '1.0')
 		);
 		return $arrSet[$strInputName];
-	 }
-	
+	}
+	/**
+	 * Prueft ob Enddatum kleiner Startdatum
+	 *
+	 * @param mixed $varValue
+	 * @param DataContainer $dc
+	 * @return mixed
+	 */
+	public function verifyEndDate($varValue, DataContainer $dc)
+	{
+		$aMonatStart = \StringUtil::deserialize($this->Input->post('belegungsplan_individuellMonateStart'));
+		$aMonatEnde = \StringUtil::deserialize($this->Input->post('belegungsplan_individuellMonateEnde'));
+		$iStart = mktime(0, 0, 0, $aMonatStart['unit'], 1, $aMonatStart['value']);
+		$iEnde = mktime(0, 0, 0, $aMonatEnde['unit'], 1, $aMonatEnde['value']);
+		
+		try
+		{
+			if ($iStart > $iEnde)
+			{	
+				throw new Exception($GLOBALS['TL_LANG']['tl_module']['sameDateError']); 
+			} else {
+				return $varValue;
+			}
+		}
+		catch (\OutOfBoundsException $e)
+		{
+		}
+	}
 }
