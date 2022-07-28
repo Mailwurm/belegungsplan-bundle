@@ -172,11 +172,13 @@ $GLOBALS['TL_DCA']['tl_belegungsplan_category'] = array
 /**
  * Provide miscellaneous methods that are used by the data configuration array
  */
-class tl_belegungsplan_category extends Backend {
+class tl_belegungsplan_category extends Backend
+{
 	/**
 	 * Import the back end user object
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->import('BackendUser', 'User');
 	}
