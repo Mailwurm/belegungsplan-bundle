@@ -19,6 +19,9 @@
 			<trans-unit id="mailwurm_belegung.info.3">
 				<source>Internal error when outputting the assignment plan</source>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.4">
+				<source>No time period has been set for the issue</source>
+			</trans-unit>
 			<trans-unit id="mailwurm_belegung.month.1">
 				<source>January</source>
 			</trans-unit>
