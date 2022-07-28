@@ -277,32 +277,41 @@ class tl_belegungsplan_objekte extends Backend
 	 *
 	 * @throws Contao\CoreBundle\Exception\AccessDeniedException
 	 */
-	public function toggleVisibility($intId, $blnVisible, DataContainer $dc = null) {
+	public function toggleVisibility($intId, $blnVisible, DataContainer $dc = null)
+	{
 		// Set the ID and action
 		Input::setGet('id', $intId);
 		Input::setGet('act', 'toggle');
-		if ($dc) {
+		if ($dc)
+		{
 			$dc->id = $intId; // see #8043
 		}
 		
 		// Set the current record
-		if ($dc) {
+		if ($dc)
+		{
 			$objRow = $this->Database->prepare("SELECT * FROM tl_belegungsplan_objekte WHERE id=?")
 									 ->limit(1)
 									 ->execute($intId);
-			if ($objRow->numRows) {
+			if ($objRow->numRows)
+			{
 				$dc->activeRecord = $objRow;
 			}
 		}
 		$objVersions = new Versions('tl_belegungsplan_objekte', $intId);
 		$objVersions->initialize();
 		// Trigger the save_callback
-		if (is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'])) {
-			foreach ($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'] as $callback) {
-				if (is_array($callback)) {
+		if (is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['fields']['published']['save_callback'] as $callback)
+			{
+				if (is_array($callback))
+				{
 					$this->import($callback[0]);
 					$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
-				} elseif (is_callable($callback)) {
+				}
+				elseif (is_callable($callback))
+				{
 					$blnVisible = $callback($blnVisible, $dc);
 				}
 			}
@@ -311,17 +320,23 @@ class tl_belegungsplan_objekte extends Backend
 		// Update the database
 		$this->Database->prepare("UPDATE tl_belegungsplan_objekte SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
 					   ->execute($intId);
-		if ($dc) {
+		if ($dc)
+		{
 			$dc->activeRecord->tstamp = $time;
 			$dc->activeRecord->published = ($blnVisible ? '1' : '');
 		}
 		// Trigger the onsubmit_callback
-		if (is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback'])) {
-			foreach ($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback'] as $callback) {
-				if (is_array($callback)) {
+		if (is_array($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback']))
+		{
+			foreach ($GLOBALS['TL_DCA']['tl_belegungsplan_objekte']['config']['onsubmit_callback'] as $callback)
+			{
+				if (is_array($callback))
+				{
 					$this->import($callback[0]);
 					$this->{$callback[0]}->{$callback[1]}($dc);
-				} elseif (is_callable($callback)) {
+				}
+				elseif (is_callable($callback))
+				{
 					$callback($dc);
 				}
 			}
