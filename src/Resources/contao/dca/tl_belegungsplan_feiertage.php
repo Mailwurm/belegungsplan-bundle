@@ -272,7 +272,9 @@ class tl_belegungsplan_feiertage extends Backend
 			if (strlen($hex) < 6)
 			{	
 				throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['setHexToRgb']);
-			} else {
+			}
+			else
+			{
 				$r = hexdec(substr($hex,0,2));
 				$g = hexdec(substr($hex,2,2));
 				$b = hexdec(substr($hex,4,2));
@@ -304,7 +306,9 @@ class tl_belegungsplan_feiertage extends Backend
 		if (strpos($varValue, ",") === false)
 		{
 			$hex .= $varValue;
-		} else {
+		}
+		else
+		{
 			$varValue = explode(",",$varValue);
 			$hex .= str_pad(dechex($varValue[0]), 2, "0", STR_PAD_LEFT);
 			$hex .= str_pad(dechex($varValue[1]), 2, "0", STR_PAD_LEFT);
@@ -390,7 +394,9 @@ class tl_belegungsplan_feiertage extends Backend
 			if ($objTag->numRows > 0)
 			{
 				throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_feiertage']['bereitsVorhanden']);
-			} else {
+			}
+			else
+			{
 				return $varValue;
 			}
 		}
