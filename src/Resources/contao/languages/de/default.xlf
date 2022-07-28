@@ -25,6 +25,10 @@
 				<source>Internal error when outputting the assignment plan</source>
 				<target>Interner Fehler bei der Ausgabe des Belegungsplanes</target>
 			</trans-unit>
+			<trans-unit id="mailwurm_belegung.info.4">
+				<source>No time period has been set for the issue</source>
+				<target>Es wurde kein Zeitraum für die Ausgabe festgelegt</target>
+			</trans-unit>
 			<trans-unit id="mailwurm_belegung.month.1">
 				<source>January</source>
 				<target>Januar</target>
