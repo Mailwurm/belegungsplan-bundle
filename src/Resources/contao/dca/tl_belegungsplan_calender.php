@@ -195,7 +195,8 @@ class tl_belegungsplan_calender extends Backend
 	 /**
 	  * Import the back end user object
 	  */
-	public function __construct() {
+	public function __construct()
+	{
 		parent::__construct();
 		$this->import('BackendUser', 'User');
 	}
@@ -233,10 +234,14 @@ class tl_belegungsplan_calender extends Backend
 				if ($dateTwo->getTimestamp() < $dateOne->getTimestamp())
 				{
 					throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['endDateError']); 
-				} else {
+				}
+				else
+				{
 					throw new Exception($GLOBALS['TL_LANG']['tl_belegungsplan_calender']['sameDateError']); 
 				}
-			} else {
+			}
+			else
+			{
 				return $varValue;
 			}
 		}
@@ -289,15 +294,21 @@ class tl_belegungsplan_calender extends Backend
 											AND pid = ?
 											AND ((startDate < ? AND endDate > ?) OR (startDate >= ? AND endDate <= ?) OR (startDate < ? AND endDate > ?))")
 						->execute($intId, $intPid, $intStart, $intStart, $intStart, $intEnde, $intEnde, $intEnde);
-		if ($objCal->numRows > 0) {
+		if ($objCal->numRows > 0)
+		{
 			$strHelper = '';
-			while ($objCal->next()) {
+			while ($objCal->next())
+			{
 				$strHelper .= ',' . $objCal->id;
-				if (empty($objCal->ueberschneidung)) {
+				if (empty($objCal->ueberschneidung))
+				{
 					$this->updateDatabase($intId, $objCal->id);
-				} else {
+				}
+				else
+				{
 					$arrHelper = explode(',', $objCal->ueberschneidung);
-					if (!in_array($intId, $arrHelper)) {
+					if (!in_array($intId, $arrHelper))
+					{
 						$this->updateDatabase($objCal->ueberschneidung . ',' . $intId, $objCal->id);
 					}
 					unset($arrHelper);
@@ -306,7 +317,9 @@ class tl_belegungsplan_calender extends Backend
 			// Update am aktuellen Termin
 			$this->updateDatabase(substr($strHelper, 1), $intId);
 			unset($strHelper);
-		} else {
+		}
+		else
+		{
 			$this->updateCalenders($intId, $intPid);
 		}		
 	}
@@ -335,15 +348,18 @@ class tl_belegungsplan_calender extends Backend
 											AND pid = ?
 											AND ueberschneidung <> ''")
 						->execute($intId, $intPid);
-		if ($objCalDelete->numRows > 0) {
+		if ($objCalDelete->numRows > 0)
+		{
 			$arrDelete = array($intId);
 			$strHelper = '';
-			while ($objCalDelete->next()) {
+			while ($objCalDelete->next())
+			{
 				$strHelper .= ',' . $objCalDelete->id;
 				$arrHelper = explode(',', $objCalDelete->ueberschneidung);
 				$arrReturn = array_diff($arrHelper, $arrDelete);
 				$strInsert = '';
-				if (!empty($arrReturn)) {
+				if (!empty($arrReturn))
+				{
 					$strInsert = implode(',', $arrReturn);
 				} 
 				$this->updateDatabase($strInsert, $objCalDelete->id);
