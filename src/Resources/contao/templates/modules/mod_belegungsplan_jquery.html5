@@ -124,10 +124,12 @@
 		}
 	</style>
 	<script type="text/javascript">
-		<?php foreach($this->Month as $keyMonth => $month): ?>
-		var Month<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {Jahr:<?= $this->display_year ?>, Name:"<?= $month['Name'] ?>", TageMonat:<?= $month['TageMonat'] ?>, ColSpan:<?= $month['ColSpan'] ?>};
-		var Days<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php  foreach($month['Days'] as $dayMonth => $day): ?><?= $dayMonth ?>:{DayDate:"<?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) ?>", DayLong:"<?= $day['Day'] ?>", DayCut:"<?= $day['DayCut'] ?>", DayWeekNum:<?= $day['DayWeekNum'] ?><?php if($day['Title']): ?>, Title:"<?= $day['Title'] ?>"<?php endif; ?><?php if($day['ShowTitleText']): ?>, ShowTitleText:"<?= $day['ShowTitleText'] ?>"<?php endif; ?><?php if($day['Style']): ?>, Style:"<?= $day['Style'] ?>"<?php endif; ?><?php if($day['Class']): ?>, Class:"<?= $day['Class'] ?>"<?php endif; ?>}<?php if((int) $dayMonth < (int) $month['TageMonat'] ): ?>, <?php endif; ?><?php endforeach; ?>};
-		var CategorieObjekteCalender<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php $count = count($this->CategorieObjekteCalender); ?><?php $a = 0; ?><?php foreach($this->CategorieObjekteCalender as $categoryMonth => $aCategory): ?><?php $i = 0; ?><?= $categoryMonth ?>:{CategoryTitle:"<?= $aCategory['CategoryTitle'] ?>", CategoryTarget:"<?= $aCategory['CategoryTarget'] ?>", CategoryLinkTitle:"<?= $aCategory['CategoryLinkTitle'] ?>", CategoryLinkCSSID:"<?= $aCategory['CategoryLinkCSS'][0] ?>", CategoryLinkCSSClass:"<?= $aCategory['CategoryLinkCSS'][1] ?>", CategoryTitleLink:"<?= $aCategory['CategoryTitleLink'] ?>", Objekte:{<?php $z = 0; ?><?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?><?= $keyObjekt ?>:{ObjektName:"<?= $valueObjekt['ObjektName'] ?>", ObjektTarget:"<?= $valueObjekt['ObjektTarget'] ?>", ObjektLinkTitle:"<?= $valueObjekt['ObjektLinkTitle'] ?>", ObjektLinkCSSID:"<?= $valueObjekt['ObjektLinkCSS'][0] ?>", ObjektLinkCSSClass:"<?= $valueObjekt['ObjektLinkCSS'][1] ?>", ObjektInfoText:"<?= $valueObjekt['ObjektInfoText'] ?>", ObjektTitleLink:"<?= $valueObjekt['ObjektTitleLink'] ?>", ObjektShowInfotext:"<?= $valueObjekt['ObjektShowInfotext'] ?>", Calender:{<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?><?= $i; ?>:"<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?><?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>an<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>ab<?php else: ?>d<?php endif; ?><?php else: ?>s<?php endif; ?>"<?php if ($i < $month['TageMonat']): ?>, <?php endif; ?><?php endfor; ?>}}<?php $z++; ?><?php if ($z < count($aCategory['Objekte'])): ?>, <?php endif; ?><?php endforeach; ?>}}<?php $a++; ?><?php if ($a < $count ): ?>, <?php endif; ?><?php endforeach; ?>};
+		<?php foreach($this->Month as $keyYear => $year): ?>
+			<?php foreach($year as $keyMonth => $month): ?>
+				var Month<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {Jahr:<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?>, Name:"<?= $month['Name'] ?>", TageMonat:<?= $month['TageMonat'] ?>, ColSpan:<?= $month['ColSpan'] ?>};
+				var Days<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php  foreach($month['Days'] as $dayMonth => $day): ?><?= $dayMonth ?>:{DayDate:"<?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) ?>", DayLong:"<?= $day['Day'] ?>", DayCut:"<?= $day['DayCut'] ?>", DayWeekNum:<?= $day['DayWeekNum'] ?><?php if($day['Title']): ?>, Title:"<?= $day['Title'] ?>"<?php endif; ?><?php if($day['ShowTitleText']): ?>, ShowTitleText:"<?= $day['ShowTitleText'] ?>"<?php endif; ?><?php if($day['Style']): ?>, Style:"<?= $day['Style'] ?>"<?php endif; ?><?php if($day['Class']): ?>, Class:"<?= $day['Class'] ?>"<?php endif; ?>}<?php if((int) $dayMonth < (int) $month['TageMonat'] ): ?>, <?php endif; ?><?php endforeach; ?>};
+				var CategorieObjekteCalender<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?> = {<?php $count = count($this->CategorieObjekteCalender); ?><?php $a = 0; ?><?php foreach($this->CategorieObjekteCalender as $categoryMonth => $aCategory): ?><?php $i = 0; ?><?= $categoryMonth ?>:{CategoryTitle:"<?= $aCategory['CategoryTitle'] ?>", CategoryTarget:"<?= $aCategory['CategoryTarget'] ?>", CategoryLinkTitle:"<?= $aCategory['CategoryLinkTitle'] ?>", CategoryLinkCSSID:"<?= $aCategory['CategoryLinkCSS'][0] ?>", CategoryLinkCSSClass:"<?= $aCategory['CategoryLinkCSS'][1] ?>", CategoryTitleLink:"<?= $aCategory['CategoryTitleLink'] ?>", Objekte:{<?php $z = 0; ?><?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?><?= $keyObjekt ?>:{ObjektName:"<?= $valueObjekt['ObjektName'] ?>", ObjektTarget:"<?= $valueObjekt['ObjektTarget'] ?>", ObjektLinkTitle:"<?= $valueObjekt['ObjektLinkTitle'] ?>", ObjektLinkCSSID:"<?= $valueObjekt['ObjektLinkCSS'][0] ?>", ObjektLinkCSSClass:"<?= $valueObjekt['ObjektLinkCSS'][1] ?>", ObjektInfoText:"<?= $valueObjekt['ObjektInfoText'] ?>", ObjektTitleLink:"<?= $valueObjekt['ObjektTitleLink'] ?>", ObjektShowInfotext:"<?= $valueObjekt['ObjektShowInfotext'] ?>", Calender:{<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?><?= $i; ?>:"<?php if($valueObjekt['Calender'][$keyYear][$keyMonth][$i]): ?><?php if($valueObjekt['Calender'][$keyYear][$keyMonth][$i] == '0#1'): ?>an<?php elseif($valueObjekt['Calender'][$keyYear][$keyMonth][$i] == '1#0'): ?>ab<?php else: ?>d<?php endif; ?><?php else: ?>s<?php endif; ?>"<?php if ($i < $month['TageMonat']): ?>, <?php endif; ?><?php endfor; ?>}}<?php $z++; ?><?php if ($z < count($aCategory['Objekte'])): ?>, <?php endif; ?><?php endforeach; ?>}}<?php $a++; ?><?php if ($a < $count ): ?>, <?php endif; ?><?php endforeach; ?>};
+			<?php endforeach; ?>
 		<?php endforeach; ?>
 		function displayBelegung(Month, Days, CategorieObjekteCalender) {
 			var str = '';
@@ -235,41 +237,43 @@
 		}
 	</script>
 	<div id="dialog" title=""></div>
-	<?php foreach($this->Month as $keyMonth => $month): ?>
-		<div>
-			<p><?= $month['Name'] ?> <?= $this->display_year ?></p>
-			<table class="mod-belegungsplan-jquery" onclick="displayBelegung(Month<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>, Days<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>, CategorieObjekteCalender<?= $this->display_year ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>)">
-				<thead>
-					<tr>
-						<th><?= $month['Name'] ?> <?= $this->display_year ?></th>
-						<?php foreach($month['Days'] as $dayMonth => $day): ?>
-							<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title'] && $day['ShowTitleText']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
-						<?php endforeach; ?>
-					</tr>
-				</thead>
-				<tbody>
-				<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
+	<?php foreach($this->Month as $keyYear => $year): ?>
+		<?php foreach($year as $keyMonth => $month): ?>
+			<div>
+				<p><?= $month['Name'] ?> <?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?></p>
+				<table class="mod-belegungsplan-jquery" onclick="displayBelegung(Month<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>, Days<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>, CategorieObjekteCalender<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1): ?><?= "0" ?><?php endif; ?><?= $keyMonth ?>)">
+					<thead>
+						<tr>
+							<th><?= $month['Name'] ?> <?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?></th>
+							<?php foreach($month['Days'] as $dayMonth => $day): ?>
+								<th<?php if($day['Class']): ?> class="<?= $day['Class'] ?>"<?php endif; ?><?php if($day['Title'] && $day['ShowTitleText']): ?> title="<?= $day['Title'] ?>"<?php endif; ?><?php if($day['Style']): ?><?= $day['Style'] ?><?php endif; ?>><?= (strlen($dayMonth) === 1 ? '0'.$dayMonth : $dayMonth) . '<br>' . $day['DayCut'] ?></th>
+							<?php endforeach; ?>
+						</tr>
+					</thead>
+					<tbody>
+					<?php foreach($this->CategorieObjekteCalender as $aCategory): ?>
 <?php if($this->AnzeigeKategorie): ?>
-					<tr class="belegCategory">
-						<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
-					</tr>
+						<tr class="belegCategory">
+							<th colspan="<?= $month['ColSpan'] ?>"><?= $aCategory['CategoryTitle'] ?></th>
+						</tr>
 <?php endif; ?>
-					<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
-					<tr class="belegObjekt">
-						<td><?= $valueObjekt['ObjektName'] ?></td>
-						<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
-							<?php if($valueObjekt['Calender'][$keyMonth][$i]): ?>
-							<td class="<?php if($valueObjekt['Calender'][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>belegt<?php endif; ?>"></td>
-							<?php else: ?>
-							<td class="frei"></td>
-							<?php endif; ?>
-						<?php endfor; ?>
-					</tr>
+						<?php foreach($aCategory['Objekte'] as $keyObjekt => $valueObjekt): ?>
+						<tr class="belegObjekt">
+							<td><?= $valueObjekt['ObjektName'] ?></td>
+							<?php for($i = 1; $i <= $month['TageMonat']; $i++): ?>
+								<?php if($valueObjekt['Calender'][$keyYear][$keyMonth][$i]): ?>
+								<td class="<?php if($valueObjekt['Calender'][$keyYear][$keyMonth][$i] == '0#1'): ?>anreise<?php elseif($valueObjekt['Calender'][$keyYear][$keyMonth][$i] == '1#0'): ?>abreise<?php else: ?>belegt<?php endif; ?>"></td>
+								<?php else: ?>
+								<td class="frei"></td>
+								<?php endif; ?>
+							<?php endfor; ?>
+						</tr>
+						<?php endforeach; ?>
 					<?php endforeach; ?>
-				<?php endforeach; ?>
-				</tbody>
-			</table>
-		</div>
+					</tbody>
+				</table>
+			</div>
+		<?php endforeach; ?>
 	<?php endforeach; ?>
 	</div>
 <?php endif; ?>
