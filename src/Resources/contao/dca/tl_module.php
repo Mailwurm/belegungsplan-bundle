@@ -67,7 +67,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_anzahlMonate'] = array(
 	'label'					=> &$GLOBALS['TL_LANG']['tl_module']['belegungsplan_anzahlMonate'],
 	'exclude'				=> true,
 	'inputType'				=> 'text',
-	'eval'					=> array('size'=>1, 'rgxp'=>'natural', 'mandatory'=>true, 'maxval'=>100, 'minval'=>1, 'tl_class'=>'w50 m12'),
+	'eval'					=> array('size'=>1, 'rgxp'=>'natural', 'mandatory'=>true, 'maxval'=>100, 'minval'=>1, 'tl_class'=>'w25 m12'),
 	'sql'					=> "smallint(5) unsigned NOT NULL default 1"
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_individuellMonateStart'] = array(
@@ -101,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_frei'] = array(
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -134,7 +134,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_belegt'] = array(
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -168,7 +168,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_text'] = array(
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -202,7 +202,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_rahmen'] = array(
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -245,7 +245,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_kategorie'] = arr
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard clr', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard clr', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -278,7 +278,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_kategorietext'] =
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard clr', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard clr', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -382,7 +382,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_bgcolor_wochenende'] = 
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard clr', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard clr', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -415,7 +415,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['belegungsplan_color_wochenendetext'] 
 	(
 		array('tl_module_belegungsplan','setRgbToHex')
 	),
-	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w33 wizard clr', 'helpwizard'=>true),
+	'eval'					=> array('maxlength'=>6, 'minlength'=>6, 'mandatory'=>true, 'colorpicker'=>true, 'isHexColor'=>true, 'decodeEntities'=>true, 'tl_class'=>'w25 wizard clr', 'helpwizard'=>true),
 	'save_callback'			=> array
 	(
 		array('tl_module_belegungsplan','setHexToRgb')
@@ -455,7 +455,8 @@ $bundles = System::getContainer()->getParameter('kernel.bundles');
 /**
  * Provide miscellaneous methods that are used by the data configuration array.
  */
-class tl_module_belegungsplan extends Backend {
+class tl_module_belegungsplan extends Backend
+{
 	/**
 	 * Wandelt Farbcode Hexadezimal nach RGB
 	 *
@@ -477,7 +478,9 @@ class tl_module_belegungsplan extends Backend {
 			if (strlen($hex) < 6)
 			{	
 				throw new Exception($GLOBALS['TL_LANG']['tl_module']['setHexToRgb']);
-			} else {
+			}
+			else
+			{
 				$r = hexdec(substr($hex,0,2));
 				$g = hexdec(substr($hex,2,2));
 				$b = hexdec(substr($hex,4,2));
@@ -509,7 +512,9 @@ class tl_module_belegungsplan extends Backend {
 		if (strpos($varValue, ",") === false)
 		{
 			$hex .= $varValue;
-		} else {
+		}
+		else
+		{
 			$varValue = explode(",",$varValue);
 			$hex .= str_pad(dechex($varValue[0]), 2, "0", STR_PAD_LEFT);
 			$hex .= str_pad(dechex($varValue[1]), 2, "0", STR_PAD_LEFT);
@@ -599,7 +604,9 @@ class tl_module_belegungsplan extends Backend {
 			if ($iStart > $iEnde)
 			{	
 				throw new Exception($GLOBALS['TL_LANG']['tl_module']['sameDateError']); 
-			} else {
+			}
+			else
+			{
 				return $varValue;
 			}
 		}
