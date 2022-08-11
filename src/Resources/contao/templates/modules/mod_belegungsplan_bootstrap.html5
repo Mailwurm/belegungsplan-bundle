@@ -8,6 +8,15 @@
 		background-color:<?= $this->RgbaKategorie ?>;
 		color:<?= $this->RgbaKategorietext ?>;
 	}
+	<?php if($this->LinkKategorie): ?>
+		table.belegungsplan-modal-table>tbody>tr.belegCategory>th>a {
+			color:<?= $this->RgbaLinkKategorie ?>;
+			<?= $this->KategorieDecorationLine ?>
+		<?php if($this->LineKategorieNone != 'none'): ?>
+			<?= $this->KategorieDecorationStyle ?>
+		<?php endif; ?>
+		}
+	<?php endif; ?>
 <?php endif; ?>
 	.modal.modal-wide .modal-dialog {
 		width:90%;
@@ -103,7 +112,15 @@
 	.table-bordered>thead>tr>th,.table-bordered>tbody>tr>th,.table-bordered>thead>tr>td,.table-bordered>tbody>tr>td {
 		border: 1px solid <?= $this->RgbaRahmen ?>;
 	}
-}
+<?php if($this->LinkText): ?>
+	table.belegungsplan-modal-table>tbody>tr.belegObjekt>td>a {
+		color:<?= $this->RgbaLinkText ?>;
+		<?= $this->TextDecorationLine ?>
+	<?php if($this->LineNone != 'none'): ?>
+		<?= $this->TextDecorationStyle ?>
+	<?php endif; ?>
+	}
+<?php endif; ?>
 </style>
 <?php if($this->info): ?>
 	<div class="row">
@@ -131,7 +148,7 @@
 		<?php foreach($year as $keyMonth => $month): ?>
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-24 thumbnail">
 				<p class="text-center"><?= $month['Name'] ?> <?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?></p>
-				<table class="table table-condensed belegungsplan-table" data-toggle="modal" data-target="#Belegungsplan<?= $this->display_year ?><?php if(strlen($keyMonth) === 1) echo '0'; ?><?= $keyMonth ?>">
+				<table class="table table-condensed belegungsplan-table" data-toggle="modal" data-target="#Belegungsplan<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) === 1) echo '0'; ?><?= $keyMonth ?>">
 					<thead>
 						<tr>
 							<th><?= $month['Name'] ?> <?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?></th>
@@ -162,7 +179,7 @@
 					<?php endforeach; ?>
 					</tbody>
 				</table>
-				<div id="Belegungsplan<?= $this->display_year ?><?php if(strlen($keyMonth) == 1) echo '0'; ?><?= $keyMonth ?>" class="modal modal-wide fade" role="dialog" aria-labelledby="BelegungsplanModalLabel">
+				<div id="Belegungsplan<?php if($this->display_year): ?><?= $this->display_year ?><?php else: ?><?= $keyYear ?><?php endif; ?><?php if(strlen($keyMonth) == 1) echo '0'; ?><?= $keyMonth ?>" class="modal modal-wide fade" role="dialog" aria-labelledby="BelegungsplanModalLabel">
 					<div class="modal-dialog modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
