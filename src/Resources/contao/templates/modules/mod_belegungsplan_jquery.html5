@@ -46,6 +46,15 @@
 			vertical-align: inherit;
 			border-color: inherit;
 		}
+<?php if($this->LinkText): ?>
+		table.belegungsplan-table-dialog>tbody>tr.belegObjekt>td>a {
+			color:<?= $this->RgbaLinkText ?>;
+			<?= $this->TextDecorationLine ?>
+		<?php if($this->LineNone != 'none'): ?>
+			<?= $this->TextDecorationStyle ?>
+		<?php endif; ?>
+		}
+<?php endif; ?>
 <?php if($this->AnzeigeKategorie): ?>
 		table.mod-belegungsplan-jquery>tbody>tr.belegCategory>th,
 		table.belegungsplan-table-dialog>tbody>tr.belegCategory>th {
@@ -53,6 +62,15 @@
 			background-color:<?= $this->RgbaKategorie ?>;
 			color:<?= $this->RgbaKategorietext ?>;
 		}
+	<?php if($this->LinkKategorie): ?>
+		table.belegungsplan-table-dialog>tbody>tr.belegCategory>th>a {
+			color:<?= $this->RgbaLinkKategorie ?>;
+			<?= $this->KategorieDecorationLine ?>
+		<?php if($this->LineKategorieNone != 'none'): ?>
+			<?= $this->KategorieDecorationStyle ?>
+		<?php endif; ?>
+		}
+	<?php endif; ?>
 <?php endif; ?>
 <?php if($this->AnzeigeWochenende): ?>
 		table.belegungsplan-table-dialog>thead>tr>th.saturday,
