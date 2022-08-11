@@ -71,6 +71,21 @@
 			<trans-unit id="tl_module.belegungsplan_month.month.12">
 				<source>December</source>
 			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationLine.0">
+				<source>text-decoration</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationLine.1">
+				<source>Sets the kind of text decoration to use</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationStyle.0">
+				<source>text-decoration-style</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationStyle.1">
+				<source>Sets the style of the text decoration</source>
+			</trans-unit>
+			<trans-unit id="tl_module.anzeige_legend">
+				<source>Display settings</source>
+			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_showAusgabe.0">
 				<source>Type of display</source>
 			</trans-unit>
@@ -92,7 +107,6 @@
 			<trans-unit id="tl_module.belegungsplan_anzahlMonate.1">
 				<source>Enter an integer (minimum 1 and maximum 100)</source>
 			</trans-unit>
-			
 			<trans-unit id="tl_module.belegungsplan_individuellMonateStart.0">
 				<source>Start period - month / year</source>
 			</trans-unit>
@@ -117,11 +131,29 @@
 			<trans-unit id="tl_module.belegungsplan_color_text.1">
 				<source>The colors for the category text and legend text can be found below. Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
 			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkText.0">
+				<source>Link color</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkText.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
+			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_rahmen.0">
 				<source>Color of the table frame</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_rahmen.1">
 				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is DDDDDD.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkText.0">
+				<source>Link settings &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_linkText&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Show main categories?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkText.1">
+				<source>If you have linked objects, you can make further settings by activating this checkbox. If not activated, the standard CSS properties are used.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkKategorie.0">
+				<source>Link settings &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_linkKategorie&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Show main categories?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkKategorie.1">
+				<source>If you have linked categories, you can make further settings by activating this checkbox. If not activated, the standard CSS properties are used.</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_anzeige_kategorie.0">
 				<source>Show main categories? &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_kategorie&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Show main categories?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
@@ -140,6 +172,24 @@
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_color_kategorietext.1">
 				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 000000.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkKategorie.0">
+				<source>Link color</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkKategorie.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 6610F2.</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationLine.0">
+				<source>text-decoration</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationLine.1">
+				<source>Sets the kind of text decoration to use</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationStyle.0">
+				<source>text-decoration-style</source>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationStyle.1">
+				<source>Sets the style of the text decoration</source>
 			</trans-unit>
 			<trans-unit id="tl_module.belegungsplan_anzeige_legende.0">
 				<source>Show legend (explanation)? &lt;a href=&quot;contao/help?table=tl_module&amp;amp;field=belegungsplan_anzeige_legende&quot; title=&quot;&quot; onclick=&quot;Backend.openModalIframe({&apos;title&apos;:&apos;Show legend (explanation)?&apos;,&apos;url&apos;:this.href});return false&quot;&gt;&lt;img src=&quot;system/themes/flexible/icons/about.svg&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;Call up the help wizard&quot;&gt;&lt;/a&gt;</source>
