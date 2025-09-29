@@ -1,0 +1,338 @@
+<?xml version="1.0" ?><xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/tl_module.php" source-language="en" target-language="de">
+		<body>
+			<trans-unit id="tl_module.text_legend">
+				<source>Text settings</source>
+				<target>Text Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.rahmen_legend">
+				<source>Frame settings</source>
+				<target>Rahmen Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.kategorie_legend">
+				<source>Category settings</source>
+				<target>Kategorie Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.legende_legend">
+				<source>Legend settings</source>
+				<target>Legende Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.wochenende_legend">
+				<source>Weekend settings</source>
+				<target>Wochenende Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.color_legend_frei">
+				<source>Color selection free days</source>
+				<target>Farbauswahl freie Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.color_legend_belegt">
+				<source>Color selection occupied days</source>
+				<target>Farbauswahl belegte Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_categories.0">
+				<source>Assignment plan categories</source>
+				<target>Belegungsplan-Kategorien</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_categories.1">
+				<source>Please select one or more assignment plan categories.</source>
+				<target>Bitte wählen Sie eine oder mehrere Belegungsplan-Kategorien.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.0">
+				<source>Which months should be displayed?</source>
+				<target>Welche Monate sollen angezeigt werden?</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.1">
+				<source>Select the months that should be displayed.</source>
+				<target>Wählen Sie die Monate aus, welche angezeigt werden sollen.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.1">
+				<source>January</source>
+				<target>Januar</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.2">
+				<source>February</source>
+				<target>Februar</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.3">
+				<source>March</source>
+				<target>März</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.4">
+				<source>April</source>
+				<target>April</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.5">
+				<source>May</source>
+				<target>Mai</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.6">
+				<source>June</source>
+				<target>Juni</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.7">
+				<source>July</source>
+				<target>Juli</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.8">
+				<source>August</source>
+				<target>August</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.9">
+				<source>September</source>
+				<target>September</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.10">
+				<source>October</source>
+				<target>Oktober</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.11">
+				<source>November</source>
+				<target>November</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_month.month.12">
+				<source>December</source>
+				<target>Dezember</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationLine.0">
+				<source>text-decoration</source>
+				<target>text-decoration</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationLine.1">
+				<source>Sets the kind of text decoration to use</source>
+				<target>Legt die Art der zu verwendenden Textdekoration fest</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationStyle.0">
+				<source>text-decoration-style</source>
+				<target>text-decoration-style</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_textDecorationStyle.1">
+				<source>Sets the style of the text decoration</source>
+				<target>Legt den Stil der Textdekoration fest</target>
+			</trans-unit>
+			<trans-unit id="tl_module.anzeige_legend">
+				<source>Display settings</source>
+				<target>Anzeige Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_showAusgabe.0">
+				<source>Type of display</source>
+				<target>Art der Anzeige</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_showAusgabe.1">
+				<source>Depending on the activation, you have the option of making additional settings</source>
+				<target>Je nach Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.standard.0">
+				<source>Default by occupancy times</source>
+				<target>Standard nach Belegzeiten</target>
+			</trans-unit>
+			<trans-unit id="tl_module.automatic.0">
+				<source>Output by number of months</source>
+				<target>Ausgabe nach Anzahl von Monaten</target>
+			</trans-unit>
+			<trans-unit id="tl_module.individuell.0">
+				<source>Output according to individual period</source>
+				<target>Ausgabe nach individuellem Zeitraum</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzahlMonate.0">
+				<source>Number of months to display</source>
+				<target>Anzahl der anzuzeigenden Monate</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzahlMonate.1">
+				<source>Enter an integer (minimum 1 and maximum 100)</source>
+				<target>Geben Sie eine ganze Zahl ein (mindestens 1 und maximal 100)</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_individuellMonateStart.0">
+				<source>Start period - month / year</source>
+				<target>Start Zeitraum - Monat / Jahr</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_individuellMonateEnde.0">
+				<source>End period - month / year</source>
+				<target>Ende Zeitraum - Monat / Jahr</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_frei.0">
+				<source>Color of the days off</source>
+				<target>Farbe der freien Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_frei.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 4CAE4C.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 4CAE4C.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_belegt.0">
+				<source>Color of the occupied days</source>
+				<target>Farbe der belegten Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_belegt.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is D43F3A.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist D43F3A.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_text.0">
+				<source>Text color</source>
+				<target>Textfarbe</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_text.1">
+				<source>The colors for the category text and legend text can be found below. Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
+				<target>Die Farben für Kategorietext und Legendentext finden sie weiter unten. Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 333333.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkText.0">
+				<source>Link color</source>
+				<target>Linkfarbe</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkText.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 6610F2.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 6610F2.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_rahmen.0">
+				<source>Color of the table frame</source>
+				<target>Farbe der Tabellenrahmen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_rahmen.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is DDDDDD.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist DDDDDD.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkText.0">
+				<source>Link settings</source>
+				<target>Link Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkText.1">
+				<source>If you have linked objects, you can make further settings by activating this checkbox. If not activated, the standard CSS properties are used.</source>
+				<target>Haben Sie Objekte verlinkt, dann können sie bei Aktivierung dieser Checkbox weitere Einstellungen vornehmen. Wenn nicht aktiviert werden die Standard CSS-Eigenschaften verwendet.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkKategorie.0">
+				<source>Link settings</source>
+				<target>Link Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_linkKategorie.1">
+				<source>If you have linked categories, you can make further settings by activating this checkbox. If not activated, the standard CSS properties are used.</source>
+				<target>Haben Sie Kategorien verlinkt, dann können sie bei Aktivierung dieser Checkbox weitere Einstellungen vornehmen. Wenn nicht aktiviert werden die Standard CSS-Eigenschaften verwendet.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_kategorie.0">
+				<source>Show main categories?</source>
+				<target>Hauptkategorien anzeigen?</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_kategorie.1">
+				<source>When activated, you have the option of making further settings</source>
+				<target>Bei Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorie.0">
+				<source>Category line background color</source>
+				<target>Hintergrundfarbe der Kategoriezeile</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorie.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is CCCCCC.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist CCCCCC.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorietext.0">
+				<source>Text color of the category line</source>
+				<target>Textfarbe der Kategoriezeile</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_kategorietext.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 000000.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 000000.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkKategorie.0">
+				<source>Link color</source>
+				<target>Linkfarbe</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_linkKategorie.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 6610F2.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 6610F2.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationLine.0">
+				<source>text-decoration</source>
+				<target>text-decoration</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationLine.1">
+				<source>Sets the kind of text decoration to use</source>
+				<target>Legt die Art der zu verwendenden Textdekoration fest</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationStyle.0">
+				<source>text-decoration-style</source>
+				<target>text-decoration-style</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_kategorieDecorationStyle.1">
+				<source>Sets the style of the text decoration</source>
+				<target>Legt den Stil der Textdekoration fest</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_legende.0">
+				<source>Show legend (explanation)?</source>
+				<target>Legende (Erläuterung) anzeigen?</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_legende.1">
+				<source>When activated, you have the option of making further settings</source>
+				<target>Bei Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_frei.0">
+				<source>Text color legend free days</source>
+				<target>Textfarbe Legende freie Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_frei.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is FFFFFF.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist FFFFFF.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_belegt.0">
+				<source>Text color legend occupied days</source>
+				<target>Textfarbe Legende belegte Tage</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_legende_belegt.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is FFFFFF.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist FFFFFF.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_wochenende.0">
+				<source>Visually highlight weekends?</source>
+				<target>Wochenenden optisch hervorheben?</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_anzeige_wochenende.1">
+				<source>When activated, you have the option of making further settings</source>
+				<target>Bei Aktivierung haben Sie die Möglichkeit weitere Einstellungen vorzunehmen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_bgcolor_wochenende.0">
+				<source>Weekends background color (Saturday, Sunday)</source>
+				<target>Hintergrundfarbe der Wochenenden</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_bgcolor_wochenende.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is CCCCCC.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist CCCCCC.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_wochenendetext.0">
+				<source>Weekends text color</source>
+				<target>Textfarbe der Wochenenden</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_color_wochenendetext.1">
+				<source>Enter a hexadecimal color value without the prefix #, e.g. FFFFFF for white, or use the color picker. Default is 333333.</source>
+				<target>Geben sie hier einen Hexadezimalen Farbwert ohne den Vorsatz # ein, z.Bsp. FFFFFF für Weiß, oder verwenden sie den Farbwähler. Default ist 333333.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity.0">
+				<source>Transparency (opacity)</source>
+				<target>Transparenz (opacity)</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_opacity.1">
+				<source>The opacity CSS property indicates the transparency of an element. 1.0 corresponds to the full opacity.</source>
+				<target>Die opacity CSS Eigenschaft gibt die Transparenz eines Elements an. 1.0 entspricht dabei der vollen Deckkraft.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_template.0">
+				<source>Occupancy plan template</source>
+				<target>Belegungsplan-Template</target>
+			</trans-unit>
+			<trans-unit id="tl_module.belegungsplan_template.1">
+				<source>Here you can select the occupancy plan template.</source>
+				<target>Hier können Sie das Belegungsplan-Template auswählen.</target>
+			</trans-unit>
+			<trans-unit id="tl_module.setHexToRgb">
+				<source>Not a valid hexadecimal value</source>
+				<target>Kein gültiger Hexadezimaler Wert</target>
+			</trans-unit>
+			<trans-unit id="tl_module.reset">
+				<source>Reset</source>
+				<target>Zurücksetzen</target>
+			</trans-unit>
+			<trans-unit id="tl_module.jahr">
+				<source>Year</source>
+				<target>Jahr</target>
+			</trans-unit>
+			<trans-unit id="tl_module.sameDateError">
+				<source>End date is before start date</source>
+				<target>End-Datum liegt vor dem Start-Datum</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

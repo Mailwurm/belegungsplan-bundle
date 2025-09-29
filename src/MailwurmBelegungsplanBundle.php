@@ -1,19 +1,26 @@
 <?php
+
+declare(strict_types=1);
+
 /*
- * This file is part of Contao.
+ * Contao Open Source CMS.
  *
- * Copyright (c) 2017 Jan Karai
+ * Copyright (c) Jan Karai
  *
  * @license LGPL-3.0-or-later
- *
- * @author Jan Karai <https://www.sachsen-it.de>
  */
+
 namespace Mailwurm\BelegungsplanBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-/**
- * Configures the Mailwurm Belegungsplan bundle
- */
-class MailwurmBelegungsplanBundle extends Bundle {
 
+/**
+ * Configures the Mailwurm Belegungsplan bundle.
+ */
+class MailwurmBelegungsplanBundle extends Bundle
+{
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }

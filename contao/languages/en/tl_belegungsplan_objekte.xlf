@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_objekte.php" source-language="en">
+		<body>
+			<trans-unit id="tl_belegungsplan_objekte.name.0">
+				<source>Object name</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.name.1">
+				<source>The objectname is a unique reference to the object which can be called instead of its numeric ID.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.new.0">
+				<source>New object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.new.1">
+				<source>Create a new object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.author.0">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.author.1">
+				<source>The creator of the object (optional)</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.infotext.0">
+				<source>Info text (optional)</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.infotext.1">
+				<source>A short description of the object for example Newly renovated.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.showInfotext.0">
+				<source>Show info text</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.showInfotext.1">
+				<source>Display the info text on the web page.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.titlelink.0">
+				<source>Link address</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.titlelink.1">
+				<source>Enter a web address (https://...), an email address (mailto:...) or a phone number (tel:...). Contao automatically encrypts email addresses so that they cannot be read by spambots.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.target.0">
+				<source>Open in new window</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.target.1">
+				<source>Open the link in a new browser window.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.linkTitle.0">
+				<source>Link title</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.linkTitle.1">
+				<source>The link title is included as a title attribute in the HTML markup.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.cssID.0">
+				<source>CSS-ID/Class</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.cssID.1">
+				<source>Here you can enter an ID and any number of classes.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.published.0">
+				<source>Publish the object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.published.1">
+				<source>Make the object publicly visible on the website.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.title_legend">
+				<source>Title and author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.publish_legend">
+				<source>Publish settings</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.show.0">
+				<source>Show object details</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.show.1">
+				<source>Show the details of object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.edit.0">
+				<source>Edit object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.edit.1">
+				<source>At the occupancy times</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.editheader.0">
+				<source>Edit object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.editheader.1">
+				<source>Edit the object settings</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.copy.0">
+				<source>Duplicate object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.copy.1">
+				<source>Duplicate object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.cut.0">
+				<source>Move object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.cut.1">
+				<source>Move object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.delete.0">
+				<source>Delete object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.delete.1">
+				<source>Delete object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.toggle.0">
+				<source>Publish/unpublish object</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.toggle.1">
+				<source>Publish/unpublish object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.pasteafter.0">
+				<source>Paste at the top</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.pasteafter.1">
+				<source>Paste after object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.pastenew.0">
+				<source>Add new at the top</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.pastenew.1">
+				<source>Add new after object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_objekte.hyperlink_legend">
+				<source>Hyperlink Settings (optional)</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

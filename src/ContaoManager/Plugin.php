@@ -1,33 +1,34 @@
 <?php
+
+declare(strict_types=1);
+
 /*
- * This file is part of Contao.
+ * Contao Open Source CMS.
  *
  * Copyright (c) Jan Karai
  *
  * @license LGPL-3.0-or-later
- *
- * @author Jan Karai <https://www.sachsen-it.de>
  */
+
 namespace Mailwurm\BelegungsplanBundle\ContaoManager;
 
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle;
 
 /**
- * Plugin for the Contao Manager
+ * Plugin for the Contao Manager.
  */
 class Plugin implements BundlePluginInterface
 {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getBundles(ParserInterface $parser)
-	{
-		return [
-			BundleConfig::create('Mailwurm\BelegungsplanBundle\MailwurmBelegungsplanBundle')
-				->setLoadAfter(['Contao\CoreBundle\ContaoCoreBundle'])
-				->setReplace(['belegung']),
-		];
-	}
+    public function getBundles(ParserInterface $parser)
+    {
+        return [
+            BundleConfig::create(MailwurmBelegungsplanBundle::class)
+                ->setLoadAfter([ContaoCoreBundle::class])
+                ->setReplace(['belegung']),
+        ];
+    }
 }

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/tl_belegungsplan_calender.php" source-language="en">
+		<body>
+			<trans-unit id="tl_belegungsplan_calender.edit.0">
+				<source>Reservation edit</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.1">
+				<source>Edit reservation ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.delete.0">
+				<source>Delete reservation</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.delete.1">
+				<source>Delete reservation ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.new.0">
+				<source>New booking time</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.new.1">
+				<source>Add a new booking time</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.0">
+				<source>Edit object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.edit.1">
+				<source>At the booking times of the object ID %s</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.gast.0">
+				<source>Name of the guest</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.gast.1">
+				<source>Enter the name of the guest here.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.author.0">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.author.1">
+				<source>The creator of the reservation (optional)</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.startDate.0">
+				<source>Arrival</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.startDate.1">
+				<source>The arrival date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.endDate.0">
+				<source>Departure</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.endDate.1">
+				<source>The departure date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.endDateError">
+				<source>The departure day is before the arrival day.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.sameDateError">
+				<source>For a one-day appointment, please choose the appropriate setting under "Length of stay".</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.endDateListError">
+				<source>The departure day is before the arrival day. This appointment is not displayed in the output.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.tstamp.0">
+				<source>Revision date</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.tstamp.1">
+				<source>Date and time of the latest revision</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.title_legend">
+				<source>Name and author</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.date_legend">
+				<source>Departure dates</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.ueberschneidung.0">
+				<source>Schedule conflict</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.ueberschneidung.1">
+				<source>There is an overlap for this date.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.day_legend">
+				<source>Length of stay</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.dauer.0">
+				<source>How long does the guest or visitor stay?</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.dauer.1">
+				<source>Enter here how long the guest or visitor stays.</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.oneday">
+				<source>A day</source>
+			</trans-unit>
+			<trans-unit id="tl_belegungsplan_calender.moreday">
+				<source>Longer than a day</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
